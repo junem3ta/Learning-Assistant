@@ -10,7 +10,7 @@ $(document).ready(function() {
 	var didScroll;
 	var lastScrollTop = 0;
 	var delta = 5;
-	var navbarHeight = 91;
+	var navbarHeight = 91 /*46 without static header */;
 	
 	$(window).scroll(function(){
 		hasScrolled();
@@ -30,7 +30,7 @@ $(document).ready(function() {
 			return;
 		} 
 		
-		//scroll up
+		/*scroll up*/
 		if (st < lastScrollTop) {
 			/* if(st < 2 && $('.home-search-wrapper').hasClass('hs-wrapper-up')) {
 				//Lock bar to initial relative position 
@@ -40,11 +40,19 @@ $(document).ready(function() {
 				$('.home-search-wrapper').addClass('hs-wrapper-up');
 				$('.ui-content').addClass('ui-content-up');
 			} */
-			if(st < 46 && $('.home-search-wrapper').hasClass('static-hdr-up')) {
+			if(st < 5 && $('.home-search-wrapper').hasClass('hs-wrapper-up')) {
+				$('.home-search-wrapper').removeClass('hs-wrapper-up');
+				$('.ui-content').removeClass('ui-content-up');
+			} else if(st < 46 && $('.home-search-wrapper').hasClass('static-hdr-up')) {
 				$('.home-search-wrapper').removeClass('static-hdr-up');
+			} else if (st > 46 && !$('.home-search-wrapper').hasClass('hs-wrapper-up')){
+					$('.home-search-wrapper').removeClass('static-hdr-up');
+					$('.home-search-wrapper').addClass('hs-wrapper-up');
+					$('.ui-content').addClass('ui-content-up');
 			}
 		}
 		
+		/* Scrolldown */
 		if(st > lastScrollTop) {
 			if(window.pageYOffset > Math.ceil($('.static-hdr').offset().top)) {
 				$('.home-search-wrapper').addClass('static-hdr-up');
