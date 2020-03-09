@@ -50,7 +50,8 @@ body {
 
 .hs-wrapper-up {
 	position: fixed;
-	top: 1em;
+  padding: 1em 0 0 0;
+  top: 0;
 	left: 1em;
 	right: 1em;
 }
@@ -71,6 +72,10 @@ body {
 	text-align: center;
 	width: 40px;
 	border: 1px solid transparent;
+}
+
+.pcw-up {
+  top: 17px;
 }
 
 .panel-ctrl-wrapper p {
@@ -104,6 +109,27 @@ body {
  -webkit-box-shadow: none !important;
  box-shadow: none !important;
 border-radius: 0 !important;
+}
+
+.ui-input-text {
+  margin-bottom: 0;
+}
+.static-hdr-up {
+  position: fixed;
+  top: -46px;
+  left: 1em;
+  right: 1em;
+  border-bottom: 1px solid #888;
+}
+.static-hdr {
+  height: 40px;
+  line-height: 40px;
+  width: 100px;
+  border-bottom: 5px solid #000;
+  text-align: center;
+}
+.static-hdr p {
+  margin: 0;
 }
 
 .hs-wrapper-search-mode {

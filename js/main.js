@@ -32,22 +32,16 @@ $(document).ready(function() {
 		
 		/*scroll up*/
 		if (st < lastScrollTop) {
-			/* if(st < 2 && $('.home-search-wrapper').hasClass('hs-wrapper-up')) {
-				//Lock bar to initial relative position 
-				$('.home-search-wrapper').removeClass('hs-wrapper-up');
-				$('.ui-content').removeClass('ui-content-up');
-			} else if(st > navbarHeight	&& !$('.home-search-wrapper').hasClass('hs-wrapper-up')) {
-				$('.home-search-wrapper').addClass('hs-wrapper-up');
-				$('.ui-content').addClass('ui-content-up');
-			} */
 			if(st < 5 && $('.home-search-wrapper').hasClass('hs-wrapper-up')) {
 				$('.home-search-wrapper').removeClass('hs-wrapper-up');
 				$('.ui-content').removeClass('ui-content-up');
+        $('.panel-ctrl-wrapper').removeClass('pcw-up');
 			} else if(st < 46 && $('.home-search-wrapper').hasClass('static-hdr-up')) {
 				$('.home-search-wrapper').removeClass('static-hdr-up');
 			} else if (st > 46 && !$('.home-search-wrapper').hasClass('hs-wrapper-up')){
 					$('.home-search-wrapper').removeClass('static-hdr-up');
 					$('.home-search-wrapper').addClass('hs-wrapper-up');
+          $('.panel-ctrl-wrapper').addClass('pcw-up');
 					$('.ui-content').addClass('ui-content-up');
 			}
 		}
@@ -159,12 +153,16 @@ $(document).ready(function() {
 			$('.static-hdr').show();
 		});
 		
-		var temp = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan 	blandit fermentum. Pellentesque cursus mauris purus, auctor commodo mi ullamcorper nec. Donec semper mattis eros, nec condimentum ante sollicitudin quis. Etiam orci sem, porttitor ut tellus nec, blandit posuere urna. Proin a arcu non lacus pretium faucibus. Aliquam sed est porttitor, ullamcorper urna nec, vehicula lorem. Cras porttitor est lorem, non venenatis diam convallis congue."
+  
+	var temp = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan 	blandit fermentum. Pellentesque cursus mauris purus, auctor commodo mi ullamcorper nec. Donec semper mattis eros, nec condimentum ante sollicitudin quis. Etiam orci sem, porttitor ut tellus nec, blandit posuere urna. Proin a arcu non lacus pretium faucibus. Aliquam sed est porttitor, ullamcorper urna nec, vehicula lorem. Cras porttitor est lorem, non venenatis diam convallis congue."
 		
 		for(var i=0; i<20; i++) {
 			$('.content p').append(temp);
 		}
-		currentCW = "pp-cw";
+  
+
+  
+		var currentCW = "pp-cw";
 		$('.content-wrapper-ctrl').click(function() {
 			$(window).scrollTop(0);
 			var target = $(this).attr('id');
@@ -177,9 +175,9 @@ $(document).ready(function() {
 			}
 		});
 				
-		
-		
-		
-
+		/* Explorer */
+		for ( var a in fsIndex['root']) {
+      //alert(a);
+    }
 
 });
