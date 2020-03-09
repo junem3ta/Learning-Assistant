@@ -5,18 +5,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-	<link rel="stylesheet" type="text/css" href="assets/fonts/ps/style.css"/>
-	<link href="assets/font-awesome/css/all.css" rel="stylesheet">
+  <!-- 
+    ** Local Links **
+    <link rel="stylesheet" type="text/css" href="assets/fonts/ps/style.css"/>
+    <link href="assets/font-awesome/css/all.css" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="js/jquery-migrate-3.1.0.min.js"></script>
+    <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
+    <link rel="stylesheet" type="text/css" href="css/stylesheet.main.css">
+    <script type="text/javascript" src="js/main.js"></script>
+  -->
 
-	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="js/jquery-migrate-3.1.0.min.js"></script>
-	<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
-	<link rel="stylesheet" type="text/css" href="css/stylesheet.main.css">
-	<script type="text/javascript" src="js/main.js"></script>
-
-	<!--
-		** Glitch links **
 		<link rel="stylesheet" type="text/css" href="/fonts/ps/style.css"/>
 		<link href="/font-awesome/css/all.css" rel="stylesheet">
 		<script type="text/javascript" src="/jquery-3.2.1.min.js"></script>
@@ -24,9 +24,10 @@
 		<script type="text/javascript" src="/jquery.mobile-1.4.5.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="/jquery.mobile-1.4.5.min.css">
 		<link rel="stylesheet" type="text/css" href="/stylesheet.main.css">
+    <script type="text/javascript" src="/FsIndex.0.min.js"></script> 
 		<script type="text/javascript" src="/main.js"></script> 
-	-->
-
+    
+	
 	<!-- <link rel="icon" type="image/png" href="icon.png"/> -->
 </head>
 <body>
@@ -54,32 +55,6 @@
 					<p><i class="fas fa-arrow-left search-ctrl"></i></p>
 				</div>
 				<input class="home-search" placeholder="Search past papers, e-books" type="text" data-clear-btn="true">
-				
-				<style>
-					.search-window {
-						/*border: 1px solid #000;*/
-					}
-					.ui-input-text {
-						margin-bottom: 0;
-					}
-					.static-hdr-up {
-						position: fixed;
-						top: -46px;
-						left: 1em;
-						right: 1em;
-						border-bottom: 1px solid #888;
-					}
-					.static-hdr {
-						height: 40px;
-						line-height: 40px;
-						width: 100px;
-						border-bottom: 5px solid #000;
-						text-align: center;
-					}
-					.static-hdr p {
-						margin: 0;
-					}
-				</style>
 
 				<div class="static-hdr">
 					<p>Past Papers</p>
@@ -87,7 +62,7 @@
 
 				<div class="ui-grid-a search-window">
 					<div class="sw-thumb">
-						<img src="assets\images\search.svg" /> 
+						<img src="\images\search.svg" /> 
 					</div>
 					<!--
 					<div class="sr">
@@ -96,6 +71,33 @@
 				</div>
 			</div>
 			
+<!-- 
+ <script>
+desktopMode = false;
+responsiveUIHandler();
+$(window).resize(function() {
+  responsiveUIHandler();
+});
+$('.search-ctrl').click(function() {
+if(!desktopMode) {
+  $('.panel-ctrl').show();
+}
+});
+function responsiveUIHandler() {
+  if($('.side-panel-wrapper').css('display') == 'none') {
+  desktopMode = true;
+}
+}
+</script>
+<style>
+@media all and (min-width: 37.5em){
+.side-panel-wrapper, .panel-ctrl {
+  display: none;
+}
+}
+</style>
+-->
+      
 			<div class="content pp-cw active-content-wrapper">
 				<p>A <br/></p>
 			</div>

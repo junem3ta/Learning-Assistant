@@ -21,6 +21,7 @@ app.get("/", function(req, res) {
 app.use(express.static(__dirname + "/css"));
 app.use(express.static(__dirname + "/js"));
 app.use(express.static(__dirname + "/assets"));
+app.use(express.static(__dirname + "/FsIndex"));
 
 /*Listener*/
 const listener = app.listen(process.env.PORT, function() {
