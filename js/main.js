@@ -131,9 +131,10 @@ $(document).ready(function() {
 		if($('.side-panel-wrapper').css('display') == 'none') {
 			/* "Switch to Desktop Mode" */
 			desktopMode = true;
+			$('.content-wrapper').attr('style', 'padding-bottom: 0 !important;');
 			setTimeout(function() {
 				$('.content-wrapper').attr('style', 'padding-bottom: 0 !important;');
-			},1000);
+			},500);
 		}  else {
 			/* "Switch back to Android Mode" */
 			desktopMode = false;
