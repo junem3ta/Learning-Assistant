@@ -32,10 +32,8 @@
 </head>
 <body>
 	<div data-role="page" class="content-wrapper"> 	
-		<!--<div data-role="header"> 		
-			<h1>Page Title</h1> 	
-		</div>-->
-		
+		<!-- Android Sidepanel -->
+		<!-- The Android side panel overlaps over the ui-content, thus it makes more sense to have the sidepanelwrapper placed in a fixed position outside of the ui-content -->
 		<div class="side-panel-wrapper">
 			<div class="side-panel">
 				<p>
@@ -48,7 +46,9 @@
 			</div>
 		</div>
 		
-		<div role="main" class="ui-content "> 	 
+		<div role="main" class="ui-content "> 	
+
+			<!-- Android searchbar -->
 			<div class="ui-grid-a home-search-wrapper">
 				<div class="panel-ctrl-wrapper">
 					<p><i class="fas fa-bars panel-ctrl"></i></p>
@@ -71,22 +71,38 @@
 					-->
 				</div>
 			</div>
-      
-			<div class="content pp-cw active-content-wrapper">
-				<p>A <br/></p>
+			<!-- End Android searchbar -->
+
+			<!-- Desktop searchbar -->
+			<div class="header">
+
 			</div>
-			
-			<div class="content eb-cw">
-				<p>B <br/></p>
+			<!-- Desktop Sidepanel -->
+			<div class='pc-side-panel-wrapper'>
+
 			</div>
-			
-			<div class="content uploads-cw">
-				<p>C <br/></p>
+			<!-- End Desktop Sidepanel -->
+
+			<!-- Desktop/Android Content wrapper-->
+			<div class="content-container"> 
+				<div class="content pp-cw active-content-wrapper">
+					<p>A <br/></p>
+				</div>
+				
+				<div class="content eb-cw">
+					<p>B <br/></p>
+				</div>
+				
+				<div class="content uploads-cw">
+					<p>C <br/></p>
+				</div>
+				
+				<div class="content ua-cw">
+					<p>D <br/></p>
+				</div>
 			</div>
-			
-			<div class="content ua-cw">
-				<p>D <br/></p>
-			</div>
+			<!-- End Desktop/Android Content wrapper -->
+
 		</div>
 		
 		<div data-role="footer" data-position="fixed" class="footer" data-tap-toggle="false">

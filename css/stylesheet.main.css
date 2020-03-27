@@ -39,13 +39,13 @@ body {
 .home-search-wrapper {
 	position: relative;
 	background: #fff;
-	/* border-bottom: 1px solid #888; */
-	/*padding-bottom: 0.5em;*/
+	border-top-right-radius: .3125em;
+    border-top-left-radius: .3125em;
 }
 .hs-wrapper-up {
 	position: fixed;
-  padding: 1em 0 0 0;
-  top: 0;
+	/*  padding: 1em 0 0 0; */
+	top: 1em;
 	left: 1em;
 	right: 1em;
 }
@@ -66,7 +66,7 @@ body {
 	border: 1px solid transparent;
 }
 .pcw-up {
-  top: 17px;
+  /* top: 17px; */
 }
 .panel-ctrl-wrapper p {
 	margin:0;
@@ -102,7 +102,7 @@ border-radius: 0 !important;
   top: -46px;
   left: 1em;
   right: 1em;
-  border-bottom: 1px solid #888;
+  border-bottom: 1px solid #ddd;
 }
 .static-hdr {
   height: 40px;
@@ -166,18 +166,42 @@ border-radius: 0 !important;
 .ui-content-search-mode {
 	padding-top: 3.875em !important;
 }
-
+.pc-side-panel-wrapper {
+	display: none;
+	height: inherit;
+	width: 249px;
+	border-right: 1px dotted #ddd;
+}
+.content-container {
+	width: 100%;
+}
 /* Break Android Styling */
 @media all and (min-width: 37.5em){
-	.side-panel-wrapper, .panel-ctrl {
+	.side-panel-wrapper, .panel-ctrl, .home-search-wrapper,.footer {
 		display: none;
+	}
+	.ui-page {
+		height: 100%;
+	}
+	.ui-page .ui-content {
+		height: inherit;
+		padding: 0;
+	}
+	.pc-side-panel-wrapper {
+		display: block;
+	}
+	.content-container {
+		width: calc(100% - 250px);
+	}
+	.pc-side-panel-wrapper,.content-container {
+		float: left;
 	}
 }
 
 
+
 .content {
 	display: none;
-	border: 1px dotted #ccc;
 }
 
 .active-content-wrapper {

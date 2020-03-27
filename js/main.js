@@ -129,8 +129,11 @@ $(document).ready(function() {
 	});
 	function responsiveUIHandler() {
 		if($('.side-panel-wrapper').css('display') == 'none') {
-			desktopMode = true;
 			/* "Switch to Desktop Mode" */
+			desktopMode = true;
+			setTimeout(function() {
+				$('.content-wrapper').attr('style', 'padding-bottom: 0 !important;');
+			},1000);
 		}  else {
 			/* "Switch back to Android Mode" */
 			desktopMode = false;
@@ -144,7 +147,7 @@ $(document).ready(function() {
 	var temp = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan 	blandit fermentum. Pellentesque cursus mauris purus, auctor commodo mi ullamcorper nec. Donec semper mattis eros, nec condimentum ante sollicitudin quis. Etiam orci sem, porttitor ut tellus nec, blandit posuere urna. Proin a arcu non lacus pretium faucibus. Aliquam sed est porttitor, ullamcorper urna nec, vehicula lorem. Cras porttitor est lorem, non venenatis diam convallis congue."
 		
 	for(var i=0; i<20; i++) {
-		$('.content p').append(temp);
+		//$('.content p').append(temp);
 	}
 
 	var currentCW = "pp-cw";
