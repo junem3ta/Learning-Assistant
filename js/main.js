@@ -76,6 +76,7 @@ $(document).ready(function() {
 		}
 	});
 	$(document).click(function(event) {
+		/* collapse if clickevent target is outside of android sidepanel */
 		if(isPanelOpen) {
 			if($(event.target).closest('.side-panel').length == 0
 					&& !$(event.target).hasClass('panel-ctrl')
@@ -87,6 +88,19 @@ $(document).ready(function() {
 				$('body').removeClass("no-scroll");
 			}
 		}
+		/* 
+		**
+		  move outside of click event to reimplement
+			$(document).on("focus",".header-search", function() {
+				$(this).closest('div').addClass('noshadowI');
+			});
+		**
+		if(desktopMode) {
+			if($(event.target).closest('.header-search').length == 0) {
+				$(".header-search").closest('div').removeClass('noshadowI');
+			}
+		} */
+		
 	});
 	/*Activate search mode*/
 	$(document).on('focus', '.home-search', function () {
@@ -123,6 +137,7 @@ $(document).ready(function() {
 			$('.panel-ctrl').show();
 		}
 	});
+
 	/* Detect resize and apply appropriate responsive styles */
 	$(window).resize(function() {
 		responsiveUIHandler();
@@ -131,10 +146,32 @@ $(document).ready(function() {
 		if($('.side-panel-wrapper').css('display') == 'none') {
 			/* "Switch to Desktop Mode" */
 			desktopMode = true;
+
 			$('.content-wrapper').attr('style', 'padding-bottom: 0 !important;');
 			setTimeout(function() {
 				$('.content-wrapper').attr('style', 'padding-bottom: 0 !important;');
-			},500);
+			},1000);
+
+			if(isSearching) {
+				isSearching = false;
+				$('.home-search').closest('div').removeClass('noshadow');
+				$('.home-search-wrapper').removeClass('hs-wrapper-search-mode');
+				$('.home-search-wrapper').attr('style', 'height: auto !important;');
+				$('.ui-content').removeClass('ui-content-search-mode');
+				$('.panel-ctrl-wrapper').removeClass('pc-wrapper-search-mode');
+				$('.home-search').removeClass('hs-search-mode');
+				$('.search-ctrl').hide();
+				$('.search-window').hide();
+				$('body').removeClass("no-scroll");
+				$('.static-hdr').show();
+			}
+			if(isPanelOpen) {
+				$('.side-panel-wrapper').animate({
+					left: '-100%'
+				});
+				isPanelOpen = false;
+				$('body').removeClass("no-scroll");
+			}
 		}  else {
 			/* "Switch back to Android Mode" */
 			desktopMode = false;
@@ -144,6 +181,8 @@ $(document).ready(function() {
 		}
 	}
 
+	$(".header-search").closest('div').addClass('noshadowI');
+	/*remove blue outline on clicking jqm ui-input-clear button*/
   
 	var temp = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan 	blandit fermentum. Pellentesque cursus mauris purus, auctor commodo mi ullamcorper nec. Donec semper mattis eros, nec condimentum ante sollicitudin quis. Etiam orci sem, porttitor ut tellus nec, blandit posuere urna. Proin a arcu non lacus pretium faucibus. Aliquam sed est porttitor, ullamcorper urna nec, vehicula lorem. Cras porttitor est lorem, non venenatis diam convallis congue."
 		
@@ -155,18 +194,59 @@ $(document).ready(function() {
 	$('.content-wrapper-ctrl').click(function() {
 		$(window).scrollTop(0);
 		var target = $(this).attr('id');
+
+		/*Only target Desktop content-wrapper-controllers*/
+		if($(this).prop("nodeName")=="DIV") {
+			$('.content-wrapper-ctrl').removeClass("active-cw-ctrl");
+			$(this).addClass("active-cw-ctrl");
+		}
+
 		if(currentCW == target) {
 			return;
 		} else {
 			$('.content').hide();
 			$('.'+target).fadeIn();
 			currentCW = target;
-		}
+		}		
 	});
 			
 	/* Explorer */
-	/* for ( var a in fsIndex['root']) {
-		alert(a);
-	} */
+	/* 
+		ECL = Explorer Container Level 
+		ecw = explorer-container-wrapper
+	*/
 
+	var index = fsIndex['root'];
+	/* Generate root folders */
+	function renderECL1() {
+		var eCL1 = $('<div>',{class:'ecw ecl1'});
+	}
+
+	function renderFileExplorer(fsIndex,parentFolder) {
+		for ( entry in fsIndex) {
+			currentObject = fsIndex[entry];
+			length = Object.keys(currentObject).length;
+			
+			if(length == 2 && currentObject['__files__']!=undefined) {
+				/* Iterate through currentObject["__files__"] and render [file icon + file attributes] */
+			} else {
+				/* Render folder */
+				if(parentFolder == 'explorer') {
+					/* Folder Icon */
+					var folderId = entry + '-folder';
+					var folderClass = parentFolder + ' ' + entry + '-folder-icon icon';
+					var folderName = entry;
+					var folderIconWrapper = $('<div>',{class:'folder-icon-wrapper'});
+					var folderIcon = $('<div>', {id: folderId, class: folderClass});
+					var folderIconText = $('<p>', {text:})
+				} else {
+					var folderId = parentFolder + '-' + icon;
+					var folderClass;
+					var folderName;
+				}
+			}
+
+		} 	
+	}
+	renderFileExplorer(fsIndex['root'],"explorer");
 });
