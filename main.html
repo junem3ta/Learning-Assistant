@@ -12,8 +12,9 @@
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
     <script type="text/javascript" src="js/jquery-migrate-3.1.0.min.js"></script>
     <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript" src="FsIndex/FsIndex.0.min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
-    <link rel="stylesheet" type="text/css" href="css/stylesheet.main.css">
+	<link rel="stylesheet" type="text/css" href="css/stylesheet.main.css">
     <script type="text/javascript" src="js/main.js"></script>
  
 
@@ -72,21 +73,43 @@
 				</div>
 			</div>
 			<!-- End Android searchbar -->
-
 			<!-- Desktop searchbar -->
 			<div class="header">
-
+				<div class="app-title">
+					<p class="title">eREAD </p>
+					<p class="sub-title"> Chuka University</p>
+				</div>
+				<div class="header-search-wrapper">
+					<input class="header-search" placeholder="Search past papers, e-books" type="search" data-clear-btn="true">
+				</div>
 			</div>
 			<!-- Desktop Sidepanel -->
 			<div class='pc-side-panel-wrapper'>
-
+				<div class="cw-ctrls-wrapper">
+					<div id="pp-cw" class="content-wrapper-ctrl active-cw-ctrl">
+						<p >Pastpapers</p>
+					</div>
+					<div id="eb-cw" class="content-wrapper-ctrl">
+						<p >eBooks</p>
+					</div>
+					<div id="uploads-cw" class="content-wrapper-ctrl">
+						<p >Upload eBook(s)</p>
+					</div>
+					<div id="ua-cw" class="content-wrapper-ctrl">
+						<p >Account Settings</p>
+					</div>
+				</div>
+				
 			</div>
 			<!-- End Desktop Sidepanel -->
 
 			<!-- Desktop/Android Content wrapper-->
 			<div class="content-container"> 
 				<div class="content pp-cw active-content-wrapper">
-					<p>A <br/></p>
+					<p class="explorer-hdr">Explorer</p>
+					<div class="explorer">
+
+					</div>
 				</div>
 				
 				<div class="content eb-cw">
