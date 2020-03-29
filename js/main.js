@@ -216,11 +216,22 @@ $(document).ready(function() {
 		ecw = explorer-container-wrapper
 	*/
 
-	var index = fsIndex['root'];
+	fsIndex = fsIndex['root'];
 	/* Generate root folders */
 	function renderECL1() {
 		var eCL1 = $('<div>',{class:'ecw ecl1'});
+		$('.explorer').append(eCL1);
+
+		for(entry in fsIndex) {
+			folderId = entry;
+			folderClass = entry + ' parent-folder folder-icon';
+			/* create folder-tile-wrapper and append folder-tile. add folder-tile-wrapper to ecl1 in explorer */
+			var ftw = $('<div>',{class:'folder-tile-wrapper'});
+			ftw.append($('<div>',{id:folderId,class:folderClass}).append($('<p>',{text:entry})));
+			$('.ecl1').append(ftw);			
+		}
 	}
+	renderECL1(fsIndex);
 
 	function renderFileExplorer(fsIndex,parentFolder) {
 		for ( entry in fsIndex) {
@@ -238,7 +249,7 @@ $(document).ready(function() {
 					var folderName = entry;
 					var folderIconWrapper = $('<div>',{class:'folder-icon-wrapper'});
 					var folderIcon = $('<div>', {id: folderId, class: folderClass});
-					var folderIconText = $('<p>', {text:})
+					
 				} else {
 					var folderId = parentFolder + '-' + icon;
 					var folderClass;
@@ -248,5 +259,5 @@ $(document).ready(function() {
 
 		} 	
 	}
-	renderFileExplorer(fsIndex['root'],"explorer");
+	renderFileExplorer(fsIndex['root'],'explorer');
 });
