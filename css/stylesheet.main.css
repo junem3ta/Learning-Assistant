@@ -2,7 +2,7 @@ body {
 	font-family:'Product Sans' !important;
 	position: relative;
 }
-.app-title, .cw-ctrls-wrapper, .explorer .folder-icon p {
+.app-title, .cw-ctrls-wrapper, .explorer .folder-icon p, .explorer-navigation {
 	-webkit-touch-callout: none; /* iOS Safari */
 		-webkit-user-select: none; /* Safari */
 		-khtml-user-select: none; /* Konqueror HTML */
@@ -191,6 +191,115 @@ body {
 .content-container {
 	width: 100%;
 }
+
+.content {
+	position: relative;
+	display: none;
+	border: 1px dotted #ddd;
+	margin: 1em;
+	height: calc(100% - 2.125em);
+}
+/* Explorer path(s) | Navigation */
+.explorer-navigation {
+	height: 48px;
+    line-height: 48px;
+    width: 100%;
+    margin-left: 0 1em 0 1em;
+}
+.b-f-navigators {
+	height: 40px;
+    width: 81px;
+    float: left;
+    line-height: normal;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    margin: 3px 3px 3px 16px;
+}
+.b-f-navigators div {
+	height: 40px;
+	line-height: 40px;
+	width: 40px;
+	float: left;
+	text-align: center;
+}
+.b-f-navigators div:hover {
+	cursor: not-allowed;
+}
+.b-f-navigators .b {
+	border-right: 1px solid #ddd;
+}
+.path-section {
+    background: #e8f0fe;
+    font-size: 13px;
+    left: 16px;
+    padding: 0 10px;
+	color: #1967d2;
+	float: left;
+}
+.path-section:hover {
+	cursor: not-allowed;
+}
+.path-section-w-h:hover {
+	/* path-section with active history */
+	cursor: pointer;
+}
+.explorer-hdr {
+    text-align: center;
+}
+.path-delimeter {
+	display: none;
+	float: left;
+    padding: 0 5px;
+}
+.path-delimeter p {
+	font-size: 12px;
+}
+.active-path-delimeter {
+	display: block;
+}
+.explorer {
+	height: calc(100% - 4.125em);
+    width: calc(100% - 2.125em);
+    margin: 0 1em 1em 1em;
+    border: 1px solid #ddd;
+}
+.ecw {
+	height: 135px;
+	width: calc(100% - 2px);
+	border: 1px dotted #ddd;
+	margin: 15px 0 0 0;
+    border-top: none;
+    padding-bottom: 15px;
+}
+.ecw .folder-tile-wrapper {
+	float: left;
+}
+.folder-tile-wrapper {
+	height: 134px;
+	width: 150px;
+}
+.folder-icon {
+	border: 1px solid #ddd;
+    height: 80px;
+    line-height: 195px;
+    font-size: 12px;
+    text-align: center;
+    width: 80px;
+    margin: 20px 0 0 35px;
+    border-radius: 3px;
+}
+.folder-icon:hover {
+	cursor: pointer;
+}
+.active-content-wrapper {
+	display: block;
+}
+
+.content p {
+	margin: 0;
+}
+
+
 /* Break Android Styling */
 @media all and (min-width: 37.5em){
 	.side-panel-wrapper, .panel-ctrl, .home-search-wrapper,.footer {
@@ -202,7 +311,7 @@ body {
 	.ui-page .ui-content {
 		height: inherit;
 		padding: 0;
-		min-width: 1000px;
+		min-width: 1071px !important;
 	}
 	.header {
 		display: block;
@@ -301,73 +410,6 @@ body {
 		border-bottom-right-radius: 40px;
 		color: #1967d2;
 	}
-}
-
-.content {
-	position: relative;
-	display: none;
-	border: 1px dotted #ddd;
-	margin: 1em;
-	height: calc(100% - 2.125em);
-}
-/* Explorer path(s) */
-.explorer-navigation {
-	height: 48px;
-    line-height: 48px;
-    width: 100%;
-    margin-left: 0 1em 0 1em;
-}
-.path-section {
-	display: inline-block;
-    background: #e8f0fe;
-    font-size: 13px;
-    left: 16px;
-    padding: 0 10px;
-    color: #1967d2;
-}
-.explorer-hdr {
-    text-align: center;
-}
-.path-delimeter {
-	display: none;
-}
-.explorer {
-	height: calc(100% - 4.125em);
-    width: calc(100% - 2.125em);
-    margin: 0 1em 1em 1em;
-    border: 1px solid #ddd;
-}
-.ecw {
-	height: 135px;
-	width: calc(100% - 2px);
-	border: 1px dotted #ddd;
-}
-.ecw .folder-tile-wrapper {
-	float: left;
-}
-.folder-tile-wrapper {
-	height: 134px;
-	width: 150px;
-}
-.folder-icon {
-	border: 1px solid #ddd;
-    height: 80px;
-    line-height: 195px;
-    font-size: 12px;
-    text-align: center;
-    width: 80px;
-    margin: 16px 35px 0;
-    border-radius: 3px;
-}
-.folder-icon:hover {
-	cursor: pointer;
-}
-.active-content-wrapper {
-	display: block;
-}
-
-.content p {
-	margin: 0;
 }
 
 .footer {

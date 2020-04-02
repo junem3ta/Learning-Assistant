@@ -217,8 +217,9 @@ $(document).ready(function() {
 	*/
 
 	fsIndex = fsIndex['root'];
-	/* Generate root folders */
+	currentECLSuffix = 1;
 	function renderECL1() {
+		/* Generate root folders */
 		var eCL1 = $('<div>',{class:'ecw ecl1'});
 		$('.explorer').append(eCL1);
 
@@ -232,6 +233,13 @@ $(document).ready(function() {
 		}
 	}
 	renderECL1(fsIndex);
+
+	$('.explorer').on('click', '.folder-icon', function() {
+		targetId = $(this).attr('id');console.log('targetFolder :' + targetId);
+		currentECL = '.ecl' + currentECLSuffix;console.log("currentECL : ecl" + currentECLSuffix);
+		$(currentECL).hide();
+		currentECLSuffix ++;console.log("nextECL : ecl" + currentECLSuffix);
+	});
 
 	function renderFileExplorer(fsIndex,parentFolder) {
 		for ( entry in fsIndex) {
