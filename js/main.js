@@ -218,6 +218,8 @@ $(document).ready(function() {
 
 	fsIndex = fsIndex['root'];
 	currentECLSuffix = 1;
+	currentPath = 'root';
+	
 	function renderECL1() {
 		/* Generate root folders */
 		var eCL1 = $('<div>',{class:'ecw ecl1'});
@@ -234,11 +236,34 @@ $(document).ready(function() {
 	}
 	renderECL1(fsIndex);
 
+	/* Generic folder-icon click event for all folders */
 	$('.explorer').on('click', '.folder-icon', function() {
-		targetId = $(this).attr('id');console.log('targetFolder :' + targetId);
-		currentECL = '.ecl' + currentECLSuffix;console.log("currentECL : ecl" + currentECLSuffix);
-		$(currentECL).hide();
+		/* **
+			** new ecl
+			** add path-delimeter to path-section
+			** add new-path-section to explorer-navigation
+			
+			*/
+		var targetId = $(this).attr('id');
+		var currentECL = 'ecl' + currentECLSuffix; 
+		var delimeter = ($('.path-delimeter')
+		.clone())
+		.attr('id',currentPath+'p-s-dlm')
+		.addClass(currentPath+'-p-s-m '+currentECL+' active-path-delimeter');
+		$('.explorer-navigation').append(delimeter);
+		$('.'+currentPath+'-path-section').attr('id',currentECL).addClass('path-section-w-h path-section-link');
+		
+		$('.'+currentECL).hide();
 		currentECLSuffix ++;console.log("nextECL : ecl" + currentECLSuffix);
+	});
+
+	/* Generic path-section-link for all path-sections */
+	$('.explorer-navigation').on('click', '.path-section-link', function() {
+		/* Display previous ecl wrapper */
+		$('.ecw').hide();
+		targetId = $(this).attr('id');
+		$('.'+targetId).show();
+		currentECLSuffix--;
 	});
 
 	function renderFileExplorer(fsIndex,parentFolder) {
