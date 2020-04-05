@@ -225,9 +225,9 @@ $(document).ready(function() {
 		var eCL1 = $('<div>',{class:'ecw ecl1'});
 		$('.explorer').append(eCL1);
 
-		for(entry in fsIndex) {
-			folderId = entry;
-			folderClass = entry + ' parent-folder folder-icon';
+		for(var entry in fsIndex) {
+			var folderId = entry;
+			var folderClass = 'folder-icon';
 			/* create folder-tile-wrapper and append folder-tile. add folder-tile-wrapper to ecl1 in explorer */
 			var ftw = $('<div>',{class:'folder-tile-wrapper'});
 			ftw.append($('<div>',{id:folderId,class:folderClass}).append($('<p>',{text:entry})));
@@ -238,32 +238,107 @@ $(document).ready(function() {
 
 	/* Generic folder-icon click event for all folders */
 	$('.explorer').on('click', '.folder-icon', function() {
-		/* **
-			** new ecl
-			** add path-delimeter to path-section
-			** add new-path-section to explorer-navigation
-			
-			*/
+		var currentECL = 'ecl' + currentECLSuffix;
+		console.log('currentECL : ',currentECL);
+		/* Get object-key that the folder icon refers to */
 		var targetId = $(this).attr('id');
-		var currentECL = 'ecl' + currentECLSuffix; 
-		var delimeter = ($('.path-delimeter')
-		.clone())
-		.attr('id',currentPath+'p-s-dlm')
-		.addClass(currentPath+'-p-s-m '+currentECL+' active-path-delimeter');
-		$('.explorer-navigation').append(delimeter);
-		$('.'+currentPath+'-path-section').attr('id',currentECL).addClass('path-section-w-h path-section-link');
-		
+		console.log('OpenFolder Event on : ',targetId);
+		/* Clear explorer window */
 		$('.'+currentECL).hide();
-		currentECLSuffix ++;console.log("nextECL : ecl" + currentECLSuffix);
+		console.log('Clearing explorer window');
+		/* Update ecl level */
+		currentECLSuffix ++;
+		var nextECL = 'ecl' + currentECLSuffix;
+		console.log("Updated to nextECL : " + nextECL);
+
+		/* parse targetId (fsIndex Obj keys) and generate nextFsIndexObject*/
+		if(targetId == 'BUST' || targetId == 'FSET' || targetId == 'FAHU' || targetId == 'FAES' || targetId == 'FRED') {
+			var nextIndexObj = fsIndex[targetId];
+		} else {
+			var pathArray = targetId.split('-');
+			var tempIndexObj = fsIndex;
+			for(var i=0; i<pathArray.length; i++) {
+				tempIndexObj = tempIndexObj[pathArray[i]];
+			}
+			var nextIndexObj = tempIndexObj;
+		}
+		
+
+		console.log('TargetId ', targetId,'. Next Index Object : ',nextIndexObj);
+
+		if(nextIndexObj['__files__']!=undefined && Object.keys(nextIndexObj).length == 2) {
+			/* Print Files */
+			console.log('print files');
+		} else {
+			/* Append delimeter to explorer-navigation */
+			var newDelimeter = ($('.tmp-path-delimeter').clone())
+			.removeClass('tmp-path-delimeter')
+			.attr('id',currentPath+'-p-s-dlm')
+			.addClass(currentPath+'-p-s-dlm path-delimeter');
+			/* Append history pointer to current-path-section */
+			$('.'+currentPath+'-path-section').attr('id',currentECL).addClass('path-section-w-h path-section-link');
+			/* Update currentPath */
+			currentPath += '-' + targetId;
+			console.log('Updated current path to : ',currentPath);
+			/* Append new-path-section to explorer-navigation */
+			var newPathSection = ($('.tmp-path-section').clone())
+			.removeClass('tmp-path-section')
+			.addClass(currentPath+'-path-section '+'path-section')
+			.text(targetId);
+			$('.explorer-navigation').append(newDelimeter);
+			$('.explorer-navigation').append(newPathSection);
+			/* Create Folder Icons, append them to nextECL wrapper */
+			if($('.explorer div').hasClass(nextECL)){
+				console.log('OverWritting ',currentECL,' with ',nextECL);
+			}
+			$('.explorer').append($('<div>',{class:'ecw '+nextECL}));
+			for(var entry in nextIndexObj) {
+				var folderId = targetId + '-' + entry;
+				var folderClass = 'folder-icon';
+				$('.'+nextECL).append(
+					$('<div>',{class:'folder-tile-wrapper'})
+					.append(
+						$('<div>',{id:folderId,class:folderClass})
+						.append(
+							$('<p>',{text:entry})
+						)
+					)
+				);
+			}
+
+		}
 	});
 
 	/* Generic path-section-link for all path-sections */
 	$('.explorer-navigation').on('click', '.path-section-link', function() {
+		var currentECL = 'ecl' + currentECLSuffix;
 		/* Display previous ecl wrapper */
 		$('.ecw').hide();
+		console.log('Hiding current-ecl ', currentECLSuffix);
+		/* Obtain history pointer from previous path-section */
 		targetId = $(this).attr('id');
+		/* Clean up ecl containers upto the current-path-section-link */
+		start = targetId.split('');
+		start = +start[start.length-1]; /* 1,3; offset = 3 - 1 */
+		end = currentECLSuffix;
+		offset = end - start;
+		for(var i=start+1; i<end; i++) {/* 1,3; 2, */
+			tmp = 'ecl' + i;
+			console.log('Cleaner Today Tomorrow: Removing ecl',i);
+			$('.'+tmp).remove();
+		}
 		$('.'+targetId).show();
-		currentECLSuffix--;
+		console.log('Target path-section : ',targetId,' CurrentECLSuffix : ',end,' Offset : ',offset)
+		currentECLSuffix -= offset;
+		/* Update currentPath */
+		currentPath = currentPath.split('-');
+		currentPath.splice(currentPath.length-1,1);
+		if(currentPath.length>1) {
+			currentPath.join('-');
+		} else {
+			currentPath.join('');
+		}
+		console.log('Modified (-) currentPath : ',currentPath);
 	});
 
 	function renderFileExplorer(fsIndex,parentFolder) {
