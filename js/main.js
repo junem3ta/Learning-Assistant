@@ -76,6 +76,7 @@ $(document).ready(function() {
 		}
 	});
 	$(document).click(function(event) {
+		/* collapse if clickevent target is outside of android sidepanel */
 		if(isPanelOpen) {
 			if($(event.target).closest('.side-panel').length == 0
 					&& !$(event.target).hasClass('panel-ctrl')
@@ -87,6 +88,19 @@ $(document).ready(function() {
 				$('body').removeClass("no-scroll");
 			}
 		}
+		/* 
+		**
+		  move outside of click event to reimplement
+			$(document).on("focus",".header-search", function() {
+				$(this).closest('div').addClass('noshadowI');
+			});
+		**
+		if(desktopMode) {
+			if($(event.target).closest('.header-search').length == 0) {
+				$(".header-search").closest('div').removeClass('noshadowI');
+			}
+		} */
+		
 	});
 	/*Activate search mode*/
 	$(document).on('focus', '.home-search', function () {
@@ -123,6 +137,7 @@ $(document).ready(function() {
 			$('.panel-ctrl').show();
 		}
 	});
+
 	/* Detect resize and apply appropriate responsive styles */
 	$(window).resize(function() {
 		responsiveUIHandler();
@@ -131,9 +146,32 @@ $(document).ready(function() {
 		if($('.side-panel-wrapper').css('display') == 'none') {
 			/* "Switch to Desktop Mode" */
 			desktopMode = true;
+
+			$('.content-wrapper').attr('style', 'padding-bottom: 0 !important;');
 			setTimeout(function() {
 				$('.content-wrapper').attr('style', 'padding-bottom: 0 !important;');
 			},1000);
+
+			if(isSearching) {
+				isSearching = false;
+				$('.home-search').closest('div').removeClass('noshadow');
+				$('.home-search-wrapper').removeClass('hs-wrapper-search-mode');
+				$('.home-search-wrapper').attr('style', 'height: auto !important;');
+				$('.ui-content').removeClass('ui-content-search-mode');
+				$('.panel-ctrl-wrapper').removeClass('pc-wrapper-search-mode');
+				$('.home-search').removeClass('hs-search-mode');
+				$('.search-ctrl').hide();
+				$('.search-window').hide();
+				$('body').removeClass("no-scroll");
+				$('.static-hdr').show();
+			}
+			if(isPanelOpen) {
+				$('.side-panel-wrapper').animate({
+					left: '-100%'
+				});
+				isPanelOpen = false;
+				$('body').removeClass("no-scroll");
+			}
 		}  else {
 			/* "Switch back to Android Mode" */
 			desktopMode = false;
@@ -143,6 +181,8 @@ $(document).ready(function() {
 		}
 	}
 
+	$(".header-search").closest('div').addClass('noshadowI');
+	/*remove blue outline on clicking jqm ui-input-clear button*/
   
 	var temp = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan 	blandit fermentum. Pellentesque cursus mauris purus, auctor commodo mi ullamcorper nec. Donec semper mattis eros, nec condimentum ante sollicitudin quis. Etiam orci sem, porttitor ut tellus nec, blandit posuere urna. Proin a arcu non lacus pretium faucibus. Aliquam sed est porttitor, ullamcorper urna nec, vehicula lorem. Cras porttitor est lorem, non venenatis diam convallis congue."
 		
@@ -154,18 +194,178 @@ $(document).ready(function() {
 	$('.content-wrapper-ctrl').click(function() {
 		$(window).scrollTop(0);
 		var target = $(this).attr('id');
+
+		/*Only target Desktop content-wrapper-controllers*/
+		if($(this).prop("nodeName")=="DIV") {
+			$('.content-wrapper-ctrl').removeClass("active-cw-ctrl");
+			$(this).addClass("active-cw-ctrl");
+		}
+
 		if(currentCW == target) {
 			return;
 		} else {
 			$('.content').hide();
 			$('.'+target).fadeIn();
 			currentCW = target;
-		}
+		}		
 	});
 			
 	/* Explorer */
-	/* for ( var a in fsIndex['root']) {
-		alert(a);
-	} */
+	/* 
+		ECL = Explorer Container Level 
+		ecw = explorer-container-wrapper
+	*/
 
+	fsIndex = fsIndex['root'];
+	currentECLSuffix = 1;
+	currentPath = 'root';
+	
+	function renderECL1() {
+		/* Generate root folders */
+		var eCL1 = $('<div>',{class:'ecw ecl1'});
+		$('.explorer').append(eCL1);
+
+		for(var entry in fsIndex) {
+			var folderId = entry;
+			var folderClass = 'folder-icon';
+			/* create folder-tile-wrapper and append folder-tile. add folder-tile-wrapper to ecl1 in explorer */
+			var ftw = $('<div>',{class:'folder-tile-wrapper'});
+			ftw.append($('<div>',{id:folderId,class:folderClass}).append($('<p>',{text:entry})));
+			$('.ecl1').append(ftw);			
+		}
+	}
+	renderECL1(fsIndex);
+
+	/* Generic folder-icon click event for all folders */
+	$('.explorer').on('click', '.folder-icon', function() {
+		var currentECL = 'ecl' + currentECLSuffix;
+		console.log('currentECL : ',currentECL);
+		/* Get object-key that the folder icon refers to */
+		var targetId = $(this).attr('id');
+		console.log('OpenFolder Event on : ',targetId);
+		/* Clear explorer window */
+		$('.'+currentECL).hide();
+		console.log('Clearing explorer window');
+		/* Update ecl level */
+		currentECLSuffix ++;
+		var nextECL = 'ecl' + currentECLSuffix;
+		console.log("Updated to nextECL : " + nextECL);
+
+		/* parse targetId (fsIndex Obj keys) and generate nextFsIndexObject*/
+		if(targetId == 'BUST' || targetId == 'FSET' || targetId == 'FAHU' || targetId == 'FAES' || targetId == 'FRED') {
+			var nextIndexObj = fsIndex[targetId];
+		} else {
+			var pathArray = targetId.split('-');
+			var tempIndexObj = fsIndex;
+			for(var i=0; i<pathArray.length; i++) {
+				tempIndexObj = tempIndexObj[pathArray[i]];
+			}
+			var nextIndexObj = tempIndexObj;
+		}
+		
+
+		console.log('TargetId ', targetId,'. Next Index Object : ',nextIndexObj);
+
+		if(nextIndexObj['__files__']!=undefined && Object.keys(nextIndexObj).length == 2) {
+			/* Print Files */
+			console.log('print files');
+		} else {
+			/* Append delimeter to explorer-navigation */
+			var newDelimeter = ($('.tmp-path-delimeter').clone())
+			.removeClass('tmp-path-delimeter')
+			.attr('id',currentPath+'-p-s-dlm')
+			.addClass(currentPath+'-p-s-dlm path-delimeter');
+			/* Append history pointer to current-path-section */
+			$('.'+currentPath+'-path-section').attr('id',currentECL).addClass('path-section-w-h path-section-link');
+			/* Update currentPath */
+			currentPath += '-' + targetId;
+			console.log('Updated current path to : ',currentPath);
+			/* Append new-path-section to explorer-navigation */
+			var newPathSection = ($('.tmp-path-section').clone())
+			.removeClass('tmp-path-section')
+			.addClass(currentPath+'-path-section '+'path-section')
+			.text(targetId);
+			$('.explorer-navigation').append(newDelimeter);
+			$('.explorer-navigation').append(newPathSection);
+			/* Create Folder Icons, append them to nextECL wrapper */
+			if($('.explorer div').hasClass(nextECL)){
+				console.log('OverWritting ',currentECL,' with ',nextECL);
+			}
+			$('.explorer').append($('<div>',{class:'ecw '+nextECL}));
+			for(var entry in nextIndexObj) {
+				var folderId = targetId + '-' + entry;
+				var folderClass = 'folder-icon';
+				$('.'+nextECL).append(
+					$('<div>',{class:'folder-tile-wrapper'})
+					.append(
+						$('<div>',{id:folderId,class:folderClass})
+						.append(
+							$('<p>',{text:entry})
+						)
+					)
+				);
+			}
+
+		}
+	});
+
+	/* Generic path-section-link for all path-sections */
+	$('.explorer-navigation').on('click', '.path-section-link', function() {
+		var currentECL = 'ecl' + currentECLSuffix;
+		/* Display previous ecl wrapper */
+		$('.ecw').hide();
+		console.log('Hiding current-ecl ', currentECLSuffix);
+		/* Obtain history pointer from previous path-section */
+		targetId = $(this).attr('id');
+		/* Clean up ecl containers upto the current-path-section-link */
+		start = targetId.split('');
+		start = +start[start.length-1]; /* 1,3; offset = 3 - 1 */
+		end = currentECLSuffix;
+		offset = end - start;
+		for(var i=start+1; i<end; i++) {/* 1,3; 2, */
+			tmp = 'ecl' + i;
+			console.log('Cleaner Today Tomorrow: Removing ecl',i);
+			$('.'+tmp).remove();
+		}
+		$('.'+targetId).show();
+		console.log('Target path-section : ',targetId,' CurrentECLSuffix : ',end,' Offset : ',offset)
+		currentECLSuffix -= offset;
+		/* Update currentPath */
+		currentPath = currentPath.split('-');
+		currentPath.splice(currentPath.length-1,1);
+		if(currentPath.length>1) {
+			currentPath.join('-');
+		} else {
+			currentPath.join('');
+		}
+		console.log('Modified (-) currentPath : ',currentPath);
+	});
+
+	function renderFileExplorer(fsIndex,parentFolder) {
+		for ( entry in fsIndex) {
+			currentObject = fsIndex[entry];
+			length = Object.keys(currentObject).length;
+			
+			if(length == 2 && currentObject['__files__']!=undefined) {
+				/* Iterate through currentObject["__files__"] and render [file icon + file attributes] */
+			} else {
+				/* Render folder */
+				if(parentFolder == 'explorer') {
+					/* Folder Icon */
+					var folderId = entry + '-folder';
+					var folderClass = parentFolder + ' ' + entry + '-folder-icon icon';
+					var folderName = entry;
+					var folderIconWrapper = $('<div>',{class:'folder-icon-wrapper'});
+					var folderIcon = $('<div>', {id: folderId, class: folderClass});
+					
+				} else {
+					var folderId = parentFolder + '-' + icon;
+					var folderClass;
+					var folderName;
+				}
+			}
+
+		} 	
+	}
+	renderFileExplorer(fsIndex['root'],'explorer');
 });
