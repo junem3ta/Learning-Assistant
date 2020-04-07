@@ -255,7 +255,8 @@ $(document).ready(function() {
 		if(targetId == 'BUST' || targetId == 'FSET' || targetId == 'FAHU' || targetId == 'FAES' || targetId == 'FRED') {
 			var nextIndexObj = fsIndex[targetId];
 		} else {
-			var pathArray = targetId.split('-');
+			/* FSET-2014-2015 */
+			var pathArray = targetId.split('+');
 			var tempIndexObj = fsIndex;
 			for(var i=0; i<pathArray.length; i++) {
 				tempIndexObj = tempIndexObj[pathArray[i]];
@@ -273,12 +274,12 @@ $(document).ready(function() {
 			/* Append delimeter to explorer-navigation */
 			var newDelimeter = ($('.tmp-path-delimeter').clone())
 			.removeClass('tmp-path-delimeter')
-			.attr('id',currentPath+'-p-s-dlm')
-			.addClass(currentPath+'-p-s-dlm path-delimeter');
+			.attr('id',currentECL+'-p-s-dlm')
+			.addClass(currentECL+'-p-s-dlm path-delimeter');
 			/* Append history pointer to current-path-section */
 			$('.'+currentPath+'-path-section').attr('id',currentECL).addClass('path-section-w-h path-section-link');
 			/* Update currentPath */
-			currentPath += '-' + targetId;
+			currentPath += '+' + targetId;
 			console.log('Updated current path to : ',currentPath);
 			/* Append new-path-section to explorer-navigation */
 			var newPathSection = ($('.tmp-path-section').clone())
@@ -293,7 +294,8 @@ $(document).ready(function() {
 			}
 			$('.explorer').append($('<div>',{class:'ecw '+nextECL}));
 			for(var entry in nextIndexObj) {
-				var folderId = targetId + '-' + entry;
+				/* Changed targetId delimeter from - to + due to conflicts in fsIndex folder names eg. FSET-2014-2015 */
+				var folderId = targetId + '+' + entry;
 				var folderClass = 'folder-icon';
 				$('.'+nextECL).append(
 					$('<div>',{class:'folder-tile-wrapper'})
@@ -331,41 +333,13 @@ $(document).ready(function() {
 		console.log('Target path-section : ',targetId,' CurrentECLSuffix : ',end,' Offset : ',offset)
 		currentECLSuffix -= offset;
 		/* Update currentPath */
-		currentPath = currentPath.split('-');
+		currentPath = currentPath.split('+');
 		currentPath.splice(currentPath.length-1,1);
 		if(currentPath.length>1) {
-			currentPath.join('-');
+			currentPath = currentPath.join('+');
 		} else {
-			currentPath.join('');
+			currentPath = currentPath.join('');
 		}
 		console.log('Modified (-) currentPath : ',currentPath);
 	});
-
-	function renderFileExplorer(fsIndex,parentFolder) {
-		for ( entry in fsIndex) {
-			currentObject = fsIndex[entry];
-			length = Object.keys(currentObject).length;
-			
-			if(length == 2 && currentObject['__files__']!=undefined) {
-				/* Iterate through currentObject["__files__"] and render [file icon + file attributes] */
-			} else {
-				/* Render folder */
-				if(parentFolder == 'explorer') {
-					/* Folder Icon */
-					var folderId = entry + '-folder';
-					var folderClass = parentFolder + ' ' + entry + '-folder-icon icon';
-					var folderName = entry;
-					var folderIconWrapper = $('<div>',{class:'folder-icon-wrapper'});
-					var folderIcon = $('<div>', {id: folderId, class: folderClass});
-					
-				} else {
-					var folderId = parentFolder + '-' + icon;
-					var folderClass;
-					var folderName;
-				}
-			}
-
-		} 	
-	}
-	renderFileExplorer(fsIndex['root'],'explorer');
 });
