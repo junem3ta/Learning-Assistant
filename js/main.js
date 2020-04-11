@@ -257,6 +257,7 @@ $(document).ready(function() {
 		} else {
 			/* FSET-2014-2015 */
 			var pathArray = targetId.split('+');
+			console.log(pathArray);
 			var tempIndexObj = fsIndex;
 			for(var i=0; i<pathArray.length; i++) {
 				tempIndexObj = tempIndexObj[pathArray[i]];
@@ -269,14 +270,16 @@ $(document).ready(function() {
 
 		if(nextIndexObj['__files__']!=undefined && Object.keys(nextIndexObj).length == 2) {
 			/* Print Files */
+			/* Add parent's folder nav link & history */
 			console.log('print files');
-		} else {
+		} else if(Object.keys(nextIndexObj).length!=0) {
 			/* Append delimeter to explorer-navigation */
 			var newDelimeter = ($('.tmp-path-delimeter').clone())
 			.removeClass('tmp-path-delimeter')
 			.attr('id',currentECL+'-p-s-dlm')
 			.addClass(currentECL+'-p-s-dlm path-delimeter');
 			/* Append history pointer to current-path-section */
+			console.log('wh check, currentPath: ',currentPath);
 			$('.'+currentPath+'-path-section').attr('id',currentECL).addClass('path-section-w-h path-section-link');
 			/* Update currentPath */
 			currentPath += '+' + targetId;
@@ -308,6 +311,8 @@ $(document).ready(function() {
 				);
 			}
 
+		} else {
+			console.log('No files found in current folder.');
 		}
 	});
 
@@ -341,5 +346,14 @@ $(document).ready(function() {
 			currentPath = currentPath.join('');
 		}
 		console.log('Modified (-) currentPath : ',currentPath);
+		/* clean up explorer-navigation divs */
+		var pathIndex = $(this).index();
+		var explorerElements = $('.path').children().length;
+		for(var i=pathIndex+1; i<explorerElements; i++) {
+			console.log('Update Explorer-navigation. Removing element',i);
+			$('.path').children().eq(i).remove();
+			explorerElements--;
+			i--;
+		}
 	});
 });
