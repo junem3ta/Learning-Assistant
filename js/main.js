@@ -257,7 +257,7 @@ $(document).ready(function() {
 			var folderName = targetId;
 		} else {
 			/* FSET-2014-2015 */
-			var pathArray = targetId.split('+');
+			var pathArray = targetId.split('_');
 			var folderName = pathArray[pathArray.length-1];
 			var tempIndexObj = fsIndex;
 			for(var i=0; i<pathArray.length; i++) {
@@ -277,7 +277,7 @@ $(document).ready(function() {
 		/* How to change attr of dynamically generated element jQuery */
 		$('.'+currentPath+'-path-section').attr('id',currentECL).addClass('path-section-w-h path-section-link');
 		/* Update currentPath */
-		currentPath += '+' + folderName;
+		currentPath += '_' + folderName;
 		console.log('Updated current path to : ',currentPath);
 		/* Append new-path-section to explorer-navigation */
 		var newPathSection = ($('.tmp-path-section').clone())
@@ -293,8 +293,8 @@ $(document).ready(function() {
 		} else if(Object.keys(nextIndexObj).length!=0) {
 			$('.explorer').append($('<div>',{class:'ecw '+nextECL}));
 			for(var entry in nextIndexObj) {
-				/* Changed targetId delimeter from - to + due to conflicts in fsIndex folder names eg. FSET-2014-2015 */
-				var folderId = targetId + '+' + entry;
+				/* Changed targetId delimeter from - to _ due to conflicts in fsIndex folder names eg. FSET-2014-2015 */
+				var folderId = targetId + '_' + entry;
 				var folderClass = 'folder-icon';
 				$('.'+nextECL).append(
 					$('<div>',{class:'folder-tile-wrapper'})
@@ -324,7 +324,8 @@ $(document).ready(function() {
 		start = +start[start.length-1]; /* 1,3; offset = 3 - 1 */
 		end = currentECLSuffix;
 		offset = end - start;
-		for(var i=start+1; i<end; i++) {/* 1,3; 2, */
+		console.log('start, ',start,'start+1, ',start+1,'end, ',end,'offset, ',offset);
+		for(var i=start+1; i<=end; i++) {/* 1,3; 2, */
 			tmp = 'ecl' + i;
 			console.log('Cleaner Today Tomorrow: Removing ecl',i);
 			$('.'+tmp).remove();
@@ -333,10 +334,10 @@ $(document).ready(function() {
 		console.log('Target path-section : ',targetId,' CurrentECLSuffix : ',end,' Offset : ',offset)
 		currentECLSuffix -= offset;
 		/* Update currentPath */
-		currentPath = currentPath.split('+');
+		currentPath = currentPath.split('_');
 		currentPath.splice(currentPath.length-1,1);
 		if(currentPath.length>1) {
-			currentPath = currentPath.join('+');
+			currentPath = currentPath.join('_');
 		} else {
 			currentPath = currentPath.join('');
 		}
