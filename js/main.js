@@ -224,7 +224,7 @@ $(document).ready(function() {
 		/* Generate root folders */
 		var eCL1 = $('<div>',{class:'ecw ecl1'});
 		$('.explorer').append(eCL1);
-
+		/* Loop through root obj and print folder icons */
 		for(var entry in fsIndex) {
 			var folderId = entry;
 			var folderClass = 'folder-icon';
@@ -254,10 +254,11 @@ $(document).ready(function() {
 		/* parse targetId (fsIndex Obj keys) and generate nextFsIndexObject*/
 		if(targetId == 'BUST' || targetId == 'FSET' || targetId == 'FAHU' || targetId == 'FAES' || targetId == 'FRED') {
 			var nextIndexObj = fsIndex[targetId];
+			var folderName = targetId;
 		} else {
 			/* FSET-2014-2015 */
 			var pathArray = targetId.split('+');
-			console.log(pathArray);
+			var folderName = pathArray[pathArray.length-1];
 			var tempIndexObj = fsIndex;
 			for(var i=0; i<pathArray.length; i++) {
 				tempIndexObj = tempIndexObj[pathArray[i]];
@@ -265,36 +266,31 @@ $(document).ready(function() {
 			var nextIndexObj = tempIndexObj;
 		}
 		
-
+		console.log('Path section text | Folder name, ',folderName);
 		console.log('TargetId ', targetId,'. Next Index Object : ',nextIndexObj);
+		/* Append delimeter to explorer-navigation */
+		var newDelimeter = ($('.tmp-path-delimeter').clone())
+		.removeClass('tmp-path-delimeter')
+		.attr('id',currentECL+'-p-s-dlm')
+		.addClass(currentECL+'-p-s-dlm path-delimeter');
+		/* Append history pointer to current-path-section */
+		/* How to change attr of dynamically generated element jQuery */
+		$('.'+currentPath+'-path-section').attr('id',currentECL).addClass('path-section-w-h path-section-link');
+		/* Update currentPath */
+		currentPath += '+' + folderName;
+		console.log('Updated current path to : ',currentPath);
+		/* Append new-path-section to explorer-navigation */
+		var newPathSection = ($('.tmp-path-section').clone())
+		.removeClass('tmp-path-section')
+		.addClass(currentPath+'-path-section '+'path-section')
+		.text(folderName);
+		$('.explorer-navigation').append(newDelimeter);
+		$('.explorer-navigation').append(newPathSection);
 
 		if(nextIndexObj['__files__']!=undefined && Object.keys(nextIndexObj).length == 2) {
 			/* Print Files */
-			/* Add parent's folder nav link & history */
 			console.log('print files');
 		} else if(Object.keys(nextIndexObj).length!=0) {
-			/* Append delimeter to explorer-navigation */
-			var newDelimeter = ($('.tmp-path-delimeter').clone())
-			.removeClass('tmp-path-delimeter')
-			.attr('id',currentECL+'-p-s-dlm')
-			.addClass(currentECL+'-p-s-dlm path-delimeter');
-			/* Append history pointer to current-path-section */
-			console.log('wh check, currentPath: ',currentPath);
-			$('.'+currentPath+'-path-section').attr('id',currentECL).addClass('path-section-w-h path-section-link');
-			/* Update currentPath */
-			currentPath += '+' + targetId;
-			console.log('Updated current path to : ',currentPath);
-			/* Append new-path-section to explorer-navigation */
-			var newPathSection = ($('.tmp-path-section').clone())
-			.removeClass('tmp-path-section')
-			.addClass(currentPath+'-path-section '+'path-section')
-			.text(targetId);
-			$('.explorer-navigation').append(newDelimeter);
-			$('.explorer-navigation').append(newPathSection);
-			/* Create Folder Icons, append them to nextECL wrapper */
-			if($('.explorer div').hasClass(nextECL)){
-				console.log('OverWritting ',currentECL,' with ',nextECL);
-			}
 			$('.explorer').append($('<div>',{class:'ecw '+nextECL}));
 			for(var entry in nextIndexObj) {
 				/* Changed targetId delimeter from - to + due to conflicts in fsIndex folder names eg. FSET-2014-2015 */
@@ -310,7 +306,6 @@ $(document).ready(function() {
 					)
 				);
 			}
-
 		} else {
 			console.log('No files found in current folder.');
 		}
