@@ -279,17 +279,18 @@ body {
 	display: block !important;
 }
 .explorer {
+	position: relative;
 	height: calc(100% - 4.125em);
     width: calc(100% - 2.125em);
     margin: 0 1em 1em 1em;
     border: 1px solid #ddd;
 }
 .ecw {
-	height: calc(100% - 1.875em);
+	height: calc(100% - 2.8125em);
     width: calc(100% - 2px);
     background: #fff;
     border-top: none;
-    padding: 15px 0;
+    padding: 15px 0 30px;
     overflow: auto;
 }
 .ecw .folder-tile-wrapper {
@@ -300,17 +301,89 @@ body {
 	width: 150px;
 }
 .folder-icon {
-	border: 1px solid #ddd;
+	/* border: 1px solid #ddd; */
+	position: relative;
     height: 80px;
-    line-height: 195px;
     font-size: 12px;
     text-align: center;
     width: 80px;
     margin: 20px 0 0 35px;
-    border-radius: 3px;
+	border-radius: 3px;
+	background-image: url("/assets/images/folder-m-filled.svg");
+	background-size: contain;
+	background-size: 80px;
+}
+.folder-icon p {
+	position: absolute;
+	top: 85px;
+	height: 27px;
+	width: 130px;
+	left: -25px;
+	text-align: center;
+	overflow: hidden;
 }
 .folder-icon:hover {
 	cursor: pointer;
+}
+.file-tile-wrapper{
+	height: 134px;
+	width: 150px;
+	float: left;
+}
+.file-icon {
+	position: relative;
+    height: 80px;
+    font-size: 12px;
+    text-align: center;
+    width: 80px;
+    margin: 20px 0 0 35px;
+	background-image: url("/assets/images/OfficeL-A-pdf.svg");
+}
+.file-icon p {
+	position: absolute;
+	top: 85px;
+	height: 27px;
+	width: 130px;
+	left: -25px;
+	text-align: center;
+	overflow: hidden;
+}
+.file-icon:hover {
+	cursor: pointer;
+}
+.fdownl-dialog-wrapper {
+	position: absolute;
+    height: 99.9vh;
+    top: -82px;
+    left: -267px;
+    width: 100vw;
+    background: rgba(0,0,0,.3);
+    z-index: 3;
+    display: none;
+}
+.file-downl-dialog {
+	position: absolute;
+    height: 300px;
+    width: 300px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 3px #888;
+}
+.fw-stats {
+	position: absolute;
+    height: 15px;
+    bottom: 0;
+    left: 0;
+    /* right: 0; */
+    background: #fff;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    font-size: 12px;
+    padding: 0 30px 0 10px;
+    line-height: 15px;
 }
 .active-content-wrapper {
 	display: block;
@@ -417,7 +490,7 @@ body {
 		margin: 0;
 		line-height: 40px;
 		padding: 0 0 0 10px;
-		font-size: 14px;
+		font-size: 14.5px;
 	}
 	.cw-ctrls-wrapper .content-wrapper-ctrl:hover {
 		cursor: pointer;

@@ -217,8 +217,10 @@ $(document).ready(function() {
 	*/
 
 	fsIndex = fsIndex['root'];
-	currentECLSuffix = 1;
-	currentPath = 'root';
+	var currentECLSuffix = 1;
+	var currentPath = 'root';
+	var absPath = '';
+	var files;
 	
 	function renderECL1() {
 		/* Generate root folders */
@@ -289,8 +291,38 @@ $(document).ready(function() {
 
 		if(nextIndexObj['__files__']!=undefined && Object.keys(nextIndexObj).length == 2) {
 			/* Print Files */
-			console.log('print files');
+			absPath = nextIndexObj['path'];
+			var files = nextIndexObj['__files__'];
+			console.log('Print the following files, w/path ', absPath,' @nextECL, ',nextECL,' \n\r',files);
+
+			$('.explorer').append($('<div>',{class:'ecw '+nextECL}));
+			$('.'+nextECL).append(
+				$('<div>',{class:'fdownl-dialog-wrapper'})
+				.append(
+					$('<div>',{id:'downl-dialog',class:'file-downl-dialog'}))
+				);
+			
+			for(var i=0; i<files.length; i++) {
+				var fullFileName = files[i];
+				var fileNameArr = fullFileName.split('.pdf');
+				fileName = fileNameArr.join('');
+
+				$('.'+nextECL).append(
+					$('<div>',{class:'file-tile-wrapper'})
+					.append(
+						$('<div>',{id:fullFileName,class:'file-icon'})
+						.append(
+							$('<p>',{text:fileName}))
+					)
+				);
+			}
+			$('.'+nextECL).append(
+				$('<div>',{class:'fw-stats'}).append(
+					$('<p>',{text:"Showing " + files.length + " files. Path: " + absPath}))
+				);
+
 		} else if(Object.keys(nextIndexObj).length!=0) {
+			absPath = '';
 			$('.explorer').append($('<div>',{class:'ecw '+nextECL}));
 			for(var entry in nextIndexObj) {
 				/* Changed targetId delimeter from - to _ due to conflicts in fsIndex folder names eg. FSET-2014-2015 */
@@ -324,7 +356,6 @@ $(document).ready(function() {
 		start = +start[start.length-1]; /* 1,3; offset = 3 - 1 */
 		end = currentECLSuffix;
 		offset = end - start;
-		console.log('start, ',start,'start+1, ',start+1,'end, ',end,'offset, ',offset);
 		for(var i=start+1; i<=end; i++) {/* 1,3; 2, */
 			tmp = 'ecl' + i;
 			console.log('Cleaner Today Tomorrow: Removing ecl',i);
@@ -335,7 +366,11 @@ $(document).ready(function() {
 		currentECLSuffix -= offset;
 		/* Update currentPath */
 		currentPath = currentPath.split('_');
-		currentPath.splice(currentPath.length-1,1);
+		/* 
+			root-bust-2010
+			root, offset=2 [root,bust,2010];
+		*/
+		currentPath.splice(currentPath.length-offset,offset);
 		if(currentPath.length>1) {
 			currentPath = currentPath.join('_');
 		} else {
