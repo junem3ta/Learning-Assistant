@@ -2,7 +2,7 @@ body {
 	font-family:'Product Sans' !important;
 	position: relative;
 }
-.app-title, .cw-ctrls-wrapper, .explorer .folder-icon p, .explorer-navigation {
+.app-title, .cw-ctrls-wrapper, .explorer .folder-icon p, .explorer-navigation,.header-search {
 	-webkit-touch-callout: none; /* iOS Safari */
 		-webkit-user-select: none; /* Safari */
 		-khtml-user-select: none; /* Konqueror HTML */
@@ -286,12 +286,13 @@ body {
     border: 1px solid #ddd;
 }
 .ecw {
-	height: calc(100% - 2.8125em);
+	height: calc(100% - 2.5em);
     width: calc(100% - 2px);
     background: #fff;
     border-top: none;
-    padding: 15px 0 30px;
-    overflow: auto;
+    padding: 10px 0 30px;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 .ecw .folder-tile-wrapper {
 	float: left;
@@ -309,7 +310,7 @@ body {
     width: 80px;
     margin: 20px 0 0 35px;
 	border-radius: 3px;
-	background-image: url("/assets/images/folder-m-filled.svg");
+	background-image: url("../assets/images/folder-m-filled.svg");
 	background-size: contain;
 	background-size: 80px;
 }
@@ -327,7 +328,7 @@ body {
 }
 .file-tile-wrapper{
 	height: 134px;
-	width: 150px;
+	width: 85px;
 	float: left;
 }
 .file-icon {
@@ -336,15 +337,15 @@ body {
     font-size: 12px;
     text-align: center;
     width: 80px;
-    margin: 20px 0 0 35px;
-	background-image: url("/assets/images/OfficeL-A-pdf.svg");
+    margin: 15px 0 0 17.5px;
+	background-image: url("../assets/images/OfficeL-A-pdf.svg");
 }
 .file-icon p {
 	position: absolute;
 	top: 85px;
 	height: 27px;
 	width: 130px;
-	left: -25px;
+	left: -10px;
 	text-align: center;
 	overflow: hidden;
 }
