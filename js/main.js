@@ -318,7 +318,7 @@ $(document).ready(function() {
 			}
 			$('.'+nextECL).append(
 				$('<div>',{class:'fw-stats'}).append(
-					$('<p>',{text:"Showing " + files.length + " files. Path: " + absPath}))
+					$('<p>',{text:"Showing " + files.length + " of 10,511 files. Path: " + absPath}))
 				);
 
 		} else if(Object.keys(nextIndexObj).length!=0) {

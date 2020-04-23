@@ -1,6 +1,13 @@
+/* 
+	https://docs.emmet.io/cheat-sheet/
+
+*/
 body {
 	font-family:'Product Sans' !important;
 	position: relative;
+}
+.content-wrapper {
+	background-color: #fff !important;
 }
 .app-title, .cw-ctrls-wrapper, .explorer .folder-icon p, .explorer-navigation,.header-search {
 	-webkit-touch-callout: none; /* iOS Safari */
@@ -96,6 +103,7 @@ body {
 	font-size: 14px;
 	margin-bottom:0 !important;
 	padding-bottom:0 !important;
+	font-family: 'Product sans' !important;
 }
 .noshadow {
 	-moz-box-shadow: none !important;
@@ -195,13 +203,16 @@ body {
 .content {
 	position: relative;
 	display: none;
-	border: 1px dotted #ddd;
 	margin: 1em;
-	height: calc(100% - 2.125em);
+	height: calc(100% - 2em);
+}
+.pp-cw {
+	margin-top: 0;
+	height: calc(100% - 1em);
 }
 /* Explorer path(s) | Navigation */
 .explorer-navigation {
-	height: 48px;
+	height: 64px;
     line-height: 40px;
     width: 100%;
     margin: 0 1em 0 1em;
@@ -213,7 +224,7 @@ body {
     line-height: normal;
     border: 1px solid #ddd;
     border-radius: 3px;
-    margin: 3px 7px 3px 0;
+    margin: 11px 7px 3px 0;
 }
 .b-f-navigators div {
 	height: 40px;
@@ -236,7 +247,7 @@ body {
     padding: 0 10px;
 	color: #1967d2;
 	float: left;
-    margin: 4px 0 0 4px;
+    margin: 12px 0 0 4px;
 	border-radius: 3px;
 }
 .path-section {
@@ -246,7 +257,7 @@ body {
     padding: 0 10px;
 	color: #1967d2;
 	float: left;
-    margin: 4px 0 0 4px;
+    margin: 12px 0 0 4px;
 	border-radius: 3px;
 }
 .path-section:hover {
@@ -263,13 +274,13 @@ body {
 	display: none;
 	float: left;
 	padding: 0 5px 0 6px;
-	margin-top: 3px;
+	margin-top: 11px;
 	transform: scale(0.75);
 }
 .path-delimeter {
 	float: left;
 	padding: 0 5px 0 6px;
-	margin-top: 3px;
+	margin-top: 11px;
 	transform: scale(0.75);
 }
 .path-delimeter p {
@@ -280,19 +291,18 @@ body {
 }
 .explorer {
 	position: relative;
-	height: calc(100% - 4.125em);
-    width: calc(100% - 2.125em);
-    margin: 0 1em 1em 1em;
-    border: 1px solid #ddd;
+    height: calc(100% - 4.0625em);
+    width: 100%;
+    margin: 0 0 1em 0;
+    border-top: 1px solid #ddd;
 }
 .ecw {
 	height: calc(100% - 2.5em);
-    width: calc(100% - 2px);
+    width: 100%;
     background: #fff;
     border-top: none;
     padding: 10px 0 30px;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    overflow: auto;
 }
 .ecw .folder-tile-wrapper {
 	float: left;
@@ -328,8 +338,9 @@ body {
 }
 .file-tile-wrapper{
 	height: 134px;
-	width: 85px;
-	float: left;
+    width: 85px;
+    margin-left: 17.5px;
+    float: left;
 }
 .file-icon {
 	position: relative;
@@ -337,17 +348,17 @@ body {
     font-size: 12px;
     text-align: center;
     width: 80px;
-    margin: 15px 0 0 17.5px;
+    margin: 15px 0 0 2.5px;
 	background-image: url("../assets/images/OfficeL-A-pdf.svg");
 }
 .file-icon p {
-	position: absolute;
-	top: 85px;
-	height: 27px;
-	width: 130px;
-	left: -10px;
-	text-align: center;
-	overflow: hidden;
+    position: absolute;
+    top: 85px;
+    height: 27px;
+    width: 85px;
+    left: -2.5px;
+    text-align: center;
+    overflow: hidden;
 }
 .file-icon:hover {
 	cursor: pointer;
@@ -380,11 +391,15 @@ body {
     left: 0;
     /* right: 0; */
     background: #fff;
-    border-top: 1px solid #ccc;
-    border-right: 1px solid #ccc;
+    /* border-top: 1px solid #ccc; */
+    /* border-right: 1px solid #ccc; */
     font-size: 12px;
     padding: 0 30px 0 10px;
     line-height: 15px;
+    /* border: 1px solid #ccc; */
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    background: #e8f0fe;
 }
 .active-content-wrapper {
 	display: block;
@@ -461,6 +476,7 @@ body {
 		font-size: 14px;
 		margin-bottom:0 !important;
 		padding-bottom:0 !important;
+		font-family: 'Product sans' !important;
 	}
 	.pc-side-panel-wrapper {
 		display: block;
