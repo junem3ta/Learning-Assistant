@@ -300,7 +300,7 @@ $(document).ready(function() {
 				$('<div>',{class:'fdownl-dialog-wrapper'})
 				.append(
 					$('<div>',{id:'downl-dialog',class:'file-downl-dialog'}))
-				);
+				).append($('<p>',{text:'Files',class:'files-ecw-hdr'}));
 			
 			for(var i=0; i<files.length; i++) {
 				var fullFileName = files[i];

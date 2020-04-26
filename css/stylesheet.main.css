@@ -215,9 +215,10 @@ body {
 	height: 64px;
     line-height: 40px;
     width: 100%;
-    margin: 0 1em 0 1em;
+    margin: 0 1em 0 0;
 }
 .b-f-navigators {
+	/* display: none; */
 	height: 40px;
     width: 81px;
     float: left;
@@ -336,6 +337,11 @@ body {
 .folder-icon:hover {
 	cursor: pointer;
 }
+.files-ecw-hdr {
+	height: 40px;
+    line-height: 40px;
+    margin: 0 0 0 32px !important;
+}
 .file-tile-wrapper{
 	height: 134px;
     width: 85px;
@@ -417,6 +423,7 @@ body {
 	}
 	.ui-page {
 		height: 100%;
+		overflow-x: auto !important;
 	}
 	.ui-page .ui-content {
 		height: inherit;
