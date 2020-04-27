@@ -16,8 +16,8 @@
     <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
 	<link rel="stylesheet" type="text/css" href="css/stylesheet.main.css">
 	<script type="text/javascript" src="js/prefixfree.min.js"></script>
-    <script type="text/javascript" src="js/main.js"></script>
- 
+    <script type="text/javascript" src="js/navigation.js"></script>
+	<script type="text/javascript" src="js/explorer.js"></script>
 
 	<!-- 
 	<link rel="stylesheet" type="text/css" href="/fonts/ps/style.css"/>
@@ -83,54 +83,8 @@
 				<div class="header-search-wrapper">
 					<input class="header-search" placeholder="Search past papers, e-books" type="search" data-clear-btn="true">
 				</div>
-				<style>
-					.ua-ctrl-wrapper {
-						float: right;
-						width: 98px;
-						height: 48px;
-						line-height: 48px;
-						margin: 0 10px 0 0;
-					}
-					.ua-ctrl,.sc-ctrl {
-						width: 48px;
-						height: 48px;
-						float: right;
-						text-align: right;
-						background: none !important;
-    					color: #000 !important;
-					}
-					.ua-ctrl {
-						margin: 0 0 0 2px;
-					}
-					.ua-ctrl p,.sc-ctrl p {
-						height: 100%;
-						width: 100%;
-						margin: 0;
-					}
-					.ua-hdr-icon,.sc-hdr-icon {
-						display: block;
-						float: right;
-						height: 48px;
-						line-height: 48px;
-						width: 48px;
-						text-align: center;
-						background: #fff;
-						border-radius: 50%;
-						/* border: 3px solid #777676; */
-						/* margin: 0 0 0 8px; */
-					}
-					.ua-hdr-icon:hover,.sc-hdr-icon:hover {
-						cursor: pointer;
-						background: #ebecec !important;
-					}
-					.ua-hdr-icon:focus,.sc-hdr-icon:focus {
-						background: #ebecec;
-						outline: none;
-						color: #1967d2;
-					}
-				</style>
 				<div class="ua-ctrl-wrapper">
-					<div id="ua-cw" class="ua-ctrl content-wrapper-ctrl">
+					<div id="ua-cw" class="ua-ctrl content-wrapper-ctrl active-cw-ctrl">
 						<p class="ua-hdr">
 							<!-- Account -->
 							<i tabindex="1" class="ua-hdr-icon fas fa-user-circle"></i>
@@ -147,7 +101,7 @@
 			<!-- Desktop Sidepanel -->
 			<div class='pc-side-panel-wrapper'>
 				<div class="cw-ctrls-wrapper">
-					<div id="pp-cw" class="content-wrapper-ctrl active-cw-ctrl">
+					<div id="pp-cw" class="content-wrapper-ctrl">
 						<p >Pastpapers</p>
 					</div>
 					<div id="eb-cw" class="content-wrapper-ctrl">
