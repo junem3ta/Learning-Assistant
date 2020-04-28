@@ -212,8 +212,8 @@ body {
 }
 /* Explorer path(s) | Navigation */
 .explorer-navigation {
-	height: 64px;
-    line-height: 40px;
+	height: 50px;
+    line-height: 38px;
     width: 100%;
     margin: 0 1em 0 0;
 }
@@ -225,7 +225,7 @@ body {
     line-height: normal;
     border: 1px solid #ddd;
     border-radius: 3px;
-    margin: 11px 7px 3px 0;
+    margin: 4px 7px 3px 0;
 }
 .b-f-navigators div {
 	height: 40px;
@@ -253,12 +253,12 @@ body {
 }
 .path-section {
     background: #e8f0fe;
-    font-size: 13px;
+    font-size: 14px;
     left: 16px;
     padding: 0 10px;
 	color: #1967d2;
 	float: left;
-    margin: 12px 0 0 4px;
+    margin: 5px 0 0 4px;
 	border-radius: 3px;
 }
 .path-section:hover {
@@ -281,7 +281,7 @@ body {
 .path-delimeter {
 	float: left;
 	padding: 0 5px 0 6px;
-	margin-top: 11px;
+	margin-top: 4px;
 	transform: scale(0.75);
 }
 .path-delimeter p {
