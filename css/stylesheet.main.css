@@ -116,6 +116,10 @@ body {
 	-webkit-box-shadow: none !important;
 	box-shadow: none !important;
 }
+
+.nomargin {
+	margin: 0;
+}
 .ui-input-text {
   margin-bottom: 0;
 }
@@ -407,6 +411,35 @@ body {
     border-bottom-right-radius: 15px;
     background: #e8f0fe;
 }
+
+/* UserAccount */
+.ua-nav-wrapper {
+	height: 50px;
+	width: 100%;
+}
+
+.ua-hdr,.mod-login-ctrl,.contributors-login-ctrl {
+	height: 34px;
+	float: left;
+	line-height: 34px;
+}
+.mod-login-ctrl,.contributors-login-ctrl {
+	float: right;
+}
+.contributors-login-ctrl {
+	margin: 0 0 0 8px;
+}
+.mod-login-ctrl a,.contributors-login-ctrl a {
+	height: 34px;
+    line-height: 34px;
+    padding: 0 15px;
+    margin: 0;
+    font-size: 12px;
+    font-family: Arial;
+	font-weight: 300;
+	border-radius: 34px !important;
+ }
+
 .active-content-wrapper {
 	display: block;
 }
@@ -508,7 +541,7 @@ body {
 		width: 100%;
 		margin: 0;
 	}
-	.ua-hdr-icon,.sc-hdr-icon {
+	.ua-ctrl-icon,.sc-ctrl-icon {
 		display: block;
 		float: right;
 		height: 48px;
@@ -520,11 +553,11 @@ body {
 		/* border: 3px solid #777676; */
 		/* margin: 0 0 0 8px; */
 	}
-	.ua-hdr-icon:hover,.sc-hdr-icon:hover {
+	.ua-ctrl-icon:hover,.sc-ctrl-icon:hover {
 		cursor: pointer;
 		background: #ebecec !important;
 	}
-	.ua-hdr-icon:focus,.sc-hdr-icon:focus {
+	.ua-ctrl-icon:focus,.sc-ctrl-icon:focus {
 		background: #ebecec;
 		outline: none;
 		color: #1967d2;
@@ -571,6 +604,17 @@ body {
 		border-top-right-radius: 40px;
 		border-bottom-right-radius: 40px;
 		color: #1967d2;
+	}
+
+	/* Responsive android styling */
+	@media screen and (max-width: 1087px) {
+		.header {
+			width: 100%;
+		}
+		.header-search-wrapper {
+			/* 388 = app.title.outerWidth() + ua-ctrl-wrapper.outerWidth() + hsw.margin-left + ua-ctrl-wrapper-margin-left */
+			width:calc(100% - 388px);
+		}
 	}
 }
 

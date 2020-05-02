@@ -10,10 +10,12 @@
     <link rel="stylesheet" type="text/css" href="assets/fonts/ps/style.css"/>
     <link href="assets/font-awesome/css/all.css" rel="stylesheet">
     <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-    <script type="text/javascript" src="js/jquery-migrate-3.1.0.min.js"></script>
-    <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+	<script type="text/javascript" src="js/jquery-migrate-3.1.0.min.js"></script>
+	<!-- <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script> -->
+    <script type="text/javascript" src="js/jquery.mobile-1.5.0-rc1.min.js"></script>
 	<script type="text/javascript" src="FsIndex/ppfs/FsIndex.0.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.5.0-rc1.min.css">
 	<link rel="stylesheet" type="text/css" href="css/stylesheet.main.css">
 	<script type="text/javascript" src="js/prefixfree.min.js"></script>
     <script type="text/javascript" src="js/navigation.js"></script>
@@ -86,16 +88,16 @@
 				<div class="ua-ctrl-wrapper">
 					<!-- <abbr title="User Account"> -->
 						<div id="ua-cw" class="ua-ctrl content-wrapper-ctrl active-cw-ctrl" ><!-- title="User Account" -->
-							<p class="ua-hdr">
+							<p class="ua-ctrl-hdr">
 								<!-- Account -->
-								<i tabindex="1" class="ua-hdr-icon fas fa-user-circle"></i>
+								<i tabindex="1" class="ua-ctrl-icon fas fa-user-circle"></i>
 							</p>
 						</div>
 					<!-- </abbr> -->
 					<div id="sc-cw" class="sc-ctrl content-wrapper-ctrl" ><!-- title="Support Center" -->
-						<p class="sc-hdr">
+						<p class="sc-ctrl-hdr">
 							<!-- Support(?) -->
-							<i tabindex="2" class="sc-hdr-icon fas fa-envelope"></i>
+							<i tabindex="2" class="sc-ctrl-icon fas fa-envelope"></i>
 						</p>
 					</div>
 				</div>
@@ -124,10 +126,10 @@
 			<div class="content-container"> 
 				<div class="content pp-cw">
 					<div class="explorer-navigation path">
-						<div class='b-f-navigators'>
+						<!-- <div class='b-f-navigators'>
 							<div class='b'><p style="transform: rotate(45deg);">∟</p></div>
 							<div class='f'><p style="transform: rotate(-135deg);">∟</p></div>
-						</div>
+						</div> -->
 						<div class="tmp-path-section">
 							<p class="explorer-hdr">Past papers</p>
 						</div>
@@ -140,7 +142,7 @@
 					</div>
 					
 					<div class="explorer">
-
+						
 					</div>
 				</div>
 				
@@ -153,10 +155,62 @@
 				</div>
 				
 				<div class="content ua-cw active-content-wrapper">
-					<!-- <p>D <br/></p> -->
-					<div>
-						<p>User Account</p>
+					<div class="ua-nav-wrapper">
+						<div class="ua-hdr">
+							<p class='ua-hdr-title'>User Account</p>
+						</div>
+						<div class="contributors-login-ctrl">
+							<a 	href="#contributorLogin" 
+								data-rel="popup" 
+								data-position-to="window" 
+								class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a" 
+								data-transition="pop">
+								Contributors 
+								<span class="ui-icon ui-icon-check"></span>
+							</a>
+							<div data-role="popup" id="contributorLogin" data-theme="a" class="ui-corner-all">
+								<form id="contributorLogin">
+									<div style="padding:10px 20px;">
+										<h3 style="text-align: center;">Contributor | Signin</h3>
+										<label for="un" class="ui-hidden-accessible">Username:</label>
+										<input type="text" name="user" id="un" value="" placeholder="username" data-theme="a">
+										<label for="pw" class="ui-hidden-accessible">Password:</label>
+										<input type="password" name="pass" id="pw" value="" placeholder="password" data-theme="a">
+										<button type="submit" class="ui-button ui-corner-all ui-shadow ui-button-b">Sign in <span class="ui-icon ui-icon-check"></span></button>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="mod-login-ctrl">
+							<a 	href="#modrLogin" 
+								data-rel="popup" 
+								data-position-to="window" 
+								class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a" 
+								data-transition="pop">
+								Moderators
+								<span class="ui-icon ui-icon-check"></span>
+							</a>
+							<div data-role="popup" id="modrLogin" data-theme="a" class="ui-corner-all">
+								<form id="modrLogin">
+									<div style="padding:10px 20px;">
+										<h3 style="text-align: center;">Moderator | Sign in</h3>
+										<label for="un" class="ui-hidden-accessible">Username:</label>
+										<input type="text" name="user" id="un" value="" placeholder="username" data-theme="a">
+										<label for="pw" class="ui-hidden-accessible">Password:</label>
+										<input type="password" name="pass" id="pw" value="" placeholder="password" data-theme="a">
+										<button type="submit" class="ui-button ui-corner-all ui-shadow ui-button-b">Sign in <span class="ui-icon ui-icon-check"></span></button>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div>
+							
+						</div>
 					</div>
+					<div class="ua">
+
+					</div>
+
 				</div>
 				<div class="content contributors-cw">
 					<p>E <br/></p>
@@ -164,7 +218,7 @@
 				</div>
 				<div class="content sc-cw">
 					<p>F <br/></p>
-					<div></div>
+					<div></div>title
 				</div>
 			</div>
 			<!-- End Desktop/Android Content wrapper -->

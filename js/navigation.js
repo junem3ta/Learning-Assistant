@@ -181,7 +181,8 @@ $(document).ready(function() {
 		}
 	}
 
-	$(".header-search").closest('div').addClass('noshadowI');
+	$("input").closest('div').addClass('noshadowI');
+	$(".header-search").closest('div').addClass('nomargin');
 	/*remove blue outline on clicking jqm ui-input-clear button*/
   
 	var temp = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan 	blandit fermentum. Pellentesque cursus mauris purus, auctor commodo mi ullamcorper nec. Donec semper mattis eros, nec condimentum ante sollicitudin quis. Etiam orci sem, porttitor ut tellus nec, blandit posuere urna. Proin a arcu non lacus pretium faucibus. Aliquam sed est porttitor, ullamcorper urna nec, vehicula lorem. Cras porttitor est lorem, non venenatis diam convallis congue."
@@ -208,5 +209,9 @@ $(document).ready(function() {
 			$('.'+target).fadeIn();
 			currentCW = target;
 		}		
+	});
+
+	$("#modrLogin, #contributorLogin").submit(function(){
+		return false;
 	});
 });
