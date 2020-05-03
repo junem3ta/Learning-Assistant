@@ -438,6 +438,8 @@ body {
     font-family: Arial;
 	font-weight: 300;
 	border-radius: 34px !important;
+	box-shadow: none;
+    background-color: #fff !important;
  }
 
 .active-content-wrapper {
