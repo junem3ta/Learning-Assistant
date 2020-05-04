@@ -6,13 +6,14 @@ $(document).ready(function() {
 	/*var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0); */
 	var isPanelOpen = false;
 	var isSearching = false;
+	var currentCW = "ua-cw";
 	responsiveUIHandler();
 
 	/* Hide Android Searchbar on Scrolldown, show on Scrollup*/
 	var didScroll;
 	var lastScrollTop = 0;
 	var delta = 5;
-	var navbarHeight = 91 /*46 without static header */;
+	var navbarHeight = 88 /* 91 */ /*46 without static header */;
 	$(window).scroll(function(){
 		hasScrolled(); 
 		//didScroll = true;
@@ -38,7 +39,9 @@ $(document).ready(function() {
 				$('.ui-content').addClass('ui-content-up');
 			}
 		}
-		/* Scrolldown */
+		/* Scrolldown 
+			Ref: Sticky header, w3schools.
+		*/
 		if(st > lastScrollTop) {
 			if(window.pageYOffset > Math.ceil($('.static-hdr').offset().top)) {
 				$('.home-search-wrapper').addClass('static-hdr-up');
@@ -87,25 +90,13 @@ $(document).ready(function() {
 				isPanelOpen = false;
 				$('body').removeClass("no-scroll");
 			}
-		}
-		/* 
-		**
-		  move outside of click event to reimplement
-			$(document).on("focus",".header-search", function() {
-				$(this).closest('div').addClass('noshadowI');
-			});
-		**
-		if(desktopMode) {
-			if($(event.target).closest('.header-search').length == 0) {
-				$(".header-search").closest('div').removeClass('noshadowI');
-			}
-		} */
-		
+		}		
 	});
+	$('.home-search').closest('div').addClass('nomargin noshadow');
 	/*Activate search mode*/
 	$(document).on('focus', '.home-search', function () {
 		isSearching = true;
-		$(this).closest('div').addClass('noshadow');
+		$(this).closest('div').addClass('noradius');
 		$('.home-search-wrapper').addClass('hs-wrapper-search-mode');
 		$('.hs-wrapper-search-mode').css({'height': windowHeight});
 		$('.search-window').css({'height': swHeight});
@@ -116,12 +107,12 @@ $(document).ready(function() {
 		$('.search-ctrl').show();
 		$('.search-window').show();
 		$('body').addClass("no-scroll");
-		$('.static-hdr').hide();
+		currentCW == "pp-cw" ? $('.static-hdr').hide() : "";
 	});
 	/*Deactivate search mode*/
 	$('.search-ctrl').click(function() {
 		isSearching = false;
-		$('.home-search').closest('div').removeClass('noshadow');
+		$('.home-search').closest('div').removeClass('noradius');
 		$('.home-search-wrapper').removeClass('hs-wrapper-search-mode');
 		//$('.home-search-wrapper').css({'height': 54});
 		//$('.home-search-wrapper').css("cssText", "height: auto !important;");
@@ -132,7 +123,7 @@ $(document).ready(function() {
 		$('.search-ctrl').hide();
 		$('.search-window').hide();
 		$('body').removeClass("no-scroll");
-		$('.static-hdr').show();
+		currentCW == "pp-cw" ? $('.static-hdr').show() : "";
 		if(!desktopMode) {
 			$('.panel-ctrl').show();
 		}
@@ -181,20 +172,27 @@ $(document).ready(function() {
 		}
 	}
 
+	/* Disable focus styling and remove margin around search input fields*/
 	$("input").closest('div').addClass('noshadowI');
 	$(".header-search").closest('div').addClass('nomargin');
-	/*remove blue outline on clicking jqm ui-input-clear button*/
-  
-	var temp = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan 	blandit fermentum. Pellentesque cursus mauris purus, auctor commodo mi ullamcorper nec. Donec semper mattis eros, nec condimentum ante sollicitudin quis. Etiam orci sem, porttitor ut tellus nec, blandit posuere urna. Proin a arcu non lacus pretium faucibus. Aliquam sed est porttitor, ullamcorper urna nec, vehicula lorem. Cras porttitor est lorem, non venenatis diam convallis congue."
-		
-	for(var i=0; i<20; i++) {
-		//$('.content p').append(temp);
-	}
 
-	var currentCW = "ua-cw";
+	/*remove blue outline on clicking jqm ui-input-clear button??*/
+  
+
+	/* 
+		Display pp static header accordingly 
+		Reset _GLOBAL VAR_ currentCW to "pp-cw" and delete the following when deploying.
+	*/
+
+	currentCW == "pp-cw" ? $('.static-hdr').show() : $('.static-hdr').hide();
+
 	$('.content-wrapper-ctrl').click(function() {
+		//reset navigation to top of page
 		$(window).scrollTop(0);
 		var target = $(this).attr('id');
+
+		//display pp static header accordingly
+		target == "pp-cw" ? $('.static-hdr').show() : $('.static-hdr').hide();
 
 		/*Only target Desktop content-wrapper-controllers*/
 		if($(this).prop("nodeName")=="DIV") {

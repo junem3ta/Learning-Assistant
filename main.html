@@ -51,7 +51,31 @@
 		</div>
 		
 		<div role="main" class="ui-content "> 	
-
+			<!-- 
+				@Template popup-basic
+				++Research on html template
+				
+				<a 	href="#target1"  
+						data-rel="popup" 
+						data-position-to="window" 
+						class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a" 
+						data-transition="pop">
+						target2
+				</a>
+				<div data-role="popup" id="target3" data-theme="a" class="ui-corner-all">
+					<form id="contributorLogin">
+						<div style="padding:10px 20px;">
+							<h3 style="text-align: center;">target 4</h3>
+							<label for="un" class="ui-hidden-accessible">Username:</label>
+							<input type="text" name="user" id="un" value="" placeholder="username" data-theme="a">
+							<label for="pw" class="ui-hidden-accessible">Password:</label>
+							<input type="password" name="pass" id="pw" value="" placeholder="password" data-theme="a">
+							<button type="submit" class="ui-button ui-corner-all ui-shadow ui-button-b">Sign in <span class="ui-icon ui-icon-check"></span></button>
+						</div>
+					</form>
+				</div>
+			-->
+			
 			<!-- Android searchbar -->
 			<div class="ui-grid-a home-search-wrapper">
 				<div class="panel-ctrl-wrapper">
@@ -61,7 +85,7 @@
 				<input class="home-search" placeholder="Search past papers, e-books" type="text" data-clear-btn="true">
 
 				<div class="static-hdr">
-					<p>Past Papers</p>
+					<p>Files</p>
 				</div>
 
 				<div class="ui-grid-a search-window">
@@ -225,8 +249,8 @@
 
 		</div>
 		
-		<div data-role="footer" data-position="fixed" class="footer" data-tap-toggle="false">
-			<div data-role="navbar" id="nv1" class="ui-alt-icon">
+		<div data-role="toolbar" data-type="footer" data-position="fixed" class="footer" data-tap-toggle="false">
+			<div data-role="navbar" data-grid="c" id="nv1">
 					<ul>
 						<li>
 							<a href="#" data-icon="folderopen" id="pp-cw" class="content-wrapper-ctrl ui-btn-active">

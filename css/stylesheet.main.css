@@ -22,6 +22,7 @@ body {
 }
 .ui-content {
 	position: relative;
+	/* height: calc(100vh - 6em); */
 }
 
 /* Android Styles */
@@ -109,8 +110,12 @@ body {
 	-moz-box-shadow: none !important;
 	-webkit-box-shadow: none !important;
 	box-shadow: none !important;
+}
+
+.noradius {
 	border-radius: 0 !important;
 }
+
 .noshadowI {
 	-moz-box-shadow: none !important;
 	-webkit-box-shadow: none !important;
@@ -120,6 +125,7 @@ body {
 .nomargin {
 	margin: 0;
 }
+
 .ui-input-text {
   margin-bottom: 0;
 }
@@ -135,8 +141,9 @@ body {
   height: 40px;
   line-height: 40px;
   width: 100px;
-  border-bottom: 5px solid #000;
+  border-bottom: 2px solid #000;
   text-align: center;
+  display: none;
 }
 .static-hdr p {
   margin: 0;
@@ -621,62 +628,61 @@ body {
 }
 
 .footer {
-	/*min-height:70px;*/
+	height: 64px;
+}
+
+.footer a {
+	height: 64px;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+#nv1 .ui-btn:after
+	{
+	background: none !important;
+	background-color: none !important;
+	-webkit-box-shadow: none !important;
+	-webkit-border-radius: 0 !important;border-radius: 0 !important;
+	width: 22px !important;
+	height: 22px !important;
+	line-height: 22px !important;
+	margin-left: -11px !important;
+	box-shadow: none !important; 
+	-moz-box-shadow: none !important; 
+	text-align: center !important;
+}
+span.ui-button-icon {
+	background: none;
+    background-color: transparent !important;
 }
 
 [data-icon="folderopen"], [data-icon="filepdf"], [data-icon="cloudupload"],[data-icon="usercircle"]{
   font-size:0;
 }
 
-[data-icon="folderopen"]:after { 
+/* [data-icon="folderopen"] */.folderopen:after { 
     content: "\f07c"; 
     font-family:'Font Awesome 5 Free';
     /*font-weight:900;*/
     font-size:15px;
 }
 
-[data-icon="filepdf"]:after { 
+/* [data-icon="filepdf"] */.filepdf:after { 
     content: "\f1c1"; 
     font-family:'Font Awesome 5 Free';
     /*font-weight:900;*/
     font-size:15px;
 }
 
-[data-icon="cloudupload"]:after { 
+/* [data-icon="cloudupload"] */.cloudupload:after { 
     content: "\f382"; 
     font-family:'Font Awesome 5 Free';
     /*font-weight:900;*/
     font-size:15px;
 }
 
-[data-icon="usercircle"]:after { 
+/* [data-icon="usercircle"] */.usercircle:after { 
     content: "\f2bd";
-    font-family:'Font Awesome 5 Free';
-    /*font-weight:900;*/
-    font-size:15px;
-}
-
-#nv1 .ui-btn:after
-	{
-		background: none !important;
-		background-color: none !important;
-		-webkit-box-shadow: none !important;
-		-webkit-border-radius: 0 !important;border-radius: 0 !important;
-		width: 22px !important;
-		height: 22px !important;
-		line-height: 22px !important;
-		margin-left: -11px !important;
-		box-shadow: none !important; 
-		-moz-box-shadow: none !important; 
-	text-align: center !important;
-}
-
-[data-icon="pray"] {
-  font-size:0;
-}
-
-[data-icon="pray"]:after { 
-    content: "\f382"; /*07c, f1c1, f2bd*/
     font-family:'Font Awesome 5 Free';
     /*font-weight:900;*/
     font-size:15px;
