@@ -20,6 +20,7 @@
 	<script type="text/javascript" src="js/prefixfree.min.js"></script>
     <script type="text/javascript" src="js/navigation.js"></script>
 	<script type="text/javascript" src="js/explorer.js"></script>
+	<script type="text/javascript" src="js/content.js"></script>
 
 	<!-- 
 	<link rel="stylesheet" type="text/css" href="/fonts/ps/style.css"/>
@@ -53,8 +54,8 @@
 		<div role="main" class="ui-content "> 	
 			<!-- 
 				@Template popup-basic
-				++Research on html template
-				
+			-->
+			<template class='popupbasic-template'>
 				<a 	href="#target1"  
 						data-rel="popup" 
 						data-position-to="window" 
@@ -63,9 +64,9 @@
 						target2
 				</a>
 				<div data-role="popup" id="target3" data-theme="a" class="ui-corner-all">
-					<form id="contributorLogin">
+					<form id="target4">
 						<div style="padding:10px 20px;">
-							<h3 style="text-align: center;">target 4</h3>
+							<h3 style="text-align: center;">target5</h3>
 							<label for="un" class="ui-hidden-accessible">Username:</label>
 							<input type="text" name="user" id="un" value="" placeholder="username" data-theme="a">
 							<label for="pw" class="ui-hidden-accessible">Password:</label>
@@ -74,8 +75,7 @@
 						</div>
 					</form>
 				</div>
-			-->
-			
+			</template>
 			<!-- Android searchbar -->
 			<div class="ui-grid-a home-search-wrapper">
 				<div class="panel-ctrl-wrapper">
@@ -184,48 +184,10 @@
 							<p class='ua-hdr-title'>User Account</p>
 						</div>
 						<div class="contributors-login-ctrl">
-							<a 	href="#contributorLogin" 
-								data-rel="popup" 
-								data-position-to="window" 
-								class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a" 
-								data-transition="pop">
-								Contributors 
-								<!-- <span class="ui-icon ui-icon-check"></span> -->
-							</a>
-							<div data-role="popup" id="contributorLogin" data-theme="a" class="ui-corner-all">
-								<form id="contributorLogin">
-									<div style="padding:10px 20px;">
-										<h3 style="text-align: center;">Contributor | Signin</h3>
-										<label for="un" class="ui-hidden-accessible">Username:</label>
-										<input type="text" name="user" id="un" value="" placeholder="username" data-theme="a">
-										<label for="pw" class="ui-hidden-accessible">Password:</label>
-										<input type="password" name="pass" id="pw" value="" placeholder="password" data-theme="a">
-										<button type="submit" class="ui-button ui-corner-all ui-shadow ui-button-b">Sign in <span class="ui-icon ui-icon-check"></span></button>
-									</div>
-								</form>
-							</div>
+							
 						</div>
 						<div class="mod-login-ctrl">
-							<a 	href="#modrLogin" 
-								data-rel="popup" 
-								data-position-to="window" 
-								class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a" 
-								data-transition="pop">
-								Moderators
-								<!-- <span class="ui-icon ui-icon-check"></span> -->
-							</a>
-							<div data-role="popup" id="modrLogin" data-theme="a" class="ui-corner-all">
-								<form id="modrLogin">
-									<div style="padding:10px 20px;">
-										<h3 style="text-align: center;">Moderator | Sign in</h3>
-										<label for="un" class="ui-hidden-accessible">Username:</label>
-										<input type="text" name="user" id="un" value="" placeholder="username" data-theme="a">
-										<label for="pw" class="ui-hidden-accessible">Password:</label>
-										<input type="password" name="pass" id="pw" value="" placeholder="password" data-theme="a">
-										<button type="submit" class="ui-button ui-corner-all ui-shadow ui-button-b">Sign in <span class="ui-icon ui-icon-check"></span></button>
-									</div>
-								</form>
-							</div>
+							
 						</div>
 						<div>
 							

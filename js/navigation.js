@@ -141,7 +141,7 @@ $(document).ready(function() {
 			$('.content-wrapper').attr('style', 'padding-bottom: 0 !important;');
 			setTimeout(function() {
 				$('.content-wrapper').attr('style', 'padding-bottom: 0 !important;');
-			},1000);
+			},5000);
 
 			if(isSearching) {
 				isSearching = false;

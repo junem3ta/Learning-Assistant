@@ -19,6 +19,7 @@ body {
 }
 .content-wrapper {
 	position: relative;
+	padding-bottom: 0 !important;
 }
 .ui-content {
 	position: relative;
