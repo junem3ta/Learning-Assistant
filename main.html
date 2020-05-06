@@ -1,243 +1,233 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>app</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-  
-    <!-- ** Local Links ** -->
-    <link rel="stylesheet" type="text/css" href="assets/fonts/ps/style.css"/>
-    <link href="assets/font-awesome/css/all.css" rel="stylesheet">
-    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="js/jquery-migrate-3.1.0.min.js"></script>
-	<!-- <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script> -->
-    <script type="text/javascript" src="js/jquery.mobile-1.5.0-rc1.min.js"></script>
-	<script type="text/javascript" src="FsIndex/ppfs/FsIndex.0.min.js"></script>
-	<!-- <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css"> -->
-    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.5.0-rc1.min.css">
-	<link rel="stylesheet" type="text/css" href="css/stylesheet.main.css">
-	<script type="text/javascript" src="js/prefixfree.min.js"></script>
-    <script type="text/javascript" src="js/navigation.js"></script>
-	<script type="text/javascript" src="js/explorer.js"></script>
-	<script type="text/javascript" src="js/content.js"></script>
-
-	<!-- 
-	<link rel="stylesheet" type="text/css" href="/fonts/ps/style.css"/>
-	<link href="/font-awesome/css/all.css" rel="stylesheet">
-	<script type="text/javascript" src="/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="/jquery-migrate-3.1.0.min.js"></script>
-	<script type="text/javascript" src="/jquery.mobile-1.4.5.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="/jquery.mobile-1.4.5.min.css">
-	<link rel="stylesheet" type="text/css" href="/stylesheet.main.css">
-	<script type="text/javascript" src="/FsIndex.0.min.js"></script> 
-	<script type="text/javascript" src="/main.js"></script>  
-	-->
-	<!-- <link rel="icon" type="image/png" href="icon.png"/> -->
-</head>
-<body>
-	<div data-role="page" class="content-wrapper"> 	
-		<!-- Android Sidepanel -->
-		<!-- The Android side panel overlaps over the ui-content, thus it makes more sense to have the sidepanelwrapper placed in a fixed position outside of the ui-content -->
-		<div class="side-panel-wrapper">
-			<div class="side-panel">
-				<p>
-					panel <br>
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum. Pellentesque cursus mauris purus, auctor commodo mi ullamcorper nec. Donec semper mattis eros, nec condimentum ante sollicitudin quis. Etiam orci sem, porttitor ut tellus nec, blandit posuere urna. Proin a arcu non lacus pretium faucibus. Aliquam sed est porttitor, ullamcorper urna nec, vehicula lorem. Cras porttitor est lorem, non venenatis diam convallis congue.
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum. Pellentesque cursus mauris purus, auctor commodo mi ullamcorper nec. Donec semper mattis eros, nec condimentum ante sollicitudin quis. Etiam orci sem, porttitor ut tellus nec, blandit posuere urna. Proin a arcu non lacus pretium faucibus. Aliquam sed est porttitor, ullamcorper urna nec, vehicula lorem. Cras porttitor est lorem, non venenatis diam convallis congue.
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum. Pellentesque cursus mauris purus, auctor commodo mi ullamcorper nec. Donec semper mattis eros, nec condimentum ante sollicitudin quis. Etiam orci sem, porttitor ut tellus nec, blandit posuere urna. Proin a arcu non lacus pretium faucibus. Aliquam sed est porttitor, ullamcorper urna nec, vehicula lorem. Cras porttitor est lorem, non venenatis diam convallis congue.
-					Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum. Pellentesque cursus mauris purus, auctor commodo mi ullamcorper nec. Donec semper mattis eros, nec condimentum ante sollicitudin quis. Etiam orci sem, porttitor ut tellus nec, blandit posuere urna. Proin a arcu non lacus pretium faucibus. Aliquam sed est porttitor, ullamcorper urna nec, vehicula lorem. Cras porttitor est lorem, non venenatis diam convallis congue.
-				</p> 
-			</div>
-		</div>
-		
-		<div role="main" class="ui-content "> 	
+	<head>
+		<title>app</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<!-- static-assets -->
+		<link rel="stylesheet" type="text/css" href="assets/fonts/ps/style.css"/>
+		<link href="assets/font-awesome/css/all.css" rel="stylesheet">
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery-migrate-3.1.0.min.js"></script>
+		<!-- <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script> -->
+		<script type="text/javascript" src="js/jquery.mobile-1.5.0-rc1.min.js"></script>
+		<script type="text/javascript" src="FsIndex/ppfs/FsIndex.0.min.js"></script>
+		<!-- <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css"> -->
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.5.0-rc1.min.css">
+		<link rel="stylesheet" type="text/css" href="css/stylesheet.main.css">
+		<script type="text/javascript" src="js/prefixfree.min.js"></script>
+		<script type="text/javascript" src="js/navigation.js"></script>
+		<script type="text/javascript" src="js/explorer.js"></script>
+		<script type="text/javascript" src="js/content.js"></script>
+	</head>
+	<body>
+		<div data-role="page" class="content-wrapper"> 	
 			<!-- 
-				@Template popup-basic
+				@AndroidSidepanel 
+
+				-- The Android side panel overlaps over the ui-content, thus it makes more sense 
+				to have the sidepanelwrapper placed in a fixed position outside of the ui-content.
 			-->
-			<template class='popupbasic-template'>
-				<a 	href="#target1"  
-						data-rel="popup" 
-						data-position-to="window" 
-						class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a" 
-						data-transition="pop">
-						target2
-				</a>
-				<div data-role="popup" id="target3" data-theme="a" class="ui-corner-all">
-					<form id="target4">
-						<div style="padding:10px 20px;">
-							<h3 style="text-align: center;">target5</h3>
-							<label for="un" class="ui-hidden-accessible">Username:</label>
-							<input type="text" name="user" id="un" value="" placeholder="username" data-theme="a">
-							<label for="pw" class="ui-hidden-accessible">Password:</label>
-							<input type="password" name="pass" id="pw" value="" placeholder="password" data-theme="a">
-							<button type="submit" class="ui-button ui-corner-all ui-shadow ui-button-b">Sign in <span class="ui-icon ui-icon-check"></span></button>
-						</div>
-					</form>
-				</div>
-			</template>
-			<!-- Android searchbar -->
-			<div class="ui-grid-a home-search-wrapper">
-				<div class="panel-ctrl-wrapper">
-					<p><i class="fas fa-bars panel-ctrl"></i></p>
-					<p><i class="fas fa-arrow-left search-ctrl"></i></p>
-				</div>
-				<input class="home-search" placeholder="Search past papers, e-books" type="text" data-clear-btn="true">
-
-				<div class="static-hdr">
-					<p>Files</p>
-				</div>
-
-				<div class="ui-grid-a search-window">
-					<div class="sw-thumb">
-						<img src="assets/images/search.svg" />
-						<!-- <img src="\images\search.svg" />  -->
-					</div>
-					<!--
-					<div class="sr">
-					</div>
-					-->
+			<div class="side-panel-wrapper">
+				<div class="side-panel">
+					<p>
+						panel <br>
+						<!-- dynamic placeholder content here -->
+					</p> 
 				</div>
 			</div>
-			<!-- End Android searchbar -->
-			<!-- Desktop searchbar -->
-			<div class="header">
-				<div class="app-title">
-					<p class="title">eREAD </p>
-					<p class="sub-title"> Chuka University</p>
+			<!-- /side-panel-wrapper -->
+
+			<div role="main" class="ui-content "> 	
+				<!-- 
+					@Template popup-basic
+				-->
+				<template class='popupbasic-template'>
+					<a 	href="#target1"  
+							data-rel="popup" 
+							data-position-to="window" 
+							class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a" 
+							data-transition="pop">
+							target2
+					</a>
+					<div data-role="popup" id="target3" data-theme="a" class="ui-corner-all">
+						<form id="target4">
+							<div style="padding:10px 20px;">
+								<h3 style="text-align: center;">target5</h3>
+								<label for="un" class="ui-hidden-accessible">Username:</label>
+								<input type="text" name="user" id="un" value="" placeholder="username" data-theme="a">
+								<label for="pw" class="ui-hidden-accessible">Password:</label>
+								<input type="password" name="pass" id="pw" value="" placeholder="password" data-theme="a">
+								<button type="submit" class="ui-button ui-corner-all ui-shadow ui-button-b">Sign in <span class="ui-icon ui-icon-check"></span></button>
+							</div>
+						</form>
+					</div>
+				</template>
+
+				<!-- Android searchbar -->
+				<div class="ui-grid-a home-search-wrapper">
+					<div class="panel-ctrl-wrapper">
+						<p><i class="fas fa-bars panel-ctrl"></i></p>
+						<p><i class="fas fa-arrow-left search-ctrl"></i></p>
+					</div>
+					<input class="home-search" placeholder="Search past papers, e-books" type="text" data-clear-btn="true">
+
+					<div class="static-hdr">
+						<p>Files</p>
+					</div>
+
+					<div class="ui-grid-a search-window">
+						<div class="sw-thumb">
+							<img src="assets/images/search.svg" />
+							<!-- <img src="\images\search.svg" />  -->
+						</div>
+						<!--
+						<div class="sr">
+						</div>
+						-->
+					</div>
 				</div>
-				<div class="header-search-wrapper">
-					<input class="header-search" placeholder="Search past papers, e-books" type="search" data-clear-btn="true">
-				</div>
-				<div class="ua-ctrl-wrapper">
-					<!-- <abbr title="User Account"> -->
-						<div id="ua-cw" class="ua-ctrl content-wrapper-ctrl active-cw-ctrl" ><!-- title="User Account" -->
-							<p class="ua-ctrl-hdr">
-								<!-- Account -->
-								<i tabindex="1" class="ua-ctrl-icon fas fa-user-circle"></i>
+				<!-- End Android searchbar -->
+				<!-- Desktop searchbar -->
+				<div class="header">
+					<div class="app-title">
+						<p class="title">eREAD </p>
+						<p class="sub-title"> Chuka University</p>
+					</div>
+					<div class="header-search-wrapper">
+						<input class="header-search" placeholder="Search past papers, e-books" type="search" data-clear-btn="true">
+					</div>
+					<div class="ua-ctrl-wrapper">
+						<!-- <abbr title="User Account"> -->
+							<div id="ua-cw" class="ua-ctrl content-wrapper-ctrl active-cw-ctrl" ><!-- title="User Account" -->
+								<p class="ua-ctrl-hdr">
+									<!-- Account -->
+									<i tabindex="1" class="ua-ctrl-icon fas fa-user-circle"></i>
+								</p>
+							</div>
+						<!-- </abbr> -->
+						<div id="sc-cw" class="sc-ctrl content-wrapper-ctrl" ><!-- title="Support Center" -->
+							<p class="sc-ctrl-hdr">
+								<!-- Support(?) -->
+								<i tabindex="2" class="sc-ctrl-icon fas fa-envelope"></i>
 							</p>
 						</div>
-					<!-- </abbr> -->
-					<div id="sc-cw" class="sc-ctrl content-wrapper-ctrl" ><!-- title="Support Center" -->
-						<p class="sc-ctrl-hdr">
-							<!-- Support(?) -->
-							<i tabindex="2" class="sc-ctrl-icon fas fa-envelope"></i>
-						</p>
 					</div>
 				</div>
-			</div>
-			<!-- Desktop Sidepanel -->
-			<div class='pc-side-panel-wrapper'>
-				<div class="cw-ctrls-wrapper">
-					<div id="pp-cw" class="content-wrapper-ctrl">
-						<p >Pastpapers</p>
-					</div>
-					<div id="eb-cw" class="content-wrapper-ctrl">
-						<p >eBooks</p>
-					</div>
-					<div id="uploads-cw" class="content-wrapper-ctrl">
-						<p >Upload eBook(s)</p>
-					</div>
-					<div id="contributors-cw" class="content-wrapper-ctrl">
-						<p >Contributors</p>
-					</div>
-				</div>
-				
-			</div>
-			<!-- End Desktop Sidepanel -->
-
-			<!-- Desktop/Android Content wrapper-->
-			<div class="content-container"> 
-				<div class="content pp-cw">
-					<div class="explorer-navigation path">
-						<!-- <div class='b-f-navigators'>
-							<div class='b'><p style="transform: rotate(45deg);">∟</p></div>
-							<div class='f'><p style="transform: rotate(-135deg);">∟</p></div>
-						</div> -->
-						<div class="tmp-path-section">
-							<p class="explorer-hdr">Past papers</p>
+				<!-- Desktop Sidepanel -->
+				<div class='pc-side-panel-wrapper'>
+					<div class="cw-ctrls-wrapper">
+						<div id="pp-cw" class="content-wrapper-ctrl">
+							<p >Pastpapers</p>
 						</div>
-						<div class="tmp-path-delimeter">
-							<p style="transform: rotate(45deg);" class='foward-delimeter'>◥</p>
+						<div id="eb-cw" class="content-wrapper-ctrl">
+							<p >eBooks</p>
 						</div>
-						<div class="path-section root-path-section">
-							<p class="explorer-hdr">Past Papers</p>
+						<div id="uploads-cw" class="content-wrapper-ctrl">
+							<p >Upload eBook(s)</p>
+						</div>
+						<div id="contributors-cw" class="content-wrapper-ctrl">
+							<p >Contributors</p>
 						</div>
 					</div>
 					
-					<div class="explorer">
+				</div>
+				<!-- End Desktop Sidepanel -->
+
+				<!-- Desktop/Android Content wrapper-->
+				<div class="content-container"> 
+					<div class="content pp-cw">
+						<div class="explorer-navigation path">
+							<!-- <div class='b-f-navigators'>
+								<div class='b'><p style="transform: rotate(45deg);">∟</p></div>
+								<div class='f'><p style="transform: rotate(-135deg);">∟</p></div>
+							</div> -->
+							<div class="tmp-path-section">
+								<p class="explorer-hdr">Past papers</p>
+							</div>
+							<div class="tmp-path-delimeter">
+								<p style="transform: rotate(45deg);" class='foward-delimeter'>◥</p>
+							</div>
+							<div class="path-section root-path-section">
+								<p class="explorer-hdr">Past Papers</p>
+							</div>
+						</div>
 						
-					</div>
-				</div>
-				
-				<div class="content eb-cw">
-					<p>B <br/></p>
-				</div>
-				
-				<div class="content uploads-cw">
-					<p>C <br/></p>
-				</div>
-				
-				<div class="content ua-cw active-content-wrapper">
-					<div class="ua-nav-wrapper">
-						<div class="ua-hdr">
-							<p class='ua-hdr-title'>User Account</p>
-						</div>
-						<div class="contributors-login-ctrl">
-							
-						</div>
-						<div class="mod-login-ctrl">
-							
-						</div>
-						<div>
+						<div class="explorer">
 							
 						</div>
 					</div>
-					<div class="ua">
+					
+					<div class="content eb-cw">
+						<p>B <br/></p>
+					</div>
+					
+					<div class="content uploads-cw">
+						<p>C <br/></p>
+					</div>
+					
+					<div class="content ua-cw active-content-wrapper">
+						<div class="ua-nav-wrapper">
+							<div class="ua-hdr">
+								<p class='ua-hdr-title'>User Account</p>
+							</div>
+							<div class="contributors-login-ctrl">
+								
+							</div>
+							<div class="mod-login-ctrl">
+								
+							</div>
+							<div>
+								
+							</div>
+						</div>
+						<div class="ua">
+
+						</div>
 
 					</div>
-
+					<div class="content contributors-cw">
+						<p>E <br/></p>
+						<div></div>
+					</div>
+					<div class="content sc-cw">
+						<p>F <br/></p>
+						<div></div>title
+					</div>
 				</div>
-				<div class="content contributors-cw">
-					<p>E <br/></p>
-					<div></div>
-				</div>
-				<div class="content sc-cw">
-					<p>F <br/></p>
-					<div></div>title
-				</div>
+				<!-- End Desktop/Android Content wrapper -->
 			</div>
-			<!-- End Desktop/Android Content wrapper -->
+			<!-- /main -->
 
+			<div data-role="toolbar" data-type="footer" data-position="fixed" class="footer" data-tap-toggle="false">
+				<div data-role="navbar" data-grid="c" id="nv1">
+						<ul>
+							<li>
+								<a href="#" data-icon="folderopen" id="pp-cw" class="content-wrapper-ctrl ui-btn-active">
+									Pastpapers
+								</a>
+							</li>
+							<li>
+								<a href="#" data-icon="filepdf" id="eb-cw" class="content-wrapper-ctrl">
+									e-Books
+								</a>
+							</li>
+							<li>
+								<a href="#" data-icon="cloudupload" id="uploads-cw" class="content-wrapper-ctrl">
+									Upload
+								</a>
+							</li>
+							<li>
+								<a href="#" data-icon="usercircle" id="ua-cw" class="content-wrapper-ctrl">
+									My Account
+								</a>
+							</li>
+						</ul>
+					</div>
+					<!--data-hide-during-focus=""-->
+			</div>
+			<!-- /footer -->
 		</div>
-		
-		<div data-role="toolbar" data-type="footer" data-position="fixed" class="footer" data-tap-toggle="false">
-			<div data-role="navbar" data-grid="c" id="nv1">
-					<ul>
-						<li>
-							<a href="#" data-icon="folderopen" id="pp-cw" class="content-wrapper-ctrl ui-btn-active">
-								Pastpapers
-							</a>
-						</li>
-						<li>
-							<a href="#" data-icon="filepdf" id="eb-cw" class="content-wrapper-ctrl">
-								e-Books
-							</a>
-						</li>
-						<li>
-							<a href="#" data-icon="cloudupload" id="uploads-cw" class="content-wrapper-ctrl">
-								Upload
-							</a>
-						</li>
-						<li>
-							<a href="#" data-icon="usercircle" id="ua-cw" class="content-wrapper-ctrl">
-								My Account
-							</a>
-						</li>
-					</ul>
-				</div>
-				<!--data-hide-during-focus=""-->
-		</div>	
-  </div>
-</body>
+		<!-- /page -->
+	</body>
 </html>

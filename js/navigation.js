@@ -212,4 +212,9 @@ $(document).ready(function() {
 	$("#modrLogin, #contributorLogin").submit(function(){
 		return false;
 	});
+
+	var tmp = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum. Pellentesque cursus mauris purus, auctor commodo mi ullamcorper nec. Donec semper mattis eros, nec condimentum ante sollicitudin quis. Etiam orci sem, porttitor ut tellus nec, blandit posuere urna. Proin a arcu non lacus pretium faucibus. Aliquam sed est porttitor, ullamcorper urna nec, vehicula lorem. Cras porttitor est lorem, non venenatis diam convallis congue.";
+	for (let i = 0; i < 5; i++) {
+		$(".side-panel p").append(tmp + "<br>");	
+	}
 });

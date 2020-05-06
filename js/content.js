@@ -1,5 +1,9 @@
 $(document).ready(function () {
-    //create and load dynamic DOM content
+    /*Create and load dynamic DOM content*/
+    /* 
+        @generateBasicPopup helper fn
+        creates markup for JQM 1.5.0 popup windows.    
+    */
     function generateBasicPopup(a, b, c, d, e) {
         var popup = $($('.popupbasic-template')[0].content.cloneNode(true));
         popup.find('a').attr('href', a).text(b);
@@ -15,4 +19,5 @@ $(document).ready(function () {
     $('.mod-login-ctrl').append(
         generateBasicPopup('#moderatorLoginPopup', 'Moderators', 'moderatorLogin', 'Moderator | Signin'));
     $('#contributorLoginPopup, #moderatorLoginPopup').enhanceWithin().popup(); 
+    
 });

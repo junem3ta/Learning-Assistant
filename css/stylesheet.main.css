@@ -83,9 +83,9 @@ body {
 	width: 40px;
 	border: 1px solid transparent;
 }
-.pcw-up {
-  /* top: 17px; */
-}
+/* .pcw-up {
+  top: 17px;
+} */
 .panel-ctrl-wrapper p {
 	margin:0;
 	display: inline;
