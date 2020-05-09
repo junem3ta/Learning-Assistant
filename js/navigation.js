@@ -15,7 +15,9 @@ $(document).ready(function() {
 	var delta = 5;
 	var navbarHeight = 88 /* 91 */ /*46 without static header */;
 	$(window).scroll(function(){
-		hasScrolled(); 
+		if(currentCW == "eb-cw" || currentCW == "pp-cw") {
+			hasScrolled(); 
+		}
 		//didScroll = true;
 	});
 	/* setInterval(function() {if (didScroll && !isSearching) {hasScrolled();didScroll = false;}}, 250); */
@@ -180,23 +182,33 @@ $(document).ready(function() {
   
 
 	/* 
-		Display pp static header accordingly 
+		Display pp-cw/eb-cw static header accordingly 
+		Display search option accordingly
 		Reset _GLOBAL VAR_ currentCW to "pp-cw" and delete the following when deploying.
 	*/
 
-	currentCW == "pp-cw" ? $('.static-hdr').show() : $('.static-hdr').hide();
+	currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.static-hdr').show() : $('.static-hdr').hide();
+	currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.home-search-wrapper').show() : $('.home-search-wrapper').hide();
 
 	$('.content-wrapper-ctrl').click(function() {
 		//reset navigation to top of page
 		$(window).scrollTop(0);
+		if($('.ui-content').hasClass('ui-content-up')) {
+			$('.ui-content').removeClass('ui-content-up')
+			$('.home-search-wrapper').removeClass('hs-wrapper-up');
+		}
 		var target = $(this).attr('id');
-
-		//display pp static header accordingly
-		target == "pp-cw" ? $('.static-hdr').show() : $('.static-hdr').hide();
-
+		//on android displays;
+		if(!desktopMode) {
+			//display pp-cw/eb-cw static header accordingly
+			target == 'pp-cw' || target == 'eb-cw' ? $('.static-hdr').show() : $('.static-hdr').hide();
+			//display search option accordingly
+			target == 'pp-cw' || target == 'eb-cw' ? $('.home-search-wrapper').show() : $('.home-search-wrapper').hide();
+		}
+		
 		/*Only target Desktop content-wrapper-controllers*/
 		if($(this).prop("nodeName")=="DIV") {
-			$('.content-wrapper-ctrl').removeClass("active-cw-ctrl");
+			$('.content-wrapper-ctrl').removeClass('active-cw-ctrl');
 			$(this).addClass("active-cw-ctrl");
 		}
 

@@ -23,7 +23,7 @@ body {
 }
 .ui-content {
 	position: relative;
-	/* height: calc(100vh - 6em); */
+	/* min-width: 240px !important; */
 }
 
 /* Android Styles */
@@ -41,6 +41,7 @@ body {
 	height: 100vh;
 	/*background: rgba(0,0,0,.15);*/
 	z-index: 8888888;
+	overflow: hidden;
 }
 .side-panel {
 	overflow: auto;
@@ -215,14 +216,24 @@ body {
 .content {
 	position: relative;
 	display: none;
-	margin: 1em;
-	height: calc(100% - 2em);
+	margin: 0;
+	height: 100%;
 }
 .pp-cw {
 	margin-top: 0;
 	height: calc(100% - 1em);
 }
-/* Explorer path(s) | Navigation */
+.active-content-wrapper {
+	display: block;
+}
+
+.content p {
+	margin: 0;
+}
+/* 
+	EXPLORER
+	Explorer path(s) | Navigation 
+	*/
 .explorer-navigation {
 	height: 50px;
     line-height: 38px;
@@ -304,10 +315,11 @@ body {
 }
 .explorer {
 	position: relative;
-    height: calc(100% - 4.0625em);
+    height: calc(100% - 3.125em);
     width: 100%;
-    margin: 0 0 1em 0;
-    border-top: 1px solid #ddd;
+    /* margin: 0 0 1em 0; */
+	border-top: 1px solid #ddd;
+	padding-bottom: 64px;
 }
 .ecw {
 	height: calc(100% - 2.5em);
@@ -405,7 +417,7 @@ body {
 .fw-stats {
 	position: absolute;
     height: 15px;
-    bottom: 0;
+    bottom: 64px;
     left: 0;
     /* right: 0; */
     background: #fff;
@@ -422,45 +434,125 @@ body {
 
 /* UserAccount */
 .ua-nav-wrapper {
-	height: 50px;
+	height: /* 50px */100px;
 	width: 100%;
+	border-bottom: 1px solid #ddd;
 }
 
-.ua-hdr,.mod-login-ctrl,.contributors-login-ctrl {
+.modr-login-ctrl,.contributors-login-ctrl {
 	height: 34px;
-	float: left;
 	line-height: 34px;
 }
-.mod-login-ctrl,.contributors-login-ctrl {
-	float: right;
+.ua-hdr {
+	display: inline-block;
+    margin: 8px 0 0 0;
+    border: 1px solid #ddd;
+    padding: 8px 16px;
+    height: auto;
+    line-height: normal;
+    color: #1967d2;
+    border-radius: 20px;
+    font-size: 80%;
+}
+.ua-nav-wrapper br {
+	display: none;
+}
+.login-ctrls-wrapper {
+	/* width: 100%; */
+	text-align: center;
+}
+.ua-login-ctrls {
+	display: inline-block;
+	min-width: 225px;
+    height: 35px;
+    line-height: 34px;
+    margin: 12px 0 0 0;
+    position: relative;
+    clear: both;
+    overflow: visible;
+}
+.login-ctrls-hdr {
+	float: left;
+	position: absolute;
+    top: -4px;
+    /* margin: 8px 0 0 0; */
+    z-index: 2;
+    height: 42px;
+    line-height: 42px;
+    background: #fff;
+    width: 42px;
+    text-align: center;
+    border-radius: 100%;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(65,69,73,0.3), 0 1px 3px 1px rgba(65,69,73,0.15);
+    box-shadow: 0 1px 1px 0 rgba(65,69,73,0.3), 0 1px 3px 1px rgba(65,69,73,0.15);
+}
+.modr-login-ctrl,.contributors-login-ctrl {
+	float: left;
 }
 .contributors-login-ctrl {
-	margin: 0 0 0 8px;
+	/* margin: 0 8px 0 0; */
 }
-.mod-login-ctrl a,.contributors-login-ctrl a {
-	height: 34px;
-    line-height: 34px;
+.modr-login-ctrl a,.contributors-login-ctrl a {
+	height: 31.04px;
+    line-height: 31.04px;
     padding: 0 15px;
     margin: 0;
     font-size: 12px;
-    font-family: Arial;
-	font-weight: 300;
+    /* font-family: Arial;*/
+	font-weight: 400; 
 	border-radius: 34px !important;
 	box-shadow: none;
+	border-width: 1.48px;
     background-color: #fff !important;
  }
-
-.active-content-wrapper {
-	display: block;
+ .modr-login-ctrl a {
+	padding-left: 52px;
+    border-bottom-right-radius: 0 !important;
+    border-top-right-radius: 0 !important;
+ } 
+ .contributors-login-ctrl a {
+	border-left: none;
+	border-top-left-radius: 0 !important;
+	border-bottom-left-radius: 0 !important;
+ }
+ .ua .ui-block-a, 
+ .ua .ui-block-b {
+	height: 220px;
+ }
+.ua .ui-block a {
+	width: 164px;
+	margin: 0 8px 0 8px;
 }
 
-.content p {
-	margin: 0;
+/* Break Android Styling, 444px*/
+@media all and (min-width: 27.75em) {
+	.ua-nav-wrapper {
+		height: 50px;
+		border-bottom: none;
+	}
+	.ua-login-ctrls {
+		margin: 0;
+	}
+	.ua-hdr, .login-ctrls-wrapper {
+		height: 35px;
+		line-height: 34px;
+		float: left;
+	}
+	.ua-hdr {
+		padding: 0 16px;
+		margin: 6.5px 0 0 8px;
+	}
+	.login-ctrls-wrapper {
+		float: right;
+		margin: 7.5px 8px 0 0;
+	}
 }
-
-
-/* Break Android Styling */
+/* Break Android Styling, 600px*/
 @media all and (min-width: 37.5em){
+	.content {
+		margin: 1em;
+		height: calc(100% - 2em);
+	}
 	.side-panel-wrapper, .panel-ctrl, .home-search-wrapper,.footer {
 		display: none;
 	}
@@ -528,7 +620,7 @@ body {
 		padding-bottom:0 !important;
 		font-family: 'Product sans' !important;
 	}
-	.ua-ctrl-wrapper {
+	.ua-ctrls-wrapper {
 		float: right;
 		width: 98px;
 		height: 48px;
@@ -616,6 +708,19 @@ body {
 		color: #1967d2;
 	}
 
+	.explorer-navigation {
+		height: 54px;
+	}
+	.path-section, .path-delimeter {
+		margin-top: 0;
+	}
+	.explorer {
+		height: calc(100% - 3.375em);
+		padding-bottom: 0;
+	}
+	.fw-stats {
+		bottom: 0;
+	}
 	/* Responsive android styling */
 	@media screen and (max-width: 1087px) {
 		.header {

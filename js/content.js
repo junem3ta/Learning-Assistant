@@ -15,9 +15,9 @@ $(document).ready(function () {
     }
 
     $('.contributors-login-ctrl').append(
-        generateBasicPopup('#contributorLoginPopup', 'Contributors', 'contributorLogin', 'Contributor | Signin'));
-    $('.mod-login-ctrl').append(
-        generateBasicPopup('#moderatorLoginPopup', 'Moderators', 'moderatorLogin', 'Moderator | Signin'));
+        generateBasicPopup('#contributorLoginPopup', 'Contributor', 'contributorLogin', 'Contributor | Signin'));
+    $('.modr-login-ctrl').append(
+        generateBasicPopup('#moderatorLoginPopup', 'Moderator', 'moderatorLogin', 'Moderator | Signin'));
     $('#contributorLoginPopup, #moderatorLoginPopup').enhanceWithin().popup(); 
     
 });
