@@ -180,7 +180,6 @@ $(document).ready(function() {
 
 	/*remove blue outline on clicking jqm ui-input-clear button??*/
   
-
 	/* 
 		Display pp-cw/eb-cw static header accordingly 
 		Display search option accordingly

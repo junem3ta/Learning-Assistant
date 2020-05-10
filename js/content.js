@@ -19,5 +19,4 @@ $(document).ready(function () {
     $('.modr-login-ctrl').append(
         generateBasicPopup('#moderatorLoginPopup', 'Moderator', 'moderatorLogin', 'Moderator | Signin'));
     $('#contributorLoginPopup, #moderatorLoginPopup').enhanceWithin().popup(); 
-    
 });

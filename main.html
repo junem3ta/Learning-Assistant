@@ -24,7 +24,6 @@
 		<div data-role="page" class="content-wrapper"> 	
 			<!-- 
 				@AndroidSidepanel 
-
 				-- The Android side panel overlaps over the ui-content, thus it makes more sense 
 				to have the sidepanelwrapper placed in a fixed position outside of the ui-content.
 			-->
@@ -188,7 +187,48 @@
 							</div>
 						</div>
 						<div class="ua ui-grid-a">
-							<div class="ui-block-a"></div>
+							<style>
+								.ua.ui-grid-a {
+									margin: 16px 0 0;
+								}
+								.ua .ui-block-a,.ui-block-b {
+									width: 100% !important;
+								}
+								.ua .ui-block-a {
+									height: 236px;
+								}
+								.ua .ui-block-b {
+									height: auto;
+								}
+								/* #e8f0fe */
+								.avatar-card {
+									width: 206px;
+									height: 236px;
+									margin: auto;
+									border: 1px solid #ddd;
+									border-radius: 3px;
+									box-shadow: inset 0 7.375em 0 #e8f0fe;
+								}
+								.gravatar-wrapper {
+									width: 164px;
+									height: 164px;
+									margin: 16px 21px 0 21px;
+									border: 1px dotted #ddd;
+								}
+								.udID {
+									width: 100%;
+									height: 32px;
+									line-height: 32px;
+									margin: 12px 0;
+									text-align: center;
+								}
+							</style>
+							<div class="ui-block-a">
+								<div class="avatar-card">
+									<div class="gravatar-wrapper"><!-- img --></div>
+									<div class="udID">eRead Bot</div>
+								</div>
+							</div>
 							<div class="ui-block-b"></div>
 						</div>
 

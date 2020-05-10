@@ -515,14 +515,6 @@ body {
 	border-top-left-radius: 0 !important;
 	border-bottom-left-radius: 0 !important;
  }
- .ua .ui-block-a, 
- .ua .ui-block-b {
-	height: 220px;
- }
-.ua .ui-block a {
-	width: 164px;
-	margin: 0 8px 0 8px;
-}
 
 /* Break Android Styling, 444px*/
 @media all and (min-width: 27.75em) {
