@@ -516,6 +516,65 @@ body {
 	border-bottom-left-radius: 0 !important;
  }
 
+ .ua.ui-grid-a {
+	margin: 16px 0 0;
+}
+.ua .ui-block-a,.ui-block-b {
+	width: 100% !important;
+}
+.ua .ui-block-a {
+	height: 236px;
+}
+/* #e8f0fe */
+.avatar-card {
+	width: 206px;
+	height: 236px;
+	margin: auto;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	box-shadow: inset 0 7.375em 0 #e8f0fe;
+}
+.avatar-card:hover {
+	/* Be sure to change this */
+	cursor:cell;
+}
+.gravatar-wrapper {
+	width: 164px;
+	height: 164px;
+	margin: 16px 20px 0 20px;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+}
+.gravatar-wrapper img {
+	height: 100%;
+	width: 100%;
+	border-radius: 3px;
+}
+.udID {
+	width: 100%;
+	height: 32px;
+	line-height: 32px;
+	margin: 12px 0;
+	text-align: center;
+}
+.udID p {
+	font-family: Ubuntu;
+	font-size: 90%;
+}
+.ua .ui-block-b {
+	height: auto;
+	margin: 8px 0 0 0;
+	padding: .4em 1em;
+	line-height: 140%;
+}
+.ua-info-wrapper div h4 {
+	font-size: 1.1em;
+	margin: .25em;
+}
+.ua-info {
+	color: #777;
+}
+
 /* Break Android Styling, 444px*/
 @media all and (min-width: 27.75em) {
 	.ua-nav-wrapper {
