@@ -561,15 +561,17 @@ body {
 	font-family: Ubuntu;
 	font-size: 90%;
 }
+
 .ua .ui-block-b {
 	height: auto;
 	margin: 8px 0 0 0;
 	padding: .4em 1em;
 	line-height: 140%;
 }
-.ua-info-wrapper div h4 {
-	font-size: 1.1em;
-	margin: .25em;
+.ua-info-hdr h4 {
+	font-size: 22px;
+	margin: .25em 0;
+	letter-spacing: .4px;
 }
 .ua-info {
 	color: #777;
