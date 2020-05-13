@@ -54,7 +54,7 @@ $(document).ready(function() {
    		lastScrollTop = st;
 	} 
 	/*Sidepanel controllers*/
-	 $(document).on('swiperight', function(e) {
+	 $(document).on('swiperight', function() {
 			if(!isPanelOpen && !isSearching) {
 				$('.side-panel-wrapper').animate({
 					left: '0'
@@ -63,7 +63,7 @@ $(document).ready(function() {
 				isPanelOpen = true;
 			}
     });
-	$(document).on('swipeleft',function(e){
+	$(document).on('swipeleft',function(){
 		if(isPanelOpen) {
 			$('.side-panel-wrapper').animate({
 				left: '-100%'

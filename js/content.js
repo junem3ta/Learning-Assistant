@@ -5,7 +5,7 @@ $(document).ready(function () {
         @generateBasicPopup helper fn
         creates markup for JQM 1.5.0 popup windows.    
     */
-    function generateBasicPopup(a, b, c, d, e) {
+    function generateBasicPopup(a, b, c, d) {
         var popup = $($('.popupbasic-template')[0].content.cloneNode(true));
         popup.find('a').attr('href', a).text(b);
         a = a.split('#')[1];
