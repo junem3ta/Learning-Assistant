@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 $(document).ready(function () {
     /*Create and load dynamic DOM content*/
     /* 

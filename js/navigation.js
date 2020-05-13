@@ -1,3 +1,5 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable no-undef */
 $(document).ready(function() {
 	/* Default Global VARS */
 	var desktopMode = false;
@@ -10,10 +12,10 @@ $(document).ready(function() {
 	responsiveUIHandler();
 
 	/* Hide Android Searchbar on Scrolldown, show on Scrollup*/
-	var didScroll;
+	/* var didScroll; */
 	var lastScrollTop = 0;
 	var delta = 5;
-	var navbarHeight = 88 /* 91 */ /*46 without static header */;
+	/* var navbarHeight = 88 */ /* 91 */ /*46 without static header *//* ; */
 	$(window).scroll(function(){
 		if(currentCW == "eb-cw" || currentCW == "pp-cw") {
 			hasScrolled(); 

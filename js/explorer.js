@@ -1,3 +1,5 @@
+/* eslint-disable no-redeclare */
+/* eslint-disable no-undef */
 $(document).ready(function() {
     /* Explorer */
 	/* 
@@ -9,7 +11,6 @@ $(document).ready(function() {
 	var currentECLSuffix = 1;
 	var currentPath = 'root';
 	var absPath = '';
-	var files;
 	
 	function renderECL1() {
 		/* Generate root folders */
@@ -134,7 +135,6 @@ $(document).ready(function() {
 
 	/* Generic path-section-link for all path-sections */
 	$('.explorer-navigation').on('click', '.path-section-link', function() {
-		var currentECL = 'ecl' + currentECLSuffix;
 		/* Display previous ecl wrapper */
 		$('.ecw').hide();
 		console.log('Hiding current-ecl ', currentECLSuffix);
