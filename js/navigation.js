@@ -173,12 +173,14 @@ $(document).ready(function() {
 			if($('.panel-ctrl').css('display') == 'none') {
 				$(".panel-ctrl").show();
 			}
+			currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.static-hdr').show() : $('.static-hdr').hide();
+			currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.home-search-wrapper').show() : $('.home-search-wrapper').hide();
 		}
 	}
 
 	/* Disable focus styling and remove margin around search input fields*/
 	$("input").closest('div').addClass('noshadowI');
-	$(".header-search").closest('div').addClass('nomargin');
+	$(".header-search").closest('div').addClass('nomargin hsw-custom');
 
 	/*remove blue outline on clicking jqm ui-input-clear button??*/
   

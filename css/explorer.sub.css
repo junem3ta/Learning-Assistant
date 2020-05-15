@@ -1,0 +1,139 @@
+@media all and (min-width: 241px) {
+	.explorer {
+		width: calc(100% + 32px);
+		margin-left: -16px;
+        padding-left: calc(calc(calc(100% + 32px) - 240px) / 2);
+        margin-right: 0;
+    }
+    @media all and (min-width: 321px) {
+        .explorer {
+            width: calc(100% + 32px);
+            margin-left: -16px;
+            padding-left: calc(calc(calc(100% + 32px) - 320px) / 2);
+        }
+        @media all and (min-width: 401px) {
+            .explorer {
+                width: calc(100% + 32px);
+                margin-left: -16px;
+                padding-left: calc(calc(calc(100% + 32px) - 400px) / 2);
+            }
+            @media all and (min-width: 481px) {
+                .explorer {
+                    width: calc(100% + 32px);
+                    margin-left: -16px;
+                    padding-left: calc(calc(calc(100% + 32px) - 480px) / 2);
+                }
+                @media all and (min-width: 561px) {
+                    .explorer {
+                        width: calc(100% + 32px);
+                        margin-left: -16px;
+                        padding-left: calc(calc(calc(100% + 32px) - 560px) / 2);
+                    }
+                    @media all and (min-width: 600px) {
+                        .explorer {
+                            width: calc(100% + 32px);
+                            margin-left: -16px;
+                            padding-left: calc(calc(calc(100% + 32px) - 330px) / 2);
+                        }
+                        @media all and (min-width: 607px) {
+                            .explorer {
+                                width: calc(100% + 32px);
+                                margin-left: -16px;
+                                padding-left: calc(calc(calc(100% + 32px) - 440px) / 2);
+                            }
+                            @media all and (min-width: 717px) {
+                                .explorer {
+                                    width: calc(100% + 32px);
+                                    margin-left: -16px;
+                                    padding-left: calc(calc(calc(100% + 32px) - 550px) / 2);
+                                }
+                                @media all and (min-width: 827px) {
+                                    .explorer {
+                                        width: calc(100% + 32px);
+                                        margin-left: -16px;
+                                        padding-left: calc(calc(calc(100% + 32px) - 660px) / 2);
+                                    }
+                                    @media all and (min-width: 937px) {
+                                        .explorer {
+                                            width: calc(100% + 32px);
+                                            margin-left: -16px;
+                                            padding-left: calc(calc(calc(100% + 32px) - 770px) / 2);
+                                        }
+                                        @media all and (min-width: 1047px) {
+                                            .explorer {
+                                                width: calc(100% + 32px);
+                                                margin-left: -16px;
+                                                padding-left: calc(calc(calc(100% + 32px) - 880px) / 2);
+                                            }
+                                            @media all and (min-width: 1157px) {
+                                                .explorer {
+                                                    width: calc(100% + 32px);
+                                                    margin-left: -16px;
+                                                    padding-left: calc(calc(calc(100% + 32px) - 990px) / 2);
+                                                }
+                                                @media all and (min-width: 1267px) {
+                                                    .explorer {
+                                                        width: calc(100% + 32px);
+                                                        margin-left: -16px;
+                                                        padding-left: calc(calc(calc(100% + 32px) - 1100px) / 2);
+                                                    }
+                                                    @media all and (min-width: 1377px) {
+                                                        .explorer {
+                                                            width: calc(100% + 32px);
+                                                            margin-left: -16px;
+                                                            padding-left: calc(calc(calc(100% + 32px) - 1210px) / 2);
+                                                        }
+                                                        @media all and (min-width: 1487px) {
+                                                            .explorer {
+                                                                width: calc(100% + 32px);
+                                                                margin-left: -16px;
+                                                                padding-left: calc(calc(calc(100% + 32px) - 1320px) / 2);
+                                                            }
+                                                            @media all and (min-width: 1597px) {
+                                                                .explorer {
+                                                                    width: calc(100% + 32px);
+                                                                    margin-left: -16px;
+                                                                    padding-left: calc(calc(calc(100% + 32px) - 1430px) / 2);
+                                                                }
+                                                                @media all and (min-width: 1707px) {
+                                                                    .explorer {
+                                                                        width: calc(100% + 32px);
+                                                                        margin-left: -16px;
+                                                                        padding-left: calc(calc(calc(100% + 32px) - 1540px) / 2);
+                                                                    }
+                                                                    @media all and (min-width: 1817px) {
+                                                                        .explorer {
+                                                                            width: calc(100% + 32px);
+                                                                            margin-left: -16px;
+                                                                            padding-left: calc(calc(calc(100% + 32px) - 1650px) / 2);
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }              
+                                }    
+                            }    
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+/* scrollbar intefering with div width
+absolutely position the scroll bars?*/
+@media(width: 240px), (width: 320px), (width: 400px),(width: 480px),(width: 560px)/* ,
+(width: 606px),(width: 716px),(width: 826px),(width: 936px),(width: 1046px),
+(width: 1156px),(width: 1266px),(width: 1376px),(width: 1486px),(width: 1596px),
+(width: 1706px),(width: 1816px),(width: 1926px) */{
+	.explorer{
+		width: calc(100% + 32px);
+		margin-left: -16px;
+		padding-left: 0;
+	}
+}

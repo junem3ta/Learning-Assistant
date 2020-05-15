@@ -104,6 +104,7 @@ body {
 	height: 44px;
 	padding: 0 0 0 40px !important;
 	font-size: 14px;
+	font-weight: 100;
 	margin-bottom:0 !important;
 	padding-bottom:0 !important;
 	font-family: 'Product sans' !important;
@@ -126,6 +127,11 @@ body {
 
 .nomargin {
 	margin: 0;
+}
+
+.hsw-custom {
+	width: calc(100% - 12px) !important;
+    padding-right: 0;
 }
 
 .ui-input-text {
@@ -238,7 +244,9 @@ body {
 	height: 50px;
     line-height: 38px;
     width: 100%;
-    margin: 0 1em 0 0;
+	margin: 0 1em 0 0;
+	white-space: nowrap;
+	overflow-x: auto;
 }
 .b-f-navigators {
 	/* display: none; */
@@ -276,13 +284,17 @@ body {
 }
 .path-section {
     background: #e8f0fe;
-    font-size: 14px;
+    font-size: 12px;
     left: 16px;
     padding: 0 10px;
 	color: #1967d2;
-	float: left;
+	/* float: left; */
+	display: inline-block;
     margin: 5px 0 0 4px;
 	border-radius: 3px;
+}
+.path-section p {
+	text-transform: uppercase;
 }
 .path-section:hover {
 	cursor: not-allowed;
@@ -302,7 +314,8 @@ body {
 	transform: scale(0.75);
 }
 .path-delimeter {
-	float: left;
+	/* float: left; */
+	display: inline-block;
 	padding: 0 5px 0 6px;
 	margin-top: 4px;
 	transform: scale(0.75);
@@ -316,10 +329,14 @@ body {
 .explorer {
 	position: relative;
     height: calc(100% - 3.125em);
-    width: 100%;
-    /* margin: 0 0 1em 0; */
+	/* width: 100%; */
+	width: calc(100% + 32px);
+	/* margin: 0 0 1em 0; */
 	border-top: 1px solid #ddd;
+	margin-left: -16px;
 	padding-bottom: 64px;
+	width: 160px;
+	margin: 0 auto;
 }
 .ecw {
 	height: calc(100% - 2.5em);
@@ -329,34 +346,51 @@ body {
     padding: 10px 0 30px;
     overflow: auto;
 }
-.ecw .folder-tile-wrapper {
+
+.folder-tile-wrapper,.file-tile-wrapper {
+	/* height: 134px;
+	width: 150px; */
+	height: 107px;
+	width: 80px;
 	float: left;
 }
-.folder-tile-wrapper {
-	height: 134px;
-	width: 150px;
-}
-.folder-icon {
+.folder-icon, .file-icon{
 	/* border: 1px solid #ddd; */
 	position: relative;
     height: 80px;
     font-size: 12px;
     text-align: center;
     width: 80px;
-    margin: 20px 0 0 35px;
+    /* margin: 20px 0 0 35px; */
 	border-radius: 3px;
-	background-image: url("../assets/images/folder-m-filled.svg");
-	background-size: contain;
-	background-size: 80px;
+	margin: 0;
 }
-.folder-icon p {
+.folder-icon:after,.file-icon:after {
+    content: "";
+    position: absolute;
+    top: 7.5px;
+    left: 7.5px;
+    width: 65px;
+    height: 65px;
+    background: url("../assets/images/folder-m-filled.svg");
+	background-size: 100%;
+	background-size: contain;
+    background-repeat: no-repeat;
+}
+.file-icon:after {
+	background: url("../assets/images/OfficeL-A-pdf.svg");
+}
+.folder-icon p,.file-icon p {
 	position: absolute;
 	top: 85px;
 	height: 27px;
-	width: 130px;
-	left: -25px;
+	left: 5px;
+	right: 5px;
 	text-align: center;
 	overflow: hidden;
+	white-space: -webkit-nowrap;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 }
 .folder-icon:hover {
 	cursor: pointer;
@@ -366,13 +400,13 @@ body {
     line-height: 40px;
     margin: 0 0 0 32px !important;
 }
-.file-tile-wrapper{
+/* .file-tile-wrapper{
 	height: 134px;
     width: 85px;
     margin-left: 17.5px;
     float: left;
-}
-.file-icon {
+} */
+/* .file-icon {
 	position: relative;
     height: 80px;
     font-size: 12px;
@@ -380,16 +414,17 @@ body {
     width: 80px;
     margin: 15px 0 0 2.5px;
 	background-image: url("../assets/images/OfficeL-A-pdf.svg");
-}
-.file-icon p {
+} */
+
+/* .file-icon p {
     position: absolute;
     top: 85px;
     height: 27px;
     width: 85px;
     left: -2.5px;
     text-align: center;
-    overflow: hidden;
-}
+	overflow: hidden;
+} */
 .file-icon:hover {
 	cursor: pointer;
 }
@@ -418,7 +453,7 @@ body {
 	position: absolute;
     height: 15px;
     bottom: 64px;
-    left: 0;
+    left: 15px;
     /* right: 0; */
     background: #fff;
     /* border-top: 1px solid #ccc; */
@@ -429,7 +464,8 @@ body {
     /* border: 1px solid #ccc; */
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    background: #e8f0fe;
+	background: #e8f0fe;
+	font-size: 70%;
 }
 
 /* UserAccount */
@@ -604,7 +640,7 @@ body {
 @media all and (min-width: 37.5em){
 	.content {
 		margin: 1em;
-		height: calc(100% - 2em);
+		height: calc(100% - 2em) !important;
 	}
 	.side-panel-wrapper, .panel-ctrl, .home-search-wrapper,.footer {
 		display: none;
@@ -616,7 +652,7 @@ body {
 	.ui-page .ui-content {
 		height: inherit;
 		padding: 0;
-		min-width: 1071px !important;
+		/* min-width: 1071px !important; */
 	}
 	.header {
 		display: block;
@@ -627,7 +663,8 @@ body {
 	}
 	.app-title {
 		height: 48px;
-		width: 250px;
+		/* width: 250px; */
+		width: 165px;
 	}
 	.title {
 		height: 40px;
@@ -649,6 +686,7 @@ body {
 	}
 	.app-title p {
 		margin: 0;
+		padding: 0;
 	}
 	.header-search-wrapper {
 		/* calc(100% - 250px); */
@@ -717,17 +755,19 @@ body {
 		outline: none;
 		color: #1967d2;
 	}
+
 	.pc-side-panel-wrapper {
 		display: block;
-		width: 249px;
+		/* width: 249px; */
+		width: 165px;
 		border-right: 1px solid #ddd;
-	}
-	.content-container {
-		width: calc(100% - 250px);
-	}
-	.pc-side-panel-wrapper {
 		clear: both;
 	}
+	.content-container {
+		/* width: calc(100% - 250px); */
+		width: calc(100% - 166px);
+	}
+
 	.pc-side-panel-wrapper,.content-container {
 		height: calc(100% - 4.0625em);
 		float: left;
@@ -735,12 +775,14 @@ body {
 	.cw-ctrls-wrapper {
 		padding: 20px 0;
 		border-bottom: 1px solid #ddd;
-		width: 225px;
+		/* width: 225px; */
+		width: 150px;
 		margin: auto;
 	}
 	.cw-ctrls-wrapper .content-wrapper-ctrl {
 		height: 40px;
-		width: 225px;
+		/* width: 225px; */
+		width: 150px;
 	}
 	.cw-ctrls-wrapper .content-wrapper-ctrl p {
 		margin: 0;
@@ -767,12 +809,37 @@ body {
 	.path-section, .path-delimeter {
 		margin-top: 0;
 	}
+	.path-section {
+		font-size: 14px;
+	}
+	.path-section p {
+		text-transform: none;
+	}
 	.explorer {
 		height: calc(100% - 3.375em);
 		padding-bottom: 0;
 	}
+	.folder-tile-wrapper,.file-tile-wrapper {
+		width: 110px;
+	}
+	.folder-icon,.file-icon {
+		margin: 0 15px;
+	}
+	.folder-icon:after, .file-icon:after {
+		top: 0;
+		left: 0;
+		width: 80px;
+		height: 80px;
+	}
 	.fw-stats {
 		bottom: 0;
+		/* left: 0; */
+		font-size: 12px;
+	}
+	.folder-icon p {
+		/* width: 135px;
+		left: -25px;
+		right: unset; */
 	}
 	/* Responsive android styling */
 	@media screen and (max-width: 1087px) {
@@ -781,7 +848,8 @@ body {
 		}
 		.header-search-wrapper {
 			/* 388 = app.title.outerWidth() + ua-ctrl-wrapper.outerWidth() + hsw.margin-left + ua-ctrl-wrapper-margin-left */
-			width:calc(100% - 388px);
+			/* width:calc(100% - 388px); */
+			width: calc(100% - 283px);
 		}
 	}
 }
