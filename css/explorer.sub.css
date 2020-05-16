@@ -47,65 +47,89 @@
                                     margin-left: -16px;
                                     padding-left: calc(calc(calc(100% + 32px) - 550px) / 2);
                                 }
-                                @media all and (min-width: 827px) {
-                                    .explorer {
-                                        width: calc(100% + 32px);
-                                        margin-left: -16px;
-                                        padding-left: calc(calc(calc(100% + 32px) - 660px) / 2);
+                                @media all and (min-width: 815px) {
+                                    .pc-side-panel-wrapper {
+                                        width: 249px;
                                     }
-                                    @media all and (min-width: 937px) {
+                                    .cw-ctrls-wrapper {
+                                        width: 225px;
+                                    }
+                                    .cw-ctrls-wrapper .content-wrapper-ctrl {
+                                        width: 225px;
+                                    }
+                                    .content-container {
+                                        width: calc(100% - 250px);
+                                    }
+                                    .app-title {
+                                        width: 250px;
+                                    }
+                                    .app-title p {
+                                        padding: 0 0 0 20px;
+                                    }
+                                    .header-search-wrapper {
+                                        /* 388 = app.title.outerWidth() + ua-ctrl-wrapper.outerWidth() + hsw.margin-left + ua-ctrl-wrapper-margin-left */
+                                        width:calc(100% - 368px);
+                                    }
+                                    @media all and (min-width: 827px) {
                                         .explorer {
                                             width: calc(100% + 32px);
                                             margin-left: -16px;
-                                            padding-left: calc(calc(calc(100% + 32px) - 770px) / 2);
+                                            padding-left: calc(calc(calc(100% + 32px) - 660px) / 2);
                                         }
-                                        @media all and (min-width: 1047px) {
+                                        @media all and (min-width: 937px) {
                                             .explorer {
                                                 width: calc(100% + 32px);
                                                 margin-left: -16px;
-                                                padding-left: calc(calc(calc(100% + 32px) - 880px) / 2);
+                                                padding-left: calc(calc(calc(100% + 32px) - 770px) / 2);
                                             }
-                                            @media all and (min-width: 1157px) {
+                                            @media all and (min-width: 1047px) {
                                                 .explorer {
                                                     width: calc(100% + 32px);
                                                     margin-left: -16px;
-                                                    padding-left: calc(calc(calc(100% + 32px) - 990px) / 2);
+                                                    padding-left: calc(calc(calc(100% + 32px) - 880px) / 2);
                                                 }
-                                                @media all and (min-width: 1267px) {
+                                                @media all and (min-width: 1157px) {
                                                     .explorer {
                                                         width: calc(100% + 32px);
                                                         margin-left: -16px;
-                                                        padding-left: calc(calc(calc(100% + 32px) - 1100px) / 2);
+                                                        padding-left: calc(calc(calc(100% + 32px) - 990px) / 2);
                                                     }
-                                                    @media all and (min-width: 1377px) {
+                                                    @media all and (min-width: 1267px) {
                                                         .explorer {
                                                             width: calc(100% + 32px);
                                                             margin-left: -16px;
-                                                            padding-left: calc(calc(calc(100% + 32px) - 1210px) / 2);
+                                                            padding-left: calc(calc(calc(100% + 32px) - 1100px) / 2);
                                                         }
-                                                        @media all and (min-width: 1487px) {
+                                                        @media all and (min-width: 1377px) {
                                                             .explorer {
                                                                 width: calc(100% + 32px);
                                                                 margin-left: -16px;
-                                                                padding-left: calc(calc(calc(100% + 32px) - 1320px) / 2);
+                                                                padding-left: calc(calc(calc(100% + 32px) - 1210px) / 2);
                                                             }
-                                                            @media all and (min-width: 1597px) {
+                                                            @media all and (min-width: 1487px) {
                                                                 .explorer {
                                                                     width: calc(100% + 32px);
                                                                     margin-left: -16px;
-                                                                    padding-left: calc(calc(calc(100% + 32px) - 1430px) / 2);
+                                                                    padding-left: calc(calc(calc(100% + 32px) - 1320px) / 2);
                                                                 }
-                                                                @media all and (min-width: 1707px) {
+                                                                @media all and (min-width: 1597px) {
                                                                     .explorer {
                                                                         width: calc(100% + 32px);
                                                                         margin-left: -16px;
-                                                                        padding-left: calc(calc(calc(100% + 32px) - 1540px) / 2);
+                                                                        padding-left: calc(calc(calc(100% + 32px) - 1430px) / 2);
                                                                     }
-                                                                    @media all and (min-width: 1817px) {
+                                                                    @media all and (min-width: 1707px) {
                                                                         .explorer {
                                                                             width: calc(100% + 32px);
                                                                             margin-left: -16px;
-                                                                            padding-left: calc(calc(calc(100% + 32px) - 1650px) / 2);
+                                                                            padding-left: calc(calc(calc(100% + 32px) - 1540px) / 2);
+                                                                        }
+                                                                        @media all and (min-width: 1817px) {
+                                                                            .explorer {
+                                                                                width: calc(100% + 32px);
+                                                                                margin-left: -16px;
+                                                                                padding-left: calc(calc(calc(100% + 32px) - 1650px) / 2);
+                                                                            }
                                                                         }
                                                                     }
                                                                 }
@@ -114,9 +138,9 @@
                                                     }
                                                 }
                                             }
-                                        }
-                                    }              
-                                }    
+                                        }              
+                                    }  
+                                }  
                             }    
                         }
                     }

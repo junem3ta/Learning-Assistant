@@ -5,6 +5,7 @@
 body {
 	font-family:'Product Sans' !important;
 	position: relative;
+	background-color: #fff !important;
 }
 .content-wrapper {
 	background-color: #fff !important;
@@ -130,7 +131,8 @@ body {
 }
 
 .hsw-custom {
-	width: calc(100% - 12px) !important;
+	width: calc(100% - 16px) !important;
+    height: calc(100% - 3px);
     padding-right: 0;
 }
 
@@ -665,6 +667,7 @@ body {
 		height: 48px;
 		/* width: 250px; */
 		width: 165px;
+		margin-top: -5px;
 	}
 	.title {
 		height: 40px;
