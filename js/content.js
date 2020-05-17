@@ -15,9 +15,9 @@ $(document).ready(function () {
         return popup;
     }
 
-    $('.contributors-login-ctrl').append(
+    $('.contributors-login-ctrl, .contributors-aux-lc').append(
         generateBasicPopup('#contributorLoginPopup', 'Contributor', 'contributorLogin', 'Contributor | Signin'));
-    $('.modr-login-ctrl').append(
+    $('.modr-login-ctrl, .moderators-aux-lc').append(
         generateBasicPopup('#moderatorLoginPopup', 'Moderator', 'moderatorLogin', 'Moderator | Signin'));
     $('#contributorLoginPopup, #moderatorLoginPopup').enhanceWithin().popup(); 
 });

@@ -20,6 +20,15 @@
 		<script type="text/javascript" src="js/navigation.js"></script>
 		<script type="text/javascript" src="js/explorer.js"></script>
 		<script type="text/javascript" src="js/content.js"></script>
+
+		<!-- 
+			@PROJECTBOARD. 
+			0. (Reminder) - Get one. Seriously. It's free on GitHub.
+			1. Scrollbar Styling.
+			2. Get font-weight variations for default font.
+			3. Download and setup "Ubuntu" & "Montserrat" font.
+			4. Programmatically focus on ua-ctrl on pageload.
+		 -->
 	</head>
 	<body>
 		<div data-role="page" class="content-wrapper"> 	
@@ -129,8 +138,14 @@
 						<div id="contributors-cw" class="content-wrapper-ctrl">
 							<p >Contributors</p>
 						</div>
+						<div id="ua-cw" class="content-wrapper-ctrl">
+							<p >User Account</p>
+						</div>
+						<div class="sub-nav">
+							<div class="contributors-aux-lc"></div>
+							<div class="moderators-aux-lc"></div>
+						</div>
 					</div>
-					
 				</div>
 				<!-- End Desktop Sidepanel -->
 
@@ -199,65 +214,29 @@
 										</div>
 									</attr>
 								</div>
+								<div class="ua-details">
+									<h4>Standard Account</h4>
+									<p>
+										<span>•</span>&nbspUserID UIDMozGkCrm
+									</p>
+									<br/>
+								</div>
 							</div>
-							<style>
-								.ua-cw {
-									height: calc(100vh - 5.1875em);
-									overflow-x: hidden;
-									overflow-y: auto;
-									/* styling scrollbar [css?] */
-								}
-								.ua-info-hdr p {
-									line-height: 25px;
-								}
-								.ua-info-hdr p span {
-									display: block;
-									float: left;
-									font-size: 2.5em;
-									color: #0caa0c;
-								}
-								.ua-info span {
-									color: #202020;
-								}
-								.ua-info-eb-link span {
-									font-size: 110%;
-									color: #1967d2;
-								}
-								.ua-info-eb-link span:hover {
-									cursor: pointer;
-								}
-							</style>
 							<div class="ui-block-b">
-								<div class="ui-body-c ua-info-wrapper">
-									<div class="ua-info-hdr">
-										<h4>Standard Account</h4>
-										<p>
-											<span>•</span>&nbspUserID UIDMozGkCrm
-										</p>
-										<br/>
-									</div>									
+								<div class="ui-body-c ua-info-wrapper">									
 									<p class="ua-info"> 
 										<i class="fas fa-info-circle"></i> The <em>eRead</em> standard user account is a <span><em>Super</em> user account</span> with unlimited access to <span><em>all</em></span> 
 										revision content. User accounts are only required for when you're contributing new content, mainly for purposes 
 										of tracking the approval status of added content.
 										<br/>
 									</p>
-									<p class="ua-info-eb-link">
-										<br />
-										Contribute to the eRead community by adding new revision content <span id="uploads-cw" class="content-wrapper-ctrl">here</span>
-									</p>
 								</div>
-								<!-- 
-									eRead Standard Account [fs 140%]
-									UserID UIDMozGkCrm
-
-									Logged in as standard user [- (green login icon)]
-									info-circle. -(li-dot) The standard user account is a _super user account_[friendly green font-color] with unlimited access to _all_ 
-									revision content. User accounts are only required for when you're contributing new content, mainly for purposes 
-									of tracking the approval status of added content. 
-									
-									Contribute to the eRead community by adding new revision content [here](cw-link)
-								-->
+							</div>
+							<div class="ui-block-c">
+								<p class="ua-info-eb-link">
+									<br />
+									Contribute to the eRead community by adding new revision content <span id="uploads-cw" class="content-wrapper-ctrl">here</span>.
+								</p>
 							</div>
 						</div>
 					</div>

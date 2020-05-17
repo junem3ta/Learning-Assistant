@@ -212,6 +212,7 @@ $(document).ready(function() {
 		/*Only target Desktop content-wrapper-controllers*/
 		if($(this).prop("nodeName")=="DIV") {
 			$('.content-wrapper-ctrl').removeClass('active-cw-ctrl');
+			$('.sub-nav div a').removeClass('active-sn-ctrl');
 			$(this).addClass("active-cw-ctrl");
 		}
 
@@ -222,6 +223,12 @@ $(document).ready(function() {
 			$('.'+target).fadeIn();
 			currentCW = target;
 		}		
+	});
+
+	$(document).on('click','.sub-nav div a',function() {
+		$('.content-wrapper-ctrl').removeClass('active-cw-ctrl');
+		$('.sub-nav div a').removeClass('active-sn-ctrl');
+		$(this).addClass("active-sn-ctrl");
 	});
 
 	$("#modrLogin, #contributorLogin").submit(function(){
