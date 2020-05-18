@@ -839,8 +839,9 @@ body {
 		border-color: transparent !important;
 		border-left: 3px solid transparent;
 	}
-	.sub-nav a:focus {
-		-webkit-box-shadow:none !important;-moz-box-shadow:none !important;box-shadow:none !important;
+	.sub-nav a:focus,.ua-login-ctrls a:focus {
+		-webkit-box-shadow:none !important;-moz-box-shadow:none !important;box-shadow:none !important;border-color: #ddd !important;
+		color: #000 !important;text-shadow: none !important;
 	}
 	.sub-nav a:hover {
 		cursor: pointer;
@@ -876,6 +877,7 @@ body {
 		padding-left: 10px;
 		color: #1967d2 !important;
 		width: calc(100% - 20px);
+		text-shadow: none !important;
 	}
 
 	.explorer-navigation {

@@ -216,6 +216,12 @@ $(document).ready(function() {
 			$(this).addClass("active-cw-ctrl");
 		}
 
+		if($(this).hasClass('ua-dpl-ctrl')){
+			$('.content-wrapper-ctrl').removeClass('active-cw-ctrl');
+			$('.sub-nav div a').removeClass('active-sn-ctrl');
+			$('.cw-ctrls-wrapper #ua-cw').addClass('active-cw-ctrl');
+		}
+
 		if(currentCW == target) {
 			return;
 		} else {
