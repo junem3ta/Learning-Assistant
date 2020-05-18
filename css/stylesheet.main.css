@@ -346,7 +346,7 @@ body {
     background: #fff;
     border-top: none;
     padding: 10px 0 30px;
-    overflow: auto;
+    overflow: /* auto */overlay;
 }
 
 .folder-tile-wrapper,.file-tile-wrapper {
@@ -473,8 +473,8 @@ body {
 /* UserAccount */
 .ua-cw {
 	height: calc(100vh - 5.1875em);
-	/* overflow-x: hidden; */
-	/* overflow-y: auto; */
+	overflow-x: hidden;
+	overflow-y: overlay;
 	/* scrollbar styling [css?] */
 }
 .ua-nav-wrapper {

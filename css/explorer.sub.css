@@ -31,81 +31,88 @@
                     }
                     @media all and (min-width: 600px) {
                         .explorer {
-                            width: calc(100% + 32px);
+                            width: calc(calc(100% + 32px) -  calc(calc(calc(100% + 32px) - 330px) / 2));
                             margin-left: -16px;
                             padding-left: calc(calc(calc(100% + 32px) - 330px) / 2);
                         }
                         @media all and (min-width: 607px) {
                             .explorer {
-                                width: calc(100% + 32px);
+                                width: calc(calc(100% + 32px) -  calc(calc(calc(100% + 32px) - 440px) / 2));
                                 margin-left: -16px;
                                 padding-left: calc(calc(calc(100% + 32px) - 440px) / 2);
                             }
                             @media all and (min-width: 717px) {
                                 .explorer {
-                                    width: calc(100% + 32px);
+                                    width: calc(calc(100% + 32px) -  calc(calc(calc(100% + 32px) - 550px) / 2));
                                     margin-left: -16px;
                                     padding-left: calc(calc(calc(100% + 32px) - 550px) / 2);
                                 }
-                                @media all and (min-width: 827px) {
+                                @media all and (min-width: 911px) {
                                     .explorer {
-                                        width: calc(100% + 32px);
+                                        width: calc(calc(100% + 32px) -  calc(calc(calc(100% + 32px) - 660px) / 2));
                                         margin-left: -16px;
                                         padding-left: calc(calc(calc(100% + 32px) - 660px) / 2);
                                     }
-                                    @media all and (min-width: 937px) {
+                                    @media all and (min-width: 1021px) {
                                         .explorer {
-                                            width: calc(100% + 32px);
+                                            width: calc(calc(100% + 32px) -  calc(calc(calc(100% + 32px) - 770px) / 2));
                                             margin-left: -16px;
                                             padding-left: calc(calc(calc(100% + 32px) - 770px) / 2);
                                         }
-                                        @media all and (min-width: 1047px) {
+                                        @media all and (min-width: 1131px) {
                                             .explorer {
-                                                width: calc(100% + 32px);
+                                                width: calc(calc(100% + 32px) -  calc(calc(calc(100% + 32px) - 880px) / 2));
                                                 margin-left: -16px;
                                                 padding-left: calc(calc(calc(100% + 32px) - 880px) / 2);
                                             }
-                                            @media all and (min-width: 1157px) {
+                                            @media all and (min-width: 1241px) {
                                                 .explorer {
-                                                    width: calc(100% + 32px);
+                                                    width: calc(calc(100% + 32px) -  calc(calc(calc(100% + 32px) - 990px) / 2));
                                                     margin-left: -16px;
                                                     padding-left: calc(calc(calc(100% + 32px) - 990px) / 2);
                                                 }
-                                                @media all and (min-width: 1267px) {
+                                                @media all and (min-width: 1351px) {
                                                     .explorer {
-                                                        width: calc(100% + 32px);
+                                                        width: calc(calc(100% + 32px) -  calc(calc(calc(100% + 32px) - 1100px) / 2));
                                                         margin-left: -16px;
                                                         padding-left: calc(calc(calc(100% + 32px) - 1100px) / 2);
                                                     }
-                                                    @media all and (min-width: 1377px) {
+                                                    @media all and (min-width: 1461px) {
                                                         .explorer {
-                                                            width: calc(100% + 32px);
+                                                            width: calc(calc(100% + 32px) -  calc(calc(calc(100% + 32px) - 1210px) / 2));
                                                             margin-left: -16px;
                                                             padding-left: calc(calc(calc(100% + 32px) - 1210px) / 2);
                                                         }
-                                                        @media all and (min-width: 1487px) {
+                                                        @media all and (min-width: 1571px) {
                                                             .explorer {
-                                                                width: calc(100% + 32px);
+                                                                width: calc(calc(100% + 32px) -  calc(calc(calc(100% + 32px) - 1320px) / 2));
                                                                 margin-left: -16px;
                                                                 padding-left: calc(calc(calc(100% + 32px) - 1320px) / 2);
                                                             }
-                                                            @media all and (min-width: 1597px) {
+                                                            @media all and (min-width: 1681px) {
                                                                 .explorer {
-                                                                    width: calc(100% + 32px);
+                                                                    width: calc(calc(100% + 32px) -  calc(calc(calc(100% + 32px) - 1430px) / 2));
                                                                     margin-left: -16px;
                                                                     padding-left: calc(calc(calc(100% + 32px) - 1430px) / 2);
                                                                 }
-                                                                @media all and (min-width: 1707px) {
+                                                                @media all and (min-width: 1791px) {
                                                                     .explorer {
-                                                                        width: calc(100% + 32px);
+                                                                        width: calc(calc(100% + 32px) -  calc(calc(calc(100% + 32px) - 1540px) / 2));
                                                                         margin-left: -16px;
                                                                         padding-left: calc(calc(calc(100% + 32px) - 1540px) / 2);
                                                                     }
-                                                                    @media all and (min-width: 1817px) {
+                                                                    @media all and (min-width: 1901px) {
                                                                         .explorer {
-                                                                            width: calc(100% + 32px);
+                                                                            width: calc(calc(100% + 32px) -  calc(calc(calc(100% + 32px) - 1650px) / 2));
                                                                             margin-left: -16px;
                                                                             padding-left: calc(calc(calc(100% + 32px) - 1650px) / 2);
+                                                                        }
+                                                                        @media all and (min-width: 2011px) {
+                                                                            .explorer {
+                                                                                width: calc(calc(100% + 32px) -  calc(calc(calc(100% + 32px) - 1760px) / 2));
+                                                                                margin-left: -16px;
+                                                                                padding-left: calc(calc(calc(100% + 32px) - 1760px) / 2);
+                                                                            }
                                                                         }
                                                                     }
                                                                 }
@@ -127,10 +134,10 @@
 }
 /* scrollbar intefering with div width
 absolutely position the scroll bars?*/
-@media(width: 240px), (width: 320px), (width: 400px),(width: 480px),(width: 560px)/* ,
-(width: 606px),(width: 716px),(width: 826px),(width: 936px),(width: 1046px),
-(width: 1156px),(width: 1266px),(width: 1376px),(width: 1486px),(width: 1596px),
-(width: 1706px),(width: 1816px),(width: 1926px) */{
+@media(width: 240px), (width: 320px), (width: 400px),(width: 480px),(width: 560px),
+(width: 606px),(width: 716px),(width: 910px),(width: 1020px),(width: 1130px),
+(width: 1240px),(width: 1350px),(width: 1460px),(width: 1570px),(width: 1680px),
+(width: 1790px),(width: 1900px),(width: 2010px){
 	.explorer{
 		width: calc(100% + 32px);
 		margin-left: -16px;
