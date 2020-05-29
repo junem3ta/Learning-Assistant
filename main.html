@@ -8,18 +8,20 @@
 		<link rel="stylesheet" type="text/css" href="assets/fonts/ps/style.css"/>
 		<link href="assets/font-awesome/css/all.css" rel="stylesheet">
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-		<script type="text/javascript" src="js/jquery-migrate-3.1.0.min.js"></script>
-		<!-- <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script> -->
 		<script type="text/javascript" src="js/jquery.mobile-1.5.0-rc1.min.js"></script>
 		<script type="text/javascript" src="FsIndex/ppfs/FsIndex.0.min.js"></script>
-		<!-- <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css"> -->
 		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.5.0-rc1.min.css">
 		<link rel="stylesheet" type="text/css" href="css/stylesheet.main.css">
 		<link rel="stylesheet" type="text/css" href="css/explorer.sub.css">
+		<link rel="stylesheet" type="text/css" href="css/stylesheet.aux.css">
 		<script type="text/javascript" src="js/prefixfree.min.js"></script>
 		<script type="text/javascript" src="js/navigation.js"></script>
 		<script type="text/javascript" src="js/explorer.js"></script>
 		<script type="text/javascript" src="js/content.js"></script> 
+		<!-- 
+			@Issues:
+			Transparent scrollbar? y-axis scrollbars intefering with content on ua-cw
+		 -->
 	</head>
 	<body>
 		<div data-role="page" class="content-wrapper"> 	
@@ -99,7 +101,7 @@
 					</div>
 					<div class="ua-ctrls-wrapper">
 						<!-- <abbr title="User Account"> -->
-							<div id="ua-cw" class="ua-ctrl content-wrapper-ctrl ua-dpl-ctrl active-cw-ctrl" ><!-- title="User Account" -->
+							<div id="ua-cw" class="ua-ctrl content-wrapper-ctrl ua-dpl-ctrl" ><!-- title="User Account" -->
 								<p class="ua-ctrl-hdr">
 									<!-- Account -->
 									<i tabindex="1" class="ua-ctrl-icon fas fa-user-circle"></i>
@@ -123,7 +125,7 @@
 						<div id="eb-cw" class="content-wrapper-ctrl">
 							<p >eBooks</p>
 						</div>
-						<div id="uploads-cw" class="content-wrapper-ctrl">
+						<div id="uploads-cw" class="content-wrapper-ctrl active-cw-ctrl">
 							<p >Upload eBook(s)</p>
 						</div>
 						<div id="contributors-cw" class="content-wrapper-ctrl">
@@ -169,7 +171,55 @@
 					</div>
 					
 					<div class="content uploads-cw">
-						<p>C <br/></p>
+						<div class="uploads-hdr">
+							<h3>Contribute</h3>
+							<h4>
+								Share revision e-Books 
+								<attr title="Uploaded e-Books are subject to an approval process">
+									<i class="fas fa-info-circle"></i>
+								</attr>
+							</h4>
+						</div>
+						<div class="upload-wrapper">
+							<div>
+
+							</div>
+							<form class='upload'>
+								<!-- <h3>Add eBook(s)</h3> -->
+
+								<label for="file">File:</label>
+             					<input type="file" name="file" id="eb-files" multiple>
+							</form>
+							<div class='upload-metadata'>
+								<div class="cancel-upload">
+									<a href="#" class="ui-shadow ui-button ui-corner-all ui-button-inline ui-mini">
+										Cancel Upload 
+										<span class="ui-icon ui-icon-delete"></span>
+									</a>
+								</div>
+							</div>
+							<script type="text/javascript">
+								document.getElementById("eb-files").addEventListener('change',(event)=> {
+									let files = event.target.files;
+									let filesObjLength = Object.keys(files).length;
+									$('#eb-files').attr('disabled',true);
+
+									let fd = new FormData();
+									/* fd.append("file1",files[0]);
+									console.log(fd.get("file1")); */
+
+									$.each(files, (i, file)=> {
+										fd.append(i,file);
+										/* fd.get(i) */
+										fd.append(i+'metadata','department');
+										/* fd.get(i + 'department') */
+										console.log(fd.get(i+'metadata'));	
+									});
+
+									$('#eb-files').attr('disabled',false);
+								});
+							</script>
+						</div>
 					</div>
 					
 					<div class="content ua-cw active-content-wrapper">
@@ -226,7 +276,7 @@
 							<div class="ui-block-c">
 								<p class="ua-info-eb-link">
 									<br />
-									Contribute to the eRead community by adding new revision content <span id="uploads-cw" class="content-wrapper-ctrl">here</span>.
+									Contribute to the eRead community by sharing new revision content <span id="uploads-cw" class="content-wrapper-ctrl">here</span>.
 								</p>
 							</div>
 						</div>

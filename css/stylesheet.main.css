@@ -231,12 +231,20 @@ body {
 	margin-top: 0;
 	height: calc(100% - 1em);
 }
+.uploads-cw {
+	box-sizing: border-box;
+    border-top: 1px solid transparent;
+}
+
 .active-content-wrapper {
 	display: block;
 }
 
 .content p {
 	margin: 0;
+}
+attr:hover {
+	cursor: pointer;
 }
 /* 
 	EXPLORER
@@ -682,7 +690,7 @@ body {
 	.header {
 		display: block;
 		width: 100%;
-		height: 48px;
+		height: 47.66px;
 		padding: 0.5em 0;
 		border-bottom: 1px solid #ddd;
 	}
@@ -737,6 +745,99 @@ body {
 		padding-bottom:0 !important;
 		font-family: 'Product sans' !important;
 	}
+	
+	.header-search-wrapper {
+		/* 388 = app.title.outerWidth() + ua-ctrl-wrapper.outerWidth() + hsw.margin-left + ua-ctrl-wrapper-margin-left */
+		/* width:calc(100% - 388px); */
+		width: calc(100% - 283px);
+	}
+
+	.pc-side-panel-wrapper {
+		display: block;
+		/* width: 249px; */
+		width: 165px;
+		box-sizing: border-box;
+		border-right: 1px solid #ddd;
+		clear: both;
+	}
+	.content-container {
+		/* width: calc(100% - 250px); */
+		width: calc(100% - 166px);
+	}
+
+	.pc-side-panel-wrapper,.content-container {
+		height: calc(100% - 4.0625em);
+		float: left;
+	}
+	.cw-ctrls-wrapper {
+		padding: 20px 0;
+		width: 150px;
+		margin: auto;
+	}
+	.cw-ctrls-wrapper .content-wrapper-ctrl {
+		height: 40px;
+		width: 150px;
+		color: #93979b;
+	}
+	.sub-nav {
+		width: 100px;
+		margin: 5px 0 10px 30px;
+		font-size: 10px;
+	}
+	.sub-nav a {
+		box-shadow: none;
+		background-color: transparent !important;
+		border-radius: 0 !important;
+		border: none;
+		font-size: 14px;
+		font-weight: normal;
+		font-family: inherit;
+		height: 30px;
+		line-height: 30px;
+		margin: 0;
+		padding: 0 0 0 10px;
+		width: calc(100% - 10px);
+		text-align: left;
+		border-color: transparent !important;
+		color: #93979b !important;
+	}
+	.sub-nav a:focus,.ua-login-ctrls a:focus {
+		-webkit-box-shadow:none !important;-moz-box-shadow:none !important;box-shadow:none !important;/* border-color: #ddd !important; */
+		color: #000 !important;text-shadow: none !important;
+	}
+	.sub-nav a:hover {
+		color: #000 !important;
+		transition: color 0.5s ease-in-out;
+	}
+	.cw-ctrls-wrapper .content-wrapper-ctrl p {
+		margin: 0;
+		line-height: 40px;
+		padding: 0 0 0 10px;
+		font-size: 16px;
+	}
+	.cw-ctrls-wrapper .content-wrapper-ctrl:hover,.sub-nav a:hover {
+		cursor: pointer;
+		color: #000;
+		transition: color 0.5s ease-in-out;
+	}
+	.active-cw-ctrl {
+		background: #e8f0fe;
+		/* border-top-right-radius: 40px;
+		border-bottom-right-radius: 40px; */
+		color: #1967d2 !important;
+		width: 154.5px !important;
+		border-right: 3px solid #1967d2 !important;
+	}
+	a.active-sn-ctrl {
+		background-color: #e8f0fe !important;
+		color: #1967d2 !important;
+		border-right: 3px solid #1967d2 !important;
+		color: #1967d2 !important;
+		width: 114.5px;
+		text-shadow: none !important;
+	}
+
+	/* pc header nav icons*/
 	.ua-ctrls-wrapper {
 		float: right;
 		width: 98px;
@@ -745,19 +846,14 @@ body {
 		margin: 0 10px 0 0;
 	}
 
-	.header-search-wrapper {
-		/* 388 = app.title.outerWidth() + ua-ctrl-wrapper.outerWidth() + hsw.margin-left + ua-ctrl-wrapper-margin-left */
-		/* width:calc(100% - 388px); */
-		width: calc(100% - 283px);
-	}
-
 	.ua-ctrl,.sc-ctrl {
-		width: 48px;
+		width: 48px !important;
 		height: 48px;
 		float: right;
 		text-align: right;
 		background: none !important;
 		color: #000 !important;
+		border-right: 0 !important;
 	}
 	.ua-ctrl {
 		margin: 0 0 0 2px;
@@ -787,97 +883,6 @@ body {
 		background: #ebecec;
 		outline: none;
 		color: #1967d2;
-	}
-
-	.pc-side-panel-wrapper {
-		display: block;
-		/* width: 249px; */
-		width: 165px;
-		border-right: 1px solid #ddd;
-		clear: both;
-	}
-	.content-container {
-		/* width: calc(100% - 250px); */
-		width: calc(100% - 166px);
-	}
-
-	.pc-side-panel-wrapper,.content-container {
-		height: calc(100% - 4.0625em);
-		float: left;
-	}
-	.cw-ctrls-wrapper {
-		padding: 20px 0;
-		/* width: 225px; */
-		width: 150px;
-		margin: auto;
-	}
-	.cw-ctrls-wrapper .content-wrapper-ctrl {
-		height: 40px;
-		/* width: 225px; */
-		width: 150px;
-	}
-	.sub-nav {
-		width: 100px;
-		margin: 5px 0 10px 30px;
-		font-size: 10px;
-	}
-	.sub-nav a {
-		box-shadow: none;
-		background-color: transparent !important;
-		border-radius: 0 !important;
-		border: none;
-		font-size: 14px;
-		font-weight: normal;
-		font-family: inherit;
-		height: 30px;
-		line-height: 30px;
-		margin: 0;
-		padding: 0;
-		width: calc(100% - 10px);
-		text-align: left;
-		padding-left: 5px;	
-		border-color: transparent !important;
-		border-left: 3px solid transparent;
-	}
-	.sub-nav a:focus,.ua-login-ctrls a:focus {
-		-webkit-box-shadow:none !important;-moz-box-shadow:none !important;box-shadow:none !important;border-color: #ddd !important;
-		color: #000 !important;text-shadow: none !important;
-	}
-	.sub-nav a:hover {
-		cursor: pointer;
-		background-color:#0000000a !important;
-		/* border-left: 3px solid #1967d2 !important; */
-		transition: all 1s ease-in-out;
-	}
-	.cw-ctrls-wrapper .content-wrapper-ctrl p {
-		margin: 0;
-		line-height: 40px;
-		padding: 0 0 0 10px;
-		font-size: 16px;
-	}
-	.cw-ctrls-wrapper .content-wrapper-ctrl:hover {
-		cursor: pointer;
-		background-color:#0000000a;
-		border-top-right-radius: 40px;
-		border-bottom-right-radius: 40px;
-	}
-	.active-cw-ctrl {
-		background: #e8f0fe;
-		border-top-right-radius: 40px;
-		border-bottom-right-radius: 40px;
-		color: #1967d2;
-		/* border-left: 3px solid #1967d2; */
-	}
-	a.active-sn-ctrl {
-		background-color: #e8f0fe !important;
-		border-top-right-radius: 30px !important;
-		border-bottom-right-radius: 30px !important;
-		color: #1967d2 !important;
-		border-left: 3px solid #1967d2 !important;
-		padding-left: 10px;
-		color: #1967d2 !important;
-		width: calc(100% - 20px);
-		text-shadow: none !important;
 	}
 
 	.explorer-navigation {
@@ -938,6 +943,12 @@ body {
 		.sub-nav {
 			width: 200px;
 			margin: 5px 0 10px 25px;
+		}
+		.active-cw-ctrl {
+			width: 234px !important;;
+		}
+		a.active-sn-ctrl {
+			width: 199px !important;
 		}
 		/* Content-wrapper */
 		.content-container {

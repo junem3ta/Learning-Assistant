@@ -8,7 +8,7 @@ $(document).ready(function() {
 	/*var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0); */
 	var isPanelOpen = false;
 	var isSearching = false;
-	var currentCW = "ua-cw";
+	var currentCW = "uploads-cw";
 	responsiveUIHandler();
 
 	/* Hide Android Searchbar on Scrolldown, show on Scrollup*/
@@ -189,9 +189,16 @@ $(document).ready(function() {
 		Display search option accordingly
 		Reset _GLOBAL VAR_ currentCW to "pp-cw" and delete the following when deploying.
 	*/
+	/* manual switch */
+	if(!desktopMode) {
+		currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.static-hdr').show() : $('.static-hdr').hide();
+		currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.home-search-wrapper').show() : $('.home-search-wrapper').hide();	
+	}
+	$('.content').hide();
+	$('.'+currentCW).show();
+	/* end; manual switch */
 
-	currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.static-hdr').show() : $('.static-hdr').hide();
-	currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.home-search-wrapper').show() : $('.home-search-wrapper').hide();
+	
 
 	$('.content-wrapper-ctrl').click(function() {
 		//reset navigation to top of page

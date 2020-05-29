@@ -1,0 +1,25 @@
+.uploads-hdr h3, .uploads-hdr h4 {
+    font-weight: normal;
+}
+.uploads-hdr h3 {
+    margin: 0 0 9.36px;
+}
+.uploads-hdr h4 {
+    margin-top: 0;
+}
+.cancel-upload a {
+    font-weight: normal;
+}
+.cancel-upload a:hover {
+    background-color: #dd0048 !important;
+    text-shadow: none !important;
+    color: #fff !important;
+}
+.cancel-upload a:focus {
+    -webkit-box-shadow:none !important;-moz-box-shadow:none !important;box-shadow:none !important;
+    color: #fff !important;text-shadow: none !important;
+    background-color: #dd0048 !important;
+}
+.cancel-upload a {
+    display: none;
+}
