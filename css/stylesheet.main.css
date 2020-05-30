@@ -541,9 +541,9 @@ attr:hover {
 .modr-login-ctrl,.contributors-login-ctrl {
 	float: left;
 }
-.contributors-login-ctrl {
-	/* margin: 0 8px 0 0; */
-}
+/* .contributors-login-ctrl {
+	margin: 0 8px 0 0;
+} */
 .modr-login-ctrl a,.contributors-login-ctrl a {
 	height: 31.04px;
     line-height: 31.04px;
@@ -956,6 +956,10 @@ attr:hover {
 		}
 		
 		/* user account ui */
+		.ua-cw {
+			overflow-x: unset;
+			overflow-y: unset;
+		}
 		.ui-grid-a {
 			position: relative;
 			height: calc(100% - 66px);

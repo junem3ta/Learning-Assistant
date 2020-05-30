@@ -21,5 +21,12 @@
     background-color: #dd0048 !important;
 }
 .cancel-upload a {
-    display: none;
+    /* display: none; */
 }
+
+.ua-cw::-webkit-scrollbar * {
+    background: transparent;
+}
+.ua-cw::-webkit-scrollbar-thumb {
+    background:#999 !important;
+  }

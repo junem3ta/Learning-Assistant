@@ -226,7 +226,7 @@ $(document).ready(function() {
 		if($(this).hasClass('ua-dpl-ctrl')){
 			$('.content-wrapper-ctrl').removeClass('active-cw-ctrl');
 			$('.sub-nav div a').removeClass('active-sn-ctrl');
-			$('.cw-ctrls-wrapper #ua-cw').addClass('active-cw-ctrl');
+			$('.cw-ctrls-wrapper #'+$(this).attr('id')).addClass('active-cw-ctrl');
 		}
 
 		if(currentCW == target) {
