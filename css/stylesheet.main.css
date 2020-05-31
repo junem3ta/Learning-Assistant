@@ -246,6 +246,7 @@ body {
 attr:hover {
 	cursor: pointer;
 }
+
 /* 
 	EXPLORER
 	Explorer path(s) | Navigation 
@@ -694,7 +695,22 @@ attr:hover {
 		padding: 0.5em 0;
 		border-bottom: 1px solid #ddd;
 	}
+	.app-ver {
+		position: absolute;
+		background: #3ca4ff;
+		color: #fff;
+		text-align: left !important;
+		border-radius: 1000px;
+		padding: 0 10px !important;
+		font-size: 10px;
+		bottom: -8px;
+		text-shadow: none;
+		left: 2px;
+		height: 13px;
+		line-height: 13px;
+	}
 	.app-title {
+		position: relative;
 		height: 48px;
 		/* width: 250px; */
 		width: 165px;
@@ -920,6 +936,15 @@ attr:hover {
 	/* Responsive UA interface styling, w>=815px and h>=600px */
 	@media all and (min-width: 50.9375em) and (min-height: 600px) {
 		/* pc header */
+		.app-ver {
+			font-size: 12px;
+			top: 21.5px;
+			left: 185px;
+			height: 15px !important;
+			height: 15px;
+			padding: 0 10px !important;
+			line-height: 15px;
+		}
 		.app-title {
 			width: 250px;
 		}
