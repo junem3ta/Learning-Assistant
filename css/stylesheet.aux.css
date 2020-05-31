@@ -1,3 +1,13 @@
+.uploads-wrapper .ui-bar {
+    background-color: #f9f9f9;
+    -webkit-border-top-left-radius: inherit;border-top-left-radius: inherit;
+    -webkit-border-top-right-radius: inherit;border-top-right-radius: inherit;
+}
+.uploads-wrapper .ui-body {
+    border-top-width: 0;
+    -webkit-border-bottom-left-radius: inherit;border-bottom-left-radius: inherit;
+    -webkit-border-bottom-right-radius: inherit;border-bottom-right-radius: inherit;
+}
 .uploads-hdr h3, .uploads-hdr h4 {
     font-weight: normal;
 }
@@ -20,13 +30,6 @@
     color: #fff !important;text-shadow: none !important;
     background-color: #dd0048 !important;
 }
-.cancel-upload a {
-    /* display: none; */
-}
-
-.ua-cw::-webkit-scrollbar * {
-    background: transparent;
-}
-.ua-cw::-webkit-scrollbar-thumb {
-    background:#999 !important;
-  }
+/* .cancel-upload a {
+    display: none;
+} */
