@@ -208,54 +208,127 @@
 											}
 											.eb-metadata, .eb-metadata td {
 												border: 1px solid #ddd;
+												box-sizing: border-box;
 											}
-											fieldset label, .eb-metadata td {
-												text-overflow: clip !important;
+											.eb-metadata fieldset {
+												width: 420px !important;
+											}
+											.eb-metadata fieldset label, .eb-metadata td {
 												width: 60px !important;
 												padding: 0 !important;
-												overflow: hidden !important;
-												box-sizing: border-box;
-												/* padding: 0 5px !important; */
-												overflow: hidden !important;
-												width: 40px;
 												text-align: center;
 											}
-											fieldset label {
-												color: #f6f6f6;
+											.eb-metadata fieldset label {
+												color: #f6f6f6 !important;
 												text-align: center !important;
+												font-size: 16px !important;
+												height: 100% !important;
+												border-width: 0 !important;
+												border-right-width: 1px !important;
+												box-sizing: border-box;
 											}
-											.frc {
-												width: 361px;
+											.eb-metadata fieldset label:nth-child(2) {
+												border-left: 1px solid transparent !important;
+											}
+											.eb-metadata fieldset label:last-child {
+												border-right-width: 0 !important;
+											}
+											td.fn-hdr {
+												padding: 0 10px 1px !important;
+												vertical-align: bottom;
+											}
+											td.fc-hdr {
+												padding: 5px 0 !important;
+											}
+											td.fn-hdr,td.fc-hdr {
+												font-size: 16px;
+												color: #444;
+											}
+											td.fn-hdr,td.eb-fn {
+												width: 140px !important;
+												max-width: 140px !important;
+											}
+											td.eb-fn {
+												padding: 0 10px !important;
+												overflow: hidden;
+												white-space: nowrap;
+												text-overflow: ellipsis !important;
+											}
+											tr.eb-fc td {
+												box-sizing: border-box;
+												font-size: 13px;
+												line-height: 20.91px;
+											}
+											td.frc/* faculty radio check */ {
 												padding: 0;
 											}
-											td.frc {
-												width: 361px !important;
+											td.eb-aux-fc {
+												padding: 0 .5em !important;
 											}
 										</style>
 										<table class="eb-metadata">
 											<thead>
 												<tr>
-													<td>Faculty</br>Filename</td><td><em>Null</em></td><td>FSET</td><td>BUST</td><td>FRED</td><td>FAHU</td><td>FAES</td>
+													<td rowspan="2" class="fn-hdr">File Name</td>
+													<td colspan="7" class="fc-hdr">Faculty</td>
+												</tr>
+												<tr class="eb-fc">
+													<td><em>Null</em></td><td>FSET</td><td>BUST</td><td>FRED</td><td>FAHU</td><td>FAES</td><td>OTHER</td>
 												</tr>
 											</thead>
 											<tbody>
 												<tr>
-													<td>File1</td>
-													<td colspan="6" class="frc">
+													<td class="eb-fn"><attr title="Long ass filename">file-x.pdf</attr></td>
+													<td colspan="7" class="frc">
 														<fieldset data-role="controlgroup" data-mini="true" data-type="horizontal">
-															<input type="radio" name="radio-choice-b" id="radio-choice-c" value="list" checked="checked">
-															<label for="radio-choice-c">List</label>
-															<input type="radio" name="radio-choice-b" id="radio-choice-d" value="grid">
-															<label for="radio-choice-d">Grid</label>
-															<input type="radio" name="radio-choice-b" id="radio-choice-e" value="gallery">
-															<label for="radio-choice-e">Gallery</label>
-															<input type="radio" name="radio-choice-b" id="radio-choice-f" value="gallery">
-															<label for="radio-choice-f">Gallery</label>
-															<input type="radio" name="radio-choice-b" id="radio-choice-g" value="gallery">
-															<label for="radio-choice-g">Gallery</label>
-															<input type="radio" name="radio-choice-b" id="radio-choice-h" value="gallery">
-															<label for="radio-choice-h">Gallery</label>
+															<input type="radio" name="radio-choice-b" id="radio-choice-c" value="0">
+															<label for="radio-choice-c">✓</label>
+															<input type="radio" name="radio-choice-b" id="radio-choice-d" value="1">
+															<label for="radio-choice-d">✓</label>
+															<input type="radio" name="radio-choice-b" id="radio-choice-e" value="2">
+															<label for="radio-choice-e">✓</label>
+															<input type="radio" name="radio-choice-b" id="radio-choice-f" value="3">
+															<label for="radio-choice-f">✓</label>
+															<input type="radio" name="radio-choice-b" id="radio-choice-g" value="4">
+															<label for="radio-choice-g">✓</label>
+															<input type="radio" name="radio-choice-b" id="radio-choice-h" value="5">
+															<label for="radio-choice-h">✓</label>
+															<input type="radio" name="radio-choice-b" id="radio-choice-i" value="other" checked="checked">
+															<label for="radio-choice-i">✓</label>
 														</fieldset>
+													</td>
+												</tr>
+												<tr>
+													<td></td>
+													<td colspan="7" class="eb-aux-fc">
+														<input type="text" placeholder="Faculty description" data-clear-btn="true">
+													</td>
+												</tr>
+												<tr>
+													<td class="eb-fn">file-y-tmp.docx</td>
+													<td colspan="7" class="frc">
+														<fieldset data-role="controlgroup" data-mini="true" data-type="horizontal">
+															<input type="radio" name="radio-choice-ab" id="radio-choice-ac" value="0">
+															<label for="radio-choice-ac">✓</label>
+															<input type="radio" name="radio-choice-ab" id="radio-choice-ad" value="1">
+															<label for="radio-choice-ad">✓</label>
+															<input type="radio" name="radio-choice-ab" id="radio-choice-ae" value="2">
+															<label for="radio-choice-ae">✓</label>
+															<input type="radio" name="radio-choice-ab" id="radio-choice-af" value="3">
+															<label for="radio-choice-af">✓</label>
+															<input type="radio" name="radio-choice-ab" id="radio-choice-ag" value="4">
+															<label for="radio-choice-ag">✓</label>
+															<input type="radio" name="radio-choice-ab" id="radio-choice-ah" value="5">
+															<label for="radio-choice-ah">✓</label>
+															<input type="radio" name="radio-choice-ab" id="radio-choice-ahi" value="other" checked="checked">
+															<label for="radio-choice-ahi">✓</label>
+														</fieldset>
+													</td>
+												</tr>
+												<tr>
+													<td></td>
+													<td colspan="7" class="eb-aux-fc">
+														<input type="text" placeholder="Faculty description" data-clear-btn="true">
 													</td>
 												</tr>
 											</tbody>
