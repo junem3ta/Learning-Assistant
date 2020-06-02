@@ -181,7 +181,8 @@ $(document).ready(function() {
 	/* Disable focus styling and remove margin around search input fields*/
 	$("input").closest('div').addClass('noshadowI');
 	$(".header-search").closest('div').addClass('nomargin hsw-custom');
-
+	/* closest usage? */
+	$('.ui-block-b').removeClass('noshadowI');
 	/*remove blue outline on clicking jqm ui-input-clear button??*/
   
 	/* 
