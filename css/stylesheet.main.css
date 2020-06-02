@@ -572,7 +572,7 @@ attr:hover {
  .ua.ui-grid-a {
 	margin: 16px 0 0;
 }
-.ua .ui-block-a,.ui-block-b {
+.ua .ui-block-a, .ua .ui-block-b {
 	width: 100% !important;
 }
 .ua .ui-block-a {
@@ -985,15 +985,15 @@ attr:hover {
 			overflow-x: unset;
 			overflow-y: unset;
 		}
-		.ui-grid-a {
+		.ua .ui-grid-a {
 			position: relative;
 			height: calc(100% - 66px);
 			/* overflow: /* hidden */ /* auto;  overfow is messing up with elements on the edge of grid*/ 
 		}
-		.ui-block-a {
+		.ua .ui-block-a {
 			height: 238px;
 		}
-		.ui-block-a div {
+		.ua .ui-block-a div {
 			float: left;
 		}
 		.ui-block-a .avatar-card {
@@ -1033,7 +1033,7 @@ attr:hover {
 			top: -8.5px;
 			border-left: 3px solid #1967d2;
 		}
-		.ui-block-c {
+		.ua .ui-block-c {
 			position: absolute;
 			bottom: -16px;
 			width: calc(100% + 32px);

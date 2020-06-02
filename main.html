@@ -181,91 +181,124 @@
 							</h4>
 						</div>
 						<style>
-							/* .uploads-metadata {
-
-							} */
+							.eb-metadata {
+								border-collapse: collapse;
+							}
+							.eb-metadata, .eb-metadata td {
+								border: 1px solid #ddd;
+								box-sizing: border-box;
+							}
+							.eb-metadata fieldset {
+								width: 420px !important;
+							}
+							.eb-metadata fieldset label, .eb-metadata td {
+								width: 60px !important;
+								padding: 0 !important;
+								text-align: center;
+							}
+							.eb-metadata fieldset label {
+								color: #f6f6f6 !important;
+								text-align: center !important;
+								font-size: 16px !important;
+								height: 100% !important;
+								border-width: 0 !important;
+								border-right-width: 1px !important;
+								box-sizing: border-box;
+							}
+							.eb-metadata fieldset label:nth-child(2) {
+								border-left: 1px solid transparent !important;
+							}
+							.eb-metadata fieldset label:last-child {
+								border-right-width: 0 !important;
+							}
+							td.fn-hdr {
+								padding: 0 10px 1px !important;
+								vertical-align: bottom;
+							}
+							td.fc-hdr {
+								padding: 5px 0 !important;
+							}
+							td.fn-hdr,td.fc-hdr {
+								font-size: 16px;
+								color: #444;
+							}
+							td.fn-hdr,td.eb-fn {
+								width: 140px !important;
+								max-width: 140px !important;
+							}
+							td.eb-fn {
+								padding: 0 10px !important;
+								overflow: hidden;
+								white-space: nowrap;
+								text-overflow: ellipsis !important;
+							}
+							tr.eb-fc td {
+								box-sizing: border-box;
+								font-size: 13px;
+								line-height: 20.91px;
+							}
+							td.frc/* faculty radio check */ {
+								padding: 0;
+							}
+							td.eb-aux-fc {
+								padding: 0 .5em !important;
+							}
+							.eb-uploads .ui-block-a, .eb-uploads .ui-block-e  {
+								width: 100%;
+							}
+							.eb-uploads .ui-block-e {
+								display: none;
+								margin: -8px 0 0;
+								padding: 8px;
+							}
+							.eb-uploads .ui-block-e p {
+								display: none;
+							}
+							.eb-uploads .ui-block-e .io-err-msg {
+								color: #ed143d;
+							}
+							.eb-uploads .ui-block-e .io-ok-msg {
+								color: #5eb507;
+							}
+							.eb-uploads .ui-block-b {
+								width: 562px;
+							}
+							.eb-uploads .ui-block-c {
+								width: calc(100% - 562px);
+								padding: 8px 8px 8px 16px;
+							}
+							.eb-metadata-input {
+								padding: 8px 0;
+							}
+							.eb-metadata-input ul {
+								margin: 0;
+							}
+							.eb-uploads .ui-block-d {
+								clear: both;
+								width: 100%;
+								padding: 10px 0;
+							}
+							.upload-f-ctrls div {
+								float: left;
+							}
 						</style>
 						<div class="ui-corner-all uploads-wrapper">
 							<div class="ui-bar ui-bar-a">
 								<p>Share</p>
 							</div>
 							<div class="ui-body ui-body-a">
-								<form class='upload'>
-									<label for="file">File:</label>
-									<input type="file" name="file" id="eb-files" multiple>
-								</form>
-								<div class='uploads-metadata'>
-									<div class="cancel-upload">
-										<a href="#" class="ui-shadow ui-button ui-corner-all ui-button-inline ui-mini">
-											Cancel Upload 
-											<span class="ui-icon ui-icon-delete"></span>
-										</a>
+								<div class="eb-uploads ui-grid-a">
+									<div class="ui-block-a">
+										<form class='upload'>
+											<label for="file">File:</label>
+											<input type="file" name="file" id="eb-files" class="eb-files" multiple>
+										</form>
 									</div>
-									<div class="eb-metadata-wrapper">
-										<style>
-											.eb-metadata {
-												border-collapse: collapse;
-											}
-											.eb-metadata, .eb-metadata td {
-												border: 1px solid #ddd;
-												box-sizing: border-box;
-											}
-											.eb-metadata fieldset {
-												width: 420px !important;
-											}
-											.eb-metadata fieldset label, .eb-metadata td {
-												width: 60px !important;
-												padding: 0 !important;
-												text-align: center;
-											}
-											.eb-metadata fieldset label {
-												color: #f6f6f6 !important;
-												text-align: center !important;
-												font-size: 16px !important;
-												height: 100% !important;
-												border-width: 0 !important;
-												border-right-width: 1px !important;
-												box-sizing: border-box;
-											}
-											.eb-metadata fieldset label:nth-child(2) {
-												border-left: 1px solid transparent !important;
-											}
-											.eb-metadata fieldset label:last-child {
-												border-right-width: 0 !important;
-											}
-											td.fn-hdr {
-												padding: 0 10px 1px !important;
-												vertical-align: bottom;
-											}
-											td.fc-hdr {
-												padding: 5px 0 !important;
-											}
-											td.fn-hdr,td.fc-hdr {
-												font-size: 16px;
-												color: #444;
-											}
-											td.fn-hdr,td.eb-fn {
-												width: 140px !important;
-												max-width: 140px !important;
-											}
-											td.eb-fn {
-												padding: 0 10px !important;
-												overflow: hidden;
-												white-space: nowrap;
-												text-overflow: ellipsis !important;
-											}
-											tr.eb-fc td {
-												box-sizing: border-box;
-												font-size: 13px;
-												line-height: 20.91px;
-											}
-											td.frc/* faculty radio check */ {
-												padding: 0;
-											}
-											td.eb-aux-fc {
-												padding: 0 .5em !important;
-											}
-										</style>
+									<div class="uploads-input-log ui-block-e">
+										<p class="io-err-msg">Err</p>
+										<p class="io-ok-msg">Success</p>
+									</div>
+									<div class="ui-block-b">
 										<table class="eb-metadata">
 											<thead>
 												<tr>
@@ -278,7 +311,7 @@
 											</thead>
 											<tbody>
 												<tr>
-													<td class="eb-fn"><attr title="Long ass filename">file-x.pdf</attr></td>
+													<td class="eb-fn"><attr title="on>18 characters">file-x.pdf</attr></td>
 													<td colspan="7" class="frc">
 														<fieldset data-role="controlgroup" data-mini="true" data-type="horizontal">
 															<input type="radio" name="radio-choice-b" id="radio-choice-c" value="0">
@@ -333,6 +366,35 @@
 												</tr>
 											</tbody>
 										</table>
+									</div>
+									<div class="eb-metadata-input-wrapper ui-block-c">
+										<div class="eb-md-input-hdr">
+											<p>File Details: </p>
+										</div>
+										<div class="eb-metadata-input">
+											<ul>
+												<li>Filename (dept) filesize</li>
+											</ul>
+											<em style="font-weight: 100;font-size: 14px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
+												<br>
+												Hide by default; show [FileName, filesize Kbs] on file select; 
+												update to [FileName (department), filesize Kbs] on metadata update
+											</em>
+										</div>
+									</div>
+									<div class="upload-f-ctrls ui-block-d">
+										<div class="cancel-upload">
+											<a href="#" class="ui-shadow ui-button ui-corner-all ui-button-inline ui-mini">
+												Cancel Upload 
+												<span class="ui-icon ui-icon-delete"></span>
+											</a>
+										</div>
+										<div class="submit-eb-uploads">
+											<a href="#" class="ui-shadow ui-button ui-corner-all ui-button-inline ui-mini">
+												Submit 
+												<span class="ui-icon ui-icon-check"></span>
+											</a>
+										</div>
 									</div>
 								</div>
 							</div>
