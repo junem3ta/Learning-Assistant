@@ -182,7 +182,9 @@ $(document).ready(function() {
 	$("input").closest('div').addClass('noshadowI');
 	$(".header-search").closest('div').addClass('nomargin hsw-custom');
 	/* closest usage? */
-	$('.ui-block-b').removeClass('noshadowI');
+	$('.ui-block-d').removeClass('noshadowI');
+	$('td.eb-aux-dpt input,td.eb-aux-fc input').closest('div').addClass('eb-aux-dpt-custom');
+	$('td.eb-dpt select').closest('div').addClass('nomargin');
 	/*remove blue outline on clicking jqm ui-input-clear button??*/
   
 	/* 
@@ -199,7 +201,10 @@ $(document).ready(function() {
 	$('.'+currentCW).show();
 	/* end; manual switch */
 
-	
+	function resetActiveLinks() {
+		$('.content-wrapper-ctrl').removeClass('active-cw-ctrl');
+		$('.sub-nav div a').removeClass('active-sn-ctrl');
+	}
 
 	$('.content-wrapper-ctrl').click(function() {
 		//reset navigation to top of page
@@ -219,14 +224,12 @@ $(document).ready(function() {
 		
 		/*Only target Desktop content-wrapper-controllers*/
 		if($(this).prop("nodeName")=="DIV") {
-			$('.content-wrapper-ctrl').removeClass('active-cw-ctrl');
-			$('.sub-nav div a').removeClass('active-sn-ctrl');
+			resetActiveLinks();
 			$(this).addClass("active-cw-ctrl");
 		}
 
 		if($(this).hasClass('ua-dpl-ctrl')){
-			$('.content-wrapper-ctrl').removeClass('active-cw-ctrl');
-			$('.sub-nav div a').removeClass('active-sn-ctrl');
+			resetActiveLinks();
 			$('.cw-ctrls-wrapper #'+$(this).attr('id')).addClass('active-cw-ctrl');
 		}
 
@@ -238,19 +241,25 @@ $(document).ready(function() {
 			currentCW = target;
 		}		
 	});
-
+	
 	$(document).on('click','.sub-nav div a',function() {
-		$('.content-wrapper-ctrl').removeClass('active-cw-ctrl');
-		$('.sub-nav div a').removeClass('active-sn-ctrl');
-		$(this).addClass("active-sn-ctrl");
+		resetActiveLinks();
+		$(this).addClass('active-sn-ctrl');
 	});
+	
+	/* link ua UI popup ctrls to sidepanel navigation */
+	$(document).on('click','.popup-dpl-ctrl',function(){
+		let _c = $(this).attr('class').split(' ');
+		resetActiveLinks();
+		$('.sub-nav div #'+_c[_c.length-1]).addClass('active-sn-ctrl');
+	 });
 
-	$("#modrLogin, #contributorLogin").submit(function(){
+	$('#modrLogin, #contributorLogin').submit(function(){
 		return false;
 	});
-
-	var tmp = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum. Pellentesque cursus mauris purus, auctor commodo mi ullamcorper nec. Donec semper mattis eros, nec condimentum ante sollicitudin quis. Etiam orci sem, porttitor ut tellus nec, blandit posuere urna. Proin a arcu non lacus pretium faucibus. Aliquam sed est porttitor, ullamcorper urna nec, vehicula lorem. Cras porttitor est lorem, non venenatis diam convallis congue.";
+	
+	var tmp = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum. Pellentesque cursus mauris purus, auctor commodo mi ullamcorper nec. Donec semper mattis eros, nec condimentum ante sollicitudin quis. Etiam orci sem, porttitor ut tellus nec, blandit posuere urna. Proin a arcu non lacus pretium faucibus. Aliquam sed est porttitor, ullamcorper urna nec, vehicula lorem. Cras porttitor est lorem, non venenatis diam convallis congue.';
 	for (let i = 0; i < 5; i++) {
-		$(".side-panel p").append(tmp + "<br>");	
+		$('.side-panel p').append(tmp + '<br>');	
 	}
 });
