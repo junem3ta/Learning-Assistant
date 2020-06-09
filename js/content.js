@@ -20,4 +20,16 @@ $(document).ready(function () {
     $('.modr-login-ctrl, .moderators-aux-lc').append(
         generateBasicPopup('#moderatorLoginPopup', 'Moderator', 'moderatorLogin', 'Moderator | Signin'));
     $('#contributorLoginPopup, #moderatorLoginPopup').enhanceWithin().popup(); 
+
+    for(let i=0; i<3; i+=2) {
+        /* add unique id to side panel sub-nav login controls */
+       $($('.sub-nav div').children()[i]).attr('id','sn-ctrl-'+i);
+       /* add similar class to both login controls on ua UI */
+       if(i==0) {
+           $($('.modr-login-ctrl').children()[i]).addClass('popup-dpl-ctrl');
+           $($('.contributors-login-ctrl').children()[i]).addClass('popup-dpl-ctrl');
+           $($('.modr-login-ctrl').children()[i]).addClass('sn-ctrl-0');
+           $($('.contributors-login-ctrl').children()[i]).addClass('sn-ctrl-2');
+       }
+    }
 });

@@ -127,7 +127,7 @@ body {
 }
 
 .nomargin {
-	margin: 0;
+	margin: 0 !important;
 }
 
 .hsw-custom {
@@ -355,7 +355,8 @@ attr:hover {
     background: #fff;
     border-top: none;
     padding: 10px 0 30px;
-    overflow: /* auto */overlay;
+	overflow: overlay;
+	overflow: auto;
 }
 
 .folder-tile-wrapper,.file-tile-wrapper {
@@ -484,6 +485,7 @@ attr:hover {
 	height: calc(100vh - 5.1875em);
 	overflow-x: hidden;
 	overflow-y: overlay;
+	overflow:auto;
 	/* scrollbar styling [css?] */
 }
 .ua-nav-wrapper {
@@ -871,6 +873,9 @@ attr:hover {
 		color: #000 !important;
 		border-right: 0 !important;
 	}
+	.ua-ctrls-wrapper div.content-wrapper-ctrl {
+		width: 48px !important;
+	}
 	.ua-ctrl {
 		margin: 0 0 0 2px;
 	}
@@ -941,7 +946,6 @@ attr:hover {
 			top: 21.5px;
 			left: 185px;
 			height: 15px !important;
-			height: 15px;
 			padding: 0 10px !important;
 			line-height: 15px;
 		}
@@ -968,6 +972,10 @@ attr:hover {
 		.sub-nav {
 			width: 200px;
 			margin: 5px 0 10px 25px;
+		}
+		.sub-nav p:first-child {
+			font-size: 14px;
+			margin: 0 0 10px;
 		}
 		.active-cw-ctrl {
 			width: 234px !important;;
