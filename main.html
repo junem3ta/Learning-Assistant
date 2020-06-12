@@ -19,6 +19,7 @@
 	<script type="text/javascript" src="js/navigation.js"></script>
 	<script type="text/javascript" src="js/explorer.js"></script>
 	<script type="text/javascript" src="js/content.js"></script>
+	<script type="text/javascript" src="js/upload.js"></script>
 </head>
 
 <body>
@@ -118,6 +119,9 @@
 					</td>
 					<td class="eb-dpt">
 						<select name="" id="" data-mini="true" data-native-menu="false">
+							<option value=0>Select</option>
+							<option value="ba">Business Administration</option>
+							<option value="mgmtsc">Management Science</option>
 						</select>
 					</td>
 				</tr> 
@@ -277,7 +281,7 @@
 										<p>
 											Please select the category to which the revision material belongs by
 											checking the box under the respective <em>Faculty</em> name.
-											Provide the course name under the <em>Course</em> column:</p>
+											Select the respective department name under the <em>Department</em> column:</p>
 									</div>
 									<div class="ui-block-d">
 										<table class="eb-metadata">
@@ -297,9 +301,7 @@
 													<td>OTHER</td>
 												</tr>
 											</thead>
-											<tbody>
-												
-											</tbody>
+											<tbody></tbody>
 										</table>
 									</div>
 									<div class="eb-metadata-input-wrapper ui-block-e">
@@ -337,85 +339,6 @@
 								</div>
 							</div>
 						</div>
-						<script type="text/javascript"> 
-							document.getElementById("eb-files").addEventListener('change', (event) => {
-								let fileId, file, fd = new FormData(), logging = false;
-								let ioConstraints = {
-									max_files_allowed: 3,
-									file_types: ['pdf', 'docx', 'doc']
-								}
-								let ioMsgs = {
-									max_files_exceeded: 'You can only upload a maximum of 3 files. Select a fewer number of files and try again'
-								}
-
-								let files = event.target.files, filesObjLength = Object.keys(files).length;
-								let defaultS = "fset-s",rcName, sName,input,label;
-
-								function printRow(a,b) {
-									let fileId = a, file = b, rcName = fileId + 'rc';
-									let trs = $($('.eb-metadata-trs')[0].content.cloneNode(true));
-
-									$(trs.children()[0]).addClass(fileId);
-									trs.find('.eb-fn attr').text(file.name);
-									
-									/* target inputs */
-									let x = trs.find('.frc fieldset');
-									for(let i=0; i<13; i+=2) {
-										$(x.children()[i]).attr('name',rcName);
-										$(x.children()[i]).attr('id',fileId+'-'+i/2);
-									}
-									/* target lablels */
-									for(let i=1; i<14; i+=2) {
-										$(x.children()[i]).attr('for',fileId+'-'+(i-1)/2);	
-									}
-
-									$(trs.children()[1]).addClass(fileId+"aux");
-									console.log(trs[0],trs);
-									
-									$('.eb-metadata tbody').append(trs);
-									/* ?? */
-									$('.eb-metadata tbody .'+fileId+' .frc fieldset input').enhanceWithin().checkboxradio();
-								}
-
-								/*max upload files check*/
-								if (filesObjLength > ioConstraints.max_files_allowed) {
-									logging = true;
-									$('.uploads-input-log .io-err-msg').text(ioMsgs.max_files_exceeded);
-									$('.uploads-input-log').show();
-									$('.uploads-input-log .io-err-msg').fadeIn();
-								} else {
-									$('#eb-files').attr('disabled', true);
-									/* Render metadata input and get target dept */
-									
-									if (filesObjLength == 1) {
-										fd.append("upload0", file);
-										/* print 1 row */
-										printRow("upload0",files[0]);
-									} else {
-										/* print n rows */
-										$.each(files, (i, file) => {
-											fileId = "upload" + i;
-											fd.append(fileId,file);
-											printRow(fileId,file);
-										});
-									}
-								}
-
-								/* submit form click event */
-								/* cancel upload */
-								/* if displayed, hide msgs */
-								if (logging) {
-									setTimeout(function () {
-										$('.uploads-input-log .io-err-msg').fadeOut();
-										$('.uploads-input-log').hide();
-										logging = false;
-										return;
-									}, 5000);
-								}
-
-								//$('#eb-files').attr('disabled',false);
-							});
-						</script>
 					</div>
 				</div>
 

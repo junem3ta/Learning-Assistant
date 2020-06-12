@@ -76,9 +76,20 @@
 }
 .eb-metadata fieldset label:nth-child(2) {
     border-left: 1px solid transparent !important;
+    -webkit-border-bottom-left-radius: 0;
+    border-bottom-left-radius: 0;
+    -webkit-border-top-left-radius: 0;
+    border-top-left-radius: 0;
 }
 .eb-metadata fieldset label:last-child {
     border-right-width: 0 !important;
+    -webkit-border-top-right-radius: 0;
+    border-top-right-radius: 0;
+    -webkit-border-bottom-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+
 }
 td.fn-hdr,td.dpt-hdr {
     padding: 0 10px 1px !important;
