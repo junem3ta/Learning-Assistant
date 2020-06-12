@@ -183,8 +183,6 @@ $(document).ready(function() {
 	$(".header-search").closest('div').addClass('nomargin hsw-custom');
 	/* closest usage? */
 	$('.ui-block-d').removeClass('noshadowI');
-	$('td.eb-aux-dpt input,td.eb-aux-fc input').closest('div').addClass('eb-aux-dpt-custom');
-	$('td.eb-dpt select').closest('div').addClass('nomargin');
 	/*remove blue outline on clicking jqm ui-input-clear button??*/
   
 	/* 
