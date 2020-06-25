@@ -1,21 +1,22 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable no-undef */
+let desktopMode, aMetadataInput = true;
 $(document).ready(function() {
 	/* Default Global VARS */
-	var desktopMode = false;
-	var windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-	var swHeight = windowHeight - 88; /* 56 + 32 (padding ) */
-	/*var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0); */
-	var isPanelOpen = false;
-	var isSearching = false;
-	var currentCW = "uploads-cw";
+	desktopMode = false;
+	let windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+	let swHeight = windowHeight - 88; /* 56 + 32 (padding ) */
+	/*let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0); */
+	let isPanelOpen = false;
+	let isSearching = false;
+	let currentCW = "uploads-cw";
 	responsiveUIHandler();
 
 	/* Hide Android Searchbar on Scrolldown, show on Scrollup*/
-	/* var didScroll; */
-	var lastScrollTop = 0;
-	var delta = 5;
-	/* var navbarHeight = 88 */ /* 91 */ /*46 without static header *//* ; */
+	/* let didScroll; */
+	let lastScrollTop = 0;
+	let delta = 5;
+	/* let navbarHeight = 88 */ /* 91 */ /*46 without static header *//* ; */
 	$(window).scroll(function(){
 		if(currentCW == "eb-cw" || currentCW == "pp-cw") {
 			hasScrolled(); 
@@ -24,7 +25,7 @@ $(document).ready(function() {
 	});
 	/* setInterval(function() {if (didScroll && !isSearching) {hasScrolled();didScroll = false;}}, 250); */
 	function hasScrolled() {
-		var st = $(this).scrollTop();
+		let st = $(this).scrollTop();
 		if(Math.abs(lastScrollTop - st) <= delta) { 
 			return;
 		} 
@@ -53,6 +54,7 @@ $(document).ready(function() {
 		}
    		lastScrollTop = st;
 	} 
+
 	/*Sidepanel controllers*/
 	 $(document).on('swiperight', function() {
 			if(!isPanelOpen && !isSearching) {
@@ -82,8 +84,8 @@ $(document).ready(function() {
 			$('body').addClass("no-scroll");
 		}
 	});
+	/* If clickevent target is outside of android sidepanel, collapse it */
 	$(document).click(function(event) {
-		/* collapse if clickevent target is outside of android sidepanel */
 		if(isPanelOpen) {
 			if($(event.target).closest('.side-panel').length == 0
 					&& !$(event.target).hasClass('panel-ctrl')
@@ -176,13 +178,20 @@ $(document).ready(function() {
 			currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.static-hdr').show() : $('.static-hdr').hide();
 			currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.home-search-wrapper').show() : $('.home-search-wrapper').hide();
 		}
+
+		/* Track eBooks uploads metadata input mode */
+		if($('.metadata-wrapper').css('display') == 'none') {
+			aMetadataInput = false;
+		} else {
+			aMetadataInput = true;
+		}
 	}
 
 	/* Disable focus styling and remove margin around search input fields*/
 	$("input").closest('div').addClass('noshadowI');
 	$(".header-search").closest('div').addClass('nomargin hsw-custom');
 	/* closest usage? */
-	$('.ui-block-d').removeClass('noshadowI');
+	$('.pc-metadata-wrapper').removeClass('noshadowI');
 	/*remove blue outline on clicking jqm ui-input-clear button??*/
   
 	/* 
@@ -195,8 +204,9 @@ $(document).ready(function() {
 		currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.static-hdr').show() : $('.static-hdr').hide();
 		currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.home-search-wrapper').show() : $('.home-search-wrapper').hide();	
 	}
-	$('.content').hide();
-	$('.'+currentCW).show();
+	
+	//$('.content').removeClass('active-content-wrapper').hide();
+	//$('.'+currentCW).addClass('active-content-wrapper').show();
 	/* end; manual switch */
 
 	function resetActiveLinks() {
@@ -211,7 +221,7 @@ $(document).ready(function() {
 			$('.ui-content').removeClass('ui-content-up')
 			$('.home-search-wrapper').removeClass('hs-wrapper-up');
 		}
-		var target = $(this).attr('id');
+		let target = $(this).attr('id');
 		//on android displays;
 		if(!desktopMode) {
 			//display pp-cw/eb-cw static header accordingly
@@ -234,8 +244,8 @@ $(document).ready(function() {
 		if(currentCW == target) {
 			return;
 		} else {
-			$('.content').hide();
-			$('.'+target).fadeIn();
+			$('.content').removeClass('active-content-wrapper').hide();
+			$('.'+target).addClass('active-content-wrapper').fadeIn();
 			currentCW = target;
 		}		
 	});
@@ -256,7 +266,7 @@ $(document).ready(function() {
 		return false;
 	});
 	
-	var tmp = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum. Pellentesque cursus mauris purus, auctor commodo mi ullamcorper nec. Donec semper mattis eros, nec condimentum ante sollicitudin quis. Etiam orci sem, porttitor ut tellus nec, blandit posuere urna. Proin a arcu non lacus pretium faucibus. Aliquam sed est porttitor, ullamcorper urna nec, vehicula lorem. Cras porttitor est lorem, non venenatis diam convallis congue.';
+	let tmp = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum. Pellentesque cursus mauris purus, auctor commodo mi ullamcorper nec. Donec semper mattis eros, nec condimentum ante sollicitudin quis. Etiam orci sem, porttitor ut tellus nec, blandit posuere urna. Proin a arcu non lacus pretium faucibus. Aliquam sed est porttitor, ullamcorper urna nec, vehicula lorem. Cras porttitor est lorem, non venenatis diam convallis congue.';
 	for (let i = 0; i < 5; i++) {
 		$('.side-panel p').append(tmp + '<br>');	
 	}

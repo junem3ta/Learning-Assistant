@@ -23,12 +23,18 @@
 </head>
 
 <body>
+	<!-- @Temap script -->
+	<script type="text/javascript">
+		let _l = console.log;
+	</script>
+
 	<div data-role="page" class="content-wrapper">
 		<!-- 
-				@AndroidSidepanel 
-				-- The Android side panel overlaps over the ui-content, thus it makes more sense 
-				to have the sidepanelwrapper placed in a fixed position outside of the ui-content.
-			-->
+			@AndroidSidepanel 
+			-- The Android side panel overlaps over the ui-content, thus it makes more sense 
+			to have the sidepanelwrapper placed in a fixed position outside of the ui-content.
+		-->
+		<!-- Android side panel -->
 		<div class="side-panel-wrapper">
 			<div class="side-panel">
 				<p>
@@ -37,7 +43,6 @@
 				</p>
 			</div>
 		</div>
-		<!-- /side-panel-wrapper -->
 
 		<div role="main" class="ui-content ">
 			<!-- @Templates: Template Markup for dynamic content -->
@@ -61,25 +66,34 @@
 				</div>
 			</template>
 			<!-- @eb-metadata selects -->
+			<template class="default-s">
+				<option disabled>Select</option>
+				<option value=0>Null</option>
+			</template>
+
 			<template class="bust-s">
-				<option value=0>Select</option>
+				<option disabled>Select</option>
+				<option value=0>Null</option>
 				<option value="ba">Business Administration</option>
 				<option value="mgmtsc">Management Science</option>
 			</template>
 		
 			<template class="fahu-s">
-				<option value=0>Select</option>
+				<option disabled>Select</option>
+				<option value=0>Null</option>
 				<option value="hu">Humanities</option>
 				<option value="socsc">Social Sciences</option>
 			</template>
 			
 			<template class="fred-s">
-				<option value=0>Select</option>
+				<option disabled>Select</option>
+				<option value=0>Null</option>
 				<option value="ed">Education</option>	
 			</template>
 		
 			<template class="faes-s">
-				<option value=0>Select</option>
+				<option disabled>Select</option>
+				<option value=0>Null</option>
 				<option value="envs">Environmental Studies</option>
 				<option value="agrsc">Agricultural Sciences</option>
 				<option value="psc">Plant Sciences</option>	
@@ -88,7 +102,8 @@
 			</template>
 		
 			<template class="fset-s">
-				<option value=0>Select</option>
+				<option disabled>Select</option>
+				<option value=0>Null</option>
 				<option value="cs">Computer Science</option>
 				<option value="phycsc">Physical Sciences</option>
 				<option value="nurs">Nursing</option>	
@@ -103,15 +118,15 @@
 						<fieldset data-role="controlgroup" data-mini="true" data-type="horizontal">
 							<input type="radio" name="" id="" value="0" checked="checked">
 							<label for="" class="frc-ds">✓</label>
-							<input type="radio" name="" id="" value="1">
+							<input type="radio" name="" id="" value=1>
 							<label for="" class="frc-ds">✓</label>
-							<input type="radio" name="" id="" value="2">
+							<input type="radio" name="" id="" value=2>
 							<label for="" class="frc-ds">✓</label>
-							<input type="radio" name="" id="" value="3">
+							<input type="radio" name="" id="" value=3>
 							<label for="" class="frc-ds">✓</label>
-							<input type="radio" name="" id="" value="4">
+							<input type="radio" name="" id="" value=4>
 							<label for="" class="frc-ds">✓</label>
-							<input type="radio" name="" id="" value="5">
+							<input type="radio" name="" id="" value=5>
 							<label for="" class="frc-ds">✓</label>
 							<input type="radio" name="" id="" value="other">
 							<label for="" class="frc-ds">✓</label>
@@ -135,11 +150,48 @@
 					</td>
 				</tr>
 			</template>
-			<!-- end -->
+			<!-- eb Metadata accordion -->
+			<template class="eb-metadata-a">
+				<div data-role="accordion" 
+				data-icons="{ 
+					&quot;header&quot;: &quot;ui-icon-plus&quot;, 
+					&quot;activeHeader&quot;: &quot;ui-icon-minus&quot; 
+				}" data-height-style="content">
+				</div>
+			</template>
+			<!-- eb Metadata accordion sections -->
+			<template class="eb-metadata-a-s">
+				
+				<h3 class="a-section-hdr"></h3>
+				<div class="a-cw">
+					<p class="a-fchdr">Faculty</p>
+					<select class="a-fcs" name="" id="" data-mini="true" data-native-menu="false">
+						<option disabled>Select</option>
+						<option value=0>Null</option>
+						<option value=1>FSET</option>
+						<option value=2>BUST</option>
+						<option value=3>FRED</option>
+						<option value=4>FAHU</option>
+						<option value=5>FAES</option>
+						<option value="other">Other</option>
+					</select>
+					<form>
+						<input type="text" placeholder="Faculty description" data-clear-btn="true">
+					</form>
+					
+					<p class="a-dpthdr">Department</p>
+					<select  name="" id="" data-mini="true" data-native-menu="false" class="a-dpt-s">
+						<option disabled>Select</option>
+						<option value=0>Null</option>
+					</select>
+					<form>
+						<input type="text" placeholder="Department" data-clear-btn="true">
+					</form> 
+				</div>
 
-			<!-- 
-					@Android searchbar 
-				-->
+			</template>
+
+			<!-- @Android searchbar -->
 			<div class="ui-grid-a home-search-wrapper">
 				<div class="panel-ctrl-wrapper">
 					<p><i class="fas fa-bars panel-ctrl"></i></p>
@@ -154,7 +206,6 @@
 				<div class="ui-grid-a search-window">
 					<div class="sw-thumb">
 						<img src="assets/images/search.svg" />
-						<!-- <img src="\images\search.svg" />  -->
 					</div>
 					<!--
 						<div class="sr">
@@ -162,7 +213,7 @@
 						-->
 				</div>
 			</div>
-			<!-- End Android searchbar -->
+			
 			<!-- Desktop searchbar -->
 			<div class="header">
 				<div class="app-title">
@@ -180,16 +231,18 @@
 					<div id="ua-cw" class="ua-ctrl content-wrapper-ctrl ua-dpl-ctrl">
 						<p class="ua-ctrl-hdr">
 							<!-- Account -->
-							<abbr title="User Account"><i tabindex="1"
-									class="ua-ctrl-icon fas fa-user-circle"></i></abbr>
+							<abbr title="User Account">
+								<i tabindex="1" class="ua-ctrl-icon fas fa-user-circle"></i>
+							</abbr>
 						</p>
 					</div>
 					<div id="sc-cw" class="sc-ctrl content-wrapper-ctrl">
 						<!-- title="Support Center" -->
 						<p class="sc-ctrl-hdr">
 							<!-- Support(?) -->
-							<abbr title="Support center"><i tabindex="2"
-									class="sc-ctrl-icon fas fa-envelope"></i></abbr>
+							<abbr title="Support center">
+								<i tabindex="2" class="sc-ctrl-icon fas fa-envelope"></i>
+							</abbr>
 						</p>
 					</div>
 				</div>
@@ -218,8 +271,17 @@
 						<div class="moderators-aux-lc"></div>
 					</div>
 				</div>
+				<div class="sp-footer">
+					<div>
+						<p class="v1">About</p>
+						<a href="#" target="_blank" class="vctrl">
+							GitHub
+							<!-- https://github.com/junem3ta/Learning-Assistant -->
+							<i class="fas fa-external-link-square-alt"></i>
+						</a>
+					</div>
+				</div>
 			</div>
-			<!-- End Desktop Sidepanel -->
 
 			<!-- Desktop/Android Content wrapper-->
 			<div class="content-container">
@@ -249,7 +311,7 @@
 					<p>eBooks<br /></p>
 				</div>
 
-				<div class="content uploads-cw">
+				<div class="content uploads-cw active-content-wrapper">
 					<div class="uploads-hdr">
 						<h3>Contribute</h3>
 						<h4>
@@ -291,25 +353,30 @@
 											Select the respective department name under the <em>Department</em> column:</p>
 									</div>
 									<div class="ui-block-d">
-										<table class="eb-metadata">
-											<thead>
-												<tr>
-													<td rowspan="2" class="fn-hdr">File Name</td>
-													<td colspan="7" class="fc-hdr">Faculty * </td>
-													<td rowspan="2" class="dpt-hdr">Department * </td>
-												</tr>
-												<tr class="eb-fc">
-													<td><em>Null</em></td>
-													<td>FSET</td>
-													<td>BUST</td>
-													<td>FRED</td>
-													<td>FAHU</td>
-													<td>FAES</td>
-													<td>OTHER</td>
-												</tr>
-											</thead>
-											<tbody></tbody>
-										</table>
+										<div class="pc-metadata-wrapper">
+											<table class="eb-metadata">
+												<thead>
+													<tr>
+														<td rowspan="2" class="fn-hdr">File Name</td>
+														<td colspan="7" class="fc-hdr">Faculty * </td>
+														<td rowspan="2" class="dpt-hdr">Department * </td>
+													</tr>
+													<tr class="eb-fc">
+														<td><em>Null</em></td>
+														<td>FSET</td>
+														<td>BUST</td>
+														<td>FRED</td>
+														<td>FAHU</td>
+														<td>FAES</td>
+														<td>OTHER</td>
+													</tr>
+												</thead>
+												<tbody></tbody>
+											</table>
+										</div>
+										<div class="metadata-wrapper">
+											
+										</div>
 									</div>
 									<!-- <div class="eb-metadata-input-wrapper ui-block-e">
 										<div class="eb-md-input-hdr">
@@ -342,7 +409,7 @@
 					</div>
 				</div>
 
-				<div class="content ua-cw active-content-wrapper">
+				<div class="content ua-cw">
 					<div class="ua-nav-wrapper">
 						<div class="ua-hdr">
 							<p class='ua-hdr-title'>eRead Account</p>
@@ -407,10 +474,12 @@
 						</div>
 					</div>
 				</div>
+
 				<div class="content contributors-cw">
 					<p>Hall of Fame<br /></p>
 					<div></div>
 				</div>
+				
 				<div class="content sc-cw">
 					<p>eRead Support <br /></p>
 					<div></div>
@@ -451,5 +520,4 @@
 	</div>
 	<!-- /page -->
 </body>
-
 </html>
