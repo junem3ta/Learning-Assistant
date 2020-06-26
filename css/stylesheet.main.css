@@ -7,16 +7,36 @@ body {
 	position: relative;
 	background-color: #fff !important;
 }
-.content-wrapper {
-	background-color: #fff !important;
+
+a {
+	text-decoration: none;
+	font-weight: normal !important;
+}
+
+a:hover {
+	color: #000 !important;
+}
+
+.ui-popup-screen {
+    background-image: none !important;
+	height: calc(100% - 1px) !important;
+}
+
+.ui-page-theme-a .ui-focus.noshadowI {
+	border: 1px solid #888;
+	transition: border .5s ease-in-out;
 }
 .app-title, .cw-ctrls-wrapper, .explorer .folder-icon p, .explorer-navigation,.header-search {
 	-webkit-touch-callout: none; /* iOS Safari */
-		-webkit-user-select: none; /* Safari */
-		-khtml-user-select: none; /* Konqueror HTML */
-			-moz-user-select: none; /* Old versions of Firefox */
-			-ms-user-select: none; /* Internet Explorer/Edge */
-				user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Old versions of Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
+}
+
+.content-wrapper {
+	background-color: #fff !important;
 }
 .content-wrapper {
 	position: relative;
@@ -412,31 +432,6 @@ attr:hover {
     line-height: 40px;
     margin: 0 0 0 32px !important;
 }
-/* .file-tile-wrapper{
-	height: 134px;
-    width: 85px;
-    margin-left: 17.5px;
-    float: left;
-} */
-/* .file-icon {
-	position: relative;
-    height: 80px;
-    font-size: 12px;
-    text-align: center;
-    width: 80px;
-    margin: 15px 0 0 2.5px;
-	background-image: url("../assets/images/OfficeL-A-pdf.svg");
-} */
-
-/* .file-icon p {
-    position: absolute;
-    top: 85px;
-    height: 27px;
-    width: 85px;
-    left: -2.5px;
-    text-align: center;
-	overflow: hidden;
-} */
 .file-icon:hover {
 	cursor: pointer;
 }
@@ -466,14 +461,10 @@ attr:hover {
     height: 15px;
     bottom: 64px;
     left: 15px;
-    /* right: 0; */
     background: #fff;
-    /* border-top: 1px solid #ccc; */
-    /* border-right: 1px solid #ccc; */
     font-size: 12px;
     padding: 0 30px 0 10px;
     line-height: 15px;
-    /* border: 1px solid #ccc; */
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
 	background: #e8f0fe;
@@ -486,14 +477,12 @@ attr:hover {
 	overflow-x: hidden;
 	overflow-y: overlay;
 	overflow:auto;
-	/* scrollbar styling [css?] */
 }
 .ua-nav-wrapper {
 	height: /* 50px */100px;
 	width: 100%;
 	border-bottom: 1px solid #ddd;
 }
-
 .modr-login-ctrl,.contributors-login-ctrl {
 	height: 34px;
 	line-height: 34px;
@@ -614,7 +603,7 @@ attr:hover {
 	text-align: center;
 }
 .udID p {
-	font-family: Ubuntu;
+	font-family: Ubuntu, "Product Sans";
 	font-size: 90%;
 }
 .ua-details h4 {
@@ -827,13 +816,15 @@ attr:hover {
 		color: #000 !important;
 		transition: color 0.5s ease-in-out;
 	}
-	.cw-ctrls-wrapper .content-wrapper-ctrl p {
+	.pc-side-panel-wrapper p {
 		margin: 0;
+	}
+	.cw-ctrls-wrapper .content-wrapper-ctrl p {
 		line-height: 40px;
 		padding: 0 0 0 10px;
 		font-size: 16px;
 	}
-	.cw-ctrls-wrapper .content-wrapper-ctrl:hover,.sub-nav a:hover {
+	.cw-ctrls-wrapper .content-wrapper-ctrl:hover,.sub-nav a:hover,.sp-footer p:hover {
 		cursor: pointer;
 		color: #000;
 		transition: color 0.5s ease-in-out;
@@ -854,7 +845,38 @@ attr:hover {
 		width: 114.5px;
 		text-shadow: none !important;
 	}
-
+	/* sp footer */
+	.sp-footer{
+		position: absolute;
+		width: 165px;
+		bottom: 0;
+		padding: 12px 0;
+	}
+	.sp-footer div {
+		width: 100px;
+		height: 20px;
+		line-height: 20px;
+		margin: auto;
+	}
+	.sp-footer .v1, .sp-footer .vctrl {
+		width: 50px;
+		font-size: 13px;
+		text-align: center;
+		height: 20px;
+		color: #93979b;
+		float: left;
+	}
+	.vctrl {
+		position: relative;
+	}
+	.vctrl i {
+		position: absolute;
+		height: 10px;
+		width: 10px;
+		font-size: 10px;
+		top: 2px;
+		right: -8px;
+	}
 	/* pc header nav icons*/
 	.ua-ctrls-wrapper {
 		float: right;
@@ -905,7 +927,8 @@ attr:hover {
 		outline: none;
 		color: #1967d2;
 	}
-
+	
+	/* explorer */
 	.explorer-navigation {
 		height: 54px;
 	}
@@ -937,6 +960,10 @@ attr:hover {
 	.fw-stats {
 		bottom: 0;
 		font-size: 12px;
+	}
+	/* eBooks uploads */
+	.uploads-cw {
+		padding-bottom: 0;
 	}
 	/* Responsive UA interface styling, w>=815px and h>=600px */
 	@media all and (min-width: 50.9375em) and (min-height: 600px) {
@@ -983,6 +1010,26 @@ attr:hover {
 		a.active-sn-ctrl {
 			width: 199px !important;
 		}
+		/* sp footer */
+		.sp-footer {
+			width: 249px;
+		}
+		.sp-footer div {
+			width: 140px;
+			height: 22px;
+			line-height: 22px;
+		}
+		.sp-footer .v1, .sp-footer .vctrl {
+			width: 70px;
+			height: 22px;
+			font-size: 15px;
+		}
+		.sp-footer .vctrl {
+			font-weight: normal !important;
+		}
+		.vctrl i {
+			right: -2px;
+		}
 		/* Content-wrapper */
 		.content-container {
 			width: calc(100% - 250px);
@@ -999,7 +1046,7 @@ attr:hover {
 			/* overflow: /* hidden */ /* auto;  overfow is messing up with elements on the edge of grid*/ 
 		}
 		.ua .ui-block-a {
-			height: 238px;
+			height: 322px;
 		}
 		.ua .ui-block-a div {
 			float: left;

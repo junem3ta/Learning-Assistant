@@ -1,8 +1,6 @@
 /* eslint-disable no-undef */
 /* eBooks Upload Processing */
 $(document).ready(function(){
-    //let _l = console.log;
-
     const ioConstraints = {
         max_files_allowed: 3,
         file_types: ['pdf', 'docx', 'doc']
@@ -13,6 +11,7 @@ $(document).ready(function(){
     },
     
     frcDsRef = {
+        '0': 'default-s',
         '1': 'fset-s',
         '2': 'bust-s',
         '3': 'fred-s',
@@ -21,11 +20,15 @@ $(document).ready(function(){
         'other': 'aux'
     };
 
-    let fileId, file, fd = new FormData(), logging = false,
+    let fileId, fd = new FormData(), logging = false,
 
     tmp = {'upload0':false,'upload1':false,'upload2':false},
 
-    ebAuxDisplay = dptS = tmp;
+    ebAuxDisplay = {'upload0':false,'upload1':false,'upload2':false},
+    
+    dptS = {'upload0':false,'upload1':false,'upload2':false},
+    
+    aAuxDisplay = false;
     
     function resetAuxDisplay(e) {
         $('.eb-metadata tr.eb-aux-inputs.'+e+'aux td.eb-aux-fc, .eb-metadata tr.eb-aux-inputs.'+e+'aux td.eb-aux-dpt').fadeOut();
@@ -50,8 +53,9 @@ $(document).ready(function(){
     $(document).on('click','.frc-ds', function() {
         let forLabel = $(this).attr('for').split('-'), fileId=forLabel[0]; //["upload0",0]
         if(forLabel[1]==0) {
-            /*  Null-RC option. Selected by default
+            /*  Null-RC option. Selected by default 
                 If displayed, hide dpt-select */
+
             if(dptS[fileId]) {
                 disableDS(fileId);
             }
@@ -63,7 +67,7 @@ $(document).ready(function(){
 
         } else if(forLabel[1]==6) {
             /*  Other-RC
-                If displayed, hide dpt-select */
+                If displayed, disable dpt-select */
             if(dptS[fileId]) {
                 disableDS(fileId);
             }
@@ -75,6 +79,7 @@ $(document).ready(function(){
                 ebAuxDisplay[fileId] = true;
             }
 
+            XG = ebAuxDisplay;
         } else {
             /*  Faculty options 1-5
                 If displayed, hide aux inputs */
@@ -83,8 +88,10 @@ $(document).ready(function(){
             }
            
             setTimeout(function(){
-                currRc = $("[name="+fileId +"rc]:checked").val();
+                currRc = $('[name='+fileId +'rc]:checked').val();
                 $('.' + fileId + ' .eb-dpt select').empty().html($('.'+frcDsRef[currRc])[0].content.cloneNode(true));
+                //refresh and force rebuild custom select
+                $('select').selectmenu('refresh', true);
 
                 if(!dptS[fileId]) {
                     enableDS(fileId);
@@ -93,9 +100,38 @@ $(document).ready(function(){
         }
     });						
 
-    /* Display metadata collection mods for each file about to be uploaded*/
-    function printRow(a,b) {
-        let fileId = a, file = b, rcName = fileId + 'rc', sName = fileId+'s',
+    let a = $($('.eb-metadata-a')[0].content.cloneNode(true));
+     /* Render Accordion */
+    $('.metadata-wrapper').append(a);
+
+    /* 
+        @printAS fn
+        @param a, fileID
+        @param b, file object.
+        Render metadata collection mods for each file about to be uploaded (Android)*/
+    let aSParent = false; 
+    function printAS(fileId,file) {
+        //_l(1);
+        let aS =  $($('.eb-metadata-a-s')[0].content.cloneNode(true));
+        /* Edit and Render Accordion Sections */
+        aS.find('h3').text(file.name);
+        aS.find('div').addClass(fileId);
+        aS.find('div select').attr('name','a-'+fileId+'-fcs');
+        aS.find('.a-dpt-s').attr('id',fileId + '-a-dpt-s');
+        $('.metadata-wrapper div[data-role=accordion]').append(aS);
+    }
+
+    /* let a = async ()=>{
+
+    }; */
+
+    /* 
+        @printRow fn
+        @param a, fileID
+        @param b, file object.
+        Render metadata collection mods for each file about to be uploaded */
+    function printRow(fileId,file) {
+        let rcName = fileId + 'rc', sName = fileId+'s',
 
         trs = $($('.eb-metadata-trs')[0].content.cloneNode(true));
         
@@ -119,18 +155,9 @@ $(document).ready(function(){
         $(y[0]).attr('id',sName);
 
         /* target aux tr */
-        $(trs.children()[1]).addClass(fileId+"aux");
+        $(trs.children()[1]).addClass(fileId+'aux');
         
         $('.eb-metadata tbody').append(trs);
-
-        /* Update JQM styling */
-        $('.ui-content').enhanceWithin();
-        $('td.eb-aux-dpt input,td.eb-aux-fc input').closest('div').addClass('eb-aux-dpt-custom');
-        $('td.eb-dpt select').closest('div').addClass('nomargin');
-        $("input").closest('div').addClass('noshadowI');
-
-        /* disable dpt-select by default*/
-        $('#'+sName).selectmenu('disable');
     }
     
     /* Cancel upload & reset variables*/
@@ -142,6 +169,45 @@ $(document).ready(function(){
         ebAuxDisplay = dptS = tmp;
         $('#eb-files').val('');
         $('.eb-metadata tbody').empty();
+        /* Reset Accordion sections */
+        $('.metadata-wrapper div[data-role=accordion]').remove();
+        /* Render Accordion */
+        a = $($('.eb-metadata-a')[0].content.cloneNode(true));
+        $('.metadata-wrapper').append(a);
+    });
+
+    /* Android metadata input */
+    $(document).on('change','.a-fcs',(event)=>{
+        /* Determine fc select */
+        let fcS = $(event.target),
+        /* Get selected faculty */
+        selectedFc = $('select[name=' + fcS.attr('name') + '] option:selected').val(); 
+        /* Get current accordion-content-wrapper/fileId */
+        aCW = fcS.attr('name').split('-')[1];
+
+        if(selectedFc == 'other') {
+            /* Show aux input forms */
+            $('.a-cw.' + aCW + ' form').fadeIn();
+            $("input").closest('div').addClass('noshadowI');
+            /*  Disable dept-select 
+                Instance el: div.a-cw.uploads0#upload0-a-dpt-s, where upload0=fileId */
+            $('div.a-cw.' + aCW + ' #' + aCW + '-a-dpt-s').selectmenu('disable');
+            aAuxDisplay = true;
+        } else {
+            /* Update dpt select and rebuild custom selectmenu*/
+            $('div.a-cw.' + aCW + ' .a-dpt-s').empty().html($('.'+frcDsRef[selectedFc])[0].content.cloneNode(true));
+            $('select[name=' + fcS.attr('name') + ']').selectmenu('refresh', true);
+
+            /* If displayed, hide aux input form and enable dpt-s*/
+            if(aAuxDisplay) {
+                /* On switch select option to faculty, reset 'Other\'s' input form */
+                $('.a-cw.' + aCW + ' form').hide();
+                /*  Re-enable select
+                    Instance el: div.a-cw.uploads0#upload0-a-dpt-s, where upload0=fileId */
+                $('div.a-cw.' + aCW + ' #' + aCW + '-a-dpt-s').selectmenu('enable');
+                aAuxDisplay = false;
+            }
+        }
     });
 
     /* Upload files onChange Event handler */
@@ -158,21 +224,37 @@ $(document).ready(function(){
             /* disable choose-file input */
             $('#eb-files').attr('disabled', true);
 
-            /* Render metadata input mods */
-            if (filesObjLength == 1) {
-                fd.append("upload0", file);
+            /*  Render metadata input mods for both pc & screens < 922px;
+                aMetadataInput = true; default; */
+            if(filesObjLength == 1) {
+                /* Update FormData Obj */
+                fd.append("upload0", files[0]);
+                /* Print 1 accordion section */
+                printAS("upload0",files[0]);
                 /* print 1 row */
                 printRow("upload0",files[0]);
-                $('.eb-uploads .ui-block-b, .cancel-upload').fadeIn();
             } else {
-                /* print n rows */
+                /* Print n accordion sections / n rows */
                 $.each(files, (i, file) => {
-                    fileId = "upload" + i;
+                    fileId = 'upload' + i;
                     fd.append(fileId,file);
+                    printAS(fileId,file);
                     printRow(fileId,file);
                 });
-                $('.eb-uploads .ui-block-b, .cancel-upload').fadeIn();
             }
+            /*  await for async printAS/async printRow?
+                ** Incase enhanceWithin executes before AS/trs are rendered 
+                
+                Update Accordion/eb-metadata table JQM Styling */
+            $('.ui-content').enhanceWithin();
+            $('td.eb-aux-dpt input,td.eb-aux-fc input').closest('div').addClass('eb-aux-dpt-custom');
+            $('td.eb-dpt select').closest('div').addClass('nomargin');
+            $("input").closest('div').addClass('noshadowI');
+            $('.pc-metadata-wrapper').removeClass('noshadowI');    
+            /* disable dpt-select by default*/
+            $('td.eb-dpt select').selectmenu('disable');
+            /* update upload eb UI */
+            $('.eb-uploads .ui-block-b, .cancel-upload').fadeIn();
         }
 
         /* submit form click event */
@@ -193,8 +275,6 @@ $(document).ready(function(){
     Detect radio check event? 
         issue: rc label click event doesn't match radio check event
         currentFix: allowing .5s delay for current rc changes to reflect
-
-    Refresh custom select options
-
+        
     Cursor for choose-files button
 */

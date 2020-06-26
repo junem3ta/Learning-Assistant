@@ -1,6 +1,7 @@
 .uploads-cw {
     overflow: overlay;
     overflow: auto;
+    padding-bottom: 62px;
 }
 .uploads-wrapper {
     margin: 1px 0;
@@ -70,99 +71,145 @@
 .eb-files:hover, input#file-upload-button {
     cursor: pointer !important;
 }
-
-.eb-metadata {
-    border-collapse: collapse;
+/* 
+    For resizing purposes, render both android/pc mods at the same time?
+    Update user inputs across all mods concurrently?
+    
+    create boolean to track a/atable input mods. 
+*/
+/* eBooks uploads input mods for Android/Screens less than 922px  */
+.metadata-wrapper {
+    display: block;
 }
-.eb-metadata, .eb-metadata td {
+.pc-metadata-wrapper {
+    display: none;
+}
+.metadata-wrapper {
     border: 1px solid #ddd;
-    box-sizing: border-box;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
 }
-.eb-metadata fieldset {
-    width: 420px !important;
-}
-.eb-metadata fieldset label, .eb-metadata td {
-    width: 60px !important;
-    padding: 0 !important;
+.a-upload0s option[value=0]{
     text-align: center;
 }
-.eb-metadata fieldset label {
-    color: #f6f6f6 !important;
-    text-align: center !important;
-    font-size: 16px !important;
-    height: 36px !important;
-    line-height: 36px !important;
-    border-width: 0 !important;
-    border-right-width: 1px !important;
-    box-sizing: border-box;
-}
-.eb-metadata fieldset label:nth-child(2) {
-    border-left: 1px solid transparent !important;
-    -webkit-border-bottom-left-radius: 0;
-    border-bottom-left-radius: 0;
-    -webkit-border-top-left-radius: 0;
-    border-top-left-radius: 0;
-}
-.eb-metadata fieldset label:last-child {
-    border-right-width: 0 !important;
-    -webkit-border-top-right-radius: 0;
-    border-top-right-radius: 0;
-    -webkit-border-bottom-right-radius: 0;
-    border-bottom-right-radius: 0;
+.metadata-wrapper div h3:nth-child(1) {
+    margin-top: 0;
 }
 
-td.fn-hdr,td.dpt-hdr {
-    padding: 0 10px 1px !important;
-    vertical-align: bottom;
+.a-cw form {
+    display: none;
 }
-td.fc-hdr {
-    padding: 5px 0 !important;
+
+/* PC eb metadata input mods. Breakpoint = 922px */
+@media all and (min-width: 57.6em){
+    .metadata-wrapper {
+        display: none;
+    }
+    .pc-metadata-wrapper {
+        display: block;
+    }
+    .eb-metadata {
+        border-collapse: collapse;
+    }
+    .eb-metadata, .eb-metadata td {
+        border: 1px solid #ddd;
+        box-sizing: border-box;
+    }
+    .eb-metadata fieldset {
+        width: 420px !important;
+    }
+    .eb-metadata fieldset label, .eb-metadata td {
+        width: 60px !important;
+        padding: 0 !important;
+        text-align: center;
+    }
+    .eb-metadata fieldset label {
+        color: #f6f6f6 !important;
+        text-align: center !important;
+        font-size: 16px !important;
+        height: 36px !important;
+        line-height: 36px !important;
+        border-width: 0 !important;
+        border-right-width: 1px !important;
+        box-sizing: border-box;
+    }
+    .eb-metadata fieldset label:nth-child(2) {
+        border-left: 1px solid transparent !important;
+        -webkit-border-bottom-left-radius: 0;
+        border-bottom-left-radius: 0;
+        -webkit-border-top-left-radius: 0;
+        border-top-left-radius: 0;
+    }
+    .eb-metadata fieldset label:last-child {
+        border-right-width: 0 !important;
+        -webkit-border-top-right-radius: 0;
+        border-top-right-radius: 0;
+        -webkit-border-bottom-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    
+    td.fn-hdr,td.dpt-hdr {
+        padding: 0 10px 1px !important;
+        vertical-align: bottom;
+    }
+    td.fc-hdr {
+        padding: 5px 0 !important;
+    }
+    td.dpt-hdr {
+        width: 200px !important;
+    }
+    td.fn-hdr,td.fc-hdr,td.dpt-hdr {
+        font-size: 16px;
+        color: #444;
+    }
+    td.fn-hdr,td.eb-fn {
+        width: 140px !important;
+        max-width: 140px !important;
+    }
+    td.eb-fn {
+        padding: 0 10px !important;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis !important;
+    }
+    tr.eb-fc td {
+        box-sizing: border-box;
+        font-size: 13px;
+        line-height: 20.91px;
+    }
+    /* faculty radio check */
+    td.frc {
+        padding: 0;
+    }
+    
+    .eb-aux-dpt-custom {
+        margin: 4px;
+        box-sizing: border-box;
+    }
+    
+    td.eb-dpt {
+        padding: 4px !important;
+    }
+    
+    td.eb-dpt a, .a-cw a {
+        box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+    }
+    
+    td.eb-dpt a {
+        padding: 0 1em !important;
+    }
+    
+    td.eb-aux-fc input,td.eb-aux-dpt input {
+        padding: 0 .4em;
+        font-size: 14px;
+    }
+    tr.eb-aux-inputs, tr.eb-aux-inputs td.eb-aux-fc, tr.eb-aux-inputs td.eb-aux-dpt{
+        display:none;
+    }
 }
-td.dpt-hdr {
-    width: 200px !important;
-}
-td.fn-hdr,td.fc-hdr,td.dpt-hdr {
-    font-size: 16px;
-    color: #444;
-}
-td.fn-hdr,td.eb-fn {
-    width: 140px !important;
-    max-width: 140px !important;
-}
-td.eb-fn {
-    padding: 0 10px !important;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis !important;
-}
-tr.eb-fc td {
-    box-sizing: border-box;
-    font-size: 13px;
-    line-height: 20.91px;
-}
-td.frc/* faculty radio check */ {
-    padding: 0;
-}
-.eb-aux-dpt-custom {
-    margin: 4px;
-    box-sizing: border-box;
-}
-td.eb-dpt {
-    padding: 4px !important;
-}
-td.eb-dpt a {
-    box-shadow: none !important;
-    -webkit-box-shadow: none !important;
-    padding: 0 1em !important;
-}
-td.eb-aux-fc input,td.eb-aux-dpt input {
-    padding: 0 .4em;
-    font-size: 14px;
-}
-tr.eb-aux-inputs, tr.eb-aux-inputs td.eb-aux-fc, tr.eb-aux-inputs td.eb-aux-dpt{
-    display:none;
-}
-																	
+
+/* General styling */
 .eb-uploads .ui-block-a,.eb-uploads .ui-block-b,.eb-uploads .ui-block-c, .eb-uploads .ui-block-g  {
     width: 100%;
 }
