@@ -1,523 +1,520 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-	<title>app</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<!-- static-assets -->
-	<link rel="stylesheet" type="text/css" href="assets/fonts/ps/style.css" />
-	<link href="assets/font-awesome/css/all.css" rel="stylesheet">
-	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="js/jquery.mobile-1.5.0-rc1.min.js"></script>
-	<script type="text/javascript" src="FsIndex/ppfs/FsIndex.0.min.js"></script>
-	<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.5.0-rc1.min.css">
-	<link rel="stylesheet" type="text/css" href="css/stylesheet.main.css">
-	<link rel="stylesheet" type="text/css" href="css/explorer.sub.css">
-	<link rel="stylesheet" type="text/css" href="css/stylesheet.aux.css">
-	<script type="text/javascript" src="js/prefixfree.min.js"></script>
-	<script type="text/javascript" src="js/navigation.js"></script>
-	<script type="text/javascript" src="js/explorer.js"></script>
-	<script type="text/javascript" src="js/content.js"></script>
-	<script type="text/javascript" src="js/upload.js"></script>
-</head>
-
-<body>
-	<!-- @Temap script -->
-	<script type="text/javascript">
-		let _l = console.log;
-	</script>
-
-	<div data-role="page" class="content-wrapper">
-		<!-- 
-			@AndroidSidepanel 
-			-- The Android side panel overlaps over the ui-content, thus it makes more sense 
-			to have the sidepanelwrapper placed in a fixed position outside of the ui-content.
-		-->
-		<!-- Android side panel -->
-		<div class="side-panel-wrapper">
-			<div class="side-panel">
-				<p>
-					panel <br>
-					<!-- dynamic placeholder content here -->
-				</p>
+	<head>
+		<title>app</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<!-- static-assets -->
+		<link rel="stylesheet" type="text/css" href="assets/fonts/ps/style.css" />
+		<link href="assets/font-awesome/css/all.css" rel="stylesheet">
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.5.0-rc1.min.js"></script>
+		<script type="text/javascript" src="FsIndex/ppfs/FsIndex.0.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.5.0-rc1.min.css">
+		<link rel="stylesheet" type="text/css" href="css/stylesheet.main.css">
+		<link rel="stylesheet" type="text/css" href="css/explorer.sub.css">
+		<link rel="stylesheet" type="text/css" href="css/stylesheet.aux.css">
+		<script type="text/javascript" src="js/prefixfree.min.js"></script>
+		<script type="text/javascript" src="js/navigation.js"></script>
+		<script type="text/javascript" src="js/explorer.js"></script>
+		<script type="text/javascript" src="js/content.js"></script>
+		<script type="text/javascript" src="js/upload.js"></script>
+	</head>
+	<body>
+		<div data-role="page" class="content-wrapper">
+			<!-- 
+				@AndroidSidepanel 
+				-- The Android side panel overlaps over the ui-content, thus it makes more sense 
+				to have the sidepanelwrapper placed in a fixed position outside of the ui-content.
+			-->
+			<!-- Android side panel -->
+			<div class="side-panel-wrapper">
+				<div class="side-panel">
+					<p>
+						panel <br>
+						<!-- dynamic placeholder content here -->
+					</p>
+				</div>
 			</div>
-		</div>
 
-		<div role="main" class="ui-content ">
-			<!-- @Templates: Template Markup for dynamic content -->
-			<!-- @Popup-basic -->
-			<template class='popupbasic-template'>
-				<a href="#target1" data-rel="popup" data-position-to="window"
-					class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a" data-transition="pop">
-					target2
-				</a>
-				<div data-role="popup" id="target3" data-theme="a" class="ui-corner-all">
-					<form id="target4">
-						<div style="padding:10px 20px;">
-							<h3 style="text-align: center;">target5</h3>
-							<label for="un" class="ui-hidden-accessible">Username:</label>
-							<input type="text" name="user" id="un" value="" placeholder="username" data-theme="a">
-							<label for="pw" class="ui-hidden-accessible">Password:</label>
-							<input type="password" name="pass" id="pw" value="" placeholder="password" data-theme="a">
-							<button type="submit" class="ui-button ui-corner-all ui-shadow ui-button-b">Sign in <span class="ui-icon ui-icon-check"></span></button>
-						</div>
-					</form>
-				</div>
-			</template>
-			<!-- @eb-metadata selects -->
-			<template class="default-s">
-				<option disabled>Select</option>
-				<option value=0>Null</option>
-			</template>
+			<div role="main" class="ui-content ">
+				<!-- @Templates: Template Markup for dynamic content -->
+				<!-- @Popup-basic -->
+				<template class='popupbasic-template'>
+					<a href="#target1" data-rel="popup" data-position-to="window"
+						class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a" data-transition="pop">
+						target2
+					</a>
+					<div data-role="popup" id="target3" data-theme="a" class="ui-corner-all">
+						<form id="target4">
+							<div style="padding:10px 20px;">
+								<h3 style="text-align: center;">target5</h3>
+								<label for="un" class="ui-hidden-accessible">Username:</label>
+								<input type="text" name="user" id="un" value="" placeholder="username" data-theme="a">
+								<label for="pw" class="ui-hidden-accessible">Password:</label>
+								<input type="password" name="pass" id="pw" value="" placeholder="password" data-theme="a">
+								<button type="submit" class="ui-button ui-corner-all ui-shadow ui-button-b">Sign in <span class="ui-icon ui-icon-check"></span></button>
+							</div>
+						</form>
+					</div>
+				</template>
+				<!-- @eb-metadata selects -->
+				<template class="default-s">
+					<option disabled>Select</option>
+					<option value=0>Null</option>
+				</template>
 
-			<template class="bust-s">
-				<option disabled>Select</option>
-				<option value=0>Null</option>
-				<option value="ba">Business Administration</option>
-				<option value="mgmtsc">Management Science</option>
-			</template>
-		
-			<template class="fahu-s">
-				<option disabled>Select</option>
-				<option value=0>Null</option>
-				<option value="hu">Humanities</option>
-				<option value="socsc">Social Sciences</option>
-			</template>
+				<template class="bust-s">
+					<option disabled>BUST</option>
+					<option value=0>Null</option>
+					<option value="ba">Business Administration</option>
+					<option value="mgmtsc">Management Science</option>
+				</template>
 			
-			<template class="fred-s">
-				<option disabled>Select</option>
-				<option value=0>Null</option>
-				<option value="ed">Education</option>	
-			</template>
-		
-			<template class="faes-s">
-				<option disabled>Select</option>
-				<option value=0>Null</option>
-				<option value="envs">Environmental Studies</option>
-				<option value="agrsc">Agricultural Sciences</option>
-				<option value="psc">Plant Sciences</option>	
-				<option value="asc">Animal Science</option>
-				<option value="biosc">Biological Sciences</option>	
-			</template>
-		
-			<template class="fset-s">
-				<option disabled>Select</option>
-				<option value=0>Null</option>
-				<option value="cs">Computer Science</option>
-				<option value="phycsc">Physical Sciences</option>
-				<option value="nurs">Nursing</option>	
-			</template>
-			<!-- @eb-metadata TRs -->
-			<template class="eb-metadata-trs">
-				<tr class="">
-					<td class="eb-fn">
-						<attr title=""></attr>
-					</td>
-					<td colspan="7" class="frc">
-						<fieldset data-role="controlgroup" data-mini="true" data-type="horizontal">
-							<input type="radio" name="" id="" value="0" checked="checked">
-							<label for="" class="frc-ds">✓</label>
-							<input type="radio" name="" id="" value=1>
-							<label for="" class="frc-ds">✓</label>
-							<input type="radio" name="" id="" value=2>
-							<label for="" class="frc-ds">✓</label>
-							<input type="radio" name="" id="" value=3>
-							<label for="" class="frc-ds">✓</label>
-							<input type="radio" name="" id="" value=4>
-							<label for="" class="frc-ds">✓</label>
-							<input type="radio" name="" id="" value=5>
-							<label for="" class="frc-ds">✓</label>
-							<input type="radio" name="" id="" value="other">
-							<label for="" class="frc-ds">✓</label>
-						</fieldset>
-					</td>
-					<td class="eb-dpt">
-						<select name="" id="" data-mini="true" data-native-menu="false">
-							<option value=0>Select</option>
-							<option value="ba">Business Administration</option>
-							<option value="mgmtsc">Management Science</option>
-						</select>
-					</td>
-				</tr> 
-				<tr class="eb-aux-inputs">
-					<td></td>
-					<td colspan="7" class="eb-aux-fc">
-						<input type="text" placeholder="Faculty description" data-clear-btn="true">
-					</td>
-					<td class="eb-aux-dpt">
-						<input type="text" placeholder="Department" data-clear-btn="true">
-					</td>
-				</tr>
-			</template>
-			<!-- eb Metadata accordion -->
-			<template class="eb-metadata-a">
-				<div data-role="accordion" 
-				data-icons="{ 
-					&quot;header&quot;: &quot;ui-icon-plus&quot;, 
-					&quot;activeHeader&quot;: &quot;ui-icon-minus&quot; 
-				}" data-height-style="content">
-				</div>
-			</template>
-			<!-- eb Metadata accordion sections -->
-			<template class="eb-metadata-a-s">
+				<template class="fahu-s">
+					<option disabled>FAHU</option>
+					<option value=0>Null</option>
+					<option value="hu">Humanities</option>
+					<option value="socsc">Social Sciences</option>
+				</template>
 				
-				<h3 class="a-section-hdr"></h3>
-				<div class="a-cw">
-					<p class="a-fchdr">Faculty</p>
-					<select class="a-fcs" name="" id="" data-mini="true" data-native-menu="false">
-						<option disabled>Select</option>
-						<option value=0>Null</option>
-						<option value=1>FSET</option>
-						<option value=2>BUST</option>
-						<option value=3>FRED</option>
-						<option value=4>FAHU</option>
-						<option value=5>FAES</option>
-						<option value="other">Other</option>
-					</select>
-					<form>
-						<input type="text" placeholder="Faculty description" data-clear-btn="true">
-					</form>
-					
-					<p class="a-dpthdr">Department</p>
-					<select  name="" id="" data-mini="true" data-native-menu="false" class="a-dpt-s">
-						<option disabled>Select</option>
-						<option value=0>Null</option>
-					</select>
-					<form>
-						<input type="text" placeholder="Department" data-clear-btn="true">
-					</form> 
-				</div>
-
-			</template>
-
-			<!-- @Android searchbar -->
-			<div class="ui-grid-a home-search-wrapper">
-				<div class="panel-ctrl-wrapper">
-					<p><i class="fas fa-bars panel-ctrl"></i></p>
-					<p><i class="fas fa-arrow-left search-ctrl"></i></p>
-				</div>
-				<input class="home-search" placeholder="Search past papers, e-books" type="text" data-clear-btn="true">
-
-				<div class="static-hdr">
-					<p>Files</p>
-				</div>
-
-				<div class="ui-grid-a search-window">
-					<div class="sw-thumb">
-						<img src="assets/images/search.svg" />
-					</div>
-					<!--
-						<div class="sr">
-						</div>
-						-->
-				</div>
-			</div>
+				<template class="fred-s">
+					<option disabled>FRED</option>
+					<option value=0>Null</option>
+					<option value="ed">Education</option>	
+				</template>
 			
-			<!-- Desktop searchbar -->
-			<div class="header">
-				<div class="app-title">
-					<attr title="v1.0.0">
-						<p class="app-ver">BETA</p>
-					</attr>
-					<p class="title">eREAD</p>
-					<p class="sub-title"> Chuka University</p>
-				</div>
-				<div class="header-search-wrapper">
-					<input class="header-search" placeholder="Search past papers, e-books" type="search"
-						data-clear-btn="true">
-				</div>
-				<div class="ua-ctrls-wrapper">
-					<div id="ua-cw" class="ua-ctrl content-wrapper-ctrl ua-dpl-ctrl">
-						<p class="ua-ctrl-hdr">
-							<!-- Account -->
-							<abbr title="User Account">
-								<i tabindex="1" class="ua-ctrl-icon fas fa-user-circle"></i>
-							</abbr>
-						</p>
+				<template class="faes-s">
+					<option disabled>FAES</option>
+					<option value=0>Null</option>
+					<option value="envs">Environmental Studies</option>
+					<option value="agrsc">Agricultural Sciences</option>
+					<option value="psc">Plant Sciences</option>	
+					<option value="asc">Animal Science</option>
+					<option value="biosc">Biological Sciences</option>	
+				</template>
+			
+				<template class="fset-s">
+					<option disabled>FSET</option>
+					<option value=0>Null</option>
+					<option value="cs">Computer Science</option>
+					<option value="phycsc">Physical Sciences</option>
+					<option value="nurs">Nursing</option>	
+				</template> 
+				<!-- @eb-metadata TRs -->
+				<template class="eb-metadata-trs">
+					<tr class="">
+						<td class="eb-fn">
+							<attr title=""></attr>
+						</td>
+						<td colspan="7" class="frc">
+							<fieldset data-role="controlgroup" data-mini="true" data-type="horizontal">
+								<input type="radio" name="" id="" value="0" checked="checked">
+								<label for="" class="frc-ds">✓</label>
+								<input type="radio" name="" id="" value=1>
+								<label for="" class="frc-ds">✓</label>
+								<input type="radio" name="" id="" value=2>
+								<label for="" class="frc-ds">✓</label>
+								<input type="radio" name="" id="" value=3>
+								<label for="" class="frc-ds">✓</label>
+								<input type="radio" name="" id="" value=4>
+								<label for="" class="frc-ds">✓</label>
+								<input type="radio" name="" id="" value=5>
+								<label for="" class="frc-ds">✓</label>
+								<input type="radio" name="" id="" value="other">
+								<label for="" class="frc-ds">✓</label>
+							</fieldset>
+						</td>
+						<td class="eb-dpt">
+							<select name="" id="" data-mini="true" data-native-menu="false">
+								<option disabled>Select</option>
+								<option value=0>Null</option>
+							</select>
+						</td>
+					</tr> 
+					<tr class="eb-aux-inputs">
+						<td></td>
+						<td colspan="7" class="eb-aux-fc">
+							<input type="text" placeholder="Faculty description" data-clear-btn="true">
+						</td>
+						<td class="eb-aux-dpt">
+							<input type="text" placeholder="Department" data-clear-btn="true">
+						</td>
+					</tr>
+				</template>
+				<!-- eb Metadata accordion -->
+				<template class="eb-metadata-a">
+					<div data-role="accordion" 
+					data-icons="{ 
+						&quot;header&quot;: &quot;ui-icon-plus&quot;, 
+						&quot;activeHeader&quot;: &quot;ui-icon-minus&quot; 
+					}" data-height-style="content">
 					</div>
-					<div id="sc-cw" class="sc-ctrl content-wrapper-ctrl">
-						<!-- title="Support Center" -->
-						<p class="sc-ctrl-hdr">
-							<!-- Support(?) -->
-							<abbr title="Support center">
-								<i tabindex="2" class="sc-ctrl-icon fas fa-envelope"></i>
-							</abbr>
-						</p>
+				</template>
+				<!-- eb Metadata accordion sections -->
+				<template class="eb-metadata-a-s">
+					
+					<h3 class="a-section-hdr"></h3>
+					<div class="a-cw">
+						<p class="a-fchdr">Faculty</p>
+						<select class="a-fcs" name="" id="" data-mini="true" data-native-menu="false">
+							<option disabled>Select</option>
+							<option value=0>Null</option>
+							<option value=1>FSET</option>
+							<option value=2>BUST</option>
+							<option value=3>FRED</option>
+							<option value=4>FAHU</option>
+							<option value=5>FAES</option>
+							<option value="other">Other</option>
+						</select>
+						<form>
+							<input type="text" placeholder="Faculty description" data-clear-btn="true">
+						</form>
+						
+						<p class="a-dpthdr">Department</p>
+						<select  name="" id="" data-mini="true" data-native-menu="false" class="a-dpt-s">
+							<option disabled>Select</option>
+							<option value=0>Null</option>
+						</select>
+						<form>
+							<input type="text" placeholder="Department" data-clear-btn="true">
+						</form> 
 					</div>
-				</div>
-			</div>
-			<!-- Desktop Sidepanel -->
-			<div class='pc-side-panel-wrapper'>
-				<div class="cw-ctrls-wrapper">
-					<div id="pp-cw" class="content-wrapper-ctrl">
-						<p>Pastpapers</p>
-					</div>
-					<div id="eb-cw" class="content-wrapper-ctrl">
-						<p>eBooks</p>
-					</div>
-					<div id="uploads-cw" class="content-wrapper-ctrl active-cw-ctrl">
-						<p>Upload eBook(s)</p>
-					</div>
-					<div id="contributors-cw" class="content-wrapper-ctrl">
-						<p>Contributors</p>
-					</div>
-					<div id="ua-cw" class="content-wrapper-ctrl">
-						<p>User Account</p>
-					</div>
-					<div class="sub-nav">
-						<p>SIGN IN</p>
-						<div class="contributors-aux-lc"></div>
-						<div class="moderators-aux-lc"></div>
-					</div>
-				</div>
-				<div class="sp-footer">
-					<div>
-						<p class="v1">About</p>
-						<a href="#" target="_blank" class="vctrl">
-							GitHub
-							<!-- https://github.com/junem3ta/Learning-Assistant -->
-							<i class="fas fa-external-link-square-alt"></i>
-						</a>
-					</div>
-				</div>
-			</div>
 
-			<!-- Desktop/Android Content wrapper-->
-			<div class="content-container">
-				<div class="content pp-cw">
-					<div class="explorer-navigation path">
-						<!-- <div class='b-f-navigators'>
-								<div class='b'><p style="transform: rotate(45deg);">∟</p></div>
-								<div class='f'><p style="transform: rotate(-135deg);">∟</p></div>
-							</div> -->
-						<div class="tmp-path-section">
-							<p class="explorer-hdr">Past papers</p>
+				</template>
+
+				<!-- @Android searchbar -->
+				<div class="ui-grid-a home-search-wrapper">
+					<div class="panel-ctrl-wrapper">
+						<p><i class="fas fa-bars panel-ctrl"></i></p>
+						<p><i class="fas fa-arrow-left search-ctrl"></i></p>
+					</div>
+					<input class="home-search" placeholder="Search past papers, e-books" type="text" data-clear-btn="true">
+
+					<div class="static-hdr">
+						<p>Files</p>
+					</div>
+
+					<div class="ui-grid-a search-window">
+						<div class="sw-thumb">
+							<img src="assets/images/search.svg" />
 						</div>
-						<div class="tmp-path-delimeter">
-							<p style="transform: rotate(45deg);" class='foward-delimeter'>◥</p>
-						</div>
-						<div class="path-section root-path-section">
-							<p class="explorer-hdr">Past Papers</p>
-						</div>
-					</div>
-
-					<div class="explorer">
-
-					</div>
-				</div>
-
-				<div class="content eb-cw">
-					<p>eBooks<br /></p>
-				</div>
-
-				<div class="content uploads-cw active-content-wrapper">
-					<div class="uploads-hdr">
-						<h3>Contribute</h3>
-						<h4>
-							Share revision e-Books with the eRead community
-							<attr title="Uploaded e-Books are subject to an approval process">
-								<i class="fas fa-info-circle"></i>
-							</attr>
-						</h4>
-					</div>
-					<div class="ui-corner-all uploads-wrapper">
-						<div class="uploads-wrapper-hdr ui-bar ui-bar-a">
-							<p>Share</p>
-							<div class="cancel-upload">
-								<a href="#"
-									class="ui-shadow ui-button ui-corner-all ui-button-inline ui-mini">
-									Cancel Upload
-									<span class="ui-icon ui-icon-delete"></span>
-								</a>
+						<!--
+							<div class="sr">
 							</div>
-						</div>
-						<div class="ui-body ui-body-a">
-							<div class="eb-uploads ui-grid-a">
-								<div class="ui-block-a">
-									<form class='upload'>
-										<label for="file">File:</label>
-										<input type="file" name="file" id="eb-files" class="eb-files" multiple
-											accept=".doc, .docx, .pdf">
-									</form>
-								</div>
-								<div class="uploads-input-log ui-block-g">
-									<p class="io-err-msg"></p>
-									<p class="io-ok-msg"></p>
-								</div>
-								<div class="ui-block-b">
-									<div class="ui-block-c">
-										<p>
-											Please select the category to which the revision material belongs by
-											checking the box under the respective <em>Faculty</em> name.
-											Select the respective department name under the <em>Department</em> column:</p>
-									</div>
-									<div class="ui-block-d">
-										<div class="pc-metadata-wrapper">
-											<table class="eb-metadata">
-												<thead>
-													<tr>
-														<td rowspan="2" class="fn-hdr">File Name</td>
-														<td colspan="7" class="fc-hdr">Faculty * </td>
-														<td rowspan="2" class="dpt-hdr">Department * </td>
-													</tr>
-													<tr class="eb-fc">
-														<td><em>Null</em></td>
-														<td>FSET</td>
-														<td>BUST</td>
-														<td>FRED</td>
-														<td>FAHU</td>
-														<td>FAES</td>
-														<td>OTHER</td>
-													</tr>
-												</thead>
-												<tbody></tbody>
-											</table>
-										</div>
-										<div class="metadata-wrapper">
-											
-										</div>
-									</div>
-									<!-- <div class="eb-metadata-input-wrapper ui-block-e">
-										<div class="eb-md-input-hdr">
-											<p>File Details: </p>
-										</div>
-										<div class="eb-metadata-input">
-											<ul>
-												<li>Filename (dept) filesize</li>
-											</ul>
-											<em
-												style="font-weight: 100;font-size: 14px;font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">
-												<br>
-												Hide by default; show [FileName, filesize Kbs] on file select;
-												update to [FileName (department), filesize Kbs] on metadata update
-											</em>
-										</div>
-									</div> -->
-									<div class="upload-f-ctrls ui-block-f">
-										<div class="submit-eb-uploads">
-											<a href="#"
-												class="ui-shadow ui-button ui-corner-all ui-button-inline ui-mini">
-												Submit
-												<span class="ui-icon ui-icon-check"></span>
-											</a>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
+							-->
 					</div>
 				</div>
-
-				<div class="content ua-cw">
-					<div class="ua-nav-wrapper">
-						<div class="ua-hdr">
-							<p class='ua-hdr-title'>eRead Account</p>
-						</div>
-						<div class='login-ctrls-wrapper'>
-							<div class='ua-login-ctrls'>
-								<abbr title="Add Account">
-									<div class='login-ctrls-hdr'>
-										<i class="fas fa-user-plus"></i>
-									</div>
+				
+				<!-- Desktop searchbar -->
+				<div class="header">
+					<div class="app-title">
+						<attr title="v1.0.0">
+							<p class="app-ver">BETA</p>
+						</attr>
+						<p class="title">eREAD</p>
+						<p class="sub-title"> Chuka University</p>
+					</div>
+					<div class="header-search-wrapper">
+						<input class="header-search" placeholder="Search past papers, e-books" type="search"
+							data-clear-btn="true">
+					</div>
+					<div class="ua-ctrls-wrapper">
+						<div id="ua-cw" class="ua-ctrl content-wrapper-ctrl ua-dpl-ctrl">
+							<p class="ua-ctrl-hdr">
+								<!-- Account -->
+								<abbr title="User Account">
+									<i tabindex="1" class="ua-ctrl-icon fas fa-user-circle"></i>
 								</abbr>
-								<div class="modr-login-ctrl">
-									<!-- dynamic basic popup -->
-								</div>
-								<div class="contributors-login-ctrl">
-									<!-- dynamic basic popup -->
-								</div>
-							</div>
+							</p>
 						</div>
-					</div>
-					<div class="ua ui-grid-a">
-						<div class="ui-block-a">
-							<div class="avatar-card">
-								<attr title="eRead Bot">
-									<div class="gravatar-wrapper">
-										<img src='assets/account/avatars/25937675.png' />
-									</div>
-									<div class="udID">
-										<p>Learning assistant
-											<!-- UIDMozGkCrm -->
-										</p>
-									</div>
-								</attr>
-							</div>
-							<div class="ua-details">
-								<h4>Standard Account</h4>
-								<p>
-									<span>•</span>&nbspUserID UIDMozGkCrm
-								</p>
-								<br />
-							</div>
-						</div>
-						<div class="ui-block-b">
-							<div class="ui-body-c ua-info-wrapper">
-								<p class="ua-info">
-									<i class="fas fa-info-circle"></i> The <em>eRead</em> standard user account is a
-									<span><em>Super</em> user account</span> with unlimited access to
-									<span><em>all</em></span>
-									revision content. User accounts are only required for when you're contributing new
-									content, mainly for purposes
-									of tracking the approval status of added content.
-									<br />
-								</p>
-							</div>
-						</div>
-						<div class="ui-block-c">
-							<p class="ua-info-eb-link">
-								<br />
-								Contribute to the eRead community by sharing new revision content <span id="uploads-cw"
-									class="content-wrapper-ctrl ua-dpl-ctrl">here</span>.
+						<div id="sc-cw" class="sc-ctrl content-wrapper-ctrl">
+							<!-- title="Support Center" -->
+							<p class="sc-ctrl-hdr">
+								<!-- Support(?) -->
+								<abbr title="Support center">
+									<i tabindex="2" class="sc-ctrl-icon fas fa-envelope"></i>
+								</abbr>
 							</p>
 						</div>
 					</div>
 				</div>
-
-				<div class="content contributors-cw">
-					<p>Hall of Fame<br /></p>
-					<div></div>
+				<!-- Desktop Sidepanel -->
+				<div class='pc-side-panel-wrapper'>
+					<div class="cw-ctrls-wrapper">
+						<div id="pp-cw" class="content-wrapper-ctrl">
+							<p>Pastpapers</p>
+						</div>
+						<div id="eb-cw" class="content-wrapper-ctrl">
+							<p>eBooks</p>
+						</div>
+						<div id="uploads-cw" class="content-wrapper-ctrl active-cw-ctrl">
+							<p>Upload eBook(s)</p>
+						</div>
+						<div id="contributors-cw" class="content-wrapper-ctrl">
+							<p>Contributors</p>
+						</div>
+						<div id="ua-cw" class="content-wrapper-ctrl">
+							<p>User Account</p>
+						</div>
+						<div class="sub-nav">
+							<p>SIGN IN</p>
+							<div class="contributors-aux-lc"></div>
+							<div class="moderators-aux-lc"></div>
+						</div>
+					</div>
+					<div class="sp-footer">
+						<div>
+							<a class="v1" href="v1.0.0/about.html" data-ajax="false">About</p>
+							<a href="#" target="_blank" class="vctrl">
+								GitHub
+								<!-- https://github.com/junem3ta/Learning-Assistant -->
+								<i class="fas fa-external-link-square-alt"></i>
+							</a>
+						</div>
+					</div>
 				</div>
-				
-				<div class="content sc-cw">
-					<p>eRead Support <br /></p>
-					<div></div>
-				</div>
-			</div>
-			<!-- End Desktop/Android Content wrapper -->
-		</div>
-		<!-- /main -->
 
-		<div data-role="toolbar" data-type="footer" data-position="fixed" class="footer" data-tap-toggle="false">
-			<div data-role="navbar" data-grid="c" id="nv1">
-				<ul>
-					<li>
-						<a href="#" data-icon="folderopen" id="pp-cw" class="content-wrapper-ctrl ui-btn-active">
-							Pastpapers
-						</a>
-					</li>
-					<li>
-						<a href="#" data-icon="filepdf" id="eb-cw" class="content-wrapper-ctrl">
-							e-Books
-						</a>
-					</li>
-					<li>
-						<a href="#" data-icon="cloudupload" id="uploads-cw" class="content-wrapper-ctrl">
-							Upload
-						</a>
-					</li>
-					<li>
-						<a href="#" data-icon="usercircle" id="ua-cw" class="content-wrapper-ctrl">
-							My Account
-						</a>
-					</li>
-				</ul>
+				<!-- Desktop/Android Content wrapper-->
+				<div class="content-container">
+					<div class="content pp-cw">
+						<div class="explorer-navigation path">
+							<!-- <div class='b-f-navigators'>
+									<div class='b'><p style="transform: rotate(45deg);">∟</p></div>
+									<div class='f'><p style="transform: rotate(-135deg);">∟</p></div>
+								</div> -->
+							<div class="tmp-path-section">
+								<p class="explorer-hdr">Past papers</p>
+							</div>
+							<div class="tmp-path-delimeter">
+								<p style="transform: rotate(45deg);" class='foward-delimeter'>◥</p>
+							</div>
+							<div class="path-section root-path-section">
+								<p class="explorer-hdr">Past Papers</p>
+							</div>
+						</div>
+
+						<div class="explorer">
+
+						</div>
+					</div>
+
+					<div class="content eb-cw">
+						<p>eBooks<br /></p>
+					</div>
+
+					<div class="content uploads-cw active-content-wrapper">
+						<div class="uploads-hdr">
+							<h3>Contribute</h3>
+							<h4>
+								Share revision e-Books with the eRead community
+							</h4>
+						</div>
+						<div class="ui-corner-all uploads-wrapper">
+							<div class="uploads-wrapper-hdr ui-bar ui-bar-a">
+								<p>Share</p>
+								<div class="cancel-upload">
+									<a href="#"
+										class="ui-shadow ui-button ui-corner-all ui-button-inline ui-mini">
+										Cancel Upload
+										<span class="ui-icon ui-icon-delete"></span>
+									</a>
+								</div>
+							</div>
+							<div class="ui-body ui-body-a">
+								<div class="eb-uploads ui-grid-a">
+									<div class="ui-block-a">
+										<form class='upload'>
+											<label for="file">File:</label>
+											<input type="file" name="file" id="eb-files" class="eb-files" multiple
+												accept=".doc, .docx, .pdf">
+										</form>
+									</div>
+									<div class="uploads-input-log ui-block-g bg-success">
+										<p class="io-err-msg"></p>
+										<p class="io-ok-msg"></p>
+									</div>
+									<div class="ui-block-b">
+										<div class="ui-block-c">
+
+											<h3>We need additional information to proceed</h3>										
+											
+											<p class="metadata-guide">
+												Please select the category to which the revision material belongs by
+												<span class="fcg" >checking the box under the respective <em>Faculty</em> name.</span>
+												Select the respective department <span class="dptg">under the <em>Department</em> column:</span>
+											</p>
+										</div>
+										<div class="ui-block-d">
+											<div class="pc-metadata-wrapper">
+												<table class="eb-metadata">
+													<thead>
+														<tr>
+															<td rowspan="2" class="fn-hdr">File Name</td>
+															<td colspan="7" class="fc-hdr">Faculty * </td>
+															<td rowspan="2" class="dpt-hdr">Department * </td>
+														</tr>
+														<tr class="eb-fc">
+															<td><em>Null</em></td>
+															<td>FSET</td>
+															<td>BUST</td>
+															<td>FRED</td>
+															<td>FAHU</td>
+															<td>FAES</td>
+															<td>OTHER</td>
+														</tr>
+													</thead>
+													<tbody></tbody>
+												</table>
+
+												<p>
+													Please provide a callback address:
+													<attr title="Uploaded e-Books are subject to an approval process">
+														<i class="fas fa-info-circle"></i>
+													</attr>
+												</p>
+
+												<input type="email" class="ebUploader" data-clear-btn="true" placeholder="Your email address" />
+											</div>
+											<div class="metadata-wrapper">
+												
+												<div class="callback-addr-cw">
+													<p>
+														Please provide a callback address:
+														<attr title="Uploaded e-Books are subject to an approval process">
+															<i class="fas fa-info-circle"></i>
+														</attr>
+													</p>
+
+													<input type="email" class="aSeBUploader" data-clear-btn="true" placeholder="Your email address" />
+												</div>
+												
+											</div>
+										</div> 
+										<div class="upload-f-ctrls ui-block-f">
+											<div class="submit-eb-uploads">
+												<a href="#" tabindex="3" 
+													class="ui-shadow ui-button ui-corner-all ui-button-inline ui-mini">
+													Submit
+													<span class="ui-icon ui-icon-check"></span>
+												</a>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="content ua-cw">
+						<div class="ua-nav-wrapper">
+							<div class="ua-hdr">
+								<p class='ua-hdr-title'>eRead Account</p>
+							</div>
+							<div class='login-ctrls-wrapper'>
+								<div class='ua-login-ctrls'>
+									<abbr title="Add Account">
+										<div class='login-ctrls-hdr'>
+											<i class="fas fa-user-plus"></i>
+										</div>
+									</abbr>
+									<div class="modr-login-ctrl">
+										<!-- dynamic basic popup -->
+									</div>
+									<div class="contributors-login-ctrl">
+										<!-- dynamic basic popup -->
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="ua ui-grid-a">
+							<div class="ui-block-a">
+								<div class="avatar-card">
+									<attr title="eRead Bot">
+										<div class="gravatar-wrapper">
+											<img src='assets/account/avatars/25937675.png' />
+										</div>
+										<div class="udID">
+											<p>Learning assistant
+												<!-- UIDMozGkCrm -->
+											</p>
+										</div>
+									</attr>
+								</div>
+								<div class="ua-details">
+									<h4>Standard Account</h4>
+									<p>
+										<span>•</span>&nbspUserID UIDMozGkCrm
+									</p>
+									<br />
+								</div>
+							</div>
+							<div class="ui-block-b">
+								<div class="ui-body-c ua-info-wrapper">
+									<p class="ua-info">
+										<i class="fas fa-info-circle"></i> The <em>eRead</em> standard user account is a
+										<span><em>Super</em> user account</span> with unlimited access to
+										<span><em>all</em></span>
+										revision content. User accounts are only required for when you're contributing new
+										content, mainly for purposes
+										of tracking the approval status of added content.
+										<br />
+									</p>
+								</div>
+							</div>
+							<div class="ui-block-c">
+								<p class="ua-info-eb-link">
+									<br />
+									Contribute to the eRead community by sharing new revision content <span id="uploads-cw"
+										class="content-wrapper-ctrl ua-dpl-ctrl">here</span>.
+								</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="content contributors-cw">
+						<p>Hall of Fame<br /></p>
+						<div></div>
+					</div>
+					
+					<div class="content sc-cw">
+						<p>eRead Support <br /></p>
+						<div></div>
+					</div>
+				</div>
+				<!-- End Desktop/Android Content wrapper -->
 			</div>
-			<!--data-hide-during-focus=""-->
+			<!-- /main -->
+
+			<div data-role="toolbar" data-type="footer" data-position="fixed" class="footer" data-tap-toggle="false">
+				<div data-role="navbar" data-grid="c" id="nv1">
+					<ul>
+						<li>
+							<a href="#" data-icon="folderopen" id="pp-cw" class="content-wrapper-ctrl ui-btn-active">
+								Pastpapers
+							</a>
+						</li>
+						<li>
+							<a href="#" data-icon="filepdf" id="eb-cw" class="content-wrapper-ctrl">
+								e-Books
+							</a>
+						</li>
+						<li>
+							<a href="#" data-icon="cloudupload" id="uploads-cw" class="content-wrapper-ctrl">
+								Upload
+							</a>
+						</li>
+						<li>
+							<a href="#" data-icon="usercircle" id="ua-cw" class="content-wrapper-ctrl">
+								My Account
+							</a>
+						</li>
+					</ul>
+				</div>
+				<!--data-hide-during-focus=""-->
+			</div>
+			<!-- /footer -->
 		</div>
-		<!-- /footer -->
-	</div>
-	<!-- /page -->
-</body>
+		<!-- /page -->
+	</body>
 </html>

@@ -1,5 +1,33 @@
 /* eslint-disable no-undef */
 /* eBooks Upload Processing */
+/*  @Fn updateMetadataGuide 
+    Declared in Global scope to enable access from within `navigation.js` */
+let aSGuide = {
+    'fc': 'selecting the appropriate option under the <em>Faculty</em> label.',
+    'dpt': 'under the <em>Department</em> label.'
+}, pcGuide = {
+    'fc': 'checking the box under the respective <em>Faculty</em> name.',
+    'dpt': 'under the <em>Department</em> column:'
+};
+
+let updateMetadataGuide = ()=> {
+    if(aMetadataInput) {
+        $('.metadata-guide .fcg').html(aSGuide['fc']);
+        $('.metadata-guide .dptg').html(aSGuide['dpt'])
+    } else {
+        $('.metadata-guide .fcg').html(pcGuide['fc']);
+        $('.metadata-guide .dptg').html(pcGuide['dpt']);
+    }
+}
+
+let getAll = (fd,length)=> {
+    for(let i=0; i<length; i++) {
+        _l(fd.get('upload'+i));
+    }
+}
+
+let fd = new FormData(), filesObjLength;
+
 $(document).ready(function(){
     const ioConstraints = {
         max_files_allowed: 3,
@@ -7,7 +35,8 @@ $(document).ready(function(){
     },
 
     ioMsgs = {
-        max_files_exceeded: 'You can only upload a maximum of 3 files. Select a fewer number of files and try again'
+        max_files_exceeded: 'You can only upload a maximum of 3 files. Select a fewer number of files and try again',
+        missing_metadata: 'Please provide all the additional information indicated below'
     },
     
     frcDsRef = {
@@ -20,13 +49,15 @@ $(document).ready(function(){
         'other': 'aux'
     };
 
-    let fileId, fd = new FormData(), logging = false,
+    let fileId,/*  fd = new FormData(), */ logging = false,
 
     tmp = {'upload0':false,'upload1':false,'upload2':false},
 
     ebAuxDisplay = {'upload0':false,'upload1':false,'upload2':false},
     
     dptS = {'upload0':false,'upload1':false,'upload2':false},
+
+    submitErrors = {'upload0':false,'upload1':false,'upload2':false},
     
     aAuxDisplay = false;
     
@@ -49,7 +80,6 @@ $(document).ready(function(){
     /* 
         Facultyrc-DeptSelect linking
         @Faculty radio checkbox label clickEvent handler   */
-
     $(document).on('click','.frc-ds', function() {
         let forLabel = $(this).attr('for').split('-'), fileId=forLabel[0]; //["upload0",0]
         if(forLabel[1]==0) {
@@ -102,21 +132,19 @@ $(document).ready(function(){
 
     let a = $($('.eb-metadata-a')[0].content.cloneNode(true));
      /* Render Accordion */
-    $('.metadata-wrapper').append(a);
+    $('.metadata-wrapper').prepend(a);
 
     /* 
         @printAS fn
         @param a, fileID
         @param b, file object.
         Render metadata collection mods for each file about to be uploaded (Android)*/
-    let aSParent = false; 
     function printAS(fileId,file) {
-        //_l(1);
         let aS =  $($('.eb-metadata-a-s')[0].content.cloneNode(true));
         /* Edit and Render Accordion Sections */
         aS.find('h3').text(file.name);
         aS.find('div').addClass(fileId);
-        aS.find('div select').attr('name','a-'+fileId+'-fcs');
+        aS.find('div select.a-fcs').attr('name','a-'+fileId+'-fcs');
         aS.find('.a-dpt-s').attr('id',fileId + '-a-dpt-s');
         $('.metadata-wrapper div[data-role=accordion]').append(aS);
     }
@@ -136,7 +164,11 @@ $(document).ready(function(){
         trs = $($('.eb-metadata-trs')[0].content.cloneNode(true));
         
         $(trs.children()[0]).addClass(fileId);
-        trs.find('.eb-fn attr').text(file.name);
+        if(file.name.length > 11) {
+            trs.find('.eb-fn attr').text(file.name).attr('title', file.name);
+        } else {
+            trs.find('.eb-fn attr').text(file.name);
+        }
         
         /* target inputs */
         let x = trs.find('.frc fieldset');
@@ -173,7 +205,9 @@ $(document).ready(function(){
         $('.metadata-wrapper div[data-role=accordion]').remove();
         /* Render Accordion */
         a = $($('.eb-metadata-a')[0].content.cloneNode(true));
-        $('.metadata-wrapper').append(a);
+        $('.metadata-wrapper').prepend(a);
+        /* detach submit event handler */
+        //let a = $('.submit-eb-uploads')
     });
 
     /* Android metadata input */
@@ -210,21 +244,50 @@ $(document).ready(function(){
         }
     });
 
+    let log = (e)=> {
+        /* UI logger */
+        logging = true;
+        $('.uploads-input-log .io-err-msg').text(ioMsgs[e]);
+        $('.uploads-input-log').show();
+        $('.uploads-input-log .io-err-msg').fadeIn();
+
+        if(e == 'max_files_exceeded' || e == 'missing_metadata') {
+            $('.uploads-input-log').removeClass('bg-success').addClass('bg-error');
+        } else {
+            $('.uploads-input-log').removeClass('bg-error').addClass('bg-success');
+        }
+    }, resetLogs = ()=> {
+        /* if displayed, hide msgs */
+        setTimeout(function () {
+            $('.uploads-input-log .io-err-msg').fadeOut();
+            $('.uploads-input-log').hide();
+            logging = false;
+            /* applies for max_files_allowed constraints: */
+            if($('#eb-files').attr('disabled') == 'disabled') {
+                $('#eb-files').attr('disabled',false).val('');
+            }
+        }, 5000);
+    }, resetLogsWT = ()=> {
+        /* Reset Logs without timeout */
+        $('.uploads-input-log .io-err-msg').fadeOut();
+        $('.uploads-input-log').hide();
+        logging = false;
+    }
     /* Upload files onChange Event handler */
     $('#eb-files').on('change', (event) => {        
-        let files = event.target.files, filesObjLength = Object.keys(files).length;
-        
+        let files = event.target.files/* , filesObjLength = Object.keys(files).length */,
+        filesObjLength = Object.keys(files).length;
+
         /*max upload files check*/
         if (filesObjLength > ioConstraints.max_files_allowed) {
-            logging = true;
-            $('.uploads-input-log .io-err-msg').text(ioMsgs.max_files_exceeded);
-            $('.uploads-input-log').show();
-            $('.uploads-input-log .io-err-msg').fadeIn();
+            log('max_files_exceeded');
+            $('#eb-files').attr('disabled',true);
+            resetLogs();
         } else {
             /* disable choose-file input */
-            $('#eb-files').attr('disabled', true);
+            $('#eb-files').attr('disabled', true); 
 
-            /*  Render metadata input mods for both pc & screens < 922px;
+            /*  Render metadata input mods for both pc & screens < 964px;
                 aMetadataInput = true; default; */
             if(filesObjLength == 1) {
                 /* Update FormData Obj */
@@ -258,17 +321,56 @@ $(document).ready(function(){
         }
 
         /* submit form click event */
+        let ioErrors = {};
+        $('.submit-eb-uploads a').click(()=>{
+            /*  Input validation: Reset styling for elements with prior missing inputs
+                and clear the ioErrors obj*/
+            if(Object.keys(ioErrors).length>0) {
+                for(elementId in ioErrors) {
+                    $('tr.'+elementId+' td attr').removeClass('missing-metadata');
+                    delete ioErrors[elementId];
+                }
+            } else {
+                _l('ioErrors= ', ioErrors, 'probably first C.Ev');
+            }
 
-        /* if displayed, hide msgs */
-        if (logging) {
-            setTimeout(function () {
-                $('.uploads-input-log .io-err-msg').fadeOut();
-                $('.uploads-input-log').hide();
-                logging = false;
-                return;
-            }, 5000);
-        }
+            /* Input validation: Check if Faculty field is selected*/
+            for(let i=0; i<filesObjLength; i++) {
+                let fileEl = 'upload'+i;
+                
+                let sFcIndex = $('[name='+fileEl +'rc]:checked').val(),
+                sFc = frcDsRef[sFcIndex],
+                sDpt = $('#'+fileEl+'s option:selected').text();
+
+                if(sFc === 'default-s') {
+                    ioErrors[fileEl] = {'nullFcField':1}
+                }
+
+                if(sDpt === 'Null') {
+                    _l(_o(ioErrors));
+                    /* subsequent submit */
+                    ioErrors[fileEl]['nullDptField'] = 1;
+                }
+
+                if(sFc === 'default-s' || sDpt === 'Null') {
+                    $('tr.'+fileEl+' td attr').addClass('missing-metadata');
+                    _l(ioErrors, Object.keys(ioErrors).length);
+                } 
+
+            }
+            /* Input error notification */
+            if(Object.keys(ioErrors).length>0) {
+                log('missing_metadata');
+                resetLogs();
+            } else {
+                if(logging) {
+                    resetLogsWT();
+                }
+                _l('proceed');
+            }
+        });
     });
+    updateMetadataGuide();
 });
 
 /* 

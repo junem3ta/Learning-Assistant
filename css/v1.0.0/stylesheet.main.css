@@ -1,0 +1,154 @@
+body {
+	font-family:'Product Sans' !important;
+	position: relative;
+	background-color: #fff !important;
+}
+
+a {
+	text-decoration: none;
+	font-weight: normal !important;
+}
+
+.ui-page {
+    height: 100vh;
+}
+
+.content-wrapper {
+    width: 422px;
+    margin: calc(calc(100vh - /* 266px */ 268px - 2em) / 2) auto;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.content {
+    text-align: center;
+    font-size: 1em;
+    padding: .5em 1em;
+}
+
+.content p {
+    display: inline-block;
+}
+
+.app-title p {
+    height: 40px;
+    width: 150px;
+    line-height: 45px;
+    font-size: 33px;
+    padding: 0 0 0 20px;
+    font-weight: 900;
+    /* letter-spacing: 2.5px; */
+    text-align: right;
+    margin: auto;
+}
+
+p {
+    margin: .5em 0;
+}
+
+.ver p {
+    padding: 0 10px 0 0;
+    background: #259625fa;
+    border-radius: 4px;
+    font-size: 1em;
+    text-shadow: none;
+    color: #fff;
+}
+
+.ver p span:nth-child(1) {
+    background:  #059;
+    padding: 0 10px 0;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.ver p span:nth-child(2) {
+    padding: 0 0 0 10px;
+}
+
+.copyright p {
+    font-size: 14px;
+}
+
+.ext-links-wrapper {
+    width: calc(100% + 32px);
+    border-top: 1px solid #ccc;
+    margin: 8px 0 0 -16px;
+    height: 76px;
+}
+
+.ext-links {
+    width: 240px;
+    margin: 0 auto;
+    padding-top: .5em;
+}
+
+.ext-links div {
+    width: 80px;
+    float: left;
+    height: 48px;
+}
+
+div.app {
+    width: 80px;
+}
+
+.app img {
+    width: 70px;
+    height: 27.88px;
+}
+
+.app:hover img, .cu:hover img {
+    display: none;
+}
+
+.app:hover .active, .cu:hover .active {
+    display: block;
+    transition: .5s ease-in-out;
+}
+
+.app:hover, .cu {
+    cursor: pointer;
+}
+
+.version-ctrl a {
+    position: relative;
+}
+
+.version-ctrl a i {
+    display: block;
+    font-size: 27.88px;
+    color: #93979b;
+}
+
+.version-ctrl a i:before {
+    font-family: 'Font Awesome 5 Brands';
+    content: '\f09b';
+}
+
+i.fas.fa-github:after {
+    content: '';
+    height: 1px;
+    display: block;
+}
+
+.version-ctrl:hover a i:before {
+    content: '\f113';
+    transition: .5s ease-in-out;
+}
+
+.version-ctrl:hover a i {
+    color: #000;
+}
+
+.cu img {
+    height: 27.88px;
+}
+
+.app img, .cu img {
+    display: block;
+    margin: auto;
+}
+.app .active, .cu .active {
+    display: none;
+}
