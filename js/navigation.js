@@ -1,6 +1,8 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable no-undef */
-let desktopMode, aMetadataInput = true;
+
+let desktopMode, aMetadataInput = true, _l = console.log, _o = (e) => {return JSON.stringify(e);}
+
 $(document).ready(function() {
 	/* Default Global VARS */
 	desktopMode = false;
@@ -185,6 +187,7 @@ $(document).ready(function() {
 		} else {
 			aMetadataInput = true;
 		}
+		updateMetadataGuide();
 	}
 
 	/* Disable focus styling and remove margin around search input fields*/

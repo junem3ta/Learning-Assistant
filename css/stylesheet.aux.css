@@ -48,25 +48,38 @@
     font-weight: normal !important;
     text-shadow: none !important;
 }
-.submit-eb-uploads a {
-    background-color: #3ca4ff !important;
-    color: #fff !important;
-}
 .cancel-upload a:hover {
     background-color: #dd0048 !important;
     text-shadow: none !important;
     color: #fff !important;
+    border: 0;
 }
 .cancel-upload a:focus,.submit-eb-uploads a:focus {
-    -webkit-box-shadow:none !important;-moz-box-shadow:none !important;box-shadow:none !important;
+    -webkit-box-shadow:0 0 12px #888 !important; -moz-box-shadow:0 0 12px #888 !important; box-shadow:0 0 12px #888 !important;
     color: #fff !important;text-shadow: none !important;
     background-color: #dd0048 !important;
 }
+.submit-eb-uploads a {
+    background-color: #3ca4ff !important;
+    color: #fff !important;
+    border: 0;
+}
+
 .submit-eb-uploads a:focus {
     background-color: #3ca4ff !important;
     color: #fff !important;
+    box-shadow: 0 0 5px #888 !important;
 }
 
+.submit-eb-uploads a:hover {
+    box-shadow: 0 0 5px #888 !important;
+    transition: box-shadow .5s ease-in-out;
+}
+
+.missing-metadata {
+    color: #ed143d;
+    transition: color .5s ease-in-out;
+}
 
 .eb-files:hover, input#file-upload-button {
     cursor: pointer !important;
@@ -100,16 +113,24 @@
     display: none;
 }
 
-/* PC eb metadata input mods. Breakpoint = 922px */
-@media all and (min-width: 57.6em){
+.callback-addr-cw {
+    padding: 1em 2.2em;    
+}
+.callback-addr-cw  p {
+    margin-left: -1.7em;   
+}
+
+/* PC eb metadata input mods. Breakpoint = 964 */
+@media all and (min-width: 60.25em){
     .metadata-wrapper {
         display: none;
     }
     .pc-metadata-wrapper {
-        display: block;
+        display: inline-block;
     }
     .eb-metadata {
         border-collapse: collapse;
+        margin: 0 0 15px;
     }
     .eb-metadata, .eb-metadata td {
         border: 1px solid #ddd;
@@ -218,20 +239,32 @@
 }
 .eb-uploads .ui-block-g {
     display: none;
-    margin: -8px 0 0;
+    margin: 10.72px 0 0;
     padding: 8px;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.bg-success {
+    background-color: #d2f9d2;    
+    border: 1px solid #d2f9d2ff;
+}
+
+.bg-error {
+    background-color: #f9d2d2;
 }
 .eb-uploads .ui-block-g p {
     display: none;
 }
 .eb-uploads .ui-block-g .io-err-msg {
-    color: #ed143d;
+    color: #a11212;
 }
 .eb-uploads .ui-block-g .io-ok-msg {
-    color: #5eb507;
+    color: #171717;
+    /* bg = #d2f9d2 */
 }
 .eb-uploads .ui-block-c {
-    margin: 8px 0 12px 4px;
+    margin: 0 0 12px 4px;
 }
 .eb-uploads .ui-block-d, .eb-uploads .ui-block-e {
     width: 100%;

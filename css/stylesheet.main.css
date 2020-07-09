@@ -13,10 +13,6 @@ a {
 	font-weight: normal !important;
 }
 
-a:hover {
-	color: #000 !important;
-}
-
 .ui-popup-screen {
     background-image: none !important;
 	height: calc(100% - 1px) !important;
@@ -375,8 +371,8 @@ attr:hover {
     background: #fff;
     border-top: none;
     padding: 10px 0 30px;
-	overflow: overlay;
 	overflow: auto;
+	overflow: overlay;
 }
 
 .folder-tile-wrapper,.file-tile-wrapper {
@@ -721,7 +717,8 @@ attr:hover {
 		height: 8px;
 		width: 150px;
 		line-height: 8px;
-		padding: 0 0 0 20px;
+		margin-left: -4px !important;
+		font-weight: bold;
 		font-size: 12px;
 		text-align: right;
 	}
@@ -863,7 +860,7 @@ attr:hover {
 		font-size: 13px;
 		text-align: center;
 		height: 20px;
-		color: #93979b;
+		/* color: #93979b; */
 		float: left;
 	}
 	.vctrl {
@@ -981,6 +978,10 @@ attr:hover {
 		}
 		.app-title p {
 			padding: 0 0 0 20px;
+		}
+		.sub-title {
+			padding: 0 0 0 15px !important;
+			margin: 0 !important;
 		}
 		.header-search-wrapper {
 			/* 388 = app.title.outerWidth() + ua-ctrl-wrapper.outerWidth() + hsw.margin-left + ua-ctrl-wrapper-margin-left */
@@ -1111,8 +1112,7 @@ attr:hover {
     box-shadow: none !important;
 }
 
-#nv1 .ui-btn:after
-	{
+#nv1 .ui-btn:after {
 	background: none !important;
 	background-color: none !important;
 	-webkit-box-shadow: none !important;
