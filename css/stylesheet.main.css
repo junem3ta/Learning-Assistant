@@ -959,7 +959,7 @@ attr:hover {
 		font-size: 12px;
 	}
 	/* eBooks uploads */
-	.uploads-cw {
+	.uploads-cw, .ua-cw {
 		padding-bottom: 0;
 	}
 	/* Responsive UA interface styling, w>=815px and h>=600px */
@@ -1149,7 +1149,7 @@ span.ui-button-icon {
 }
 
 /* [data-icon="cloudupload"] */.cloudupload:after { 
-    content: "\f382"; 
+    content: "\f0fe"; 
     font-family:'Font Awesome 5 Free';
     /*font-weight:900;*/
     font-size:15px;
