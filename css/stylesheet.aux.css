@@ -1,8 +1,12 @@
 .uploads-cw {
     overflow: overlay;
     overflow: auto;
+}
+
+.uploads-cw, .ua-cw {
     padding-bottom: 62px;
 }
+
 .uploads-wrapper {
     margin: 1px 0;
 }
@@ -109,15 +113,39 @@
     margin-top: 0;
 }
 
-.a-cw form {
+.a-cw form inputwrapper {
     display: none;
 }
 
-.callback-addr-cw {
+.callback-addr-cw, .a-uploader-ID {
     padding: 1em 2.2em;    
 }
-.callback-addr-cw  p {
-    margin-left: -1.7em;   
+.callback-addr-cw p, .a-uploader-ID p, .a-fchdr, .a-dpthdr {
+    margin-left: -1em !important;
+}
+.uploader-ID {
+    margin-bottom: 7px;
+}
+.a-uploader-ID {
+    margin-bottom: -8px;
+    padding-bottom: 0;
+}
+.uploader-ID .ui-block-a, .uploader-ID .ui-block-b {
+    width: 50% !important;
+    padding-right: 5px;
+}
+.uploader-ID .ui-block-b {
+    padding:  0 0 0 5px;
+}
+.publishCI, .a-publishCI {
+    margin-bottom: 15px !important;
+    font-weight: normal !important;
+}
+.a-publishCI {
+    margin: 0 19.2px !important;
+}
+.uploader-ID span {
+    margin-bottom: -5px;
 }
 
 /* PC eb metadata input mods. Breakpoint = 964 */
@@ -234,6 +262,13 @@
 .eb-uploads .ui-block-a,.eb-uploads .ui-block-b,.eb-uploads .ui-block-c, .eb-uploads .ui-block-g  {
     width: 100%;
 }
+.eb-uploads .ui-block-a .uploads-input-log {
+    margin-top: 0;
+}
+.eb-uploads .ui-block-a .uploads-input-log p {
+    display: block !important;
+    opacity: 1 !important;
+}
 .eb-uploads .ui-block-b {
     display: none;
 }
@@ -253,11 +288,23 @@
 .bg-error {
     background-color: #f9d2d2;
 }
+
+.as-error {
+    color: #a11212 !important;
+    background-color: #f9d2d2 !important;
+    border-color: #a11212 !important;
+    outline-color: #a11212;
+}
+.aux-input-error {
+    border: 1px solid #ed143d !important;
+    color: #ed143d;
+}
 .eb-uploads .ui-block-g p {
     display: none;
 }
 .eb-uploads .ui-block-g .io-err-msg {
     color: #a11212;
+    text-shadow: none;
 }
 .eb-uploads .ui-block-g .io-ok-msg {
     color: #171717;

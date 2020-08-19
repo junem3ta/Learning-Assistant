@@ -42,7 +42,7 @@ $(document).ready(function() {
 			} else if (st > 46 && !$('.home-search-wrapper').hasClass('hs-wrapper-up')){
 				$('.home-search-wrapper').removeClass('static-hdr-up');
 				$('.home-search-wrapper').addClass('hs-wrapper-up');
-          $('.panel-ctrl-wrapper').addClass('pcw-up');
+            $('.panel-ctrl-wrapper').addClass('pcw-up');
 				$('.ui-content').addClass('ui-content-up');
 			}
 		}

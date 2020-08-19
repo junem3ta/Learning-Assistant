@@ -153,34 +153,36 @@
 				</template>
 				<!-- eb Metadata accordion sections -->
 				<template class="eb-metadata-a-s">
-					
 					<h3 class="a-section-hdr"></h3>
 					<div class="a-cw">
-						<p class="a-fchdr">Faculty</p>
-						<select class="a-fcs" name="" id="" data-mini="true" data-native-menu="false">
-							<option disabled>Select</option>
-							<option value=0>Null</option>
-							<option value=1>FSET</option>
-							<option value=2>BUST</option>
-							<option value=3>FRED</option>
-							<option value=4>FAHU</option>
-							<option value=5>FAES</option>
-							<option value="other">Other</option>
-						</select>
 						<form>
-							<input type="text" placeholder="Faculty description" data-clear-btn="true">
-						</form>
-						
-						<p class="a-dpthdr">Department</p>
-						<select  name="" id="" data-mini="true" data-native-menu="false" class="a-dpt-s">
-							<option disabled>Select</option>
-							<option value=0>Null</option>
-						</select>
-						<form>
-							<input type="text" placeholder="Department" data-clear-btn="true">
+							<label class="a-fchdr">Faculty</label>
+							<select class="a-fcs" name="" id="" data-mini="true" data-native-menu="false">
+								<option disabled>Select</option>
+								<option value=0>Null</option>
+								<option value=1>FSET</option>
+								<option value=2>BUST</option>
+								<option value=3>FRED</option>
+								<option value=4>FAHU</option>
+								<option value=5>FAES</option>
+								<option value="other">Other</option>
+							</select>
+
+							<inputwrapper>
+								<input type="text" placeholder="Faculty name" data-clear-btn="true">
+							</inputwrapper>
+							
+							<label class="a-dpthdr">Department</label>
+							<select  name="" id="" data-mini="true" data-native-menu="false" class="a-dpt-s">
+								<option disabled>Select</option>
+								<option value=0>Null</option>
+							</select>
+							
+							<inputwrapper>
+								<input type="text" placeholder="Department name" data-clear-btn="true">
+							</inputwrapper>
 						</form> 
 					</div>
-
 				</template>
 
 				<!-- @Android searchbar -->
@@ -330,10 +332,6 @@
 												accept=".doc, .docx, .pdf">
 										</form>
 									</div>
-									<div class="uploads-input-log ui-block-g bg-success">
-										<p class="io-err-msg"></p>
-										<p class="io-ok-msg"></p>
-									</div>
 									<div class="ui-block-b">
 										<div class="ui-block-c">
 
@@ -366,6 +364,18 @@
 													</thead>
 													<tbody></tbody>
 												</table>
+												<label for="publishCI" class="publishCI">Publish my Profile on the <em>Contributors </em><span class="">Hall of Fame</span> *</label>
+												<input class="" type="checkbox" name="checkbox-0 " id="publishCI">
+
+												<div class="uploader-ID ui-grid-a">
+													<p class="uploader-ID-label">Name<span>(Optional)</span>:</p>
+													<div class="ui-block-a">
+														<input type="text" placeholder="First Name" class="uploader-f-n" data-clear-btn="true">
+													</div>
+													<div class="ui-block-b">
+														<input type="text" placeholder="Other Names" class="uploader-l-n" data-clear-btn="true">
+													</div>													
+												</div>
 
 												<p>
 													Please provide a callback address:
@@ -378,6 +388,19 @@
 											</div>
 											<div class="metadata-wrapper">
 												
+												<label for="a-publishCI" class="a-publishCI">Publish my Profile on the <em>Contributors </em><span class="">Hall of Fame</span> *</label>
+												<input class="" type="checkbox" name="checkbox-0 " id="a-publishCI">
+
+												<div class="uploader-ID a-uploader-ID ui-grid-a">
+													<p class="uploader-ID-label">Name<span>(Optional)</span>:</p>
+													<div class="ui-block-a">
+														<input type="text" placeholder="First Name" class="a-uploader-f-n" data-clear-btn="true">
+													</div>
+													<div class="ui-block-b">
+														<input type="text" placeholder="Other Name(s)" class="a-uploader-l-n" data-clear-btn="true">
+													</div>													
+												</div>
+
 												<div class="callback-addr-cw">
 													<p>
 														Please provide a callback address:
@@ -386,11 +409,15 @@
 														</attr>
 													</p>
 
-													<input type="email" class="aSeBUploader" data-clear-btn="true" placeholder="Your email address" />
+													<input type="email" class="aEbUploader" data-clear-btn="true" placeholder="Your email address" />
 												</div>
 												
 											</div>
 										</div> 
+										<div class="uploads-input-log ui-block-g bg-success">
+											<p class="io-err-msg"></p>
+											<p class="io-ok-msg"></p>
+										</div>
 										<div class="upload-f-ctrls ui-block-f">
 											<div class="submit-eb-uploads">
 												<a href="#" tabindex="3" 
@@ -501,7 +528,7 @@
 						</li>
 						<li>
 							<a href="#" data-icon="cloudupload" id="uploads-cw" class="content-wrapper-ctrl">
-								Upload
+								Contribute
 							</a>
 						</li>
 						<li>
