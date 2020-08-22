@@ -22,7 +22,7 @@ let
     fd = new FormData(), 
     filesObjLength;
 
-$(document).ready(function(){
+$(document).ready(() => {
     const 
         ioConstraints = {
             max_files_allowed: 3,
@@ -32,7 +32,7 @@ $(document).ready(function(){
         ioMsgs = {
             max_files_exceeded: 'You can only upload a maximum of 3 files. Select a fewer number of files and try again',
             missing_metadata: 'Please provide all the additional information indicated above.',
-            invalid_input: 'Please correct the highlighted inputs above.'
+            invalid_input: 'Please correct the highlighted inputs indicated above.'
         },
         
         frcDsRef = {
@@ -448,7 +448,10 @@ $(document).ready(function(){
             };
 
             /* Email Validation */
-            if(email.val().search(rfc2822ValidEmail) !== 0) {
+            if(email.val() === '') {
+                email.closest('div').addClass('aux-input-error');
+                ioErrors['email'] = {'nullEmailField': 1};
+            } else if(email.val().search(rfc2822ValidEmail) !== 0) {
                 email.closest('div').addClass('aux-input-error');
                 ioErrors['email'] = {'invalidEmail': 1};
             }

@@ -1,6 +1,6 @@
 /* eslint-disable no-redeclare */
 /* eslint-disable no-undef */
-$(document).ready(function() {
+$(document).ready(() => {
     /* Explorer */
 	/* 
 		ECL = Explorer Container Level 

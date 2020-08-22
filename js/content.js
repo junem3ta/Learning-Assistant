@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-$(document).ready(function () {
+$(document).ready(() => {
     /*Create and load dynamic DOM content*/
     /* 
         @generateBasicPopup helper fn
