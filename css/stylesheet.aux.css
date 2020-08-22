@@ -3,8 +3,14 @@
     overflow: auto;
 }
 
-.uploads-cw, .ua-cw {
-    padding-bottom: 62px;
+.uploads-cw, .ua-cw, .n-cw {
+    padding-bottom: 64px;
+}
+
+@media all and (min-width: 37.5em){
+    .uploads-cw, .ua-cw, .n-cw {
+        padding-bottom: 0 !important;
+    }
 }
 
 .uploads-wrapper {

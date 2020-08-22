@@ -19,6 +19,7 @@
 		<script type="text/javascript" src="js/explorer.js"></script>
 		<script type="text/javascript" src="js/content.js"></script>
 		<script type="text/javascript" src="js/upload.js"></script>
+		<script type="text/javascript" src="js/notifications.js"></script>
 	</head>
 	<body>
 		<div data-role="page" class="content-wrapper">
@@ -63,27 +64,23 @@
 					<option disabled>Select</option>
 					<option value=0>Null</option>
 				</template>
-
 				<template class="bust-s">
 					<option disabled>BUST</option>
 					<option value=0>Null</option>
 					<option value="ba">Business Administration</option>
 					<option value="mgmtsc">Management Science</option>
-				</template>
-			
+				</template>			
 				<template class="fahu-s">
 					<option disabled>FAHU</option>
 					<option value=0>Null</option>
 					<option value="hu">Humanities</option>
 					<option value="socsc">Social Sciences</option>
-				</template>
-				
+				</template>				
 				<template class="fred-s">
 					<option disabled>FRED</option>
 					<option value=0>Null</option>
 					<option value="ed">Education</option>	
 				</template>
-			
 				<template class="faes-s">
 					<option disabled>FAES</option>
 					<option value=0>Null</option>
@@ -93,7 +90,6 @@
 					<option value="asc">Animal Science</option>
 					<option value="biosc">Biological Sciences</option>	
 				</template>
-			
 				<template class="fset-s">
 					<option disabled>FSET</option>
 					<option value=0>Null</option>
@@ -142,7 +138,7 @@
 						</td>
 					</tr>
 				</template>
-				<!-- eb Metadata accordion -->
+				<!-- upload(s) accordion -->
 				<template class="eb-metadata-a">
 					<div data-role="accordion" 
 					data-icons="{ 
@@ -151,7 +147,7 @@
 					}" data-height-style="content">
 					</div>
 				</template>
-				<!-- eb Metadata accordion sections -->
+				<!-- upload(s) accordion sections -->
 				<template class="eb-metadata-a-s">
 					<h3 class="a-section-hdr"></h3>
 					<div class="a-cw">
@@ -184,7 +180,6 @@
 						</form> 
 					</div>
 				</template>
-
 				<!-- @Android searchbar -->
 				<div class="ui-grid-a home-search-wrapper">
 					<div class="panel-ctrl-wrapper">
@@ -192,11 +187,9 @@
 						<p><i class="fas fa-arrow-left search-ctrl"></i></p>
 					</div>
 					<input class="home-search" placeholder="Search past papers, e-books" type="text" data-clear-btn="true">
-
 					<div class="static-hdr">
 						<p>Files</p>
 					</div>
-
 					<div class="ui-grid-a search-window">
 						<div class="sw-thumb">
 							<img src="assets/images/search.svg" />
@@ -206,8 +199,7 @@
 							</div>
 							-->
 					</div>
-				</div>
-				
+				</div>				
 				<!-- Desktop searchbar -->
 				<div class="header">
 					<div class="app-title">
@@ -218,24 +210,29 @@
 						<p class="sub-title"> Chuka University</p>
 					</div>
 					<div class="header-search-wrapper">
-						<input class="header-search" placeholder="Search past papers, e-books" type="search"
-							data-clear-btn="true">
+						<input class="header-search" placeholder="Search past papers, e-books" type="search" data-clear-btn="true">
 					</div>
-					<div class="ua-ctrls-wrapper">
+					<div class="hdr-ctrls-wrapper">
+						<div id="n-cw" class="n-ui-ctrl content-wrapper-ctrl">
+							<p class="ncw-ctrl-hdr">
+								<!-- Notification UI Ctrl -->
+								<span class="n">2</span>
+								<abbr title="Notifications">
+									<i tabindex="1" class="ncw-ctrl-icon fas fa-bell"></i>
+								</abbr>
+							</p>
+						</div>
 						<div id="ua-cw" class="ua-ctrl content-wrapper-ctrl ua-dpl-ctrl">
 							<p class="ua-ctrl-hdr">
-								<!-- Account -->
 								<abbr title="User Account">
-									<i tabindex="1" class="ua-ctrl-icon fas fa-user-circle"></i>
+									<i tabindex="2" class="ua-ctrl-icon fas fa-user-circle"></i>
 								</abbr>
 							</p>
 						</div>
 						<div id="sc-cw" class="sc-ctrl content-wrapper-ctrl">
-							<!-- title="Support Center" -->
 							<p class="sc-ctrl-hdr">
-								<!-- Support(?) -->
-								<abbr title="Support center">
-									<i tabindex="2" class="sc-ctrl-icon fas fa-envelope"></i>
+								<abbr title="eRead Support">
+									<i tabindex="3" class="sc-ctrl-icon fas fa-envelope"></i>
 								</abbr>
 							</p>
 						</div>
@@ -276,7 +273,6 @@
 						</div>
 					</div>
 				</div>
-
 				<!-- Desktop/Android Content wrapper-->
 				<div class="content-container">
 					<div class="content pp-cw">
@@ -508,6 +504,13 @@
 						<p>eRead Support <br /></p>
 						<div></div>
 					</div>
+
+					<div class="content n-cw">
+						<p>Notification Center</p>
+						<div>
+
+						</div>
+					</div>
 				</div>
 				<!-- End Desktop/Android Content wrapper -->
 			</div>
@@ -518,7 +521,7 @@
 					<ul>
 						<li>
 							<a href="#" data-icon="folderopen" id="pp-cw" class="content-wrapper-ctrl ui-btn-active">
-								Pastpapers
+								Past-papers
 							</a>
 						</li>
 						<li>
@@ -533,8 +536,14 @@
 						</li>
 						<li>
 							<a href="#" data-icon="usercircle" id="ua-cw" class="content-wrapper-ctrl">
-								My Account
+								Account
 							</a>
+						</li>
+						<li>
+							<a href="#" data-icon="nbell" id="n-cw" class="content-wrapper-ctrl">
+								Notifications
+							</a>
+							<span class="a-n">2</span>
 						</li>
 					</ul>
 				</div>

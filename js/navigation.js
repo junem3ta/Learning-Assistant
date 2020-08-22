@@ -3,7 +3,7 @@
 
 let desktopMode, aMetadataInput = true, _l = console.log, _o = (e) => {return JSON.stringify(e);}
 
-$(document).ready(function() {
+$(document).ready(() => {
 	/* Default Global VARS */
 	desktopMode = false;
 	let windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
