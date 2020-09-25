@@ -692,7 +692,7 @@ attr:hover {
 		font-size: 10px;
 		bottom: -8px;
 		text-shadow: none;
-		left: 2px;
+		left: 4px;
 		height: 13px;
 		line-height: 13px;
 	}
@@ -922,16 +922,15 @@ attr:hover {
 		right: 0;
 		height: 17px;
 		width: 17px;
-		line-height: unset;
 		line-height: 17px;
 		background: #ddd;
 		text-align: center;
 		font-size: 13px;
 		border-radius: 50%;
-		background: #b3efd3;
 		text-shadow: none;
-		font-weight: 700;
-		color: #0b4f30;
+		font-weight: 300;
+		background-color: #a2dcc1;
+    	color: #04502e;
 	}
 
 	
