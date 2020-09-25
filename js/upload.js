@@ -1,3 +1,4 @@
+_files = '';
 /* eslint-disable no-undef */
 /* eBooks Upload Processing */
 let 
@@ -32,7 +33,9 @@ $(document).ready(() => {
         ioMsgs = {
             max_files_exceeded: 'You can only upload a maximum of 3 files. Select a fewer number of files and try again',
             missing_metadata: 'Please provide all the additional information indicated above.',
-            invalid_input: 'Please correct the highlighted inputs indicated above.'
+            invalid_input: 'Please correct the highlighted inputs indicated above.',
+            max_size_exceeded: 'Maximum file size (10MiB) exceeded. Please try again with a light-weight version of the file.',
+            total_size_exceeded: 'Total files\' size exceeded. Please ensure the total size of the files doesn\'t exceed 30MiB.'
         },
         
         frcDsRef = {
@@ -136,21 +139,21 @@ $(document).ready(() => {
             $('.uploads-input-log').show();
             $('.uploads-input-log .io-err-msg').fadeIn();
 
-            if(e == 'max_files_exceeded' || e == 'missing_metadata' || e == 'invalid_input') {
+            if(/max_files_exceeded|missing_metadata|invalid_input|max_size_exceeded|total_size_exceeded/.test(e)) {
                 $('.uploads-input-log').removeClass('bg-success').addClass('bg-error');
             } else {
                 $('.uploads-input-log').removeClass('bg-error').addClass('bg-success');
             }
         }, 
 
-        resetLogs = (max_files_exceeded) => {
+        resetLogs = (clonedInputLog) => {
             /* if displayed, hide msgs */
             setTimeout(function () {
                 $('.uploads-input-log .io-err-msg').fadeOut();
                 $('.uploads-input-log').hide();
                 logging = false;
                 /* applies for max_files_allowed constraints: */
-                if(max_files_exceeded) {
+                if(clonedInputLog) {
                     $('.eb-uploads .ui-block-a .uploads-input-log').remove();
                     if($('#eb-files').attr('disabled') == 'disabled') {
                         $('#eb-files').attr('disabled', false).val('');
@@ -170,10 +173,34 @@ $(document).ready(() => {
     $('#eb-files').on('change', (event) => {        
         let files = event.target.files/* , filesObjLength = Object.keys(files).length */,
         filesObjLength = Object.keys(files).length;
+        _files = files;
+        console.log('_files', _o(_files));
+        /* File size check */
+        if(filesObjLength == 1) {
+            _l(files[0].size);
+            if(files[0].size > 10 * 1024 * 1024) {
+                log('max_size_exceeded');
+                $('#eb-files').attr('disabled', true);
+                $('.eb-uploads .ui-block-a').append($('.uploads-input-log').clone()[0]);
+                resetLogs(true);
+                return;
+            }
+        } else {
+            let totalFileSize = 0;
+            $.each(files, (i, file) => {
+                totalFileSize += file.size;
+            });
+            if(totalFileSize > 30 * 1024 * 1024) {
+                log('total_size_exceeded');
+                $('#eb-files').attr('disabled', true);
+                $('.eb-uploads .ui-block-a').append($('.uploads-input-log').clone()[0]);
+                resetLogs(true);
+                return;
+            }
+        }
         /*max upload files check*/
         if (filesObjLength > ioConstraints.max_files_allowed) {
             log('max_files_exceeded');
-            _l($('.uploads-input-log')[0]);
             $('#eb-files').attr('disabled', true);
             $('.eb-uploads .ui-block-a').append($('.uploads-input-log').clone()[0]);
             resetLogs(true);
