@@ -1,0 +1,10 @@
+.sc-hdr {
+    font-size: 24px;
+    font-weight: normal;
+    line-height: 1em;
+    margin: 6px 0 8px !important;   
+}
+
+.sc-navbar ul li a span {
+    float: right;
+}

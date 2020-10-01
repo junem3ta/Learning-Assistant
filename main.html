@@ -13,7 +13,8 @@
 		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.5.0-rc1.min.css">
 		<link rel="stylesheet" type="text/css" href="css/stylesheet.main.css">
 		<link rel="stylesheet" type="text/css" href="css/explorer.sub.css">
-		<link rel="stylesheet" type="text/css" href="css/stylesheet.aux.css">
+		<link rel="stylesheet" type="text/css" href="css/stylesheet.uploads.css">
+		<link rel="stylesheet" type="text/css" href="css/sc.css">
 		<script type="text/javascript" src="js/prefixfree.min.js"></script>
 		<script type="text/javascript" src="js/navigation.js"></script>
 		<script type="text/javascript" src="js/explorer.js"></script>
@@ -301,7 +302,7 @@
 						<p>eBooks<br /></p>
 					</div>
 
-					<div class="content uploads-cw active-content-wrapper">
+					<div class="content uploads-cw">
 						<div class="uploads-hdr">
 							<h3>Contribute</h3>
 							<h4>
@@ -500,9 +501,46 @@
 						<div></div>
 					</div>
 					
-					<div class="content sc-cw">
-						<p>eRead Support <br /></p>
-						<div></div>
+					<div class="content sc-cw active-content-wrapper">
+						<p class="sc-hdr">eRead Support <br /></p>
+						<div data-role="tabs" id="tabs">
+							<div data-role="navbar" class="sc-navbar">
+								<ul>
+									<li><a href="#one" data-ajax="false"><span class="ui-icon ui-icon-alert"></span> Report an Issue</a></li>
+									<li><a href="#two" data-ajax="false"><span class="ui-icon ui-icon-plus"></span> Feature Request</a></li>
+									<li><a href="#three" data-ajax="false"><span class="ui-icon ui-icon-phone"></span> Request a Call Back </a></li>
+								</ul>
+							</div>
+							<div id="one" class="ui-body-d ui-content">
+								<h3>Report an Issue</h3>
+								<form class='issues' ideas=''>
+									<input type="text" class="issue" placeholder="Issue Topic" data-clear-btn="true"/>
+									<textarea cols="40" rows="8" placeholder="Describe your Issue" class="issue-desc" data-clear-btn="true"></textarea>
+									<input type="file" class="issue-attachments" multiple data-clear-btn="true"/>
+									<a href="#" class="submit-issue ui-shadow ui-button ui-corner-all ui-button-inline ui-mini">
+										⟶
+									</a>
+								</form>
+							</div>
+							<div id="two" class="ui-body-d ui-content">
+								<h3>Share your Improvement Ideas!</h3>
+								<form class='issues' ideas=''>
+									<input type="text" class="f-r" placeholder="Enter your Idea" data-clear-btn="true"/>
+									<textarea cols="40" rows="8" placeholder="Describe your Idea ..." class="f-r-desc" data-clear-btn="true"></textarea>
+									<input type="file" class="f-r-attachments" multiple data-clear-btn="true"/>
+									<a href="#" class="submit-f-r ui-shadow ui-button ui-corner-all ui-button-inline ui-mini">
+										⟶
+									</a>
+								</form>
+							</div>
+							<div id="three" class="ui-body-d ui-content">
+								<h3>Request a Call Back </h3>
+								<input type="text" class="call-back" placeholder="Enter Your Phone Number" data-clear-btn="true">
+								<a href="#" class="submit-c-r ui-shadow ui-button ui-corner-all ui-button-inline ui-mini">
+									⟶
+								</a>
+							</div>
+						</div>
 					</div>
 
 					<div class="content n-cw">

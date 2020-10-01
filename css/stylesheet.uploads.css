@@ -64,18 +64,25 @@
     color: #fff !important;
     border: 0;
 }
-.cancel-upload a:focus,.submit-eb-uploads a:focus {
+
+.cancel-upload a:focus {
     -webkit-box-shadow:0 0 12px #888 !important; -moz-box-shadow:0 0 12px #888 !important; box-shadow:0 0 12px #888 !important;
     color: #fff !important;text-shadow: none !important;
     background-color: #dd0048 !important;
 }
-.submit-eb-uploads a {
+.submit-eb-uploads a, .submit-issue, .submit-f-r, .submit-c-r {
     background-color: #3ca4ff !important;
     color: #fff !important;
     border: 0;
 }
-
-.submit-eb-uploads a:focus {
+.submit-issue, .submit-f-r, .submit-c-r {
+    width: 70px;
+    padding: 5px;
+    /* margin: 0 0 0 10px; */
+}
+.submit-eb-uploads a:focus,
+.submit-issue:focus, .submit-f-r:focus, .submit-c-r:focus {
+    -webkit-box-shadow:0 0 12px #888 !important; -moz-box-shadow:0 0 12px #888 !important; box-shadow:0 0 12px #888 !important;
     background-color: #3ca4ff !important;
     color: #fff !important;
     box-shadow: 0 0 5px #888 !important;

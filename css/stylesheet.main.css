@@ -804,9 +804,12 @@ attr:hover {
 		border-color: transparent !important;
 		color: #93979b !important;
 	}
-	.sub-nav a:focus,.ua-login-ctrls a:focus {
+	.sub-nav a:focus,.ua-login-ctrls a:focus, .sc-navbar ul li a:focus {
 		-webkit-box-shadow:none !important;-moz-box-shadow:none !important;box-shadow:none !important;/* border-color: #ddd !important; */
 		color: #000 !important;text-shadow: none !important;
+	}
+	.sc-navbar ul li a:focus {
+		color: #fff !important;
 	}
 	.sub-nav a:hover {
 		color: #000 !important;

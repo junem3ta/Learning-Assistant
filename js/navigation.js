@@ -11,7 +11,7 @@ $(document).ready(() => {
 	/*let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0); */
 	let isPanelOpen = false;
 	let isSearching = false;
-	let currentCW = "uploads-cw";
+	let currentCW = "sc-cw";
 	responsiveUIHandler();
 
 	/* Hide Android Searchbar on Scrolldown, show on Scrollup*/
@@ -192,6 +192,7 @@ $(document).ready(() => {
 
 	/* Disable focus styling and remove margin around search input fields*/
 	$("input").closest('div').addClass('noshadowI');
+	$('textarea').addClass('noshadowI');
 	$(".header-search").closest('div').addClass('nomargin hsw-custom');
 	/* closest usage? */
 	$('.pc-metadata-wrapper').removeClass('noshadowI');
