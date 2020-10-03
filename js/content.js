@@ -16,10 +16,10 @@ $(document).ready(() => {
     }
 
     $('.contributors-login-ctrl, .contributors-aux-lc').append(
-        generateBasicPopup('#contributorLoginPopup', 'Contributor', 'contributorLogin', 'Contributor | Signin'));
+        generateBasicPopup('#registerPopup', 'Register', 'userRegistration', 'Create an Account'));
     $('.modr-login-ctrl, .moderators-aux-lc').append(
-        generateBasicPopup('#moderatorLoginPopup', 'Moderator', 'moderatorLogin', 'Moderator | Signin'));
-    $('#contributorLoginPopup, #moderatorLoginPopup').enhanceWithin().popup(); 
+        generateBasicPopup('#loginPopup', 'Login', 'userLogin', 'Sign in to your eRead Account'));
+    $('#registerPopup, #loginPopup').enhanceWithin().popup(); 
 
     for(let i=0; i<3; i+=2) {
         /* add unique id to side panel sub-nav login controls */

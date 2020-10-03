@@ -11,7 +11,7 @@ $(document).ready(() => {
 	/*let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0); */
 	let isPanelOpen = false;
 	let isSearching = false;
-	let currentCW = "sc-cw";
+	let currentCW = "n-cw";
 	responsiveUIHandler();
 
 	/* Hide Android Searchbar on Scrolldown, show on Scrollup*/

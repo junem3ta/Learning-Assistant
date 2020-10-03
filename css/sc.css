@@ -8,3 +8,8 @@
 .sc-navbar ul li a span {
     float: right;
 }
+
+.n-cw {
+    overflow-x: hidden;
+	overflow-y: overlay;
+}

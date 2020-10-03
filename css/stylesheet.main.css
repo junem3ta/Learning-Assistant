@@ -503,7 +503,7 @@ attr:hover {
 }
 .ua-login-ctrls {
 	display: inline-block;
-	min-width: 225px;
+	min-width: 175px;
     height: 35px;
     line-height: 34px;
     margin: 12px 0 0 0;
@@ -768,7 +768,7 @@ attr:hover {
 		width: calc(100% - 166px);
 	}
 
-	.pc-side-panel-wrapper,.content-container {
+	.pc-side-panel-wrapper,.content-container,.cw-ctrls-wrapper {
 		height: calc(100% - 4.0625em);
 		float: left;
 	}
@@ -776,6 +776,8 @@ attr:hover {
 		padding: 20px 0;
 		width: 150px;
 		margin: auto;
+		overflow-y: auto;
+		overflow-x: hidden;
 	}
 	.cw-ctrls-wrapper .content-wrapper-ctrl {
 		height: 40px;
