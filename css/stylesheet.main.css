@@ -479,7 +479,7 @@ attr:hover {
 	width: 100%;
 	border-bottom: 1px solid #ddd;
 }
-.modr-login-ctrl,.contributors-login-ctrl {
+.login-ctrl,.register-ctrl {
 	height: 34px;
 	line-height: 34px;
 }
@@ -526,13 +526,13 @@ attr:hover {
     -webkit-box-shadow: 0 1px 1px 0 rgba(65,69,73,0.3), 0 1px 3px 1px rgba(65,69,73,0.15);
     box-shadow: 0 1px 1px 0 rgba(65,69,73,0.3), 0 1px 3px 1px rgba(65,69,73,0.15);
 }
-.modr-login-ctrl,.contributors-login-ctrl {
+.login-ctrl,.register-ctrl {
 	float: left;
 }
-/* .contributors-login-ctrl {
+/* .register-ctrl {
 	margin: 0 8px 0 0;
 } */
-.modr-login-ctrl a,.contributors-login-ctrl a {
+.login-ctrl a,.register-ctrl a {
 	height: 31.04px;
     line-height: 31.04px;
     padding: 0 15px;
@@ -544,26 +544,60 @@ attr:hover {
 	box-shadow: none;
 	border-width: 1.48px;
     background-color: #fff !important;
- }
- .modr-login-ctrl a {
+}
+.login-ctrl a {
 	padding-left: 52px;
-    border-bottom-right-radius: 0 !important;
-    border-top-right-radius: 0 !important;
- } 
- .contributors-login-ctrl a {
+	border-bottom-right-radius: 0 !important;
+	border-top-right-radius: 0 !important;
+} 
+.register-ctrl a {
 	border-left: none;
 	border-top-left-radius: 0 !important;
 	border-bottom-left-radius: 0 !important;
- }
+}
+.ui-popup p {
+	margin: 0;
+}
+.ui-popup h3 {
+	margin: 15px 0;
+}
+.c-u-fn-wrapper .ui-block-a,  .c-u-fn-wrapper .ui-block-b {
+	width: 150px;
+}
+.c-u-fn-wrapper .ui-block-a {
+	padding: 0 5px;
+}
+.c-u-fn-wrapper .ui-block-b {
+	padding-right: 5px;
+}
+.v-u-log, .c-u-log {
+	margin: 8px 0;
+	font-size: 14px;
+	padding: 5px;
+	border-radius: 3px;
+	max-width: 189px;
+	position: relative;
+	display: none;
+}
+.c-u-log {
+	max-width: 300px;
+}
+.v-u-log span, .c-u-log span {
+	position: absolute;
+	right: 5px;
+	top: 5px;
+}
+.v-u-log span:hover, .c-u-log span:hover {
+	cursor: pointer;
+}
 
- .ua.ui-grid-a {
+.ua {
 	margin: 16px 0 0;
 }
 .ua .ui-block-a, .ua .ui-block-b {
 	width: 100% !important;
 }
 .ua .ui-block-a {
-	/* height: 236px; */
 	padding: 0 .5em;
 }
 /* #e8f0fe */
@@ -772,12 +806,15 @@ attr:hover {
 		height: calc(100% - 4.0625em);
 		float: left;
 	}
+	.pc-side-panel-wrapper {
+		overflow-y: auto;
+		overflow-x: hidden;
+	}
 	.cw-ctrls-wrapper {
 		padding: 20px 0;
 		width: 150px;
 		margin: auto;
-		overflow-y: auto;
-		overflow-x: hidden;
+		float: none;
 	}
 	.cw-ctrls-wrapper .content-wrapper-ctrl {
 		height: 40px;
@@ -786,8 +823,11 @@ attr:hover {
 	}
 	.sub-nav {
 		width: 100px;
-		margin: 5px 0 10px 30px;
+		margin: 5px 0 0 30px;
 		font-size: 10px;
+	}
+	.sub-nav-hdr {
+		margin: 0 0 5px !important;
 	}
 	.sub-nav a {
 		box-shadow: none;
@@ -1023,7 +1063,7 @@ attr:hover {
 		}
 		.sub-nav {
 			width: 200px;
-			margin: 5px 0 10px 25px;
+			margin: 5px 0 0 25px;
 		}
 		.sub-nav p:first-child {
 			font-size: 14px;
@@ -1065,13 +1105,10 @@ attr:hover {
 			overflow-x: unset;
 			overflow-y: unset;
 		}
-		.ua .ui-grid-a {
+		.ua {
 			position: relative;
 			height: calc(100% - 66px);
 			/* overflow: /* hidden */ /* auto;  overfow is messing up with elements on the edge of grid*/ 
-		}
-		.ua .ui-block-a {
-			height: 322px;
 		}
 		.ua .ui-block-a div {
 			float: left;

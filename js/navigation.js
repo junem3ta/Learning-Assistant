@@ -11,7 +11,7 @@ $(document).ready(() => {
 	/*let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0); */
 	let isPanelOpen = false;
 	let isSearching = false;
-	let currentCW = "n-cw";
+	let currentCW = "ua-cw";
 	responsiveUIHandler();
 
 	/* Hide Android Searchbar on Scrolldown, show on Scrollup*/
@@ -258,7 +258,10 @@ $(document).ready(() => {
 		resetActiveLinks();
 		$(this).addClass('active-sn-ctrl');
 	});
-	
+	for(let i=0; i<3; i+=2) {
+        /* add unique id to side panel sub-nav login controls */
+       $($('.sub-nav div').children()[i]).attr('id','sn-ctrl-'+i);
+    }
 	/* link ua UI popup ctrls to sidepanel navigation */
 	$(document).on('click','.popup-dpl-ctrl',function(){
 		let _c = $(this).attr('class').split(' ');

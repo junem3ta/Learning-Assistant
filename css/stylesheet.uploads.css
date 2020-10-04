@@ -155,7 +155,7 @@
     font-weight: normal !important;
 }
 .a-publishCI {
-    margin: 0 19.2px !important;
+    margin: 16px 19.2px 0 !important;
 }
 .uploader-ID span {
     margin-bottom: -5px;
@@ -310,7 +310,6 @@
 }
 .aux-input-error {
     border: 1px solid #ed143d !important;
-    color: #ed143d;
 }
 .eb-uploads .ui-block-g p {
     display: none;

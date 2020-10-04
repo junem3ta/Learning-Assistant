@@ -9,7 +9,7 @@
 		<link href="assets/font-awesome/css/all.css" rel="stylesheet">
 		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
 		<script type="text/javascript" src="js/jquery.mobile-1.5.0-rc1.min.js"></script>
-		<script type="text/javascript" src="FsIndex/ppfs/FsIndex.0.min.js"></script>
+		<script type="text/javascript" src="js/FsIndex/ppfs/FsIndex.0.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.5.0-rc1.min.css">
 		<link rel="stylesheet" type="text/css" href="css/stylesheet.main.css">
 		<link rel="stylesheet" type="text/css" href="css/explorer.sub.css">
@@ -18,9 +18,8 @@
 		<script type="text/javascript" src="js/prefixfree.min.js"></script>
 		<script type="text/javascript" src="js/navigation.js"></script>
 		<script type="text/javascript" src="js/explorer.js"></script>
-		<script type="text/javascript" src="js/content.js"></script>
-		<script type="text/javascript" src="js/upload.js"></script>
-		<script type="text/javascript" src="js/notifications.js"></script>
+		<script type="text/javascript" src="js/uploads.js"></script>
+		<script type="text/javascript" src="js/global.js"></script>
 	</head>
 	<body>
 		<div data-role="page" class="content-wrapper">
@@ -43,14 +42,14 @@
 				<!-- @Templates: Template Markup for dynamic content -->
 				<!-- @Popup-basic -->
 				<template class='popupbasic-template'>
-					<a href="#target1" data-rel="popup" data-position-to="window"
+					<a href="#loginPopup" data-rel="popup" data-position-to="window"
 						class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a" data-transition="pop">
-						target2
+						Login
 					</a>
-					<div data-role="popup" id="target3" data-theme="a" class="ui-corner-all">
-						<form id="target4">
+					<div data-role="popup" id="loginPopup" data-theme="a" class="ui-corner-all">
+						<form id="userLogin">
 							<div style="padding:10px 20px;">
-								<h3 style="text-align: center;">target5</h3>
+								<h3 style="text-align: center;">eRead Account | Sign in</h3>
 								<label for="un" class="ui-hidden-accessible">Username:</label>
 								<input type="text" name="user" id="un" value="" placeholder="username" data-theme="a">
 								<label for="pw" class="ui-hidden-accessible">Password:</label>
@@ -249,18 +248,28 @@
 							<p>eBooks</p>
 						</div>
 						<div id="uploads-cw" class="content-wrapper-ctrl">
-							<p>Upload eBook(s)</p>
+							<p>Share eBook(s)</p>
+						</div>
+						<div id="ua-cw" class="content-wrapper-ctrl">
+							<p>eRead Account</p>
+						</div>
+						<div class="sub-nav">
+							<p class="sub-nav-hdr"><i class="fas fa-user-plus"></i> ADD </p>
+							<div class="contributors-aux-lc">
+								<a href="#loginPopup" data-rel="popup" data-position-to="window"
+									class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a" id="sn-ctrl-0" data-transition="pop">
+									Login
+								</a>
+							</div>
+							<div class="moderators-aux-lc">
+								<a href="#registerPopup" data-rel="popup" data-position-to="window"
+									class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a" id="sn-ctrl-2" data-transition="pop">
+									Register
+								</a>
+							</div>
 						</div>
 						<div id="contributors-cw" class="content-wrapper-ctrl">
 							<p>Contributors</p>
-						</div>
-						<div id="ua-cw" class="content-wrapper-ctrl">
-							<p>User Account</p>
-						</div>
-						<div class="sub-nav">
-							<p>SIGN IN</p>
-							<div class="contributors-aux-lc"></div>
-							<div class="moderators-aux-lc"></div>
 						</div>
 					</div>
 					<div class="sp-footer">
@@ -430,7 +439,7 @@
 						</div>
 					</div>
 
-					<div class="content ua-cw">
+					<div class="content ua-cw active-content-wrapper">
 						<div class="ua-nav-wrapper">
 							<div class="ua-hdr">
 								<p class='ua-hdr-title'>eRead Account</p>
@@ -442,11 +451,54 @@
 											<i class="fas fa-user-plus"></i>
 										</div>
 									</abbr>
-									<div class="modr-login-ctrl">
-										<!-- dynamic basic popup -->
+									<div class="login-ctrl">
+										<a href="#loginPopup" data-rel="popup" data-position-to="window"
+											class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a popup-dpl-ctrl sn-ctrl-0" data-transition="pop">
+											Login
+										</a>
+										<div data-role="popup" id="loginPopup" data-theme="a" class="ui-corner-all">
+											<form id="userLogin">
+												<div style="padding:10px 20px;">
+													<h3 style="text-align: center;">Sign in to your account</h3>
+													<label for="un" class="ui-hidden-accessible">Username:</label>
+													<input type="text" name="user" class="un" value="" placeholder="username" data-theme="a">
+													<label for="pw" class="ui-hidden-accessible">Password:</label>
+													<input type="password" name="pass" class="pw" value="" placeholder="password" data-theme="a">
+													<p class='v-u-log'><span class="ui-icon ui-icon-delete"></span></p>
+													<button type="submit" class="v-u ui-button ui-corner-all ui-shadow ui-button-b">
+														Sign in <span class="ui-icon ui-icon-check"></span>
+													</button>
+												</div>
+											</form>
+										</div>
 									</div>
-									<div class="contributors-login-ctrl">
-										<!-- dynamic basic popup -->
+									<div class="register-ctrl">
+										<a href="#registerPopup" data-rel="popup" data-position-to="window"
+											class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a popup-dpl-ctrl sn-ctrl-2" data-transition="pop">
+											Register
+										</a>
+										<div data-role="popup" id="registerPopup" data-theme="a" class="ui-corner-all">
+											<form id="userLogin">
+												<div style="padding:10px 20px;">
+													<h3 style="text-align: center;">Create an eRead Account </h3>
+													<p>*: Required</p>
+													<div class="c-u-fn-wrapper ui-grid-a">
+														<div class="ui-block-a">
+															<input type="text" class="c-u-fn" placeholder="First Name *" data-clear-btn="true" />
+														</div>
+														<div class="ui-block-b">
+															<input type="text" class="c-u-ln" placeholder="Last Name *" data-clear-btn="true" />
+														</div>
+													</div>
+													<input type="text" class="c-u-un" value="" placeholder="username *" data-theme="a" data-clear-btn="true" />
+													<input type="email" class="c-u-email" value="" placeholder="Email Address *" data-clear-btn="true" />
+													<p class='c-u-log'><span class="ui-icon ui-icon-delete"></span></p>
+													<button type="submit" class="c-u ui-button ui-corner-all ui-shadow ui-button-b">
+														Register <span class="ui-icon ui-icon-check"></span>
+													</button>
+												</div>
+											</form>
+										</div>
 									</div>
 								</div>
 							</div>
@@ -477,8 +529,11 @@
 								<div class="ui-body-c ua-info-wrapper">
 									<p class="ua-info">
 										<i class="fas fa-info-circle"></i> You are currently using a <em>Guest</em> account with unlimited access to
-										<span><em>all</em></span> revision content. Create an account for an enhanced, smooth experience and elevated priveleges.
-										Already a registered user? Login.
+										<span><em>all</em></span> revision content. 
+										<a href="#registerPopup" data-rel="popup" data-position-to="window" class="popup-dpl-ctrl sn-ctrl-2">
+											Create an account</a> for an enhanced, smooth experience and elevated priveleges.
+										Already a registered user? 
+										<a href="#loginPopup" data-rel="popup" data-position-to="window" class="popup-dpl-ctrl sn-ctrl-0">Login.</a>
 										<br />
 									</p>
 								</div>
@@ -540,7 +595,7 @@
 						</div>
 					</div>
 
-					<div class="content n-cw active-content-wrapper">
+					<div class="content n-cw">
 						<p>Notification Center</p>
 						<ul data-role="listview" data-inset="true" data-split-icon="delete">
 							<li data-role="list-divider">Friday, October 8, 2010 <span class="ui-listview-item-count-bubble">2</span></li>
