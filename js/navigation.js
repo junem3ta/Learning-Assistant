@@ -4,6 +4,10 @@
 let desktopMode, aMetadataInput = true, _l = console.log, _o = (e) => {return JSON.stringify(e);}
 
 $(document).ready(() => {
+	$('.header-search').closest('div')
+	.addClass('tooltipped tooltipped-s border p-2 mb-2 mr-2 float-left')
+	.attr('aria-label', 'Start typing to view Suggestions.')
+	.attr('tabindex', 1); 
 	/* Default Global VARS */
 	desktopMode = false;
 	let windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -218,7 +222,22 @@ $(document).ready(() => {
 		$('.sub-nav div a').removeClass('active-sn-ctrl');
 	}
 
-	$('.content-wrapper-ctrl').click(function() {
+	$('.content-wrapper-ctrl').click(function(e) {
+		/*Only target Desktop content-wrapper-controllers*/
+		if($(this).prop("nodeName")=="DIV") {
+			resetActiveLinks();
+			$(this).addClass("active-cw-ctrl");
+		}
+
+		if($(this).attr('id') == 'sr-cw') {
+			setTimeout(function(){
+				$('.header-search').closest('div').focus();
+				setTimeout(() => {
+					$('.header-search').focus();
+				},10000);
+			});
+			return;
+		}
 		//reset navigation to top of page
 		$(window).scrollTop(0);
 		if($('.ui-content').hasClass('ui-content-up')) {
@@ -232,12 +251,6 @@ $(document).ready(() => {
 			target == 'pp-cw' || target == 'eb-cw' ? $('.static-hdr').show() : $('.static-hdr').hide();
 			//display search option accordingly
 			target == 'pp-cw' || target == 'eb-cw' ? $('.home-search-wrapper').show() : $('.home-search-wrapper').hide();
-		}
-		
-		/*Only target Desktop content-wrapper-controllers*/
-		if($(this).prop("nodeName")=="DIV") {
-			resetActiveLinks();
-			$(this).addClass("active-cw-ctrl");
 		}
 
 		if($(this).hasClass('ua-dpl-ctrl')){
@@ -276,5 +289,5 @@ $(document).ready(() => {
 	let tmp = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum. Pellentesque cursus mauris purus, auctor commodo mi ullamcorper nec. Donec semper mattis eros, nec condimentum ante sollicitudin quis. Etiam orci sem, porttitor ut tellus nec, blandit posuere urna. Proin a arcu non lacus pretium faucibus. Aliquam sed est porttitor, ullamcorper urna nec, vehicula lorem. Cras porttitor est lorem, non venenatis diam convallis congue.';
 	for (let i = 0; i < 5; i++) {
 		$('.side-panel p').append(tmp + '<br>');	
-	}
+	};
 });

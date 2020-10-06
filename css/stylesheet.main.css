@@ -947,6 +947,11 @@ attr:hover {
 		width: 100%;
 		margin: 0;
 	}
+	.ua-ctrl span,.sc-ctrl span,.n-ui-ctrl span.tooltipped {
+		display: block;
+		height: 48px;
+		width: 48px;
+	}
 	.ua-ctrl-icon,.sc-ctrl-icon,.ncw-ctrl-icon {
 		display: block;
 		float: right;
@@ -975,18 +980,19 @@ attr:hover {
 		text-shadow: none;
 		font-weight: 300;
 		background-color: #a2dcc1;
-    	color: #04502e;
+		color: #04502e;
+		z-index: 100;
 	}
 
 	
 	.ua-ctrl-icon:hover,.sc-ctrl-icon:hover,.ncw-ctrl-icon:hover {
 		cursor: pointer;
-		background: #ebecec !important;
 	}
 	.ua-ctrl-icon:focus,.sc-ctrl-icon:focus,.ncw-ctrl-icon:focus {
-		background: #ebecec;
+		background: #f9f9f9;
 		outline: none;
 		color: #1967d2;
+		text-shadow: none;
 	}
 	
 	/* explorer */

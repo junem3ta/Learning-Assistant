@@ -11,6 +11,7 @@
 		<script type="text/javascript" src="js/jquery.mobile-1.5.0-rc1.min.js"></script>
 		<script type="text/javascript" src="js/FsIndex/ppfs/FsIndex.0.min.js"></script>
 		<link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.5.0-rc1.min.css">
+		<link rel="stylesheet" type="text/css" href="css/primer.css">
 		<link rel="stylesheet" type="text/css" href="css/stylesheet.main.css">
 		<link rel="stylesheet" type="text/css" href="css/explorer.sub.css">
 		<link rel="stylesheet" type="text/css" href="css/stylesheet.uploads.css">
@@ -213,27 +214,30 @@
 						<input class="header-search" placeholder="Search past papers, e-books" type="search" data-clear-btn="true">
 					</div>
 					<div class="hdr-ctrls-wrapper">
+						<div id="ua-cw" class="ua-ctrl content-wrapper-ctrl ua-dpl-ctrl">
+							<p class="ua-ctrl-hdr">
+								<span class="tooltipped tooltipped-sw border p-2 mb-2 mr-2 float-left"
+									aria-label="User Account">
+									<i tabindex="1" class="ua-ctrl-icon fas fa-user-circle"></i>
+								</span>
+							</p>
+						</div>
 						<div id="n-cw" class="n-ui-ctrl content-wrapper-ctrl">
 							<p class="ncw-ctrl-hdr">
 								<!-- Notification UI Ctrl -->
 								<span class="n">2</span>
-								<abbr title="Notifications">
-									<i tabindex="1" class="ncw-ctrl-icon fas fa-bell"></i>
-								</abbr>
-							</p>
-						</div>
-						<div id="ua-cw" class="ua-ctrl content-wrapper-ctrl ua-dpl-ctrl">
-							<p class="ua-ctrl-hdr">
-								<abbr title="User Account">
-									<i tabindex="2" class="ua-ctrl-icon fas fa-user-circle"></i>
-								</abbr>
+								<span class="tooltipped tooltipped-s border p-2 mb-2 mr-2 float-left"
+									aria-label="Notifications">
+									<i tabindex="2" class="ncw-ctrl-icon fas fa-bell"></i>
+								</span>
 							</p>
 						</div>
 						<div id="sc-cw" class="sc-ctrl content-wrapper-ctrl">
 							<p class="sc-ctrl-hdr">
-								<abbr title="eRead Support">
+								<span class="tooltipped tooltipped-s border p-2 mb-2 mr-2 float-left"
+									aria-label="eRead Support">
 									<i tabindex="3" class="sc-ctrl-icon fas fa-envelope"></i>
-								</abbr>
+								</span>
 							</p>
 						</div>
 					</div>
@@ -270,6 +274,9 @@
 						</div>
 						<div id="contributors-cw" class="content-wrapper-ctrl">
 							<p>Contributors</p>
+						</div>
+						<div id="sr-cw" class="content-wrapper-ctrl">
+							<p>Search</p>
 						</div>
 					</div>
 					<div class="sp-footer">
@@ -456,7 +463,7 @@
 											class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a popup-dpl-ctrl sn-ctrl-0" data-transition="pop">
 											Login
 										</a>
-										<div data-role="popup" id="loginPopup" data-theme="a" class="ui-corner-all">
+										<div data-history="false" data-role="popup" id="loginPopup" data-theme="a" class="ui-corner-all">
 											<form id="userLogin">
 												<div style="padding:10px 20px;">
 													<h3 style="text-align: center;">Sign in to your account</h3>
@@ -477,7 +484,7 @@
 											class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a popup-dpl-ctrl sn-ctrl-2" data-transition="pop">
 											Register
 										</a>
-										<div data-role="popup" id="registerPopup" data-theme="a" class="ui-corner-all">
+										<div data-history="false" data-role="popup" id="registerPopup" data-theme="a" class="ui-corner-all">
 											<form id="userLogin">
 												<div style="padding:10px 20px;">
 													<h3 style="text-align: center;">Create an eRead Account </h3>
