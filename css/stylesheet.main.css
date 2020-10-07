@@ -259,7 +259,7 @@ a {
 .content p {
 	margin: 0;
 }
-attr:hover {
+.app-ver:hover,.login-ctrls-hdr:hover {
 	cursor: pointer;
 }
 
@@ -532,7 +532,7 @@ attr:hover {
 /* .register-ctrl {
 	margin: 0 8px 0 0;
 } */
-.login-ctrl a,.register-ctrl a {
+.login-ctrl a, .register-ctrl a {
 	height: 31.04px;
     line-height: 31.04px;
     padding: 0 15px;
@@ -543,7 +543,8 @@ attr:hover {
 	border-radius: 34px !important;
 	box-shadow: none;
 	border-width: 1.48px;
-    background-color: #fff !important;
+	background-color: #fff !important;
+	border-color: #ddd !important;
 }
 .login-ctrl a {
 	padding-left: 52px;
@@ -555,11 +556,20 @@ attr:hover {
 	border-top-left-radius: 0 !important;
 	border-bottom-left-radius: 0 !important;
 }
+.login-ctrl a:hover, .register-ctrl a:hover {
+	background-color: #f9f9f9 !important;
+}
 .ui-popup p {
 	margin: 0;
 }
 .ui-popup h3 {
 	margin: 15px 0;
+}
+.ui-popup button:focus {
+	-webkit-box-shadow:0 0 12px #888 !important; -moz-box-shadow:0 0 12px #888 !important; box-shadow:0 0 12px #888 !important;
+}
+.ui-disabled, .ui-state-disabled, button[disabled], .ui-selectmenu .ui-button.ui-state-disabled {
+	opacity: .9 !important;
 }
 .c-u-fn-wrapper .ui-block-a,  .c-u-fn-wrapper .ui-block-b {
 	width: 150px;
@@ -570,7 +580,7 @@ attr:hover {
 .c-u-fn-wrapper .ui-block-b {
 	padding-right: 5px;
 }
-.v-u-log, .c-u-log {
+.v-u-log, .c-u-log, .r-a-log {
 	margin: 8px 0;
 	font-size: 14px;
 	padding: 5px;
@@ -579,15 +589,47 @@ attr:hover {
 	position: relative;
 	display: none;
 }
+.v-u-log i.fa-spinner, .c-u-log i.fa-spinner, .r-a-log i.fa-spinner {
+	display: none;
+}
+.bg-loading {
+	display: block;
+    background: #3ca4ff;
+    color: #fff;
+    padding: 8px 10px;
+    text-shadow: none;
+    font-size: 16px !important;
+}
+span.p-h {
+	padding-left: 5px;
+}
+.bg-loading i.fa-spinner {
+	display: inline-block;
+}
+.bg-loading span.ui-icon-delete {
+	display: none;
+}
 .c-u-log {
 	max-width: 300px;
 }
-.v-u-log span, .c-u-log span {
+#account-recovery {
+	max-width: 350px;
+}
+.r-a-guide {
+	color: #333 !important;
+	display: inline-block;
+    margin: 5px 0 0;
+}
+.r-a-log {
+	max-width: 350px;
+}
+.v-u-log span.ui-icon-delete, .c-u-log span.ui-icon-delete, .r-a-log span.ui-icon-delete {
 	position: absolute;
 	right: 5px;
 	top: 5px;
 }
-.v-u-log span:hover, .c-u-log span:hover {
+.v-u-log span.ui-icon-delete:hover, .c-u-log span.ui-icon-delete:hover,
+.r-a-log span.ui-icon-delete:hover {
 	cursor: pointer;
 }
 
@@ -642,7 +684,7 @@ attr:hover {
 	letter-spacing: .4px;
 }
 .ua-info {
-	color: #777;
+	color: #333;
 }
 .ua-details p {
 	line-height: 25px;

@@ -204,9 +204,7 @@
 				<!-- Desktop searchbar -->
 				<div class="header">
 					<div class="app-title">
-						<attr title="v1.0.0">
-							<p class="app-ver">BETA</p>
-						</attr>
+						<p class="app-ver tooltipped tooltipped-s border p-2 mb-2 mr-2 float-left" aria-label="e-ReadCU ⟶  V1.0.0">BETA</p>
 						<p class="title">eREAD</p>
 						<p class="sub-title"> Chuka University</p>
 					</div>
@@ -217,7 +215,7 @@
 						<div id="ua-cw" class="ua-ctrl content-wrapper-ctrl ua-dpl-ctrl">
 							<p class="ua-ctrl-hdr">
 								<span class="tooltipped tooltipped-sw border p-2 mb-2 mr-2 float-left"
-									aria-label="User Account">
+									aria-label="eRead Account">
 									<i tabindex="1" class="ua-ctrl-icon fas fa-user-circle"></i>
 								</span>
 							</p>
@@ -254,7 +252,7 @@
 						<div id="uploads-cw" class="content-wrapper-ctrl">
 							<p>Share eBook(s)</p>
 						</div>
-						<div id="ua-cw" class="content-wrapper-ctrl">
+						<div id="ua-cw" class="content-wrapper-ctrl active-cw-ctrl">
 							<p>eRead Account</p>
 						</div>
 						<div class="sub-nav">
@@ -453,11 +451,9 @@
 							</div>
 							<div class='login-ctrls-wrapper'>
 								<div class='ua-login-ctrls'>
-									<abbr title="Add Account">
-										<div class='login-ctrls-hdr'>
-											<i class="fas fa-user-plus"></i>
-										</div>
-									</abbr>
+									<div class='login-ctrls-hdr tooltipped tooltipped-s border p-2 mb-2 mr-2 float-left' aria-label="Add Account">
+										<i class="fas fa-user-plus"></i>
+									</div>
 									<div class="login-ctrl">
 										<a href="#loginPopup" data-rel="popup" data-position-to="window"
 											class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a popup-dpl-ctrl sn-ctrl-0" data-transition="pop">
@@ -471,7 +467,11 @@
 													<input type="text" name="user" class="un" value="" placeholder="username" data-theme="a">
 													<label for="pw" class="ui-hidden-accessible">Password:</label>
 													<input type="password" name="pass" class="pw" value="" placeholder="password" data-theme="a">
-													<p class='v-u-log'><span class="ui-icon ui-icon-delete"></span></p>
+													<p class='v-u-log'>
+														<i class="fas fa-spinner fa-spin"></i>
+														<span class='p-h'></span>
+														<span class="ui-icon ui-icon-delete"></span>
+													</p>
 													<button type="submit" class="v-u ui-button ui-corner-all ui-shadow ui-button-b">
 														Sign in <span class="ui-icon ui-icon-check"></span>
 													</button>
@@ -499,7 +499,11 @@
 													</div>
 													<input type="text" class="c-u-un" value="" placeholder="username *" data-theme="a" data-clear-btn="true" />
 													<input type="email" class="c-u-email" value="" placeholder="Email Address *" data-clear-btn="true" />
-													<p class='c-u-log'><span class="ui-icon ui-icon-delete"></span></p>
+													<p class='c-u-log'>
+														<i class="fas fa-spinner fa-spin"></i>
+														<span class='p-h'></span>
+														<span class="ui-icon ui-icon-delete"></span>
+													</p>
 													<button type="submit" class="c-u ui-button ui-corner-all ui-shadow ui-button-b">
 														Register <span class="ui-icon ui-icon-check"></span>
 													</button>
@@ -542,7 +546,26 @@
 										Already a registered user? 
 										<a href="#loginPopup" data-rel="popup" data-position-to="window" class="popup-dpl-ctrl sn-ctrl-0">Login.</a>
 										<br />
+										<span class='r-a-guide'>Having trouble signing in? Access account recovery options</span>
+										<a href="#arPopup" data-rel="popup" data-position-to="window">here.</a>
 									</p>
+								</div>
+								<div data-history="false" data-role="popup" id="arPopup" data-theme="a" class="ui-corner-all">
+									<form id="account-recovery">
+										<div style="padding:10px 20px;">
+											<h3 style="text-align: center;">eRead | Account Recovery options.</h3>
+											<p>*: Required ⟶ Please provide the address you signed up with.</p>
+											<input type="email" class="r-a-email" placeholder="Your Email Address *" data-clear-btn="true" />
+											<p class='r-a-log'>
+												<i class="fas fa-spinner fa-spin"></i>
+												<span class='p-h'></span>
+												<span class="ui-icon ui-icon-delete"></span>
+											</p>
+											<button type="submit" class="r-a ui-button ui-corner-all ui-shadow ui-button-b">
+												Submit <span class="ui-icon ui-icon-check"></span>
+											</button>
+										</div>
+									</form>
 								</div>
 							</div>
 							<div class="ui-block-c">
