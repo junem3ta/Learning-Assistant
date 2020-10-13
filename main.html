@@ -21,6 +21,7 @@
 		<script type="text/javascript" src="js/explorer.js"></script>
 		<script type="text/javascript" src="js/uploads.js"></script>
 		<script type="text/javascript" src="js/global.js"></script>
+		<script type="text/javascript" src="js/pdfviewer.js"></script>
 	</head>
 	<body>
 		<div data-role="page" class="content-wrapper">
@@ -314,6 +315,13 @@
 
 					<div class="content eb-cw">
 						<p>eBooks<br /></p>
+						<a href="#popupVideo" data-rel="popup" data-position-to="window" class="ui-button ui-corner-all ui-shadow ui-button-inline">
+							Launch video player
+						</a>
+						<div data-role="popup" id="popupVideo" data-overlay-theme="b" data-theme="a" data-tolerance="15,15" class="ui-content">
+							<iframe src="http://player.vimeo.com/video/41135183?portrait=0" width="497" height="298" seamless=""></iframe>
+						</div>
+						<a href="http://localhost:3000/FS/FAES/2010/AGEC%200112.pdf" target="_blank">Go</a>
 					</div>
 
 					<div class="content uploads-cw">

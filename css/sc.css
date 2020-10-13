@@ -13,3 +13,7 @@
     overflow-x: hidden;
 	overflow-y: overlay;
 }
+
+iframe {
+    border: none;
+}

@@ -21,7 +21,7 @@ $(document).ready(() => {
         priorRAFErrors = false;
     const
         isAN /* AlphaNumeric Test */ = /^[a-zA-Z0-9]+$/,
-        isText = /^[a-zA-Z']+$/,
+        isText = /^[a-zA-Z'.]+$/,
         rfc2822Email = /^[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?$/i,
         verifyLC = (un, pw) => {
             let valid = true;
