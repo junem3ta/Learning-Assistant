@@ -383,6 +383,7 @@ a {
 	float: left;
 }
 .folder-icon, .file-icon{
+	display: block;
 	/* border: 1px solid #ddd; */
 	position: relative;
     height: 80px;

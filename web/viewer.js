@@ -2161,7 +2161,7 @@ var PDFViewerApplication = {
 exports.PDFViewerApplication = PDFViewerApplication;
 var validateFileURL;
 {
-  var HOSTED_VIEWER_ORIGINS = ["null", "http://mozilla.github.io", "https://mozilla.github.io"];
+  var HOSTED_VIEWER_ORIGINS = ["null", "http://mozilla.github.io", "https://mozilla.github.io", "http://localhost:3000"];
 
   validateFileURL = function validateFileURL(file) {
     if (file === undefined) {
@@ -2170,7 +2170,7 @@ var validateFileURL;
 
     try {
       var viewerOrigin = new URL(window.location.href).origin || "null";
-
+      console.log(HOSTED_VIEWER_ORIGINS.includes(viewerOrigin));
       if (HOSTED_VIEWER_ORIGINS.includes(viewerOrigin)) {
         return;
       }
@@ -2179,9 +2179,9 @@ var validateFileURL;
           origin = _URL.origin,
           protocol = _URL.protocol;
 
-      if (origin !== viewerOrigin && protocol !== "blob:") {
+      /* if (origin !== viewerOrigin && protocol !== "blob:") {
         throw new Error("file origin does not match viewer's");
-      }
+      } */
     } catch (ex) {
       var message = ex && ex.message;
       PDFViewerApplication.l10n.get("loading_error", null, "An error occurred while loading the PDF.").then(function (loadingErrorMessage) {

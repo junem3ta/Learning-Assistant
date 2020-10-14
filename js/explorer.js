@@ -85,7 +85,7 @@ $(document).ready(() => {
 
 		if(nextIndexObj['__files__']!=undefined && Object.keys(nextIndexObj).length == 2) {
 			/* Print Files */
-			absPath = nextIndexObj['path'];
+			absPath = nextIndexObj['path'].split('root/')[1];
 			let files = nextIndexObj['__files__'];
 			console.log('Print the following files, w/path ', absPath,' @nextECL, ',nextECL,' \n\r',files);
 
@@ -100,11 +100,12 @@ $(document).ready(() => {
 				let fullFileName = files[i];
 				let fileNameArr = fullFileName.split('.pdf');
 				fileName = fileNameArr.join('');
+				path = '/' + absPath + '/' + fileName;
 
 				$('.'+nextECL).append(
 					$('<div>',{class:'file-tile-wrapper'})
 					.append(
-						$('<div>',{id:fullFileName,class:'file-icon'})
+						$('<a>',{id:fullFileName, class:'file-icon', href: '#popupVideo', 'data-rel':'popup', 'data-position-to':'window', path: path})
 						.append(
 							$('<p>',{text:fileName}))
 					)
@@ -180,5 +181,9 @@ $(document).ready(() => {
 			i--;
 		}
 	});
+	$('.explorer').on('click', '.file-icon', (event) => {
+		let filePath = '/web/viewer.html?file=http://localhost:3000/fetch' + $(event.target).attr('path');
+		$('#pdf-js-viewer').attr('src', filePath);
+	})
 });
 
