@@ -89,28 +89,38 @@ $(document).ready(() => {
 			let files = nextIndexObj['__files__'];
 			console.log('Print the following files, w/path ', absPath,' @nextECL, ',nextECL,' \n\r',files);
 
-			$('.explorer').append($('<div>',{class:'ecw '+nextECL}));
-			$('.'+nextECL).append(
-				$('<div>',{class:'fdownl-dialog-wrapper'})
+			$('.explorer').append(
+				$('<div>', {class:'ecw '+nextECL, id:nextECL})
 				.append(
-					$('<div>',{id:'downl-dialog',class:'file-downl-dialog'}))
-				).append($('<p>',{text:'Files',class:'files-ecw-hdr'}));
+					[
+						$('<div>', {class: 'ecw-navbar'}).append(`<input data-type="search" id="searchFiles" placeholder="Search Files">`),
+						$('<div>', {class: 'files-wrapper', 'data-filter': 'true', 'data-input':'#searchFiles', 'data-inset': 'true'})
+					]
+					)
+				);
+			$('#searchFiles').textinput().textinput('refresh');
+			$('#searchFiles').closest('div').addClass('noshadowI search-files');
+			/* .append(
+				`<input class="search-files" data-type="search" id="searchFiles" placeholder="Search Files">`) 
+				$('.'+nextECL).append($('<p>',{text:'Files',class:'files-ecw-hdr'}));
+				*/
 			
 			for(let i=0; i<files.length; i++) {
 				let fullFileName = files[i];
 				let fileNameArr = fullFileName.split('.pdf');
 				fileName = fileNameArr.join('');
 				path = '/' + absPath + '/' + fileName;
-
-				$('.'+nextECL).append(
-					$('<div>',{class:'file-tile-wrapper'})
+				$('.'+nextECL+' .files-wrapper').append(
+					$('<div>',{class:'file-tile-wrapper tooltipped tooltipped-s border p-2 mb-2 mr-2 float-left', 'aria-label': fileName})
 					.append(
-						$('<a>',{id:fullFileName, class:'file-icon', href: '#pdfViewer', 'data-rel':'popup', 'data-position-to':'window', path: path})
+						$('<a>',
+						{id:fullFileName, class:'file-icon', href: '#pdfViewer', 'data-rel':'popup', 'data-position-to':'window', path: path})
 						.append(
 							$('<p>',{text:fileName}))
 					)
 				);
-			}
+			}			
+			$('.files-wrapper').filterable().filterable('refresh').listview().listview('refresh');
 			$('.'+nextECL).append(
 				$('<div>',{class:'fw-stats'}).append(
 					$('<p>',{text:"Showing " + files.length + " of 10,511 files. Path: " + absPath}))
@@ -184,6 +194,7 @@ $(document).ready(() => {
 	$('.explorer').on('click', '.file-icon', (event) => {
 		let filePath = '/web/viewer.html?file=http://localhost:3000/fetch' + $(event.target).attr('path');
 		$('#pdf-js-viewer').attr('src', filePath);
-	})
+	});
+	/* Generate search index */
 });
 

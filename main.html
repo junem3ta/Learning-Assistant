@@ -24,7 +24,7 @@
 		<script type="text/javascript" src="js/pdfviewer.js"></script>
 	</head>
 	<body>
-		<div data-role="page" class="content-wrapper">
+		<div data-role="page" id="page1" class="content-wrapper">
 			<!-- 
 				@AndroidSidepanel 
 				-- The Android side panel overlaps over the ui-content, thus it makes more sense 
@@ -210,7 +210,7 @@
 						<p class="sub-title"> Chuka University</p>
 					</div>
 					<div class="header-search-wrapper">
-						<input class="header-search" placeholder="Search past papers, e-books" type="search" data-clear-btn="true">
+						<input class="header-search" id="hsiSearch" data-type="search" placeholder="Search past papers, e-books" type="search" data-clear-btn="true">
 					</div>
 					<div class="hdr-ctrls-wrapper">
 						<div id="ua-cw" class="ua-ctrl content-wrapper-ctrl ua-dpl-ctrl">
@@ -313,7 +313,6 @@
 
 						</div>
 					</div>
-
 					<div class="content eb-cw">
 						<p>eBooks<br /></p>
 						<a href="#pdfViewer" data-rel="popup" data-position-to="window" class="ui-button ui-corner-all ui-shadow ui-button-inline">
@@ -323,7 +322,6 @@
 							<iframe id="pdf-js-viewer" src="/web/viewer.html?file=http://localhost:3000/fetch/FAES/2011/AGBM 103" title="webviewer" frameborder="0" width="500" height="600"></iframe>
 						</div>
 					</div>
-
 					<div class="content uploads-cw">
 						<div class="uploads-hdr">
 							<h3>Contribute</h3>
@@ -451,8 +449,7 @@
 							</div>
 						</div>
 					</div>
-
-					<div class="content ua-cw active-content-wrapper">
+					<div class="content ua-cw">
 						<div class="ua-nav-wrapper">
 							<div class="ua-hdr">
 								<p class='ua-hdr-title'>eRead Account</p>
@@ -627,12 +624,10 @@
 							</div>
 						  </div>
 					</div>
-
 					<div class="content contributors-cw">
 						<p>Hall of Fame<br /></p>
 						<div></div>
 					</div>
-					
 					<div class="content sc-cw">
 						<p class="sc-hdr">eRead Support <br /></p>
 						<div data-role="tabs" id="tabs">
@@ -674,7 +669,6 @@
 							</div>
 						</div>
 					</div>
-
 					<div class="content n-cw">
 						<p>Notification Center</p>
 						<ul data-role="listview" data-inset="true" data-split-icon="delete">
@@ -710,6 +704,39 @@
 								<a href="#">Delete Notification</a>
 							</li>
 						</ul>
+					</div>
+					<div class="content sr-cw active-content-wrapper">
+						<div class="sr-cw-hdr">
+							<p>Search Results</p>
+						</div>
+						<ul data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="true" data-input="#hsiSearch">
+							<!-- add keypharases in data-filtertext -->
+							<li data-filtertext="NASDAQ:AAPL Apple Inc."><a href="#">Acura</a></li>
+							<li><a href="#">Audi</a></li>
+							<li><a href="#">BMW</a></li>
+							<li><a href="#">Cadillac</a></li>
+							<li><a href="#">Chrysler</a></li>
+							<li><a href="#">Dodge</a></li>
+							<li><a href="#">Ferrari</a></li>
+							<li><a href="#">Ford</a></li>
+							<li><a href="#">GMC</a></li>
+							<li><a href="#">Honda</a></li>
+							<li><a href="#">Hyundai</a></li>
+							<li><a href="#">Infiniti</a></li>
+							<li><a href="#">Jeep</a></li>
+							<li><a href="#">Kia</a></li>
+							<li><a href="#">Lexus</a></li>
+							<li><a href="#">Mini</a></li>
+							<li><a href="#">Nissan</a></li>
+							<li><a href="#">Porsche</a></li>
+							<li><a href="#">Subaru</a></li>
+							<li><a href="#">Toyota</a></li>
+							<li><a href="#">Volkswagen</a></li>
+							<li><a href="#">Volvo</a></li>
+						</ul>
+						<div class="temp">
+							
+						</div>
 					</div>
 				</div>
 				<!-- End Desktop/Android Content wrapper -->

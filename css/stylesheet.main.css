@@ -424,34 +424,29 @@ a {
 .folder-icon:hover {
 	cursor: pointer;
 }
-.files-ecw-hdr {
+.ecw-navbar {
+	height: 34px;
+}
+.search-files {
+	height: 34px;
+    font-size: 13px;
+    padding: 0;
+    margin: 0;
+    width: 250px;
+    position: absolute;
+	left: 32px;
+	z-index: 2;
+}
+.search-files input {
+	height: 34px;
+}
+/* .files-ecw-hdr {
 	height: 40px;
     line-height: 40px;
     margin: 0 0 0 32px !important;
-}
+} */
 .file-icon:hover {
 	cursor: pointer;
-}
-.fdownl-dialog-wrapper {
-	position: absolute;
-    height: 99.9vh;
-    top: -82px;
-    left: -267px;
-    width: 100vw;
-    background: rgba(0,0,0,.3);
-    z-index: 3;
-    display: none;
-}
-.file-downl-dialog {
-	position: absolute;
-    height: 300px;
-    width: 300px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background: #fff;
-    border-radius: 5px;
-    box-shadow: 0 0 3px #888;
 }
 .fw-stats {
 	position: absolute;
