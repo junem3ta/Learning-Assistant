@@ -26,17 +26,17 @@ $( document ).on( "pagecreate", function() {
         };
     };
     $( ".ui-popup iframe" ).attr( "width", 0 ).attr( "height", "auto" );
-    $( "#popupVideo" ).on({
+    $( "#pdfViewer" ).on({
         popupbeforeposition: function() {
             // call our custom function scale() to get the width and height
             let size = scale( /* 497, 298, */ windowWidth, windowHeight, 15, 1 ),
                 w = size.width,
                 h = size.height;
             _l(w, h);
-            $( "#popupVideo iframe" ).attr( "width", w ).attr( "height", h );
+            $( "#pdfViewer iframe" ).attr( "width", w ).attr( "height", h );
         },
         popupafterclose: function() {
-            $( "#popupVideo iframe" ).attr( "width", 0 ).attr( "height", 0 );
+            $( "#pdfViewer iframe" ).attr( "width", 0 ).attr( "height", 0 );
         }
     });
 });

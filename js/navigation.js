@@ -15,7 +15,7 @@ $(document).ready(() => {
 	/*let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0); */
 	let isPanelOpen = false;
 	let isSearching = false;
-	let currentCW = "ua-cw";
+	let currentCW = "sc-cw";
 	responsiveUIHandler();
 
 	/* Hide Android Searchbar on Scrolldown, show on Scrollup*/
@@ -213,8 +213,8 @@ $(document).ready(() => {
 		currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.home-search-wrapper').show() : $('.home-search-wrapper').hide();	
 	}
 	
-	//$('.content').removeClass('active-content-wrapper').hide();
-	//$('.'+currentCW).addClass('active-content-wrapper').show();
+	$('.content').removeClass('active-content-wrapper').hide();
+	$('.'+currentCW).addClass('active-content-wrapper').show();
 	/* end; manual switch */
 
 	function resetActiveLinks() {

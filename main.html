@@ -253,7 +253,8 @@
 						<div id="uploads-cw" class="content-wrapper-ctrl">
 							<p>Share eBook(s)</p>
 						</div>
-						<div id="ua-cw" class="content-wrapper-ctrl active-cw-ctrl">
+						<!--  active-cw-ctrl -->
+						<div id="ua-cw" class="content-wrapper-ctrl">
 							<p>eRead Account</p>
 						</div>
 						<div class="sub-nav">
@@ -315,16 +316,12 @@
 
 					<div class="content eb-cw">
 						<p>eBooks<br /></p>
-						<a href="#popupVideo" data-rel="popup" data-position-to="window" class="ui-button ui-corner-all ui-shadow ui-button-inline">
+						<a href="#pdfViewer" data-rel="popup" data-position-to="window" class="ui-button ui-corner-all ui-shadow ui-button-inline">
 							Preview
 						</a>
-						<div data-history="false" data-role="popup" id="popupVideo" data-overlay-theme="b" data-theme="a" data-tolerance="15,15" class="ui-content">
+						<div data-history="false" data-role="popup" id="pdfViewer" data-overlay-theme="b" data-theme="a" data-tolerance="15,15" class="ui-content">
 							<iframe id="pdf-js-viewer" src="/web/viewer.html?file=http://localhost:3000/fetch/FAES/2011/AGBM 103" title="webviewer" frameborder="0" width="500" height="600"></iframe>
 						</div>
-						<!-- <div data-role="popup" id="popupVideo" data-overlay-theme="b" data-theme="a" data-tolerance="15,15" class="ui-content">
-							<iframe src="http://player.vimeo.com/video/41135183?portrait=0" width="497" height="298" seamless=""></iframe>
-						</div> -->
-						<a href="http://localhost:3000/FS/FAES/2010/AGEC 0112.pdf" target="_blank">Go</a>
 					</div>
 
 					<div class="content uploads-cw">
@@ -525,68 +522,110 @@
 								</div>
 							</div>
 						</div>
-						<div class="ua ui-grid-a">
-							<div class="ui-block-a">
-								<div class="avatar-card">
-									<attr title="eRead Bot">
-										<div class="gravatar-wrapper">
-											<img src='assets/account/avatars/25937675.png' />
+						<div data-role="tabs" id="tabs">
+							<div data-role="navbar">
+								<ul class="ua-navbar">
+									<li><a href="#a-overview" data-ajax="false"><span class="ui-icon ui-icon-info"></span>Overview</a></i></li>
+									<li><a href="#my-contributions" data-ajax="false"><span class="ui-icon ui-icon-star"></span>My Contributions</a></li>
+									<li><a href="#profile-settings" data-ajax="false"><span class="ui-icon ui-icon-gear"></span>Profile Settings</a></li>
+								</ul>
+							</div>
+							<div id="a-overview" class="ui-body-d ui-content">
+								<div class="ua ui-grid-a">
+									<div class="ui-block-a">
+										<div class="avatar-card">
+											<attr title="eRead Bot">
+												<div class="gravatar-wrapper">
+													<img src='assets/account/avatars/25937675.png' />
+												</div>
+												<div class="udID">
+													<p>Learning assistant
+														<!-- UIDMozGkCrm -->
+													</p>
+												</div>
+											</attr>
 										</div>
-										<div class="udID">
-											<p>Learning assistant
-												<!-- UIDMozGkCrm -->
+										<div class="ua-details">
+											<h4>Standard Account</h4>
+											<p>
+												<span>•</span>&nbsp<strong>UserID:</strong> eRead-Bot
+											</p>
+											<br />
+										</div>
+									</div>
+									<div class="ui-block-b">
+										<i class="fas fa-info-circle"></i> 
+										<div class="ui-body-c ua-info-wrapper">
+											<p class="ua-info">
+												You are currently using a <em>Guest</em> account with unlimited access to
+												<span><em>all</em></span> revision content. 
+												<a href="#registerPopup" data-rel="popup" data-position-to="window" class="popup-dpl-ctrl sn-ctrl-2">
+													Create an account</a> for an enhanced, smooth experience and elevated priveleges.
+												Already a registered user? 
+												<a href="#loginPopup" data-rel="popup" data-position-to="window" class="popup-dpl-ctrl sn-ctrl-0">Login.</a>
+												<br />
+												<span class='r-a-guide'>Having trouble signing in? Access account recovery options</span>
+												<a href="#arPopup" data-rel="popup" data-position-to="window">here.</a>
 											</p>
 										</div>
-									</attr>
-								</div>
-								<div class="ua-details">
-									<h4>Standard Account</h4>
-									<p>
-										<span>•</span>&nbsp<strong>UserID:</strong> eRead-Bot
-									</p>
-									<br />
-								</div>
-							</div>
-							<div class="ui-block-b">
-								<div class="ui-body-c ua-info-wrapper">
-									<p class="ua-info">
-										<i class="fas fa-info-circle"></i> You are currently using a <em>Guest</em> account with unlimited access to
-										<span><em>all</em></span> revision content. 
-										<a href="#registerPopup" data-rel="popup" data-position-to="window" class="popup-dpl-ctrl sn-ctrl-2">
-											Create an account</a> for an enhanced, smooth experience and elevated priveleges.
-										Already a registered user? 
-										<a href="#loginPopup" data-rel="popup" data-position-to="window" class="popup-dpl-ctrl sn-ctrl-0">Login.</a>
-										<br />
-										<span class='r-a-guide'>Having trouble signing in? Access account recovery options</span>
-										<a href="#arPopup" data-rel="popup" data-position-to="window">here.</a>
-									</p>
-								</div>
-								<div data-history="false" data-role="popup" id="arPopup" data-theme="a" class="ui-corner-all">
-									<form id="account-recovery">
-										<div style="padding:10px 20px;">
-											<h3 style="text-align: center;">eRead | Account Recovery options.</h3>
-											<p>*: Required ⟶ Please provide the address you signed up with.</p>
-											<input type="email" class="r-a-email" placeholder="Your Email Address *" data-clear-btn="true" />
-											<p class='r-a-log'>
-												<i class="fas fa-spinner fa-spin"></i>
-												<span class='p-h'></span>
-												<span class="ui-icon ui-icon-delete"></span>
-											</p>
-											<button type="submit" class="r-a ui-button ui-corner-all ui-shadow ui-button-b">
-												Submit <span class="ui-icon ui-icon-check"></span>
-											</button>
+										<div data-history="false" data-role="popup" id="arPopup" data-theme="a" class="ui-corner-all">
+											<form id="account-recovery">
+												<div style="padding:10px 20px;">
+													<h3 style="text-align: center;">eRead | Account Recovery options.</h3>
+													<p>*: Required ⟶ Please provide the address you signed up with.</p>
+													<input type="email" class="r-a-email" placeholder="Your Email Address *" data-clear-btn="true" />
+													<p class='r-a-log'>
+														<i class="fas fa-spinner fa-spin"></i>
+														<span class='p-h'></span>
+														<span class="ui-icon ui-icon-delete"></span>
+													</p>
+													<button type="submit" class="r-a ui-button ui-corner-all ui-shadow ui-button-b">
+														Submit <span class="ui-icon ui-icon-check"></span>
+													</button>
+												</div>
+											</form>
 										</div>
-									</form>
+									</div>
+									<div class="ui-block-c">
+										<p class="ua-info-eb-link">
+											<br />
+											Contribute to the eRead community by sharing new revision content <span id="uploads-cw"
+												class="content-wrapper-ctrl ua-dpl-ctrl">here</span>.
+										</p>
+									</div>
 								</div>
 							</div>
-							<div class="ui-block-c">
-								<p class="ua-info-eb-link">
-									<br />
-									Contribute to the eRead community by sharing new revision content <span id="uploads-cw"
-										class="content-wrapper-ctrl ua-dpl-ctrl">here</span>.
-								</p>
+							<div id="my-contributions">
+								<div class="m-c-wrapper">
+									<div class="m-c-hdr">
+										<p>My Uploads ⟶ Status</p>
+									</div>
+									<div class="m-c-status">
+										<p class="s-i-null">
+											You're currently not signed in. If you have an eRead Account, 
+										  <a href="#loginPopup" data-rel="popup" data-position-to="window" class="popup-dpl-ctrl sn-ctrl-0">Sign in</a> to track the status of shared content. 									
+										</p>
+										<div class="m-c">
+	  
+										</div>
+									</div>
+								</div>
 							</div>
-						</div>
+							<div id="profile-settings">
+								<div class="profile-settings-wrapper">
+									<div class="p-s-hdr">
+										<p>eREAD Account Details</p>
+									</div>
+									<div class="s-i-status">
+										<p>You're currently not logged in. Consider 
+											<a href="#registerPopup" data-rel="popup" data-position-to="window" class="popup-dpl-ctrl sn-ctrl-2">
+												Creating an eRead Account
+											</a>
+											to get started!</p>
+									</div>
+								</div>
+							</div>
+						  </div>
 					</div>
 
 					<div class="content contributors-cw">

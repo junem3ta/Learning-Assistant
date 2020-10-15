@@ -634,8 +634,11 @@ span.p-h {
 	cursor: pointer;
 }
 
-.ua {
+.ua, .m-c-wrapper, .profile-settings-wrapper {
 	margin: 16px 0 0;
+}
+.m-c-wrapper, .profile-settings-wrapper {
+	padding: 0 .5em;
 }
 .ua .ui-block-a, .ua .ui-block-b {
 	width: 100% !important;
@@ -711,6 +714,7 @@ span.p-h {
 .ua-info-eb-link span:hover {
 	cursor: pointer;
 }
+
 /* Break Android Styling, 444px*/
 @media all and (min-width: 27.75em) {
 	.ua-nav-wrapper {
@@ -889,11 +893,12 @@ span.p-h {
 		border-color: transparent !important;
 		color: #93979b !important;
 	}
-	.sub-nav a:focus,.ua-login-ctrls a:focus, .sc-navbar ul li a:focus {
+	.sub-nav a:focus,.ua-login-ctrls a:focus, .sc-navbar ul li a:focus,
+	.ua-navbar li a:focus {
 		-webkit-box-shadow:none !important;-moz-box-shadow:none !important;box-shadow:none !important;/* border-color: #ddd !important; */
 		color: #000 !important;text-shadow: none !important;
 	}
-	.sc-navbar ul li a:focus {
+	.sc-navbar ul li a:focus, .ua-navbar li a:focus {
 		color: #fff !important;
 	}
 	.sub-nav a:hover {
@@ -1156,7 +1161,7 @@ span.p-h {
 		}
 		.ua {
 			position: relative;
-			height: calc(100% - 66px);
+			height: calc(100% - 16px);
 			/* overflow: /* hidden */ /* auto;  overfow is messing up with elements on the edge of grid*/ 
 		}
 		.ua .ui-block-a div {
@@ -1170,22 +1175,28 @@ span.p-h {
 			padding: 0 16px 0 24px;
 		}
 		.ua .ui-block-b {
-			padding: 1.875em 1.5em 0 .5625em;
+			position: relative;
+			margin-top: 10px;
+			height: calc(100% - 248px);
+			padding: 1.25em 1.5em 0 3.125em;
 		}
 		.ui-block-b .ua-info-wrapper {
 			position: relative;
+			height: 100%;
+			overflow: auto;
 		}
-		.ua-info {
+		/* .ua-info {
 			padding-left: 32px;
-		}
-		.ua-info i {
+		} */
+		.ua .ui-block-b i {
 			position: absolute;
-			left: -15px;
+			padding-left: 14px;
+			left: -22.2px;
 			z-index: 1;
 			color: #1967d2;
 			top: 10px;
 		}
-		.ua-info i:after {
+		.ua .ui-block-b i:after {
 			content: "";
 			position: absolute;
 			height: 34px;
@@ -1195,7 +1206,7 @@ span.p-h {
 			border-top-right-radius: 34px;
 			border-bottom-right-radius: 34px;
 			z-index: -1;
-			left: -13px;
+			left: 0px;
 			top: -8.5px;
 			border-left: 3px solid #1967d2;
 		}
@@ -1209,6 +1220,7 @@ span.p-h {
 			padding-bottom: 16px;
 			background: #f9f9f9;
 		}
+
 	}
 }
 

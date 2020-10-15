@@ -105,7 +105,7 @@ $(document).ready(() => {
 				$('.'+nextECL).append(
 					$('<div>',{class:'file-tile-wrapper'})
 					.append(
-						$('<a>',{id:fullFileName, class:'file-icon', href: '#popupVideo', 'data-rel':'popup', 'data-position-to':'window', path: path})
+						$('<a>',{id:fullFileName, class:'file-icon', href: '#pdfViewer', 'data-rel':'popup', 'data-position-to':'window', path: path})
 						.append(
 							$('<p>',{text:fileName}))
 					)
