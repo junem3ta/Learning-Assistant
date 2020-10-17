@@ -267,6 +267,14 @@ $(document).ready(() => {
 		}		
 	});
 	
+	$('.header-search').keypress(() =>  {
+		if(!$('.sr-cw').hasClass('active-content-wrapper')) {
+			resetActiveLinks();
+			$('#sr-cw').addClass("active-cw-ctrl");
+			$('.content').removeClass('active-content-wrapper').hide();
+			$('.sr-cw').addClass('active-content-wrapper').fadeIn();
+		}
+	})
 	$(document).on('click','.sub-nav div a',function() {
 		resetActiveLinks();
 		$(this).addClass('active-sn-ctrl');

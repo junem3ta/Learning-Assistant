@@ -4,7 +4,13 @@
     line-height: 1em;
     margin: 6px 0 8px !important;   
 }
-
+.sr-cw-hdr {
+    height: 38px;
+}
+.sr-wrapper {
+    height: calc(100% - 38px);
+    overflow-y: overlay;
+}
 .sc-navbar ul li a span {
     float: right;
     margin-right: 7px;
@@ -29,3 +35,4 @@ iframe {
 #a-overview {
     overflow-x: visible !important;
 }
+

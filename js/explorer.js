@@ -196,5 +196,37 @@ $(document).ready(() => {
 		$('#pdf-js-viewer').attr('src', filePath);
 	});
 	/* Generate search index */
+	/* let generalRecursiveFn = () => {
+		for(entry in fsIndex) {
+			let currentObj = index[entry],
+			length = Object.keys(currentObj).length;
+			if(length > 1) {
+				generalRecursiveFn(currentObj);
+			} else if(length == 1 && currentObj['__files__'] !== undefined) {
+				//__files__, path
+			} else {
+				//?Exception
+			}
+		}
+	} */
+});
+$(document).on('pagecreate', () => {
+	let generateSearchIndex = (i) => {
+		for(entry in i) {
+			let currentObj = i[entry],
+			length = Object.keys(currentObj).length;
+			if(length == 2 && currentObj['__files__'] !== undefined) {
+				_l(' - __files__ !,', currentObj['__files__']);
+				//__files__, path
+			} else if(length > 1) {
+				_l(currentObj);
+				generateSearchIndex(currentObj);
+			} else {
+				//?Exception
+				_l('?')
+			}
+		}
+	} 
+	generateSearchIndex(fsIndex);
 });
 
