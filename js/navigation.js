@@ -115,7 +115,7 @@ $(document).ready(() => {
 		$('.ui-content').addClass('ui-content-search-mode');
 		$('.panel-ctrl-wrapper').addClass('pc-wrapper-search-mode');
 		$('.home-search').addClass('hs-search-mode');
-		$('.panel-ctrl').hide();
+		$('.panel-ctrl, .footer').hide();
 		$('.search-ctrl').show();
 		$('.search-window').show();
 		$('body').addClass("no-scroll");
@@ -135,6 +135,7 @@ $(document).ready(() => {
 		$('.search-ctrl').hide();
 		$('.search-window').hide();
 		$('body').removeClass("no-scroll");
+		$('.footer').show();
 		currentCW == "pp-cw" ? $('.static-hdr').show() : "";
 		if(!desktopMode) {
 			$('.panel-ctrl').show();
@@ -198,6 +199,7 @@ $(document).ready(() => {
 	$("input").closest('div').addClass('noshadowI');
 	$('textarea').addClass('noshadowI');
 	$(".header-search").closest('div').addClass('nomargin hsw-custom');
+	$('.home-search').closest('div').find('span.ui-icon-search').remove();
 	/* closest usage? */
 	$('.pc-metadata-wrapper').removeClass('noshadowI');
 	/*remove blue outline on clicking jqm ui-input-clear button??*/
@@ -266,15 +268,6 @@ $(document).ready(() => {
 			currentCW = target;
 		}		
 	});
-	
-	$('.header-search').keypress(() =>  {
-		if(!$('.sr-cw').hasClass('active-content-wrapper')) {
-			resetActiveLinks();
-			$('#sr-cw').addClass("active-cw-ctrl");
-			$('.content').removeClass('active-content-wrapper').hide();
-			$('.sr-cw').addClass('active-content-wrapper').fadeIn();
-		}
-	})
 	$(document).on('click','.sub-nav div a',function() {
 		resetActiveLinks();
 		$(this).addClass('active-sn-ctrl');

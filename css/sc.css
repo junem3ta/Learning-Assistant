@@ -6,10 +6,12 @@
 }
 .sr-cw-hdr {
     height: 38px;
+    border-top: 1px solid transparent;
 }
-.sr-wrapper {
+.sr-dt {
     height: calc(100% - 38px);
-    overflow-y: overlay;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 .sc-navbar ul li a span {
     float: right;
@@ -36,3 +38,6 @@ iframe {
     overflow-x: visible !important;
 }
 
+.loader {
+    display: none;
+}

@@ -188,7 +188,7 @@
 						<p><i class="fas fa-bars panel-ctrl"></i></p>
 						<p><i class="fas fa-arrow-left search-ctrl"></i></p>
 					</div>
-					<input class="home-search" placeholder="Search past papers, e-books" type="text" data-clear-btn="true">
+					<input class="home-search" type="search" id="hmSearch" data-type="search" placeholder="Search past papers, e-books" data-clear-btn="true">
 					<div class="static-hdr">
 						<p>Files</p>
 					</div>
@@ -196,10 +196,11 @@
 						<div class="sw-thumb">
 							<img src="assets/images/search.svg" />
 						</div>
-						<!--
-							<div class="sr">
-							</div>
-							-->
+						<div class="sr-cw-hdr">
+							<p>Search Results</p>
+						</div>
+						<div class="sr">
+						</div>							
 					</div>
 				</div>				
 				<!-- Desktop searchbar -->
@@ -210,7 +211,7 @@
 						<p class="sub-title"> Chuka University</p>
 					</div>
 					<div class="header-search-wrapper">
-						<input class="header-search" id="hsiSearch" data-type="search" placeholder="Search past papers, e-books" type="search" data-clear-btn="true">
+						<input class="header-search" type="search" id="hsiSearch" data-type="search" placeholder="Search past papers, e-books" data-clear-btn="true">
 					</div>
 					<div class="hdr-ctrls-wrapper">
 						<div id="ua-cw" class="ua-ctrl content-wrapper-ctrl ua-dpl-ctrl">
@@ -710,43 +711,15 @@
 							<p>Search Results</p>
 						</div>
 						<!--  data-filter-reveal="true"  -->
-						<div class="sr-wrapper" data-filter="true" data-input="#hsiSearch">
+						<div class="sw-thumb">
+							<img src="assets/images/search.svg">
+						</div>
+						<button class="show-page-loading-msg loader" data-textonly="false" data-textvisible="true" data-msgtext="Loading FSIndex, please wait." 
+						data-inline="true">
+							Loader
+						</button>
+						<div class="sr-dt">
 							
-							<!-- <ul data-role="listview" data-inset="true" data-filter="true" data-filter-reveal="true" data-input="#hsiSearch">
-								add keypharases in data-filtertext
-								<li data-filtertext="NASDAQ:AAPL Apple Inc."><a href="#">Acura</a></li>
-								<li><a href="#">Audi</a></li>
-								<li><a href="#">BMW</a></li>
-								<li><a href="#">Cadillac</a></li>
-								<li><a href="#">Chrysler</a></li>
-								<li><a href="#">Dodge</a></li>
-								<li><a href="#">Ferrari</a></li>
-								<li><a href="#">Ford</a></li>
-								<li><a href="#">GMC</a></li>
-								<li><a href="#">Honda</a></li>
-								<li><a href="#">Hyundai</a></li>
-								<li><a href="#">Infiniti</a></li>
-								<li><a href="#">Jeep</a></li>
-								<li><a href="#">Kia</a></li>
-								<li><a href="#">Lexus</a></li>
-								<li><a href="#">Mini</a></li>
-								<li><a href="#">Nissan</a></li>
-								<li><a href="#">Porsche</a></li>
-								<li><a href="#">Subaru</a></li>
-								<li><a href="#">Toyota</a></li>
-								<li><a href="#">Volkswagen</a></li>
-								<li><a href="#">Volvo</a></li>
-								<li><a href="#">Jeep</a></li>
-								<li><a href="#">Kia</a></li>
-								<li><a href="#">Lexus</a></li>
-								<li><a href="#">Mini</a></li>
-								<li><a href="#">Nissan</a></li>
-								<li><a href="#">Porsche</a></li>
-								<li><a href="#">Subaru</a></li>
-								<li><a href="#">Toyota</a></li>
-								<li><a href="#">Volkswagen</a></li>
-								<li><a href="#">Volvo</a></li>
-							</ul> -->
 						</div>
 					</div>
 				</div>
@@ -790,5 +763,6 @@
 			<!-- /footer -->
 		</div>
 		<!-- /page -->
+		<script type="text/javascript" defer src="js/search.js" ></script>
 	</body>
 </html>

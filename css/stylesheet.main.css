@@ -182,7 +182,7 @@ a {
 	left: 0;
 	right: 0;
 	padding-bottom: 0;
-	z-index: 8888887;
+	z-index: 3;
 }
 .pc-wrapper-search-mode {
 	height: 54px;
@@ -193,6 +193,7 @@ a {
 }
 .search-window {
 	/*margin-top: -0.5em;*/
+	height: calc(100% - 56px);
 	background: #fff;
 	padding: 1em;
 	display: none;
@@ -215,16 +216,15 @@ a {
 	width: 100%;
 }
 .sr {
-	height: 80px;
+	/* height: calc(100% - 75px); */
+	overflow-y: auto;
+    overflow-x: hidden;
 	width: 100%;
 	border: 1px dotted #ccc;
 	border-radius: 3px;
-	margin: 5px 0  0 -2px;
-	/*opacity: 0.5;
-	background: rgba(0,0,0,.15);*/
 }
 .ui-content-search-mode {
-	padding-top: 3.875em !important;
+	/* padding-top: 3.875em !important; */
 }
 
 .header {
@@ -374,7 +374,6 @@ a {
 	overflow: auto;
 	overflow: overlay;
 }
-
 .folder-tile-wrapper,.file-tile-wrapper {
 	/* height: 134px;
 	width: 150px; */
@@ -420,6 +419,32 @@ a {
 	white-space: -webkit-nowrap;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+.fi-tw-mini {
+	height: 75px;
+	width: 50px;
+	float: left;
+}
+.fi-i-mini {
+	height: 40px;
+	width: 40px;
+	margin: 0 5px;
+}
+.fi-i-mini:after {
+	top: 3.75px;
+	left: 3.75px;
+	width: 32.5px;
+	height: 32.5px;
+}
+.fi-i-mini p {
+	margin: 0;
+	height: 30px;
+	top: 42.5px;
+	left: -5px;
+	right: 0;
+	width: 50px;
+	white-space: normal;
+	text-overflow: unset;
 }
 .folder-icon:hover {
 	cursor: pointer;
@@ -1066,6 +1091,31 @@ span.p-h {
 		left: 0;
 		width: 80px;
 		height: 80px;
+	}
+	.fi-tw-mini {
+		height: 75px;
+		width: 50px;
+		float: left;
+	}
+	.fi-i-mini {
+		height: 40px;
+		width: 40px;
+		margin: 0 5px;
+	}
+	.fi-i-mini:after {
+		top: 3.75px;
+		left: 3.75px;
+		width: 32.5px;
+		height: 32.5px;
+	}
+	.fi-i-mini p {
+		height: 30px;
+		top: 42.5px;
+		left: -5px;
+		right: 0;
+		width: 50px;
+		white-space: normal;
+		text-overflow: unset;
 	}
 	.fw-stats {
 		bottom: 0;

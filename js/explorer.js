@@ -195,38 +195,23 @@ $(document).ready(() => {
 		let filePath = '/web/viewer.html?file=http://localhost:3000/fetch' + $(event.target).attr('path');
 		$('#pdf-js-viewer').attr('src', filePath);
 	});
-	/* Generate search index */
-	/* let generalRecursiveFn = () => {
-		for(entry in fsIndex) {
-			let currentObj = index[entry],
-			length = Object.keys(currentObj).length;
-			if(length > 1) {
-				generalRecursiveFn(currentObj);
-			} else if(length == 1 && currentObj['__files__'] !== undefined) {
-				//__files__, path
-			} else {
-				//?Exception
-			}
-		}
-	} */
-});
-$(document).on('pagecreate', () => {
-	let generateSearchIndex = (i) => {
-		for(entry in i) {
-			let currentObj = i[entry],
-			length = Object.keys(currentObj).length;
-			if(length == 2 && currentObj['__files__'] !== undefined) {
-				_l(' - __files__ !,', currentObj['__files__']);
-				//__files__, path
-			} else if(length > 1) {
-				_l(currentObj);
-				generateSearchIndex(currentObj);
-			} else {
-				//?Exception
-				_l('?')
-			}
-		}
-	} 
-	generateSearchIndex(fsIndex);
+	$( document ).on( "click", ".show-page-loading-msg", function() {
+		var $this = $( this ),
+			theme = $this.jqmData( "theme" ) || $.mobile.loader.prototype.options.theme,
+			msgText = $this.jqmData( "msgtext" ) || $.mobile.loader.prototype.options.text,
+			textVisible = $this.jqmData( "textvisible" ) || $.mobile.loader.prototype.options.textVisible,
+			textonly = !!$this.jqmData( "textonly" );
+			html = $this.jqmData( "html" ) || "";
+		$.mobile.loading( "show", {
+				text: msgText,
+				textVisible: textVisible,
+				theme: theme,
+				textonly: textonly,
+				html: html
+		});
+	})
+	.on( "click", ".hide-page-loading-msg", function() {
+		$.mobile.loading( "hide" );
+	});
 });
 
