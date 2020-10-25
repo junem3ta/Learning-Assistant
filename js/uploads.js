@@ -19,9 +19,7 @@ let
             $('.metadata-guide .fcg').html(pcGuide['fc']);
             $('.metadata-guide .dptg').html(pcGuide['dpt']);
         }
-    },
-    fd = new FormData(), 
-    filesObjLength;
+    };
 
 $(document).ready(() => {
     const 
@@ -29,7 +27,6 @@ $(document).ready(() => {
             max_files_allowed: 3,
             file_types: ['pdf', 'docx', 'doc']
         },
-
         ioMsgs = {
             max_files_exceeded: 'You can only upload a maximum of 3 files. Select a fewer number of files and try again',
             missing_metadata: 'Please provide all the additional information indicated above.',
@@ -37,7 +34,6 @@ $(document).ready(() => {
             max_size_exceeded: 'Maximum file size (10MiB) exceeded. Please try again with a light-weight version of the file.',
             total_size_exceeded: 'Total files\' size exceeded. Please ensure the total size of the files doesn\'t exceed 30MiB.'
         },
-        
         frcDsRef = {
             '0': 'default-s',
             '1': 'fset-s',
@@ -172,9 +168,8 @@ $(document).ready(() => {
     /* Upload files onChange Event handler */
     $('#eb-files').on('change', (event) => {        
         let files = event.target.files/* , filesObjLength = Object.keys(files).length */,
-        filesObjLength = Object.keys(files).length;
-        _files = files;
-        console.log('_files', _o(_files));
+        filesObjLength = Object.keys(files).length,
+        fd = new FormData();
         /* File size check */
         if(filesObjLength == 1) {
             _l(files[0].size);
@@ -212,7 +207,8 @@ $(document).ready(() => {
                 aMetadataInput = true; default; */
             if(filesObjLength == 1) {
                 /* Update FormData Obj */
-                fd.append("upload0", files[0]);
+                fd.append("ebooks", files[0]);
+                fd.append('upload0metadata', []);
                 /* Print 1 accordion section */
                 printAS("upload0",files[0]);
                 /* print 1 row */
@@ -221,7 +217,8 @@ $(document).ready(() => {
                 /* Print n accordion sections / n rows */
                 $.each(files, (i, file) => {
                     fileId = 'upload' + i;
-                    fd.append(fileId,file);
+                    fd.append('ebooks',file);
+                    fd.append(fileId+'metadata', []);
                     printAS(fileId,file);
                     printRow(fileId,file);
                 });
@@ -305,7 +302,6 @@ $(document).ready(() => {
                     delete ioErrors[elementId];                
                 }
             } 
-
             /* Files */
             for(let i = 0; i < filesObjLength; i++) {
                 /* Each loop represents metadata validation for a single file */
@@ -330,6 +326,8 @@ $(document).ready(() => {
                             //non-text-chars
                             auxFc.closest('div').addClass('aux-input-error');
                             ioErrors[fileEl] = {'nonTxtFcField': 1};
+                        } else {
+                            fd.set(fileEl+'metadata', auxFc.val());
                         }
                         
                         if(auxDpt.val().replace(/ /g, '') === '') {
@@ -340,12 +338,16 @@ $(document).ready(() => {
                             /* Non-text-chars */
                             auxDpt.closest('div').addClass('aux-input-error');
                             updateErrObj(fileEl,'nonTxtDptField');
+                        } else {
+                            fd.set(fileEl+'metadata', fd.get(fileEl+'metadata') + ',' + auxDpt.val());
                         }
                     } else {
                         /* One of the 5 faculties selected */
                         let selectedDpt = $('#' + fileEl + '-a-dpt-s option:selected').text();                        
                         if(selectedDpt === 'Null') {
                             ioErrors[fileEl] = {'nullDptField': 1}
+                        } else {
+                            fd.set(fileEl+'metadata', selectedFC + ',' + selectedDpt);
                         }
                     }
                 } else {
@@ -374,6 +376,8 @@ $(document).ready(() => {
                             /* Non-text-input test */
                             auxFc.closest('div').addClass('aux-input-error');                            
                             ioErrors[fileEl] = {'nonTxtFcField': 1};
+                        } else {
+                            fd.set(fileEl+'metadata', auxFc.val());
                         }
                         
                         /* Department */
@@ -393,13 +397,22 @@ $(document).ready(() => {
                             } else {
                                 ioErrors[fileEl] = {'nonTxtDptField': 1}
                             };
+                        } else {
+                            fd.set(fileEl+'metadata', fd.get(fileEl+'metadata') + ',' + auxDpt.val());
                         }
                     } else {
-                        /* Faculty selected: Check for dpt select values */
+                        /* Faculty selected: Check for dpt select values */       
                         let selectedDpt = $('#' + fileEl + 's option:selected').text();
                         if(selectedDpt === 'Null') {
                             ioErrors[fileEl] = {'nullDptField': 1};
-                        };
+                        } else {
+                            selectedFC = selectedFC === 'fset-s' ? 'FSET' : 
+                                (selectedFC === 'bust-s' ? 'BUST' :
+                                    (selectedFC === 'fred-s' ? 'FRED' : 
+                                        (selectedFC === 'fahu-s' ? 'FAHU' : 
+                                            (selectedFC === 'faes-s' ? 'FAES' : ''))));
+                            fd.set(fileEl+'metadata', selectedFC + ',' + selectedDpt);
+                        }
                     };
                 }
                 /* Emphasize on erroneous input elements: */
@@ -408,7 +421,8 @@ $(document).ready(() => {
                     $('tr.' + fileEl + ' td attr').addClass('missing-metadata');
                 };
             };
-        /* CI, Email */
+            fd.append('uploadedBy', []);
+            /* CI, Email */
             let fName, LName, publishCI = false, cName = '', isNameValid = true, email;
             if(aMetadataInput) {
                 fName = $('.a-uploader-f-n'),
@@ -426,24 +440,30 @@ $(document).ready(() => {
                 /*  publishCI not checked: Uploader hasn't approved profile for Hall of Fame
                     Check if the uploader has provided their Name(s) either way. */
                 if(fName.val().replace(/ /g, '') !== '') {
-                    if(fName.val().search(/^[a-zA-Z]+$/) !== 0) {
+                    if(fName.val().search(/^[a-zA-Z']+$/) !== 0) {
                         isNameValid = false;
                         fName.closest('div').addClass('aux-input-error');
                     } else {
                         cName += fName.val().replace(/ /g, '');
+                        fd.set('uploadedBy', fName.val());
                         _l('register fname', cName);
                     }
-                };
+                } else {
+                    fd.set('uploadedBy', '');
+                }
                 /* Last Name */
                 if(lName.val().replace(/ /g, '') !== '') {
-                    if(lName.val().search(/^[a-zA-Z\s]+$/) !== 0) {
+                    if(lName.val().search(/^[a-zA-Z.\s]+$/) !== 0) {
                         isNameValid = false;
                         lName.closest('div').addClass('aux-input-error');
                     } else {
                         cName += ' ' + lName.val();
+                        fd.set('uploadedBy', fd.get('uploadedBy') + ',' + lName.val());
                         _l('register fname \+ \' \' \+ lname', cName);
                     }
-                };
+                } else {
+                    fd.set('uploadedBy', fd.get('uploadedBy') + ',' + '');
+                }
 
                 if(isNameValid && cName !== '') {
                     _l('Registering: ', cName);
@@ -457,23 +477,27 @@ $(document).ready(() => {
                     //null
                     fName.closest('div').addClass('aux-input-error');
                     updateErrObj('name', 'nullFName');
-                } else if(fName.val().search(/^[a-zA-Z]+$/) !== 0) {
+                } else if(fName.val().search(/^[a-zA-Z']+$/) !== 0) {
                     //non-text chars
                     fName.closest('div').addClass('aux-input-error');
                     updateErrObj('name','nonTxtFName');
+                } else {
+                    fd.set('uploadedBy', fName.val());
                 }
 
                 if(lName.val().replace(/ /g, '') === '') {
                     //null
                     lName.closest('div').addClass('aux-input-error');
                     updateErrObj('name', 'nullLName');
-                } else if(lName.val().replace(/ /g, '').search(/^[a-zA-Z]+$/) !== 0) {
+                } else if(lName.val().replace(/ /g, '').search(/^[a-zA-Z.\s]+$/) !== 0) {
                     //non-text chars 
                     lName.closest('div').addClass('aux-input-error');
                     updateErrObj('name','nonTxtLName');
+                } else {
+                    /* md.push(lName.val()); */
+                    fd.set('uploadedBy', fd.get('uploadedBy') + ',' + lName.val());
                 }
             };
-
             /* Email Validation */
             if(email.val() === '') {
                 email.closest('div').addClass('aux-input-error');
@@ -481,8 +505,9 @@ $(document).ready(() => {
             } else if(email.val().search(rfc2822ValidEmail) !== 0) {
                 email.closest('div').addClass('aux-input-error');
                 ioErrors['email'] = {'invalidEmail': 1};
+            } else {
+                fd.set('uploadedBy', email.val());
             }
-        
             /* Input error notification */
             if(Object.keys(ioErrors).length > 0) {
                 let errType = '';
@@ -504,6 +529,20 @@ $(document).ready(() => {
                     resetLogsWT();
                 }
                 _l('proceed');
+                $.ajax({
+                    url: "http://localhost:3000/ebooks/tmp",
+                    type: "POST",
+                    data: fd,
+                    crossDomain: true,
+                    processData: false,
+                    contentType: false,
+                    success: (res) => {
+                        console.log(res);
+                    },
+                    error: (e) => {
+                        console.log(e)
+                    }
+                });
             }
         });
     });
