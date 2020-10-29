@@ -553,7 +553,7 @@ $(document).ready(() => {
                     resetLogsWT();
                 }
                 $.ajax({
-                    url: "http://eread.aerotec.co.ke/api/v1/eBooks/new",
+                    url: "http://eread.aerotec.co.ke/api/eBooks/new",
                     type: "POST",
                     data: fd,
                     crossDomain: true,
