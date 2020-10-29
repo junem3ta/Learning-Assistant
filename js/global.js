@@ -1,4 +1,6 @@
 /* eRead Bot */
+let lht = null;
+
 $(document).ready(() => {
     /* Sessions */
     /* Accounts */
@@ -84,6 +86,7 @@ $(document).ready(() => {
             $('.v-u-log span.p-h').text('Operation in progress');
             $('.v-u-log').addClass('bg-loading');
             /* Ajax Call here */
+           
             setTimeout(() => {
                 $('.v-u').prop('disabled', false);
             }, 5000);

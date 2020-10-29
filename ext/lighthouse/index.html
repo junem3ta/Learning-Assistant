@@ -1,38 +1,77 @@
 <!DOCTYPE html>
     <html>
         <head>
-            <title>app</title>
+            <title>LightHouse - eReadCentral</title>
+            <link rel="icon" type="image/png" href="../../assets/icons/quill.png" />
             <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
             <!-- static-assets -->
-            <link rel="stylesheet" type="text/css" href="../assets/fonts/ps/style.css" />
-            <link href="../assets/font-awesome/css/all.css" rel="stylesheet">
-            <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-            <script type="text/javascript" src="../js/jquery.mobile-1.5.0-rc1.min.js"></script>
-            <link rel="stylesheet" type="text/css" href="../css/jquery.mobile-1.5.0-rc1.min.css">
-            <link rel="stylesheet" type="text/css" href="../css/v1.0.0/stylesheet.main.css"> 
-            <script type="text/javascript" src="../js/prefixfree.min.js"></script> 
+            <link rel="stylesheet" type="text/css" href="../../assets/fonts/ps/style.css" />
+            <link href="../../assets/font-awesome/css/all.css" rel="stylesheet">
+            <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+            <script type="text/javascript" src="../../js/jquery.mobile-1.5.0-rc1.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="../../css/jquery.mobile-1.5.0-rc1.min.css">
+            <link rel="stylesheet" type="text/css" href="../../css/lh.main.css"> 
+            <script type="text/javascript" src="../../js/prefixfree.min.js"></script> 
             <script type="text/javascript" src="../../js/ext/sentinel.js"></script>
+            <script type="text/javascript" src="../../js/global.js"></script>
         </head>
         <body>
             <div data-role="page">
                 <div role="main" class="ui-content ">
-                    <!-- upload(s) accordion -->
-                    <template class="a-a">
-                        <div data-role="accordion" 
-                        data-icons="{ 
-                            &quot;header&quot;: &quot;ui-icon-plus&quot;, 
-                            &quot;activeHeader&quot;: &quot;ui-icon-minus&quot; 
-                        }" data-height-style="content">
+                    <div data-role="header">
+                        <h1>LightHouse</h1>
+                    </div><!-- /header -->
+                    <div role="main" class="ui-content">
+                        <!-- upload(s) accordion -->
+                        <template class="a-a">
+                            <div data-role="accordion" 
+                            data-icons="{ 
+                                &quot;header&quot;: &quot;ui-icon-plus&quot;, 
+                                &quot;activeHeader&quot;: &quot;ui-icon-minus&quot; 
+                            }" data-height-style="content">
+                            </div>
+                        </template>
+                        <!-- upload(s) accordion sections -->
+                        <template class="a-a-s">
+                            <h3 class="a-section-hdr"></h3>
+                            <div class="a-cw">
+                                
+                            </div>
+                        </template>
+                        <div class="content-wrapper">
+                            <button class="show-page-loading-msg loader" data-textonly="false" data-textvisible="true" data-msgtext="Loading" 
+                            data-inline="true">
+                                Loader
+                            </button>
+                            <div data-history="false" data-role="popup" id="pdfViewer" data-overlay-theme="b" data-theme="a" data-tolerance="15,15" class="ui-content">
+								<iframe id="pdf-js-viewer" src="" title="webviewer" frameborder="0" width="500" height="600"></iframe>
+							</div>
+                            <div data-role="tabs">
+                                <ul data-role="listview" data-inset="true" class="tablist-left">
+                            <li><a href="#one" data-ajax="false">one</a></li>
+                            <li><a href="#two" data-ajax="false">two</a></li>
+                            <li><a href="ajax-content-ignore.html" data-ajax="false">three</a></li>
+                            </ul>
+                            <div id="one" class="ui-body-d tablist-content">
+                                <h1>First tab contents</h1>
+                            </div>
+                                <ul id="two" class="tablist-content" data-role="listview" data-inset="true">
+                                    <li><a href="#">Acura</a></li>
+                                    <li><a href="#">Audi</a></li>
+                                    <li><a href="#">BMW</a></li>
+                                    <li><a href="#">Cadillac</a></li>
+                                    <li><a href="#">Ferrari</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </template>
-                    <!-- upload(s) accordion sections -->
-                    <template class="a-a-s">
-                        <h3 class="a-section-hdr"></h3>
-                        <div class="a-cw">
-                            
+                    </div><!-- /content -->
+                    <div data-role="toolbar" data-type="footer" data-position="fixed" class="footer" data-tap-toggle="false">
+                        <div class="ua-hdr">
+                            <p class='ua-hdr-title'>null</p>
                         </div>
-                    </template>
+                        <!--data-hide-during-focus=""-->
+                    </div>
                 </div>
             </div>
         </body>

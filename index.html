@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>app</title>
+		<title>eRead Central - Chuka University KE</title>
+		<link rel="icon" type="image/png" href="assets/icons/quill.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<!-- static-assets -->
@@ -19,9 +20,10 @@
 		<script type="text/javascript" src="js/prefixfree.min.js"></script>
 		<script type="text/javascript" src="js/navigation.js"></script>
 		<script type="text/javascript" src="js/explorer.js"></script>
+		<script type="text/javascript" src="js/pdfviewer.js"></script>
+		<script type="text/javascript" src="js/notifications.js"></script>
 		<script type="text/javascript" src="js/uploads.js"></script>
 		<script type="text/javascript" src="js/global.js"></script>
-		<script type="text/javascript" src="js/pdfviewer.js"></script>
 	</head>
 	<body>
 		<div data-role="page" id="page1" class="content-wrapper">
@@ -182,6 +184,20 @@
 						</form> 
 					</div>
 				</template>
+				<template class="n-tmpl">
+					<li>
+						<a href="">
+							<h2 class="n-name"></h2>
+							<p class="n-title"><strong></strong></p>
+							<p class="n-msg"></p>
+							<p class="n-timestamp ui-listview-item-aside"></p>
+						</a>
+						<a href="#" class="del-n" id="" nindex="">Delete Notification</a>
+					</li>	
+				</template>
+				<template class="n-list-divider">
+					<li data-role="list-divider"><span class="l-d-ts"></span><span class="ui-listview-item-count-bubble">2</span></li>
+				</template>
 				<!-- @Android searchbar -->
 				<div class="ui-grid-a home-search-wrapper">
 					<div class="panel-ctrl-wrapper">
@@ -225,7 +241,7 @@
 						<div id="n-cw" class="n-ui-ctrl content-wrapper-ctrl">
 							<p class="ncw-ctrl-hdr">
 								<!-- Notification UI Ctrl -->
-								<span class="n">2</span>
+								<span class="n"></span>
 								<span class="tooltipped tooltipped-s border p-2 mb-2 mr-2 float-left"
 									aria-label="Notifications">
 									<i tabindex="2" class="ncw-ctrl-icon fas fa-bell"></i>
@@ -283,9 +299,9 @@
 					<div class="sp-footer">
 						<div>
 							<a class="v1" href="v1.0.0/about.html" data-ajax="false">About</p>
-							<a href="#" target="_blank" class="vctrl">
+							<a href="https://github.com/junem3ta/Learning-Assistant" target="_blank" class="vctrl">
 								GitHub
-								<!-- https://github.com/junem3ta/Learning-Assistant -->
+								<!--  -->
 								<i class="fas fa-external-link-square-alt"></i>
 							</a>
 						</div>
@@ -293,7 +309,7 @@
 				</div>
 				<!-- Desktop/Android Content wrapper-->
 				<div class="content-container">
-					<div class="content pp-cw">
+					<div class="content pp-cw active-content-wrapper">
 						<div class="explorer-navigation path">
 							<!-- <div class='b-f-navigators'>
 									<div class='b'><p style="transform: rotate(45deg);">∟</p></div>
@@ -311,19 +327,20 @@
 						</div>
 
 						<div class="explorer">
-
+							<div data-history="false" data-role="popup" id="pdfViewer" data-overlay-theme="b" data-theme="a" data-tolerance="15,15" class="ui-content">
+								<iframe id="pdf-js-viewer" src="" title="webviewer" frameborder="0" width="500" height="600"></iframe>
+							</div>
 						</div>
 					</div>
 					<div class="content eb-cw">
 						<p>eBooks<br /></p>
-						<a href="#pdfViewer" data-rel="popup" data-position-to="window" class="ui-button ui-corner-all ui-shadow ui-button-inline">
-							Preview
-						</a>
-						<div data-history="false" data-role="popup" id="pdfViewer" data-overlay-theme="b" data-theme="a" data-tolerance="15,15" class="ui-content">
-							<iframe id="pdf-js-viewer" src="/web/viewer.html?file=http://localhost:3000/fetch/FAES/2011/AGBM 103" title="webviewer" frameborder="0" width="500" height="600"></iframe>
-						</div>
+						
 					</div>
-					<div class="content uploads-cw">
+					<div class="content uploads-cw active-content-wrapper">
+						<button class="show-page-loading-msg u-loader" data-textonly="false" data-textvisible="true" data-msgtext="Loading" 
+						data-inline="true">
+							Loader
+						</button>
 						<div class="uploads-hdr">
 							<h3>Contribute</h3>
 							<h4>
@@ -437,9 +454,14 @@
 											<p class="io-ok-msg"></p>
 										</div>
 										<div class="upload-f-ctrls ui-block-f">
+											<p class='u-e-log'>
+												<i class="fas fa-spinner fa-spin"></i>
+												<span class='p-h'></span>
+												<!-- <span class="ui-icon ui-icon-delete"></span> -->
+											</p>
 											<div class="submit-eb-uploads">
 												<a href="#" tabindex="3" 
-													class="ui-shadow ui-button ui-corner-all ui-button-inline ui-mini">
+													class="upload ui-shadow ui-button ui-corner-all ui-button-inline ui-mini">
 													Submit
 													<span class="ui-icon ui-icon-check"></span>
 												</a>
@@ -671,42 +693,15 @@
 						</div>
 					</div>
 					<div class="content n-cw">
+						<div class="sw-thumb">
+							<img src="assets/images/feather.png">
+						</div>
 						<p>Notification Center</p>
-						<ul data-role="listview" data-inset="true" data-split-icon="delete">
-							<li data-role="list-divider">Friday, October 8, 2010 <span class="ui-listview-item-count-bubble">2</span></li>
-							<li>
-								<a href="">
-									<h2>eRead Account</h2>
-									<p><strong>Get Started with a user account</strong></p>
-									<p>Hey there, stranger! Are you a student at Chuka University? Create an eRead Account to get personalized settings!</p>
-									<p class="ui-listview-item-aside"><strong>6:24</strong>PM</p>
-								</a>
-								<a href="#">Delete Notification</a>
-							</li>
-							<li>
-								<a href="">
-									<h2>Contribute</h2>
-									<p><strong>Share eBooks with the community</strong></p>
-									<p>Do you have ebooks that you've found useful in the past, and that might be beneficial to others? Contribute and have your
-										profile published on the <em>Hall of Fame!</em>
-									</p>
-									<p class="ui-listview-item-aside"><strong>9:18</strong>AM</p>
-								</a>
-								<a href="#">Delete Notification</a>
-							</li>
-							<li data-role="list-divider">Day of the week, Month date, YYYY.<span class="ui-listview-item-count-bubble">1</span></li>
-							<li>
-								<a href="">
-									<h2>Notifying Mod</h2>
-									<p><strong>Notification Title</strong></p>
-									<p>Notication message.</p>
-									<p class="ui-listview-item-aside"><strong>Timestamp</strong>AM/PM</p>
-								</a>
-								<a href="#">Delete Notification</a>
-							</li>
+						<ul data-role="listview" data-inset="true" data-split-icon="delete" class="n-listview">
+							<!-- Dynamically Generated Notifications -->
 						</ul>
 					</div>
-					<div class="content sr-cw active-content-wrapper">
+					<div class="content sr-cw">
 						<div class="sr-cw-hdr">
 							<p>Search Results</p>
 						</div>
@@ -714,7 +709,7 @@
 						<div class="sw-thumb">
 							<img src="assets/images/search.svg">
 						</div>
-						<button class="show-page-loading-msg loader" data-textonly="false" data-textvisible="true" data-msgtext="Loading FSIndex, please wait." 
+						<button class="show-page-loading-msg loader" data-textonly="false" data-textvisible="true" data-msgtext="Loading FS Search Index, please wait..." 
 						data-inline="true">
 							Loader
 						</button>
@@ -754,7 +749,7 @@
 							<a href="#" data-icon="nbell" id="n-cw" class="content-wrapper-ctrl">
 								Notifications
 							</a>
-							<span class="a-n">2</span>
+							<span class="a-n"></span>
 						</li>
 					</ul>
 				</div>

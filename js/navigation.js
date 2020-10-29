@@ -13,9 +13,11 @@ $(document).ready(() => {
 	let windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 	let swHeight = windowHeight - 88; /* 56 + 32 (padding ) */
 	/*let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0); */
-	let isPanelOpen = false;
-	let isSearching = false;
-	let currentCW = "sr-cw";
+	let isPanelOpen = false,
+	isSearching = false;
+	isTyping = false,
+	currentCW = "uploads-cw";
+
 	responsiveUIHandler();
 
 	/* Hide Android Searchbar on Scrolldown, show on Scrollup*/
@@ -121,6 +123,23 @@ $(document).ready(() => {
 		$('body').addClass("no-scroll");
 		currentCW == "pp-cw" ? $('.static-hdr').hide() : "";
 	});
+	$(document).on('click', 'input', (event) => {
+		if(!desktopMode && !$(event.target).hasClass('eb-files')) {
+			if(!isTyping) {
+				isTyping = true;
+				$('.footer').hide();
+			}
+		}
+	});
+	$(document).on('click', (event) => {
+		if(!desktopMode && isTyping) {
+			if($(event.target).closest('input').length == 0) {
+				isTyping = false;
+				$('.footer').show();
+			}
+		}
+	});
+	
 	/*Deactivate search mode*/
 	$('.search-ctrl').click(function() {
 		isSearching = false;

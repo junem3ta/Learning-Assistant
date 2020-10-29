@@ -294,10 +294,13 @@
 }
 
 .bg-success {
+	display: block;
     background-color: #d2f9d2;    
     border: 1px solid #d2f9d2ff;
 }
-
+.bg-success span.ui-icon-delete {
+	display: none;
+}
 .bg-error {
     background-color: #f9d2d2;
 }

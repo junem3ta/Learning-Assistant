@@ -1,0 +1,14 @@
+body {
+	font-family:'Product Sans' !important;
+	position: relative;
+	background-color: #fff !important;
+}
+
+a {
+	text-decoration: none;
+	font-weight: normal !important;
+}
+
+.loader {
+    display: none;
+}

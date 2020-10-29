@@ -38,6 +38,24 @@ iframe {
     overflow-x: visible !important;
 }
 
-.loader {
+.loader, .u-loader {
     display: none;
+}
+
+.n-listview .ui-listview-item-button, .n-listview .ui-listview-item-split-button {
+    background-color:  #fff !important;
+} 
+.ui-listview-item-button:hover, .ui-listview-item-split-button:hover {
+    background-color: #ededed !important;
+    border-color: #ddd;
+    color: #333;
+    text-shadow: 0 1px 0 #f3f3f3;
+}
+.ui-listview-item-button:focus, .ui-listview-item-split-button:focus {
+    -webkit-box-shadow: none !important; 
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+}
+.ui-listview>li p {
+    font-size: .85em !important;
 }
