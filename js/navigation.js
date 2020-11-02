@@ -4,10 +4,6 @@
 let desktopMode, aMetadataInput = true, _l = console.log, _o = (e) => {return JSON.stringify(e);}
 
 $(document).ready(() => {
-	$('.header-search').closest('div')
-	.addClass('tooltipped tooltipped-s border p-2 mb-2 mr-2 float-left')
-	.attr('aria-label', 'Start typing to view Suggestions.')
-	.attr('tabindex', 1); 
 	/* Default Global VARS */
 	desktopMode = false;
 	let windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
@@ -17,6 +13,15 @@ $(document).ready(() => {
 	isSearching = false;
 	isTyping = false,
 	currentCW = "uploads-cw";
+
+	$('.header-search-wrapper').append(
+		$('<input>', {class: 'header-search', type: 'text', id: 'hsiSearch', 'data-type': 'search', placeholder: 'Search past papers, e-books'})
+	);
+	$('.header-search').textinput().enhanceWithin().textinput('refresh');
+	$('.header-search').closest('div')
+	.addClass('tooltipped tooltipped-s border p-2 mb-2 mr-2 float-left')
+	.attr('aria-label', 'Start typing to view Suggestions.')
+	.attr('tabindex', 1); 
 
 	responsiveUIHandler();
 
@@ -72,8 +77,7 @@ $(document).ready(() => {
 				$('body').addClass("no-scroll");
 				isPanelOpen = true;
 			}
-    });
-	$(document).on('swipeleft',function(){
+    }).on('swipeleft',function(){
 		if(isPanelOpen) {
 			$('.side-panel-wrapper').animate({
 				left: '-100%'
@@ -251,12 +255,10 @@ $(document).ready(() => {
 		}
 
 		if($(this).attr('id') == 'sr-cw') {
-			setTimeout(function(){
-				$('.header-search').closest('div').focus();
-				setTimeout(() => {
-					$('.header-search').focus();
-				},10000);
-			});
+			$('.header-search').closest('div').focus();
+			setTimeout(() => {
+				$('.header-search').focus();
+			}, 10000);
 			return;
 		}
 		//reset navigation to top of page

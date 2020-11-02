@@ -1,11 +1,11 @@
 $(document).ready(() => {
 	let M_ID =window.location.search.substring(1).split('=')[1];
-	if(M_ID) {
-		$.ajax({
+	if(M_ID) { 
+		/* $.ajax({
 			url: "http://localhost:3000/moderators/OTP",
 			type: "POST",
 			data: {"M_ID": M_ID},
-			crossDomain: true,
+			crossDomain: true, 
 			processData: false,
 			contentType: false,
 			beforeSend: () => {
@@ -21,7 +21,7 @@ $(document).ready(() => {
 			error: (e) => {
 				$('body').html('<pre style="margin:1em">' + e.statusText + '</pre>');
 			}
-		});
+		}); */
 	} else if(lht) {
 		$.ajax({
 			url: "http://localhost:3000/moderators/sentinel",

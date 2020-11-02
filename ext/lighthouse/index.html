@@ -1,8 +1,8 @@
 <!DOCTYPE html>
     <html>
         <head>
-            <title>LightHouse - eReadCentral</title>
-            <link rel="icon" type="image/png" href="../../assets/icons/quill.png" />
+            <title>eBooks Processing</title>
+            <link rel="icon" type="image/png" href="../../assets/icons/lighthousemini.png" />
             <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
             <!-- static-assets -->
@@ -11,67 +11,81 @@
             <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
             <script type="text/javascript" src="../../js/jquery.mobile-1.5.0-rc1.min.js"></script>
             <link rel="stylesheet" type="text/css" href="../../css/jquery.mobile-1.5.0-rc1.min.css">
-            <link rel="stylesheet" type="text/css" href="../../css/lh.main.css"> 
+            <link rel="stylesheet" type="text/css" href="../../css/lh.main.css" /> 
             <script type="text/javascript" src="../../js/prefixfree.min.js"></script> 
             <script type="text/javascript" src="../../js/ext/sentinel.js"></script>
+            <script type="text/javascript" src="../../js/ext/navigation.js"></script>
             <script type="text/javascript" src="../../js/global.js"></script>
         </head>
         <body>
-            <div data-role="page">
-                <div role="main" class="ui-content ">
-                    <div data-role="header">
-                        <h1>LightHouse</h1>
-                    </div><!-- /header -->
-                    <div role="main" class="ui-content">
-                        <!-- upload(s) accordion -->
-                        <template class="a-a">
-                            <div data-role="accordion" 
-                            data-icons="{ 
-                                &quot;header&quot;: &quot;ui-icon-plus&quot;, 
-                                &quot;activeHeader&quot;: &quot;ui-icon-minus&quot; 
-                            }" data-height-style="content">
-                            </div>
-                        </template>
-                        <!-- upload(s) accordion sections -->
-                        <template class="a-a-s">
-                            <h3 class="a-section-hdr"></h3>
-                            <div class="a-cw">
-                                
-                            </div>
-                        </template>
-                        <div class="content-wrapper">
-                            <button class="show-page-loading-msg loader" data-textonly="false" data-textvisible="true" data-msgtext="Loading" 
-                            data-inline="true">
-                                Loader
-                            </button>
-                            <div data-history="false" data-role="popup" id="pdfViewer" data-overlay-theme="b" data-theme="a" data-tolerance="15,15" class="ui-content">
-								<iframe id="pdf-js-viewer" src="" title="webviewer" frameborder="0" width="500" height="600"></iframe>
-							</div>
-                            <div data-role="tabs">
-                                <ul data-role="listview" data-inset="true" class="tablist-left">
-                            <li><a href="#one" data-ajax="false">one</a></li>
-                            <li><a href="#two" data-ajax="false">two</a></li>
-                            <li><a href="ajax-content-ignore.html" data-ajax="false">three</a></li>
+            <div data-role="page" class="page">
+                <div data-role="header">
+                    <p class="hdr">LightHouse</p>
+                </div><!-- /header -->
+                <div role="main" class="ui-content">
+                    <!-- upload(s) accordion -->
+                    <template class="a-a">
+                        <div data-role="accordion" 
+                        data-icons="{ 
+                            &quot;header&quot;: &quot;ui-icon-plus&quot;, 
+                            &quot;activeHeader&quot;: &quot;ui-icon-minus&quot; 
+                        }" data-height-style="content">
+                        </div>
+                    </template>
+                    <!-- upload(s) accordion sections -->
+                    <template class="a-a-s">
+                        <h3 class="a-section-hdr"></h3>
+                        <div class="a-cw">
+                            
+                        </div>
+                    </template>
+                    <div class="content-wrapper">
+                        <button class="show-page-loading-msg loader" data-textonly="false" data-textvisible="true" data-msgtext="Loading" 
+                        data-inline="true">
+                            Loader
+                        </button>
+                        <div data-history="false" data-role="popup" id="pdfViewer" data-overlay-theme="b" data-theme="a" data-tolerance="15,15" class="ui-content">
+                            <iframe id="pdf-js-viewer" src="" title="webviewer" frameborder="0" width="500" height="600"></iframe>
+                        </div>
+                        <div data-role="tabs" class="t-tabs">
+                            <!-- data-role="listview" data-inset="true" -->
+                            <ul class="tablist-left main-nav-ctrls">
+                                <li>
+                                    <a href="#notifications" data-ajax="false" class="nav-ctrl n-nav-ctrl">
+                                        <i class="fas fa-bell"></i>
+                                        <span class="n">2</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#tasks" data-ajax="false" class="nav-ctrl t-nav-ctrl">
+                                        <i class="fas fa-feather"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#taskshistory" data-ajax="false" class="nav-ctrl t-h-nav-ctrl">
+                                        <i class="fas fa-clock"></i>
+                                    </a>
+                                </li>
                             </ul>
-                            <div id="one" class="ui-body-d tablist-content">
-                                <h1>First tab contents</h1>
+                            <div id="notifications" class="ui-body-d tablist-content">
+                                <p>Notifications</p>
                             </div>
-                                <ul id="two" class="tablist-content" data-role="listview" data-inset="true">
-                                    <li><a href="#">Acura</a></li>
-                                    <li><a href="#">Audi</a></li>
-                                    <li><a href="#">BMW</a></li>
-                                    <li><a href="#">Cadillac</a></li>
-                                    <li><a href="#">Ferrari</a></li>
-                                </ul>
+                            <div id="tasks" class="ui-body-d tablist-content">
+                                <p>My Tasks</p>
+                            </div>
+                            <div id="taskshistory" class="ui-body-d tablist-content">
+                                <p>Reviewed</p>
                             </div>
                         </div>
-                    </div><!-- /content -->
-                    <div data-role="toolbar" data-type="footer" data-position="fixed" class="footer" data-tap-toggle="false">
-                        <div class="ua-hdr">
-                            <p class='ua-hdr-title'>null</p>
-                        </div>
-                        <!--data-hide-during-focus=""-->
                     </div>
+                </div><!-- /content -->
+                <div data-role="toolbar" data-type="footer" data-position="fixed" class="footer" data-tap-toggle="false">
+                    <div class="ua-tile bg-error">
+                        <p class='ua-specs-wrapper'>
+                            <i class="fas fa-user-circle"></i>
+                            <span class="ua-specs">null</span></p>
+                    </div>
+                    <!--data-hide-during-focus=""-->
                 </div>
             </div>
         </body>
