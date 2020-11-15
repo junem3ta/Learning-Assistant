@@ -1,7 +1,7 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable no-undef */
 
-let desktopMode, aMetadataInput = true, _l = console.log, _o = (e) => {return JSON.stringify(e);}
+let desktopMode, currentCW, aMetadataInput = true, _l = console.log, _o = (e) => {return JSON.stringify(e);}
 
 $(document).ready(() => {
 	/* Default Global VARS */
@@ -11,7 +11,8 @@ $(document).ready(() => {
 	/*let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0); */
 	let isPanelOpen = false,
 	isSearching = false;
-	isTyping = false,
+	isTyping = false;
+
 	currentCW = "uploads-cw";
 
 	$('.header-search-wrapper').append(

@@ -1,50 +1,56 @@
+let _l = console.log;
 $(document).ready(() => {
-	let M_ID =window.location.search.substring(1).split('=')[1];
-	if(M_ID) { 
-		/* $.ajax({
-			url: "http://localhost:3000/moderators/OTP",
-			type: "POST",
-			data: {"M_ID": M_ID},
-			crossDomain: true, 
-			processData: false,
-			contentType: false,
-			beforeSend: () => {
-				$('.loader')[0].click();
-			},
-			success: (d) => {
-				if(d.res === 'success') {
+	let ERR_MSGS = {
+		basic: 'This is getting old, fast! Knock it off Dolores.'
+	},
+	four01 = $('<pre>', {style: 'margin: 1em'}).append(ERR_MSGS.basic),
+	qs = window.location.search.substring(1).split('&')[0];
 
-				} else {
-					$('body').html('<pre style="margin:1em">401: Knock it off, Jose.</pre>');
-				}
-			}, 
-			error: (e) => {
-				$('body').html('<pre style="margin:1em">' + e.statusText + '</pre>');
-			}
-		}); */
-	} else if(lht) {
+	if(qs.split('=')[0] === 'UID') { 
+		let M_ID = qs.split('=')[1];
+		_l('Linked :D', M_ID);
 		$.ajax({
-			url: "http://localhost:3000/moderators/sentinel",
+			url: "http://localhost:3000/users/lh/AT",
 			type: "POST",
-			headers: {"Authorization": 'Bearer ' + lht},
-			crossDomain: true,
-			processData: false,
-			contentType: false,
-			beforeSend: () => {
-				
+			data: {
+				"id": M_ID
 			},
 			success: (d) => {
 				if(d.res === 'success') {
-
+					$('body').show();
 				} else {
-					$('body').html('<pre style="margin:1em">401: Knock it off, Jose.</pre>');
+					$('body').html(four01);
 				}
 			}, 
 			error: (e) => {
-				$('body').html('<pre style="margin:1em">' + e.statusText + '</pre>');
+				$('body').show().html(four01);
+			}
+		});
+	} else if(qs.split('=')[0] === 'AT') {
+		let lht = qs.split('=')[1];
+		_l('Redirected', lht);
+		$.ajax({
+			url: "http://localhost:3000/users/sentinel",
+			type: "POST",
+			headers: {
+				"Authorization": 'Bearer ' + lht
+			},
+			success: (d) => {
+				if(d.res) {
+					_l('looking good', d);
+					$('body').show();
+					//updateUASpecs(d);
+					//getTasks(lht);
+				} else {
+					$('body').show().html(four01);
+				}
+			}, 
+			error: (e) => {
+				$('body').show().html(four01.text('').append('ERR_CODE ' + e.statusCode + ': ' + e.statusText));
 			}
 		});
 	} else {
-		$('body').html('<pre style="margin:1em">401: Knock it off, Jose.</pre>');
+		_l('Unauthorized');
+		$('body').show().html(four01);
 	}
 });

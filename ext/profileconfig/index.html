@@ -1,25 +1,68 @@
 <!DOCTYPE html>
     <html>
         <head>
-            <title>app</title>
+            <title>Profile Config - eRead Account</title>
+            <link rel="icon" type="image/png" href="../../assets/icons/ereaddark.png" />
             <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
             <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
             <!-- static-assets -->
-            <link rel="stylesheet" type="text/css" href="../assets/fonts/ps/style.css" />
-            <link href="../assets/font-awesome/css/all.css" rel="stylesheet">
-            <script type="text/javascript" src="../js/jquery-3.2.1.min.js"></script>
-            <script type="text/javascript" src="../js/jquery.mobile-1.5.0-rc1.min.js"></script>
-            <link rel="stylesheet" type="text/css" href="../css/jquery.mobile-1.5.0-rc1.min.css">
-            <link rel="stylesheet" type="text/css" href="../css/v1.0.0/stylesheet.main.css"> 
-            <script type="text/javascript" src="../js/prefixfree.min.js"></script> 
+            <link rel="stylesheet" type="text/css" href="../../assets/fonts/ps/style.css" />
+            <link href="../../assets/font-awesome/css/all.css" rel="stylesheet">
+            <script type="text/javascript" src="../../js/jquery-3.2.1.min.js"></script>
+            <script type="text/javascript" src="../../js/jquery.mobile-1.5.0-rc1.min.js"></script>
+            <link rel="stylesheet" type="text/css" href="../../css/jquery.mobile-1.5.0-rc1.min.css">
+            <link rel="stylesheet" type="text/css" href="../../css/pc.main.css" /> 
+            <script type="text/javascript" src="../../js/prefixfree.min.js"></script> 
             <script type="text/javascript" src="../../js/ext/activate.js"></script>
         </head>
         <body>
-            <div data-role="page">
-                <div role="main" class="ui-content ">
+            <div data-role="page" class="page" style="background-color: #fff !important;">
+                <div data-role="header">
+                    <p class="hdr">Account Setup</p>
+                </div><!-- /header -->
+                <div role="main" class="ui-content">
                     <div class="content-wrapper">
-                        /pw init
+                        <button class="show-page-loading-msg loader" data-textonly="false" data-textvisible="true" data-msgtext="Loading" 
+                        data-inline="true">
+                            Loader
+                        </button>
+                        <a href="#pwInitPopup" data-rel="popup" data-position-to="window"
+                            class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a pw-init" data-transition="pop">
+                            Create your Password
+                        </a>
+                        <div data-history="false" data-role="popup" id="pwInitPopup" data-theme="a" class="ui-corner-all">
+                            <form id="pwInit">
+                                <div style="padding:10px 20px;">
+                                    <h3 style="text-align: center;">Create your password</h3>
+                                    <p class='p-init-guide'>
+                                        <i class="fas fa-info-circle"></i><br>
+                                        * Password must be at least 6 Characters long.<br>
+                                        Feel free to use alpha-numeric characters, symbols.<br>
+                                        Ensure that both password fields match.
+                                    </p>
+                                    <label for="un" class="ui-hidden-accessible">Password:</label>
+                                    <input type="password" name="user" class="pw" value="" placeholder="Password" data-theme="a">
+                                    <label for="pw" class="ui-hidden-accessible">Confirm Password:</label>
+                                    <input type="password" name="pass" class="pw-c" value="" placeholder="Confirm password" data-theme="a">
+                                    <p class='p-init-log bg-loading'>
+                                        <i class="fas fa-spinner fa-spin"></i>
+                                        <span class='p-h'></span>
+                                    </p>
+                                    <button type="submit" class="c-p ui-button ui-corner-all ui-shadow ui-button-b">
+                                        Submit <span class="ui-icon ui-icon-check"></span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
+                </div><!-- /content -->
+                <div data-role="toolbar" data-type="footer" data-position="fixed" class="footer" data-tap-toggle="false">
+                    <div class="ua-tile">
+                        <p class='ua-specs-wrapper'>
+                            <i class="fas fa-user-circle"></i>
+                            <span class="ua-specs">null</span></p>
+                    </div>
+                    <!--data-hide-during-focus=""-->
                 </div>
             </div>
         </body>

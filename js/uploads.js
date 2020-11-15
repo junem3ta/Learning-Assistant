@@ -230,6 +230,16 @@ $(document).ready(() => {
                     printRow(fileId,file);
                 });
             }
+            /* Update Form fields for logged in users. */
+            if(user) {
+                $('.a-uploader-f-n').val(user.firstname);
+                $('.a-uploader-l-n').val(user.lastname);
+                $('.aEbUploader').val(user.email);
+
+                $('.uploader-f-n').val(user.firstname);
+                $('.uploader-l-n').val(user.lastname);
+                $('.ebUploader').val(user.email);
+            }
             /*  await for async printAS/async printRow?
                 ** Incase enhanceWithin executes before AS/trs are rendered 
                 
@@ -556,7 +566,7 @@ $(document).ready(() => {
                     url: "http://localhost:3000/eBooks/new",
                     type: "POST",
                     data: fd,
-                    crossDomain: true,
+                    /* crossDomain: true, */
                     processData: false,
                     contentType: false,
                     beforeSend:function() {
@@ -586,17 +596,17 @@ $(document).ready(() => {
                         }, 16000);
                     },
                     error: (e) => {
-                        console.log(e);
+                        console.log(e, e.responseText);
                         $('.upload').removeClass('ui-state-disabled');
-                        $('.u-e-log').removeClass('bg-loading').addClass('bg-success');
+                        $('.u-e-log').removeClass('bg-loading').addClass('bg-error');
                         $('.u-e-log .fa-spinner').hide();
                         $('.u-e-log span.p-h').text(e.status + ': ' + e.statusText);
                         setTimeout(() => {
                             $('.u-e-log').hide();
                             $('.u-e-log .fa-spinner').show();
-                            $('.u-e-log').removeClass('bg-success').addClass('bg-loading');
+                            $('.u-e-log').removeClass('bg-error').addClass('bg-loading');
                         }, 16000);
-                    }
+                    } 
                 });
             }
         });

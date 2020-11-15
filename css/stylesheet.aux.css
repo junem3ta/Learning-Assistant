@@ -59,3 +59,55 @@ iframe {
 .ui-listview>li p {
     font-size: .85em !important;
 }
+
+.not-allowed {
+    cursor: not-allowed;
+}
+
+.u-fn-i {
+    font-style: normal;
+    height: 47px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    width: 47px;
+}
+
+.u-fn {
+    padding-left: 47px;
+    border: 1px solid #ccc;
+    border-radius: 42px;
+    text-align: left;
+}
+
+.u-fn:hover {
+    cursor: pointer;
+}
+
+.b-r-r {
+    border-top-right-radius: 3px !important;
+    border-bottom-right-radius: 3px !important;
+}
+
+.b-l-r {
+    border-top-left-radius: 3px !important;
+    border-bottom-left-radius: 3px !important;
+}
+
+.ua-navbar li a {
+    -webkit-box-shadow: none !important;
+    -moz-box-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.ua-tile {
+	display: inline-block;
+    margin: 8px 0 8px 16px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    height: auto;
+    line-height: normal;
+    color: #1967d2;
+    border-radius: 8px;
+    font-size: 80%;
+    cursor: default;
+}

@@ -13,11 +13,13 @@
             <link rel="stylesheet" type="text/css" href="../../css/jquery.mobile-1.5.0-rc1.min.css">
             <link rel="stylesheet" type="text/css" href="../../css/lh.main.css" /> 
             <script type="text/javascript" src="../../js/prefixfree.min.js"></script> 
-            <script type="text/javascript" src="../../js/ext/sentinel.js"></script>
             <script type="text/javascript" src="../../js/ext/navigation.js"></script>
-            <script type="text/javascript" src="../../js/global.js"></script>
+            <script type="text/javascript" src="../../js/ext/notifications.js"></script>
+            <script type="text/javascript" src="../../js/ext/utils.js"></script>
+            <script type="text/javascript" src="../../js/ext/sentinel.js"></script>
+            <script type="text/javascript" src="../../js/ext/main.js"></script>
         </head>
-        <body>
+        <body style="display: none;">
             <div data-role="page" class="page">
                 <div data-role="header">
                     <p class="hdr">LightHouse</p>
@@ -66,15 +68,66 @@
                                         <i class="fas fa-clock"></i>
                                     </a>
                                 </li>
+                                <li>
+                                    <a href="#taskshistory" data-ajax="false" class="nav-ctrl t-h-nav-ctrl">
+                                        <i class="fas fa-user"></i>
+                                    </a>
+                                </li>
                             </ul>
                             <div id="notifications" class="ui-body-d tablist-content">
                                 <p>Notifications</p>
+                                <div class="n-loader loaders">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </div>
+                                <ul data-role="listview" data-inset="true" data-split-icon="delete" class="n-listview">
+                                    <!-- Dynamically Generated Notifications -->
+                                </ul>
                             </div>
                             <div id="tasks" class="ui-body-d tablist-content">
                                 <p>My Tasks</p>
+                                <div class="t-loader loaders">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </div>
+                                <div class="tasks">
+
+                                </div>
                             </div>
                             <div id="taskshistory" class="ui-body-d tablist-content">
                                 <p>Reviewed</p>
+                                <div class="t-h-loader loaders"> 
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </div>
+                                <div class="taskshistory">
+
+                                </div>
+                            </div>
+                            <div id="myaccount" class="ui-body-d tablist-content">
+                                <div class="a-s-loader loaders">
+                                    <i class="fas fa-spinner fa-spin"></i>
+                                </div>
+                                <p><i class="fas fa-gear">Account Settings</p>
+                                <form id="profile">
+                                    <div style="padding:10px 20px;">
+                                        <h3 style="text-align: center;">eRead Account | Profile Configuration</h3>
+                                        <div class="p-c-fn-wrapper ui-grid-a">
+                                            <div class="ui-block-a">
+                                                <input type="text" class="u-p-fn" placeholder="First Name *" data-clear-btn="true" />
+                                            </div>
+                                            <div class="ui-block-b">
+                                                <input type="text" class="u-p-ln" placeholder="Last Name *" data-clear-btn="true" />
+                                            </div>
+                                        </div>
+                                        <input type="text" class="un" value="" placeholder="Loading ..." data-theme="a" data-clear-btn="true" disabled/>
+                                        <input type="email" class="c-u-email" value="" placeholder="Loading ..." data-clear-btn="true" disabled/>
+                                        <p class='p-c-log bg-loading'>
+                                            <i class="fas fa-spinner fa-spin"></i>
+                                            <span class='p-h'></span>
+                                        </p>
+                                        <button type="submit" class="u-p ui-button ui-corner-all ui-shadow ui-button-b" disabled>
+                                            Update <span class="ui-icon ui-icon-check"></span>
+                                        </button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -83,7 +136,8 @@
                     <div class="ua-tile bg-error">
                         <p class='ua-specs-wrapper'>
                             <i class="fas fa-user-circle"></i>
-                            <span class="ua-specs">null</span></p>
+                            <span class="ua-specs">null</span>
+                        </p>
                     </div>
                     <!--data-hide-during-focus=""-->
                 </div>

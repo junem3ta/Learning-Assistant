@@ -101,6 +101,48 @@ p {
 	border-top: 1px solid #ddd;
 }
 
+.u-p-fn-wrapper .ui-block-a,  .u-p-fn-wrapper .ui-block-b {
+	width: 150px;
+}
+.u-p-fn-wrapper .ui-block-a {
+	padding: 0 5px;
+}
+.u-p-fn-wrapper .ui-block-b {
+	padding-right: 5px;
+}
+.u-p-log {
+	margin: 8px 0;
+	font-size: 14px;
+	padding: 5px;
+	border-radius: 3px;
+	max-width: 189px;
+	position: relative;
+	display: none;
+}
+.v-u-log i.fa-spinner, .c-u-log i.fa-spinner, .r-a-log i.fa-spinner, .u-e-log {
+	display: none;
+}
+/* Utils */
+
+.bg-loading {
+	display: block;
+    background: #3ca4ff;
+    color: #fff;
+    padding: 8px 10px;
+    text-shadow: none;
+    font-size: 16px !important;
+}
+.bg-success {
+	display: block;
+    background-color: #d2f9d2;    
+    border: 1px solid #d2f9d2ff;
+}
+.bg-error {
+	display: block;
+    background-color: #f9d2d2 !important;
+    border-color: #a11212 !important;
+}
+/* Footer */
 .ua-tile {
 	display: inline-block;
     margin: 8px 0 8px 16px;
@@ -110,15 +152,11 @@ p {
     line-height: normal;
     color: #1967d2;
     border-radius: 8px;
-    font-size: 80%;
+	font-size: 80%;
+	cursor: default;
 }
 
-.bg-error {
-	color: #a11212 !important;
-    background-color: #f9d2d2 !important;
-    border-color: #a11212 !important;
-    outline-color: #a11212;
-}
+
 
 .footer {
 	background-color: #f9f9f9 !important;

@@ -592,16 +592,19 @@ a {
 .ui-disabled, .ui-state-disabled, button[disabled], .ui-selectmenu .ui-button.ui-state-disabled {
 	opacity: .9 !important;
 }
-.c-u-fn-wrapper .ui-block-a,  .c-u-fn-wrapper .ui-block-b {
+.c-u-guide {
+	font-size: 14px;
+}
+.c-u-fn-wrapper .ui-block-a,  .c-u-fn-wrapper .ui-block-b, .u-p-fn-wrapper .ui-block-a,  .u-p-fn-wrapper .ui-block-b {
 	width: 150px;
 }
-.c-u-fn-wrapper .ui-block-a {
+.c-u-fn-wrapper .ui-block-a, .u-p-fn-wrapper .ui-block-a { 
 	padding: 0 5px;
 }
-.c-u-fn-wrapper .ui-block-b {
+.c-u-fn-wrapper .ui-block-b, .u-p-fn-wrapper .ui-block-b {
 	padding-right: 5px;
 }
-.v-u-log, .c-u-log, .r-a-log, .u-e-log {
+.v-u-log, .c-u-log, .r-a-log, .u-e-log, .u-p-log {
 	margin: 8px 0;
 	font-size: 14px;
 	padding: 5px;
@@ -625,7 +628,7 @@ a {
     font-size: 16px !important;
 }
 span.p-h {
-	padding-left: 5px;
+	/* padding-left: 5px; */
 }
 .bg-loading i.fa-spinner {
 	display: inline-block;
@@ -716,7 +719,7 @@ span.p-h {
 .ua-details p {
 	line-height: 25px;
 }
-.ua-details p span {
+.elipse-success {
 	display: block;
 	float: left;
 	font-size: 2.5em;

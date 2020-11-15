@@ -1,0 +1,106 @@
+body {
+	font-family:'Product Sans' !important;
+	position: relative;
+}
+.page {
+	background-color: #fff !important;
+}
+
+.hdr {
+	font-size: 24px;
+    font-weight: normal;
+    line-height: 1em;
+    margin: 16px 0 0 16px !important;
+}
+
+a {  
+	text-decoration: none;
+	font-weight: normal !important;
+}  
+
+p {
+	margin: 0;
+}
+
+.ua-tile {
+	display: inline-block;
+    margin: 8px 0 8px 16px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    height: auto;
+    line-height: normal;
+    color: #1967d2;
+    border-radius: 8px;
+    font-size: 80%;
+}
+
+.loader {
+    display: none;
+}
+
+.p-init-guide {
+    font-size: 14px;
+}
+
+.p-init-guide i {
+    cursor: help;
+}
+
+.noshadowI {
+	-moz-box-shadow: none !important;
+	-webkit-box-shadow: none !important;
+	box-shadow: none !important;
+}
+
+.p-init-log {
+	margin: 8px 0;
+	font-size: 14px;
+	padding: 5px;
+	border-radius: 3px;
+	max-width: 189px;
+	position: relative;
+	display: none;
+}
+
+.p-init-log {
+	max-width: 100%;
+}
+
+.bg-loading {
+	display: block;
+    background: #3ca4ff;
+    color: #fff;
+    padding: 8px 10px;
+    text-shadow: none;
+    font-size: 16px !important;
+}
+
+.bg-success {
+	display: block;
+    background-color: #d2f9d2;    
+    border: 1px solid #d2f9d2ff;
+}
+
+.bg-error {
+    display: block;
+    background-color: #f9d2d2;   
+    border: 1px solid #a11212;
+}
+
+.p-init-log {
+	display: none;
+}
+
+span.p-h {
+	padding-left: 5px;
+}
+.bg-loading i.fa-spinner {
+	display: inline-block;
+}
+.bg-loading span.ui-icon-delete {
+	display: none;
+}
+
+.input-error {
+    border: 1px solid #ed143d !important;
+}
