@@ -13,7 +13,7 @@ $(document).ready(() => {
 	isSearching = false;
 	isTyping = false;
 
-	currentCW = "uploads-cw";
+	currentCW = "pp-cw";
 
 	$('.header-search-wrapper').append(
 		$('<input>', {class: 'header-search', type: 'text', id: 'hsiSearch', 'data-type': 'search', placeholder: 'Search past papers, e-books'})
@@ -203,7 +203,7 @@ $(document).ready(() => {
 		}  else {
 			/* "Switch back to Android Mode" */
 			desktopMode = false;
-			if($('.panel-ctrl').css('display') == 'none') {
+			if($('.panel-ctrl').css('display') == 'none' && !isSearching) {
 				$(".panel-ctrl").show();
 			}
 			currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.static-hdr').show() : $('.static-hdr').hide();
@@ -313,4 +313,24 @@ $(document).ready(() => {
 	for (let i = 0; i < 5; i++) {
 		$('.side-panel p').append(tmp + '<br>');	
 	};
+
+	(function(window, undefined){
+		let State = History.getState();
+		History.log('initial:', State.data, State.title, State.url);
+		console.log('initial:', State.data, State.title, State.url);
+
+		History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
+			// Log the State
+			let State = History.getState(); // Note: We are using History.getState() instead of event.state
+			History.log('statechange:', State.data, State.title, State.url);
+			console.log('statechange:', State.data, State.title, State.url);
+		});
+
+		//History.pushState({state:2,rand:Math.random()}, "State 2", "?state=2");
+
+		$('#pp-cw').click(() => {
+			History.pushState({state:2,rand:Math.random()}, "State 2", "?state=2"); // logs {state:2,rand:"some random value"}, "State 2", "?state=2"',
+		});
+	})(window);
+	
 });

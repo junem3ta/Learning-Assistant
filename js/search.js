@@ -37,7 +37,7 @@ $(document).ready(() => {
 					_l('404');
 				}
 			} else {
-				window.history.replaceState({}, null, '/index.html');
+				//window.history.replaceState({}, null, '/index.html');
 				_l('L.E', null);
 			}
 		});
