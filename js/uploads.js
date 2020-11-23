@@ -19,9 +19,7 @@ let
             $('.metadata-guide .fcg').html(pcGuide['fc']);
             $('.metadata-guide .dptg').html(pcGuide['dpt']);
         }
-    },
-    fd = new FormData(), 
-    filesObjLength;
+    };
 
 $(document).ready(() => {
     const 
@@ -29,7 +27,6 @@ $(document).ready(() => {
             max_files_allowed: 3,
             file_types: ['pdf', 'docx', 'doc']
         },
-
         ioMsgs = {
             max_files_exceeded: 'You can only upload a maximum of 3 files. Select a fewer number of files and try again',
             missing_metadata: 'Please provide all the additional information indicated above.',
@@ -37,7 +34,6 @@ $(document).ready(() => {
             max_size_exceeded: 'Maximum file size (10MiB) exceeded. Please try again with a light-weight version of the file.',
             total_size_exceeded: 'Total files\' size exceeded. Please ensure the total size of the files doesn\'t exceed 30MiB.'
         },
-        
         frcDsRef = {
             '0': 'default-s',
             '1': 'fset-s',
@@ -91,6 +87,7 @@ $(document).ready(() => {
             aS.find('div select.a-fcs').attr('name','a-'+fileId+'-fcs');
             aS.find('.a-dpt-s').attr('id',fileId + '-a-dpt-s');
             $('.metadata-wrapper div[data-role=accordion]').append(aS);
+            $.mobile.loading( "hide" );
         },
 
         /* 
@@ -130,6 +127,7 @@ $(document).ready(() => {
             $(trs.children()[1]).addClass(fileId+'aux');
             
             $('.eb-metadata tbody').append(trs);
+            $.mobile.loading( "hide" );
         }, 
 
         log = (e) => {
@@ -159,6 +157,7 @@ $(document).ready(() => {
                         $('#eb-files').attr('disabled', false).val('');
                     }
                 }
+                $('.upload').removeClass('ui-state-disabled');
             }, 5000);
         }, 
 
@@ -168,17 +167,18 @@ $(document).ready(() => {
             $('.uploads-input-log').hide();
             logging = false;
         };
-    
+    $('#eb-files').click(() => {
+        $('.u-loader')[0].click();
+    });
     /* Upload files onChange Event handler */
-    $('#eb-files').on('change', (event) => {        
+    $('#eb-files').on('change', (event) => {    
         let files = event.target.files/* , filesObjLength = Object.keys(files).length */,
-        filesObjLength = Object.keys(files).length;
-        _files = files;
-        console.log('_files', _o(_files));
+        filesObjLength = Object.keys(files).length,
+        fd = new FormData();
         /* File size check */
         if(filesObjLength == 1) {
-            _l(files[0].size);
             if(files[0].size > 10 * 1024 * 1024) {
+                $.mobile.loading( "hide" );
                 log('max_size_exceeded');
                 $('#eb-files').attr('disabled', true);
                 $('.eb-uploads .ui-block-a').append($('.uploads-input-log').clone()[0]);
@@ -191,6 +191,7 @@ $(document).ready(() => {
                 totalFileSize += file.size;
             });
             if(totalFileSize > 30 * 1024 * 1024) {
+                $.mobile.loading( "hide" );
                 log('total_size_exceeded');
                 $('#eb-files').attr('disabled', true);
                 $('.eb-uploads .ui-block-a').append($('.uploads-input-log').clone()[0]);
@@ -200,6 +201,7 @@ $(document).ready(() => {
         }
         /*max upload files check*/
         if (filesObjLength > ioConstraints.max_files_allowed) {
+            $.mobile.loading( "hide" );
             log('max_files_exceeded');
             $('#eb-files').attr('disabled', true);
             $('.eb-uploads .ui-block-a').append($('.uploads-input-log').clone()[0]);
@@ -212,7 +214,8 @@ $(document).ready(() => {
                 aMetadataInput = true; default; */
             if(filesObjLength == 1) {
                 /* Update FormData Obj */
-                fd.append("upload0", files[0]);
+                fd.append("ebooks", files[0]);
+                fd.append('upload0metadata', JSON.stringify({}));
                 /* Print 1 accordion section */
                 printAS("upload0",files[0]);
                 /* print 1 row */
@@ -221,10 +224,21 @@ $(document).ready(() => {
                 /* Print n accordion sections / n rows */
                 $.each(files, (i, file) => {
                     fileId = 'upload' + i;
-                    fd.append(fileId,file);
+                    fd.append('ebooks',file);
+                    fd.append(fileId+'metadata', JSON.stringify({}));
                     printAS(fileId,file);
                     printRow(fileId,file);
                 });
+            }
+            /* Update Form fields for logged in users. */
+            if(user) {
+                $('.a-uploader-f-n').val(user.firstname);
+                $('.a-uploader-l-n').val(user.lastname);
+                $('.aEbUploader').val(user.email);
+
+                $('.uploader-f-n').val(user.firstname);
+                $('.uploader-l-n').val(user.lastname);
+                $('.ebUploader').val(user.email);
             }
             /*  await for async printAS/async printRow?
                 ** Incase enhanceWithin executes before AS/trs are rendered 
@@ -260,7 +274,8 @@ $(document).ready(() => {
             };
 
         /*  Submit Form Ev. */ 
-        $('.submit-eb-uploads a').click(()=>{
+        $('.upload').click(() => {
+            $('.upload').addClass('ui-state-disabled');
             if(Object.keys(ioErrors).length > 0) {
                 for(elementId in ioErrors) {
                     /* Reset styling for erroneous Elements */
@@ -305,7 +320,6 @@ $(document).ready(() => {
                     delete ioErrors[elementId];                
                 }
             } 
-
             /* Files */
             for(let i = 0; i < filesObjLength; i++) {
                 /* Each loop represents metadata validation for a single file */
@@ -330,6 +344,10 @@ $(document).ready(() => {
                             //non-text-chars
                             auxFc.closest('div').addClass('aux-input-error');
                             ioErrors[fileEl] = {'nonTxtFcField': 1};
+                        } else {
+                            var tmp = JSON.parse(fd.get(fileEl+'metadata'));
+                            tmp['faculty'] = auxFc.val();
+                            fd.set(fileEl+'metadata', JSON.stringify(tmp));
                         }
                         
                         if(auxDpt.val().replace(/ /g, '') === '') {
@@ -340,12 +358,18 @@ $(document).ready(() => {
                             /* Non-text-chars */
                             auxDpt.closest('div').addClass('aux-input-error');
                             updateErrObj(fileEl,'nonTxtDptField');
+                        } else {
+                            var tmp = JSON.parse(fd.get(fileEl+'metadata'));
+                            tmp['department'] = auxDpt.val();
+                            fd.set(fileEl+'metadata', JSON.stringify(tmp));
                         }
                     } else {
                         /* One of the 5 faculties selected */
                         let selectedDpt = $('#' + fileEl + '-a-dpt-s option:selected').text();                        
                         if(selectedDpt === 'Null') {
                             ioErrors[fileEl] = {'nullDptField': 1}
+                        } else {
+                            fd.set(fileEl+'metadata', JSON.stringify({'faculty':selectedFC, 'department':selectedDpt}));
                         }
                     }
                 } else {
@@ -374,6 +398,10 @@ $(document).ready(() => {
                             /* Non-text-input test */
                             auxFc.closest('div').addClass('aux-input-error');                            
                             ioErrors[fileEl] = {'nonTxtFcField': 1};
+                        } else {
+                            var tmp = JSON.parse(fd.get(fileEl+'metadata'));
+                            tmp['faculty'] = auxFc.val();
+                            fd.set(fileEl+'metadata', JSON.stringify(tmp));
                         }
                         
                         /* Department */
@@ -393,13 +421,24 @@ $(document).ready(() => {
                             } else {
                                 ioErrors[fileEl] = {'nonTxtDptField': 1}
                             };
+                        } else {
+                            var tmp = JSON.parse(fd.get(fileEl+'metadata'));
+                            tmp['department'] = auxDpt.val();
+                            fd.set(fileEl+'metadata', JSON.stringify(tmp));
                         }
                     } else {
-                        /* Faculty selected: Check for dpt select values */
+                        /* Faculty selected: Check for dpt select values */       
                         let selectedDpt = $('#' + fileEl + 's option:selected').text();
                         if(selectedDpt === 'Null') {
                             ioErrors[fileEl] = {'nullDptField': 1};
-                        };
+                        } else {
+                            selectedFc = selectedFc === 'fset-s' ? 'FSET' : 
+                                (selectedFc === 'bust-s' ? 'BUST' :
+                                    (selectedFc === 'fred-s' ? 'FRED' : 
+                                        (selectedFc === 'fahu-s' ? 'FAHU' : 
+                                            (selectedFc === 'faes-s' ? 'FAES' : ''))));
+                            fd.set(fileEl+'metadata', JSON.stringify({'faculty':selectedFc, 'department':selectedDpt}));
+                        }
                     };
                 }
                 /* Emphasize on erroneous input elements: */
@@ -408,7 +447,8 @@ $(document).ready(() => {
                     $('tr.' + fileEl + ' td attr').addClass('missing-metadata');
                 };
             };
-        /* CI, Email */
+            fd.append('uploadedBy', JSON.stringify({}));
+            /* CI, Email */
             let fName, LName, publishCI = false, cName = '', isNameValid = true, email;
             if(aMetadataInput) {
                 fName = $('.a-uploader-f-n'),
@@ -426,24 +466,34 @@ $(document).ready(() => {
                 /*  publishCI not checked: Uploader hasn't approved profile for Hall of Fame
                     Check if the uploader has provided their Name(s) either way. */
                 if(fName.val().replace(/ /g, '') !== '') {
-                    if(fName.val().search(/^[a-zA-Z]+$/) !== 0) {
+                    if(fName.val().search(/^[a-zA-Z'\s]+$/) !== 0) {
                         isNameValid = false;
                         fName.closest('div').addClass('aux-input-error');
                     } else {
                         cName += fName.val().replace(/ /g, '');
                         _l('register fname', cName);
+                        fd.set('uploadedBy', JSON.stringify({publishCI: false, firstname:fName.val()}));
                     }
-                };
+                } else {
+                    fd.set('uploadedBy', JSON.stringify({publishCI: false, firstname: ''}));
+                }
                 /* Last Name */
                 if(lName.val().replace(/ /g, '') !== '') {
-                    if(lName.val().search(/^[a-zA-Z\s]+$/) !== 0) {
+                    if(lName.val().search(/^[a-zA-Z.\s]+$/) !== 0) {
                         isNameValid = false;
                         lName.closest('div').addClass('aux-input-error');
                     } else {
                         cName += ' ' + lName.val();
+                        var tmp = JSON.parse(fd.get('uploadedBy'));
+                        tmp['lastname'] = lName.val();
+                        fd.set('uploadedBy', JSON.stringify(tmp));
                         _l('register fname \+ \' \' \+ lname', cName);
                     }
-                };
+                } else {
+                    var tmp = JSON.parse(fd.get('uploadedBy'));
+                    tmp['lastname'] = '';
+                    fd.set('uploadedBy', JSON.stringify(tmp));
+                }
 
                 if(isNameValid && cName !== '') {
                     _l('Registering: ', cName);
@@ -457,23 +507,29 @@ $(document).ready(() => {
                     //null
                     fName.closest('div').addClass('aux-input-error');
                     updateErrObj('name', 'nullFName');
-                } else if(fName.val().search(/^[a-zA-Z]+$/) !== 0) {
+                } else if(fName.val().search(/^[a-zA-Z'\s]+$/) !== 0) {
                     //non-text chars
                     fName.closest('div').addClass('aux-input-error');
                     updateErrObj('name','nonTxtFName');
+                } else {
+                    fd.set('uploadedBy', JSON.stringify({publishCI: true, firstname:fName.val()}));
                 }
 
                 if(lName.val().replace(/ /g, '') === '') {
                     //null
                     lName.closest('div').addClass('aux-input-error');
                     updateErrObj('name', 'nullLName');
-                } else if(lName.val().replace(/ /g, '').search(/^[a-zA-Z]+$/) !== 0) {
+                } else if(lName.val().replace(/ /g, '').search(/^[a-zA-Z.\s]+$/) !== 0) {
                     //non-text chars 
                     lName.closest('div').addClass('aux-input-error');
                     updateErrObj('name','nonTxtLName');
+                } else {
+                    /* md.push(lName.val()); */
+                    var tmp = JSON.parse(fd.get('uploadedBy'));
+                    tmp['lastname'] = lName.val();
+                    fd.set('uploadedBy', JSON.stringify(tmp));
                 }
             };
-
             /* Email Validation */
             if(email.val() === '') {
                 email.closest('div').addClass('aux-input-error');
@@ -481,8 +537,11 @@ $(document).ready(() => {
             } else if(email.val().search(rfc2822ValidEmail) !== 0) {
                 email.closest('div').addClass('aux-input-error');
                 ioErrors['email'] = {'invalidEmail': 1};
+            } else {
+                var tmp = JSON.parse(fd.get('uploadedBy'));
+                tmp['email'] = email.val();
+                fd.set('uploadedBy', JSON.stringify(tmp));
             }
-        
             /* Input error notification */
             if(Object.keys(ioErrors).length > 0) {
                 let errType = '';
@@ -503,7 +562,52 @@ $(document).ready(() => {
                 if(logging) {
                     resetLogsWT();
                 }
-                _l('proceed');
+                $.ajax({
+                    url: "http://localhost:3000/eBooks/new",
+                    type: "POST",
+                    data: fd,
+                    /* crossDomain: true, */
+                    processData: false,
+                    contentType: false,
+                    beforeSend:function() {
+                        $('.u-e-log span.p-h').text('Operation in progress');
+                        $('.u-e-log').addClass('bg-loading');
+                        $('.u-e-log').show();
+                    },
+                    success: (res) => {
+                        console.log(res, res.res === 'success', res.res === 'success', res.res === 'error',
+                        $.trim(res.msg) === 'success');
+                        if(res.res === 'success') { 
+                            $('.u-e-log').removeClass('bg-loading').addClass('bg-success');
+                            $('.u-e-log .fa-spinner').hide();
+                            $('.u-e-log span.p-h').text(res.msg);
+                        } else {
+                            _l('0:0');
+                            $('.u-e-log').removeClass('bg-loading').addClass('bg-error');
+                            $('.u-e-log .fa-spinner').hide();
+                            $('.u-e-log span.p-h').text(res.msg);
+                        }
+                        setTimeout(() => {
+                            $('.u-e-log').hide();
+                            $('.upload').removeClass('ui-state-disabled');
+                            $('.cancel-upload a')[0].click();
+                            $('.u-e-log .fa-spinner').show();
+                            $('.u-e-log').removeClass('bg-success').addClass('bg-loading');
+                        }, 16000);
+                    },
+                    error: (e) => {
+                        console.log(e, e.responseText);
+                        $('.upload').removeClass('ui-state-disabled');
+                        $('.u-e-log').removeClass('bg-loading').addClass('bg-error');
+                        $('.u-e-log .fa-spinner').hide();
+                        $('.u-e-log span.p-h').text(e.status + ': ' + e.statusText);
+                        setTimeout(() => {
+                            $('.u-e-log').hide();
+                            $('.u-e-log .fa-spinner').show();
+                            $('.u-e-log').removeClass('bg-error').addClass('bg-loading');
+                        }, 16000);
+                    } 
+                });
             }
         });
     });
@@ -523,8 +627,9 @@ $(document).ready(() => {
         /* Render Accordion */
         a = $($('.eb-metadata-a')[0].content.cloneNode(true));
         $('.metadata-wrapper').prepend(a);
-        /* detach submit event handler */
-        //let a = $('.submit-eb-uploads')
+        /* detach submit event handler*/
+        $('.upload').off('click').removeClass('ui-state-disabled');
+        $('.u-e-log').hide();
     });
 
     /* 

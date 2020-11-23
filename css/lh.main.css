@@ -1,0 +1,163 @@
+body {
+	font-family:'Product Sans' !important;
+	position: relative;
+}
+.page {
+	background-color: #fff !important;
+}
+
+.hdr {
+	font-size: 24px;
+    font-weight: normal;
+    line-height: 1em;
+    margin: 16px 0 0 16px !important;
+}
+
+a {  
+	text-decoration: none;
+	font-weight: normal !important;
+}  
+
+p {
+	margin: 0;
+}
+
+.loader {
+    display: none;
+}
+
+.t-tabs {
+	padding: 0 !important;
+}
+
+.tablist-left {
+    display: block;
+}
+
+.tablist-content {
+	width: /* 60% */ calc(100% - 83px);
+	padding: /* .5em  */1em;
+    display: block;
+	margin: 0 0 0 -1px;
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	border-top-left-radius: 0 !important;
+	min-height: 200px;
+}
+.tablist-left, .tablist-content {
+	float: left;
+}
+.main-nav-ctrls {
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	border: 1px solid #ddd;
+	border-top-right-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+}
+.main-nav-ctrls li {
+	height: 48px;
+	line-height: 48px;
+	text-align: center;
+	width: 48px;
+}
+
+.nav-ctrl {
+	display: block;
+	height: 48px;
+	width: 48px;
+}
+.nav-ctrl:focus {
+	outline: 0;
+	background-color: #38c;
+    color: #fff !important;
+    text-shadow: none;
+}
+
+.n {
+	display: block;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+    height: 17px;
+    width: 17px;
+    line-height: 17px;
+    background: #ddd;
+    text-align: center;
+    font-size: 13px;
+    border-radius: 50%;
+    text-shadow: none;
+    font-weight: 300;
+    background-color: #a2dcc1;
+    color: #04502e;
+    z-index: 100;
+}
+
+.n-nav-ctrl {
+	position: relative;
+}
+
+.t-nav-ctrl, .t-h-nav-ctrl {
+	border-top: 1px solid #ddd;
+}
+
+.u-p-fn-wrapper .ui-block-a,  .u-p-fn-wrapper .ui-block-b {
+	width: 150px;
+}
+.u-p-fn-wrapper .ui-block-a {
+	padding: 0 5px;
+}
+.u-p-fn-wrapper .ui-block-b {
+	padding-right: 5px;
+}
+.u-p-log {
+	margin: 8px 0;
+	font-size: 14px;
+	padding: 5px;
+	border-radius: 3px;
+	max-width: 189px;
+	position: relative;
+	display: none;
+}
+.v-u-log i.fa-spinner, .c-u-log i.fa-spinner, .r-a-log i.fa-spinner, .u-e-log {
+	display: none;
+}
+/* Utils */
+
+.bg-loading {
+	display: block;
+    background: #3ca4ff;
+    color: #fff;
+    padding: 8px 10px;
+    text-shadow: none;
+    font-size: 16px !important;
+}
+.bg-success {
+	display: block;
+    background-color: #d2f9d2;    
+    border: 1px solid #d2f9d2ff;
+}
+.bg-error {
+	display: block;
+    background-color: #f9d2d2 !important;
+    border-color: #a11212 !important;
+}
+/* Footer */
+.ua-tile {
+	display: inline-block;
+    margin: 8px 0 8px 16px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    height: auto;
+    line-height: normal;
+    color: #1967d2;
+    border-radius: 8px;
+	font-size: 80%;
+	cursor: default;
+}
+
+
+
+.footer {
+	background-color: #f9f9f9 !important;
+}

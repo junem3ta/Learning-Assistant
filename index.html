@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<!-- eRead Central - Chuka University KE -->
 		<title>app</title>
+		<link rel="icon" type="image/png" href="assets/icons/ereadmini.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<!-- static-assets -->
@@ -15,13 +17,16 @@
 		<link rel="stylesheet" type="text/css" href="css/stylesheet.main.css">
 		<link rel="stylesheet" type="text/css" href="css/explorer.sub.css">
 		<link rel="stylesheet" type="text/css" href="css/stylesheet.uploads.css">
-		<link rel="stylesheet" type="text/css" href="css/sc.css">
+		<link rel="stylesheet" type="text/css" href="css/stylesheet.aux.css">
 		<script type="text/javascript" src="js/prefixfree.min.js"></script>
+		<script type="text/javascript" src="js/history.js/scripts/bundled/html4+html5/jquery.history.js"></script>
 		<script type="text/javascript" src="js/navigation.js"></script>
 		<script type="text/javascript" src="js/explorer.js"></script>
-		<script type="text/javascript" src="js/uploads.js"></script>
-		<script type="text/javascript" src="js/global.js"></script>
 		<script type="text/javascript" src="js/pdfviewer.js"></script>
+		<script type="text/javascript" src="js/notifications.js"></script>
+		<script type="text/javascript" src="js/user.js"></script>
+		<script type="text/javascript" src="js/uploads.js"></script>
+		<script type="text/javascript" src="js/LE.js"></script>
 	</head>
 	<body>
 		<div data-role="page" id="page1" class="content-wrapper">
@@ -182,6 +187,20 @@
 						</form> 
 					</div>
 				</template>
+				<template class="n-tmpl">
+					<li>
+						<a href="">
+							<h2 class="n-name"></h2>
+							<p class="n-title"><strong></strong></p>
+							<p class="n-msg"></p>
+							<p class="n-timestamp ui-listview-item-aside"></p>
+						</a>
+						<a href="#" class="del-n" id="" nindex="">Delete Notification</a>
+					</li>	
+				</template>
+				<template class="n-list-divider">
+					<li data-role="list-divider"><span class="l-d-ts"></span><span class="ui-listview-item-count-bubble">2</span></li>
+				</template>
 				<!-- @Android searchbar -->
 				<div class="ui-grid-a home-search-wrapper">
 					<div class="panel-ctrl-wrapper">
@@ -211,7 +230,7 @@
 						<p class="sub-title"> Chuka University</p>
 					</div>
 					<div class="header-search-wrapper">
-						<input class="header-search" type="search" id="hsiSearch" data-type="search" placeholder="Search past papers, e-books" data-clear-btn="true">
+						<!-- <input class="header-search" type="search" id="hsiSearch" data-type="search" placeholder="Search past papers, e-books" data-clear-btn="true"> -->
 					</div>
 					<div class="hdr-ctrls-wrapper">
 						<div id="ua-cw" class="ua-ctrl content-wrapper-ctrl ua-dpl-ctrl">
@@ -225,7 +244,7 @@
 						<div id="n-cw" class="n-ui-ctrl content-wrapper-ctrl">
 							<p class="ncw-ctrl-hdr">
 								<!-- Notification UI Ctrl -->
-								<span class="n">2</span>
+								<span class="n"></span>
 								<span class="tooltipped tooltipped-s border p-2 mb-2 mr-2 float-left"
 									aria-label="Notifications">
 									<i tabindex="2" class="ncw-ctrl-icon fas fa-bell"></i>
@@ -283,9 +302,9 @@
 					<div class="sp-footer">
 						<div>
 							<a class="v1" href="v1.0.0/about.html" data-ajax="false">About</p>
-							<a href="#" target="_blank" class="vctrl">
+							<a href="https://github.com/junem3ta/Learning-Assistant" target="_blank" class="vctrl">
 								GitHub
-								<!-- https://github.com/junem3ta/Learning-Assistant -->
+								<!--  -->
 								<i class="fas fa-external-link-square-alt"></i>
 							</a>
 						</div>
@@ -293,7 +312,7 @@
 				</div>
 				<!-- Desktop/Android Content wrapper-->
 				<div class="content-container">
-					<div class="content pp-cw">
+					<div class="content pp-cw active-content-wrapper">
 						<div class="explorer-navigation path">
 							<!-- <div class='b-f-navigators'>
 									<div class='b'><p style="transform: rotate(45deg);">∟</p></div>
@@ -311,19 +330,20 @@
 						</div>
 
 						<div class="explorer">
-
+							<div data-history="false" data-role="popup" id="pdfViewer" data-overlay-theme="b" data-theme="a" data-tolerance="15,15" class="ui-content">
+								<iframe id="pdf-js-viewer" src="" title="webviewer" frameborder="0" width="500" height="600"></iframe>
+							</div>
 						</div>
 					</div>
 					<div class="content eb-cw">
 						<p>eBooks<br /></p>
-						<a href="#pdfViewer" data-rel="popup" data-position-to="window" class="ui-button ui-corner-all ui-shadow ui-button-inline">
-							Preview
-						</a>
-						<div data-history="false" data-role="popup" id="pdfViewer" data-overlay-theme="b" data-theme="a" data-tolerance="15,15" class="ui-content">
-							<iframe id="pdf-js-viewer" src="/web/viewer.html?file=http://localhost:3000/fetch/FAES/2011/AGBM 103" title="webviewer" frameborder="0" width="500" height="600"></iframe>
-						</div>
+						
 					</div>
 					<div class="content uploads-cw">
+						<button class="show-page-loading-msg u-loader" data-textonly="false" data-textvisible="true" data-msgtext="Loading" 
+						data-inline="true">
+							Loader
+						</button>
 						<div class="uploads-hdr">
 							<h3>Contribute</h3>
 							<h4>
@@ -437,9 +457,14 @@
 											<p class="io-ok-msg"></p>
 										</div>
 										<div class="upload-f-ctrls ui-block-f">
+											<p class='u-e-log'>
+												<i class="fas fa-spinner fa-spin"></i>
+												<span class='p-h'></span>
+												<!-- <span class="ui-icon ui-icon-delete"></span> -->
+											</p>
 											<div class="submit-eb-uploads">
 												<a href="#" tabindex="3" 
-													class="ui-shadow ui-button ui-corner-all ui-button-inline ui-mini">
+													class="upload ui-shadow ui-button ui-corner-all ui-button-inline ui-mini">
 													Submit
 													<span class="ui-icon ui-icon-check"></span>
 												</a>
@@ -476,7 +501,6 @@
 													<p class='v-u-log'>
 														<i class="fas fa-spinner fa-spin"></i>
 														<span class='p-h'></span>
-														<span class="ui-icon ui-icon-delete"></span>
 													</p>
 													<button type="submit" class="v-u ui-button ui-corner-all ui-shadow ui-button-b">
 														Sign in <span class="ui-icon ui-icon-check"></span>
@@ -494,7 +518,11 @@
 											<form id="userLogin">
 												<div style="padding:10px 20px;">
 													<h3 style="text-align: center;">Create an eRead Account </h3>
-													<p>*: Required</p>
+													<p class='c-u-guide'>
+														<i class="fas fa-info-circle"></i><br>
+														*: Required <br>
+														* Username must be at least 6 Characters long.
+													</p>
 													<div class="c-u-fn-wrapper ui-grid-a">
 														<div class="ui-block-a">
 															<input type="text" class="c-u-fn" placeholder="First Name *" data-clear-btn="true" />
@@ -508,7 +536,6 @@
 													<p class='c-u-log'>
 														<i class="fas fa-spinner fa-spin"></i>
 														<span class='p-h'></span>
-														<span class="ui-icon ui-icon-delete"></span>
 													</p>
 													<button type="submit" class="c-u ui-button ui-corner-all ui-shadow ui-button-b">
 														Register <span class="ui-icon ui-icon-check"></span>
@@ -523,30 +550,31 @@
 						<div data-role="tabs" id="tabs">
 							<div data-role="navbar">
 								<ul class="ua-navbar">
-									<li><a href="#a-overview" data-ajax="false"><span class="ui-icon ui-icon-info"></span>Overview</a></i></li>
+									<li><a href="#a-overview" data-ajax="false" class="b-l-r"><span class="ui-icon ui-icon-info"></span>Overview</a></i></li>
 									<li><a href="#my-contributions" data-ajax="false"><span class="ui-icon ui-icon-star"></span>My Contributions</a></li>
-									<li><a href="#profile-settings" data-ajax="false"><span class="ui-icon ui-icon-gear"></span>Profile Settings</a></li>
+									<li><a href="#profile-settings" data-ajax="false" class="b-r-r"><span class="ui-icon ui-icon-gear"></span>Profile Settings</a></li>
 								</ul>
 							</div>
 							<div id="a-overview" class="ui-body-d ui-content">
 								<div class="ua ui-grid-a">
 									<div class="ui-block-a">
-										<div class="avatar-card">
-											<attr title="eRead Bot">
-												<div class="gravatar-wrapper">
-													<img src='assets/account/avatars/25937675.png' />
-												</div>
-												<div class="udID">
-													<p>Learning assistant
-														<!-- UIDMozGkCrm -->
-													</p>
-												</div>
-											</attr>
+										<div class="avatar-card" class="tooltipped tooltipped-s border p-2 mb-2 mr-2 float-left" aria-label="eRead BOT">
+											<div class="gravatar-wrapper">
+												<img src='assets/account/avatars/25937675.png' />
+											</div>
+											<div class="udID">
+												<p>
+													Learning assistant
+												</p>
+											</div>
 										</div>
 										<div class="ua-details">
 											<h4>Standard Account</h4>
 											<p>
-												<span>•</span>&nbsp<strong>UserID:</strong> eRead-Bot
+												<span class="elipse-success">•</span>
+												&nbsp
+												<strong>UserID:</strong> 
+												<span class="u-n-ph">eRead-Bot</span>
 											</p>
 											<br />
 										</div>
@@ -575,7 +603,6 @@
 													<p class='r-a-log'>
 														<i class="fas fa-spinner fa-spin"></i>
 														<span class='p-h'></span>
-														<span class="ui-icon ui-icon-delete"></span>
 													</p>
 													<button type="submit" class="r-a ui-button ui-corner-all ui-shadow ui-button-b">
 														Submit <span class="ui-icon ui-icon-check"></span>
@@ -598,14 +625,20 @@
 									<div class="m-c-hdr">
 										<p>My Uploads ⟶ Status</p>
 									</div>
-									<div class="m-c-status">
+									<div class="s-i-status">
 										<p class="s-i-null">
 											You're currently not signed in. If you have an eRead Account, 
 										  <a href="#loginPopup" data-rel="popup" data-position-to="window" class="popup-dpl-ctrl sn-ctrl-0">Sign in</a> to track the status of shared content. 									
 										</p>
-										<div class="m-c">
-	  
+										<div class="ua-tile bg-success">
+											<p class='ua-specs-wrapper'>
+												<i class="fas fa-user-circle"></i>
+												<span class="ua-specs">Loading ...</span>
+											</p>
 										</div>
+									</div>
+									<div class="m-c">
+	
 									</div>
 								</div>
 							</div>
@@ -615,12 +648,41 @@
 										<p>eREAD Account Details</p>
 									</div>
 									<div class="s-i-status">
-										<p>You're currently not logged in. Consider 
+										<p class='s-i-null'>You're currently not logged in. Consider 
 											<a href="#registerPopup" data-rel="popup" data-position-to="window" class="popup-dpl-ctrl sn-ctrl-2">
 												Creating an eRead Account
 											</a>
-											to get started!</p>
+											to get started!
+										</p>
+										<div class="ua-tile bg-success">
+											<p class='ua-specs-wrapper'>
+												<i class="fas fa-user-circle"></i>
+												<span class="ua-specs">Loading ...</span>
+											</p>
+										</div>
 									</div>
+									<form id="profile">
+										<div style="padding:10px 20px;">
+											<h3 style="text-align: center;">eRead Account | Profile Configuration</h3>
+											<div class="u-p-fn-wrapper ui-grid-a">
+												<div class="ui-block-a">
+													<input type="text" class="u-p-fn" placeholder="First Name *" data-clear-btn="true" />
+												</div>
+												<div class="ui-block-b">
+													<input type="text" class="u-p-ln" placeholder="Last Name *" data-clear-btn="true" />
+												</div>
+											</div>
+											<input type="text" class="u-p-un" value="" placeholder="Loading ..." data-theme="a" data-clear-btn="true" disabled/>
+											<input type="email" class="u-p-email" value="" placeholder="Loading ..." data-clear-btn="true" disabled/>
+											<p class='u-p-log'>
+												<i class="fas fa-spinner fa-spin"></i>
+												<span class='p-h'></span>
+											</p>
+											<button type="submit" class="u-p ui-button ui-corner-all ui-shadow ui-button-b" disabled>
+												Update <span class="ui-icon ui-icon-check"></span>
+											</button>
+										</div>
+									</form>
 								</div>
 							</div>
 						  </div>
@@ -671,42 +733,16 @@
 						</div>
 					</div>
 					<div class="content n-cw">
+						<div class="sw-thumb">
+							<img src="assets/images/feather.png">
+						</div>
 						<p>Notification Center</p>
-						<ul data-role="listview" data-inset="true" data-split-icon="delete">
-							<li data-role="list-divider">Friday, October 8, 2010 <span class="ui-listview-item-count-bubble">2</span></li>
-							<li>
-								<a href="">
-									<h2>eRead Account</h2>
-									<p><strong>Get Started with a user account</strong></p>
-									<p>Hey there, stranger! Are you a student at Chuka University? Create an eRead Account to get personalized settings!</p>
-									<p class="ui-listview-item-aside"><strong>6:24</strong>PM</p>
-								</a>
-								<a href="#">Delete Notification</a>
-							</li>
-							<li>
-								<a href="">
-									<h2>Contribute</h2>
-									<p><strong>Share eBooks with the community</strong></p>
-									<p>Do you have ebooks that you've found useful in the past, and that might be beneficial to others? Contribute and have your
-										profile published on the <em>Hall of Fame!</em>
-									</p>
-									<p class="ui-listview-item-aside"><strong>9:18</strong>AM</p>
-								</a>
-								<a href="#">Delete Notification</a>
-							</li>
-							<li data-role="list-divider">Day of the week, Month date, YYYY.<span class="ui-listview-item-count-bubble">1</span></li>
-							<li>
-								<a href="">
-									<h2>Notifying Mod</h2>
-									<p><strong>Notification Title</strong></p>
-									<p>Notication message.</p>
-									<p class="ui-listview-item-aside"><strong>Timestamp</strong>AM/PM</p>
-								</a>
-								<a href="#">Delete Notification</a>
-							</li>
+						<ul data-role="listview" data-inset="true" data-split-icon="delete" class="n-listview">
+							<!-- Dynamically Generated Notifications -->
 						</ul>
+						<textarea id="log" style="width:100%;height:400px"></textarea>
 					</div>
-					<div class="content sr-cw active-content-wrapper">
+					<div class="content sr-cw">
 						<div class="sr-cw-hdr">
 							<p>Search Results</p>
 						</div>
@@ -714,7 +750,7 @@
 						<div class="sw-thumb">
 							<img src="assets/images/search.svg">
 						</div>
-						<button class="show-page-loading-msg loader" data-textonly="false" data-textvisible="true" data-msgtext="Loading FSIndex, please wait." 
+						<button class="show-page-loading-msg loader" data-textonly="false" data-textvisible="true" data-msgtext="Loading FS Search Index, please wait..." 
 						data-inline="true">
 							Loader
 						</button>
@@ -754,7 +790,7 @@
 							<a href="#" data-icon="nbell" id="n-cw" class="content-wrapper-ctrl">
 								Notifications
 							</a>
-							<span class="a-n">2</span>
+							<span class="a-n"></span>
 						</li>
 					</ul>
 				</div>
@@ -763,6 +799,9 @@
 			<!-- /footer -->
 		</div>
 		<!-- /page -->
+		<script type="text/javascript">
+			$("input").closest('div').addClass('noshadowI');
+		</script>
 		<script type="text/javascript" defer src="js/search.js" ></script>
 	</body>
 </html>

@@ -1,21 +1,29 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable no-undef */
 
-let desktopMode, aMetadataInput = true, _l = console.log, _o = (e) => {return JSON.stringify(e);}
+let desktopMode, currentCW, aMetadataInput = true, _l = console.log, _o = (e) => {return JSON.stringify(e);}
 
 $(document).ready(() => {
-	$('.header-search').closest('div')
-	.addClass('tooltipped tooltipped-s border p-2 mb-2 mr-2 float-left')
-	.attr('aria-label', 'Start typing to view Suggestions.')
-	.attr('tabindex', 1); 
 	/* Default Global VARS */
 	desktopMode = false;
 	let windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
 	let swHeight = windowHeight - 88; /* 56 + 32 (padding ) */
 	/*let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0); */
-	let isPanelOpen = false;
-	let isSearching = false;
-	let currentCW = "sr-cw";
+	let isPanelOpen = false,
+	isSearching = false;
+	isTyping = false;
+
+	currentCW = "pp-cw";
+
+	$('.header-search-wrapper').append(
+		$('<input>', {class: 'header-search', type: 'text', id: 'hsiSearch', 'data-type': 'search', placeholder: 'Search past papers, e-books'})
+	);
+	$('.header-search').textinput().enhanceWithin().textinput('refresh');
+	$('.header-search').closest('div')
+	.addClass('tooltipped tooltipped-s border p-2 mb-2 mr-2 float-left')
+	.attr('aria-label', 'Start typing to view Suggestions.')
+	.attr('tabindex', 1); 
+
 	responsiveUIHandler();
 
 	/* Hide Android Searchbar on Scrolldown, show on Scrollup*/
@@ -70,8 +78,7 @@ $(document).ready(() => {
 				$('body').addClass("no-scroll");
 				isPanelOpen = true;
 			}
-    });
-	$(document).on('swipeleft',function(){
+    }).on('swipeleft',function(){
 		if(isPanelOpen) {
 			$('.side-panel-wrapper').animate({
 				left: '-100%'
@@ -121,6 +128,23 @@ $(document).ready(() => {
 		$('body').addClass("no-scroll");
 		currentCW == "pp-cw" ? $('.static-hdr').hide() : "";
 	});
+	$(document).on('click', 'input', (event) => {
+		if(!desktopMode && !$(event.target).hasClass('eb-files')) {
+			if(!isTyping) {
+				isTyping = true;
+				$('.footer').hide();
+			}
+		}
+	});
+	$(document).on('click', (event) => {
+		if(!desktopMode && isTyping) {
+			if($(event.target).closest('input').length == 0) {
+				isTyping = false;
+				$('.footer').show();
+			}
+		}
+	});
+	
 	/*Deactivate search mode*/
 	$('.search-ctrl').click(function() {
 		isSearching = false;
@@ -179,7 +203,7 @@ $(document).ready(() => {
 		}  else {
 			/* "Switch back to Android Mode" */
 			desktopMode = false;
-			if($('.panel-ctrl').css('display') == 'none') {
+			if($('.panel-ctrl').css('display') == 'none' && !isSearching) {
 				$(".panel-ctrl").show();
 			}
 			currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.static-hdr').show() : $('.static-hdr').hide();
@@ -232,12 +256,10 @@ $(document).ready(() => {
 		}
 
 		if($(this).attr('id') == 'sr-cw') {
-			setTimeout(function(){
-				$('.header-search').closest('div').focus();
-				setTimeout(() => {
-					$('.header-search').focus();
-				},10000);
-			});
+			$('.header-search').closest('div').focus();
+			setTimeout(() => {
+				$('.header-search').focus();
+			}, 10000);
 			return;
 		}
 		//reset navigation to top of page
@@ -291,4 +313,24 @@ $(document).ready(() => {
 	for (let i = 0; i < 5; i++) {
 		$('.side-panel p').append(tmp + '<br>');	
 	};
+
+	(function(window, undefined){
+		let State = History.getState();
+		History.log('initial:', State.data, State.title, State.url);
+		console.log('initial:', State.data, State.title, State.url);
+
+		History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
+			// Log the State
+			let State = History.getState(); // Note: We are using History.getState() instead of event.state
+			History.log('statechange:', State.data, State.title, State.url);
+			console.log('statechange:', State.data, State.title, State.url);
+		});
+
+		//History.pushState({state:2,rand:Math.random()}, "State 2", "?state=2");
+
+		$('#pp-cw').click(() => {
+			History.pushState({state:2,rand:Math.random()}, "State 2", "?state=2"); // logs {state:2,rand:"some random value"}, "State 2", "?state=2"',
+		});
+	})(window);
+	
 });

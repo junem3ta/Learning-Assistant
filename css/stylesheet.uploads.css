@@ -294,12 +294,15 @@
 }
 
 .bg-success {
+	display: block;
     background-color: #d2f9d2;    
     border: 1px solid #d2f9d2ff;
 }
 
 .bg-error {
-    background-color: #f9d2d2;
+    display: block;
+    background-color: #f9d2d2;   
+    border: 1px solid #a11212;
 }
 
 .as-error {
