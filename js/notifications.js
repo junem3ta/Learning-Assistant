@@ -1,4 +1,4 @@
-notifications = [
+let notifications = [
     {
         "id": "signup-n",
         "name": "eRead Account",
@@ -13,10 +13,8 @@ notifications = [
         "state": "unopened", /* label = 'new' */
         "msg": "Do you have ebooks that you've found useful in the past, and that might be beneficial to others? Contribute and have your profile published on the <em>Hall of Fame</em>!"
     }
-]
-
-
-let currentTimeStamp = '',
+],
+currentTimeStamp = '',
 renderNotifications = (t, notificationsObj) => {
     $('.n, .a-n').text(notifications.length);
     if(currentTimeStamp === t) {
@@ -51,6 +49,16 @@ renderNotifications = (t, notificationsObj) => {
         }
         $('.n-listview').listview().listview('refresh');
     }
+},
+activateDelN = () => {
+    $(document).on('click', '.del-n', (event) => {
+        $('.u-loader')[0].click();
+        $('.n-listview').empty();
+        notifications.splice(+$(event.target).attr('nindex'), 1);
+        let timestamp =  new Date().toDateString();
+        renderNotifications(timestamp, notifications);  
+        $.mobile.loading( "hide" );
+    });
 };
 
 $(document).ready(() => {
@@ -58,11 +66,5 @@ $(document).ready(() => {
     let timestamp =  new Date().toDateString();
     renderNotifications(timestamp, notifications);    
     $('.ui-listview').listview().listview('refresh');
-    $(document).on('click', '.del-n', (event) => {
-        $('.u-loader')[0].click();
-        $('.n-listview').empty();
-        notifications.splice(+$(event.target).attr('nindex'), 1);
-        renderNotifications(timestamp, notifications);  
-        $.mobile.loading( "hide" );
-    });
+    activateDelN();
 });

@@ -1,7 +1,15 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
 /* eslint-disable no-undef */
 
-let desktopMode, currentCW, aMetadataInput = true, _l = console.log, _o = (e) => {return JSON.stringify(e);}
+let desktopMode, 
+currentCW, 
+aMetadataInput = true, 
+_l = console.log, 
+_o = (e) => { return JSON.stringify(e); },
+TS1 = () => {
+	window.history.pushState( { foo: "bar" }, "Title", "?cw=pp-cw" );
+	window.history.pushState( { foo: "bar" }, "Title", "?cw=ua-cw" );
+};
 
 $(document).ready(() => {
 	/* Default Global VARS */
@@ -314,23 +322,62 @@ $(document).ready(() => {
 		$('.side-panel p').append(tmp + '<br>');	
 	};
 
-	(function(window, undefined){
-		let State = History.getState();
-		History.log('initial:', State.data, State.title, State.url);
-		console.log('initial:', State.data, State.title, State.url);
+	/* $( window ).on( "navigate", function( event, data ) {
+		_l( event, _o(data.state) );
+	});
 
-		History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
-			// Log the State
-			let State = History.getState(); // Note: We are using History.getState() instead of event.state
-			History.log('statechange:', State.data, State.title, State.url);
-			console.log('statechange:', State.data, State.title, State.url);
+	$(window).on('popstate', function() {
+		_l('State change');
+		//window.location.reload();
+	}); */
+
+	$('#ua-cw').click(() => {
+		window.history.pushState( 
+			{ user: user }, 
+			"", 
+			"?cw=ua-cw" );
+	});	
+
+	$( window ).on( "navigate", function( event, data ) {
+		_l('0', document.readyState);
+		/* 
+			$(document).ready(() => {
+				_l('Doc ready, NoInQueue: 1');
+			});
+			$(window).on('load', () => {
+				_l("$(window).on('load', () => {}) NoInQueue: 2", );
+			});
+		*/
+		
+		
+		let ready = (callback) => {
+			// in case the document is already rendered
+			if (document.readyState != 'loading') {
+				_l('!loading, exec callback. document.readyState =', document.readyState);
+				//callback();
+			}
+			// modern browsers
+			else if (document.addEventListener) {
+				_l('Adding DOMContentLoaded event to document');
+				document.addEventListener('DOMContentLoaded', null /* callback */);
+			}
+			// IE <= 8
+			else document.attachEvent('onreadystatechange', function(){
+				_l('onreadystatechange, document.readystate =', document.readyState);
+				if (document.readyState=='complete') {
+					//callback();
+				}
+			});
+		};
+		
+		ready(function(){
+			// do something
 		});
+	});
+});
 
-		//History.pushState({state:2,rand:Math.random()}, "State 2", "?state=2");
-
-		$('#pp-cw').click(() => {
-			History.pushState({state:2,rand:Math.random()}, "State 2", "?state=2"); // logs {state:2,rand:"some random value"}, "State 2", "?state=2"',
-		});
-	})(window);
-	
+$( window ).on( "navigate", function( event, data ) {
+	$(document).on("pagecreate", "div[data-role=page]", function(event){
+		_l('pagecreate inside navigate');
+	});
 });
