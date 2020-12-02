@@ -18,7 +18,6 @@ currentTimeStamp = '',
 renderNotifications = (t, notificationsObj) => {
     $('.n, .a-n').text(notifications.length);
     if(currentTimeStamp === t) {
-        _l(0);
         for(let i = 0; i<notificationsObj.length; i++) {
             let n = $($('.n-tmpl')[0].content.cloneNode(true)),
             notification = notificationsObj[i];
