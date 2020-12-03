@@ -28,13 +28,76 @@
 		<script type="text/javascript" src="js/navigation.js"></script>
 	</head>
 	<body>
+		<!-- External Popups -->
+		<div data-history="false" data-role="popup" id="loginPopup" data-theme="a" class="ui-corner-all">
+			<form id="userLogin">
+				<div style="padding:10px 20px;">
+					<h3 style="text-align: center;">Sign in to your account</h3>
+					<label for="un" class="ui-hidden-accessible">Username:</label>
+					<input type="text" name="user" class="un" value="" placeholder="username" data-theme="a">
+					<label for="pw" class="ui-hidden-accessible">Password:</label>
+					<input type="password" name="pass" class="pw" value="" placeholder="password" data-theme="a">
+					<p class='v-u-log'>
+						<i class="fas fa-spinner fa-spin"></i>
+						<span class='p-h'></span>
+					</p>
+					<button type="submit" class="v-u ui-button ui-corner-all ui-shadow ui-button-b">
+						Sign in <span class="ui-icon ui-icon-check"></span>
+					</button>
+				</div>
+			</form>
+		</div>
+		<div data-history="false" data-role="popup" id="registerPopup" data-theme="a" class="ui-corner-all">
+			<form id="userSignup">
+				<div style="padding:10px 20px;">
+					<h3 style="text-align: center;">Create an eRead Account </h3>
+					<p class='c-u-guide'>
+						<i class="fas fa-info-circle"></i><br>
+						*: Required <br>
+						* Username must be at least 4 Characters long.
+					</p>
+					<div class="c-u-fn-wrapper ui-grid-a">
+						<div class="ui-block-a">
+							<input type="text" class="c-u-fn" placeholder="First Name *" data-clear-btn="true" />
+						</div>
+						<div class="ui-block-b">
+							<input type="text" class="c-u-ln" placeholder="Last Name *" data-clear-btn="true" />
+						</div>
+					</div>
+					<input type="text" class="c-u-un" value="" placeholder="username *" data-theme="a" data-clear-btn="true" />
+					<input type="email" class="c-u-email" value="" placeholder="Email Address *" data-clear-btn="true" />
+					<p class='c-u-log'>
+						<i class="fas fa-spinner fa-spin"></i>
+						<span class='p-h'></span>
+					</p>
+					<button type="submit" class="c-u ui-button ui-corner-all ui-shadow ui-button-b">
+						Register <span class="ui-icon ui-icon-check"></span>
+					</button>
+				</div>
+			</form>
+		</div>
+		<div data-history="false" data-role="popup" id="arPopup" data-theme="a" class="ui-corner-all">
+			<form id="account-recovery">
+				<div style="padding:10px 20px;">
+					<h3 style="text-align: center;">eRead | Account Recovery options.</h3>
+					<p>*: Required ⟶ Please provide the address you signed up with.</p>
+					<input type="email" class="r-a-email" placeholder="Your Email Address *" data-clear-btn="true" />
+					<p class='r-a-log'>
+						<i class="fas fa-spinner fa-spin"></i>
+						<span class='p-h'></span>
+					</p>
+					<button type="submit" class="r-a ui-button ui-corner-all ui-shadow ui-button-b">
+						Submit <span class="ui-icon ui-icon-check"></span>
+					</button>
+				</div>
+			</form>
+		</div>
+
 		<div data-role="page" id="page1" class="content-wrapper">
 			<!-- 
 				@AndroidSidepanel 
 				-- The Android side panel overlaps over the ui-content, thus it makes more sense 
-				to have the sidepanelwrapper placed in a fixed position outside of the ui-content.
-			-->
-			<!-- Android side panel -->
+				to have the sidepanelwrapper placed in a fixed position outside of the ui-content -->
 			<div class="side-panel-wrapper">
 				<div class="side-panel">
 					<p>
@@ -43,29 +106,10 @@
 					</p>
 				</div>
 			</div>
-
 			<div role="main" class="ui-content ">
-				<!-- @Templates: Template Markup for dynamic content -->
-				<!-- @Popup-basic -->
-				<template class='popupbasic-template'>
-					<a href="#loginPopup" data-rel="popup" data-position-to="window"
-						class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a" data-transition="pop">
-						Login
-					</a>
-					<div data-role="popup" id="loginPopup" data-theme="a" class="ui-corner-all">
-						<form id="userLogin">
-							<div style="padding:10px 20px;">
-								<h3 style="text-align: center;">eRead Account | Sign in</h3>
-								<label for="un" class="ui-hidden-accessible">Username:</label>
-								<input type="text" name="user" id="un" value="" placeholder="username" data-theme="a">
-								<label for="pw" class="ui-hidden-accessible">Password:</label>
-								<input type="password" name="pass" id="pw" value="" placeholder="password" data-theme="a">
-								<button type="submit" class="ui-button ui-corner-all ui-shadow ui-button-b">Sign in <span class="ui-icon ui-icon-check"></span></button>
-							</div>
-						</form>
-					</div>
-				</template>
-				<!-- @eb-metadata selects -->
+				<!-- 
+					@Templates: Template Markup for dynamic content 
+					@eb-metadata selects -->
 				<template class="default-s">
 					<option disabled>Select</option>
 					<option value=0>Null</option>
@@ -488,59 +532,12 @@
 											class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a popup-dpl-ctrl sn-ctrl-0" data-transition="pop">
 											Login
 										</a>
-										<div data-history="false" data-role="popup" id="loginPopup" data-theme="a" class="ui-corner-all">
-											<form id="userLogin">
-												<div style="padding:10px 20px;">
-													<h3 style="text-align: center;">Sign in to your account</h3>
-													<label for="un" class="ui-hidden-accessible">Username:</label>
-													<input type="text" name="user" class="un" value="" placeholder="username" data-theme="a">
-													<label for="pw" class="ui-hidden-accessible">Password:</label>
-													<input type="password" name="pass" class="pw" value="" placeholder="password" data-theme="a">
-													<p class='v-u-log'>
-														<i class="fas fa-spinner fa-spin"></i>
-														<span class='p-h'></span>
-													</p>
-													<button type="submit" class="v-u ui-button ui-corner-all ui-shadow ui-button-b">
-														Sign in <span class="ui-icon ui-icon-check"></span>
-													</button>
-												</div>
-											</form>
-										</div>
 									</div>
 									<div class="register-ctrl">
 										<a href="#registerPopup" data-rel="popup" data-position-to="window"
 											class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a popup-dpl-ctrl sn-ctrl-2" data-transition="pop">
 											Register
 										</a>
-										<div data-history="false" data-role="popup" id="registerPopup" data-theme="a" class="ui-corner-all">
-											<form id="userLogin">
-												<div style="padding:10px 20px;">
-													<h3 style="text-align: center;">Create an eRead Account </h3>
-													<p class='c-u-guide'>
-														<i class="fas fa-info-circle"></i><br>
-														*: Required <br>
-														* Username must be at least 6 Characters long.
-													</p>
-													<div class="c-u-fn-wrapper ui-grid-a">
-														<div class="ui-block-a">
-															<input type="text" class="c-u-fn" placeholder="First Name *" data-clear-btn="true" />
-														</div>
-														<div class="ui-block-b">
-															<input type="text" class="c-u-ln" placeholder="Last Name *" data-clear-btn="true" />
-														</div>
-													</div>
-													<input type="text" class="c-u-un" value="" placeholder="username *" data-theme="a" data-clear-btn="true" />
-													<input type="email" class="c-u-email" value="" placeholder="Email Address *" data-clear-btn="true" />
-													<p class='c-u-log'>
-														<i class="fas fa-spinner fa-spin"></i>
-														<span class='p-h'></span>
-													</p>
-													<button type="submit" class="c-u ui-button ui-corner-all ui-shadow ui-button-b">
-														Register <span class="ui-icon ui-icon-check"></span>
-													</button>
-												</div>
-											</form>
-										</div>
 									</div>
 								</div>
 							</div>
@@ -591,22 +588,6 @@
 												<span class='r-a-guide'>Having trouble signing in? Access account recovery options</span>
 												<a href="#arPopup" data-rel="popup" data-position-to="window">here.</a>
 											</p>
-										</div>
-										<div data-history="false" data-role="popup" id="arPopup" data-theme="a" class="ui-corner-all">
-											<form id="account-recovery">
-												<div style="padding:10px 20px;">
-													<h3 style="text-align: center;">eRead | Account Recovery options.</h3>
-													<p>*: Required ⟶ Please provide the address you signed up with.</p>
-													<input type="email" class="r-a-email" placeholder="Your Email Address *" data-clear-btn="true" />
-													<p class='r-a-log'>
-														<i class="fas fa-spinner fa-spin"></i>
-														<span class='p-h'></span>
-													</p>
-													<button type="submit" class="r-a ui-button ui-corner-all ui-shadow ui-button-b">
-														Submit <span class="ui-icon ui-icon-check"></span>
-													</button>
-												</div>
-											</form>
 										</div>
 									</div>
 									<div class="ui-block-c">

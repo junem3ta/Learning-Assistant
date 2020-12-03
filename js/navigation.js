@@ -12,6 +12,10 @@ renderHSW = () => {
 	.attr('aria-label', 'Start typing to view Suggestions.')
 	.attr('tabindex', 1); 
 },
+initializePopups = () => {
+	_l('initializing popups');
+	$('#loginPopup, #registerPopup, #arPopup').popup().enhanceWithin();
+},
 windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
 swHeight = windowHeight - 88, /* 56 + 32 (padding ) */
 /* let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0); */
@@ -269,13 +273,14 @@ resetElements = () => {
 };
 uiUpdates = () => {
 	renderHSW();
+	initializePopups();
 	$('.home-search').closest('div').addClass('nomargin noshadow');
 	/* Disable :focus styling, remove margin around search input fields*/
-	$("input").closest('div').addClass('noshadowI');
-	$('textarea').addClass('noshadowI');
+	$("input").closest('div').addClass('noshadow');
+	$('textarea').addClass('noshadow');
 	$(".header-search").closest('div').addClass('nomargin hsw-custom');
 	$('.home-search').closest('div').find('span.ui-icon-search').remove();
-	$('.pc-metadata-wrapper').removeClass('noshadowI');
+	$('.pc-metadata-wrapper').removeClass('noshadow');
 	/* manual switch */
 	if(!desktopMode) {
 		currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.static-hdr').show() : $('.static-hdr').hide();
