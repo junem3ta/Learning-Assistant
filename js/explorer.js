@@ -1,33 +1,22 @@
-/* eslint-disable no-redeclare */
-/* eslint-disable no-undef */
-$(document).ready(() => {
-    /* Explorer */
-	/* 
-		ECL = Explorer Container Level 
-		ecw = explorer-container-wrapper
-	*/
-
-	fsIndex = fsIndex['root'];
-	let currentECLSuffix = 1;
-	let currentPath = 'root';
-	let absPath = '';
-	
-	function renderECL1() {
-		/* Generate root folders */
-		let eCL1 = $('<div>',{class:'ecw ecl1'});
-		$('.explorer').append(eCL1);
-		/* Loop through root obj and print folder icons */
-		for(let entry in fsIndex) {
-			let folderId = entry;
-			let folderClass = 'folder-icon';
-			/* create folder-tile-wrapper and append folder-tile. add folder-tile-wrapper to ecl1 in explorer */
-			let ftw = $('<div>',{class:'folder-tile-wrapper'});
-			ftw.append($('<div>',{id:folderId,class:folderClass}).append($('<p>',{text:entry})));
-			$('.ecl1').append(ftw);			
-		}
+fsIndex = fsIndex['root'];
+let currentECLSuffix = 1,
+currentPath = 'root',
+absPath = '',
+renderECL1 = () => {
+	/* Generate root folders */
+	let eCL1 = $('<div>',{class:'ecw ecl1'});
+	$('.explorer').append(eCL1);
+	/* Loop through root obj and print folder icons */
+	for(let entry in fsIndex) {
+		let folderId = entry;
+		let folderClass = 'folder-icon';
+		/* create folder-tile-wrapper and append folder-tile. add folder-tile-wrapper to ecl1 in explorer */
+		let ftw = $('<div>',{class:'folder-tile-wrapper'});
+		ftw.append($('<div>',{id:folderId,class:folderClass}).append($('<p>',{text:entry})));
+		$('.ecl1').append(ftw);			
 	}
-	renderECL1(fsIndex);
-
+}, 
+bindExplorerEvents = () => {
 	/* Generic folder-icon click event for all folders */
 	$('.explorer').on('click', '.folder-icon', function() {
 		let currentECL = 'ecl' + currentECLSuffix;
@@ -44,17 +33,16 @@ $(document).ready(() => {
 		console.log("Updated to nextECL : " + nextECL);
 
 		/* parse targetId (fsIndex Obj keys) and generate nextFsIndexObject*/
-		let 
-			nextIndexObj, folderName;
+		let nextIndexObj, folderName;
 
 		if(targetId == 'BUST' || targetId == 'FSET' || targetId == 'FAHU' || targetId == 'FAES' || targetId == 'FRED') {
 			nextIndexObj = fsIndex[targetId];
 			folderName = targetId;
 		} else {
 			/* FSET-2014-2015 */
-			let 
-				pathArray = targetId.split('_');
-				tempIndexObj = fsIndex;
+			let pathArray = targetId.split('_'),
+			tempIndexObj = fsIndex;
+
 			folderName = pathArray[pathArray.length-1];
 			for(let i=0; i<pathArray.length; i++) {
 				tempIndexObj = tempIndexObj[pathArray[i]];
@@ -83,7 +71,7 @@ $(document).ready(() => {
 		$('.explorer-navigation').append(newDelimeter);
 		$('.explorer-navigation').append(newPathSection);
 
-		if(nextIndexObj['__files__']!=undefined && Object.keys(nextIndexObj).length == 2) {
+		if(nextIndexObj['__files__'] !== undefined && Object.keys(nextIndexObj).length == 2) {
 			/* Print Files */
 			absPath = nextIndexObj['path'].split('root/')[1];
 			let files = nextIndexObj['__files__'];
@@ -99,7 +87,7 @@ $(document).ready(() => {
 					)
 				);
 			$('#searchFiles').textinput().textinput('refresh');
-			$('#searchFiles').closest('div').addClass('noshadowI search-files');
+			$('#searchFiles').closest('div').addClass('noshadow search-files');
 			/* .append(
 				`<input class="search-files" data-type="search" id="searchFiles" placeholder="Search Files">`) 
 				$('.'+nextECL).append($('<p>',{text:'Files',class:'files-ecw-hdr'}));
@@ -147,7 +135,6 @@ $(document).ready(() => {
 			console.log('No files found in current folder.');
 		}
 	});
-
 	/* Generic path-section-link for all path-sections */
 	$('.explorer-navigation').on('click', '.path-section-link', function() {
 		/* Display previous ecl wrapper */
@@ -203,15 +190,23 @@ $(document).ready(() => {
 			textonly = !!$this.jqmData( "textonly" );
 			html = $this.jqmData( "html" ) || "";
 		$.mobile.loading( "show", {
-				text: msgText,
-				textVisible: textVisible,
-				theme: theme,
-				textonly: textonly,
-				html: html
+			text: msgText,
+			textVisible: textVisible,
+			theme: theme,
+			textonly: textonly,
+			html: html
 		});
 	})
 	.on( "click", ".hide-page-loading-msg", function() {
 		$.mobile.loading( "hide" );
 	});
+};
+$(document).ready(() => {
+	/* Explorer 
+		ECL = Explorer Container Level 
+		ecw = explorer-container-wrapper
+	*/
+	renderECL1(fsIndex);
+	bindExplorerEvents();
 });
 

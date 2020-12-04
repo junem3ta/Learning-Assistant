@@ -14,7 +14,7 @@ renderHSW = () => {
 },
 initializePopups = () => {
 	_l('initializing popups');
-	$('#loginPopup, #registerPopup, #arPopup').popup().enhanceWithin();
+	$('[data-role="popup"]').popup().enhanceWithin();
 },
 windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
 swHeight = windowHeight - 88, /* 56 + 32 (padding ) */
@@ -313,10 +313,12 @@ $(document).ready(() => {
 	uiUpdates();	
 });
 
+// 'onpopstate' optimization.
 $( window ).on( "navigate", ( event, data ) => {
 	$(document).on("pagecreate", "div[data-role=page]", (e) => {
 		if(window.location.search.length) {
 			let timestamp = new Date().toDateString();
+			// navigation.js
 			/* Function calls */
 			responsiveUIHandler();
 			/* Events */
@@ -324,7 +326,11 @@ $( window ).on( "navigate", ( event, data ) => {
 			/* Direct UI Updates */
 			resetElements();
 			uiUpdates();
-			renderNotifications(timestamp, notifications); 
+			initializePDFViewer();
+			renderNotifications(timestamp, notifications);
+			// explorer
+			renderECL1(fsIndex);
+			bindExplorerEvents();
 		}		
 	});
 });
