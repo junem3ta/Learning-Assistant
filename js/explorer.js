@@ -4,7 +4,7 @@ currentPath = 'root',
 absPath = '',
 renderECL1 = () => {
 	/* Generate root folders */
-	let eCL1 = $('<div>',{class:'ecw ecl1'});
+	let eCL1 = $('<div>', {class:'ecw ecl1'});
 	$('.explorer').append(eCL1);
 	/* Loop through root obj and print folder icons */
 	for(let entry in fsIndex) {
@@ -201,6 +201,7 @@ bindExplorerEvents = () => {
 		$.mobile.loading( "hide" );
 	});
 };
+
 $(document).ready(() => {
 	/* Explorer 
 		ECL = Explorer Container Level 

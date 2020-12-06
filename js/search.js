@@ -1,13 +1,14 @@
-$(document).ready(() => {
-	let resetActiveLinks = () => {
-		$('.content-wrapper-ctrl').removeClass('active-cw-ctrl');
-		$('.sub-nav div a').removeClass('active-sn-ctrl');
-	};
-	/* Generate search index */
+let resetActiveLinks = () => {
+	$('.content-wrapper-ctrl').removeClass('active-cw-ctrl');
+	$('.sub-nav div a').removeClass('active-sn-ctrl');
+},
+directUIUpdates = () => {
 	_l('Loading File-Server Search Index');
 	$('.header-search').attr('placeholder', 'Loading FsIndex...');
 	$('.header-search').closest('div').addClass('ui-state-disabled');
 	$('.loader')[0].click();
+},
+bindEvents = () => {
 	$('.sr-dt').load('ext/index/fsindex.html #index', () => {
 		_l('DT, Done!');
 		$('.sr').load('ext/index/fsindex.html #index', () => {
@@ -51,4 +52,10 @@ $(document).ready(() => {
 			currentCW = 'sr-cw';
 		}
 	});
+};
+
+$(document).ready(() => {
+	/* Generate search index */
+	directUIUpdates();
+	bindEvents();
 });

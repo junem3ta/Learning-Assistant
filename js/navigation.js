@@ -318,7 +318,7 @@ $( window ).on( "navigate", ( event, data ) => {
 	$(document).on("pagecreate", "div[data-role=page]", (e) => {
 		if(window.location.search.length) {
 			let timestamp = new Date().toDateString();
-			// navigation.js
+			// navigation
 			/* Function calls */
 			responsiveUIHandler();
 			/* Events */
@@ -331,6 +331,9 @@ $( window ).on( "navigate", ( event, data ) => {
 			// explorer
 			renderECL1(fsIndex);
 			bindExplorerEvents();
+			// search
+			directUIUpdates();
+			bindEvents();
 		}		
 	});
 });
