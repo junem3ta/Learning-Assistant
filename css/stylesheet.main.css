@@ -18,7 +18,7 @@ a {
 	height: calc(100% - 1px) !important;
 }
 
-.ui-page-theme-a .ui-focus.noshadowI {
+.ui-page-theme-a .ui-focus.noshadow, .ui-focus.noshadow {
 	border: 1px solid #888;
 	transition: border .5s ease-in-out;
 }
@@ -131,17 +131,9 @@ a {
 	-webkit-box-shadow: none !important;
 	box-shadow: none !important;
 }
-
 .noradius {
 	border-radius: 0 !important;
 }
-
-.noshadowI {
-	-moz-box-shadow: none !important;
-	-webkit-box-shadow: none !important;
-	box-shadow: none !important;
-}
-
 .nomargin {
 	margin: 0 !important;
 }

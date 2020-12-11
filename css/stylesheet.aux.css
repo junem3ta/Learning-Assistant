@@ -23,7 +23,8 @@
 }
 .n-cw {
     overflow-x: hidden;
-	overflow-y: overlay;
+	overflow-y: auto;
+    padding: 0 1em;
 }
 
 iframe {

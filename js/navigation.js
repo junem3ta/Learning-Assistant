@@ -1,21 +1,9 @@
-/* eslint-disable no-mixed-spaces-and-tabs */
-/* eslint-disable no-undef */
-
-let desktopMode, currentCW, aMetadataInput = true, _l = console.log, _o = (e) => {return JSON.stringify(e);}
-
-$(document).ready(() => {
-	/* Default Global VARS */
-	desktopMode = false;
-	let windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-	let swHeight = windowHeight - 88; /* 56 + 32 (padding ) */
-	/*let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0); */
-	let isPanelOpen = false,
-	isSearching = false;
-	isTyping = false;
-
-	currentCW = "pp-cw";
-
-	$('.header-search-wrapper').append(
+let desktopMode = false,
+aMetadataInput = true, 
+_l = console.log, 
+_o = (e) => { return JSON.stringify(e); },
+renderHSW = () => {
+	$('.header-search-wrapper').html('').append(
 		$('<input>', {class: 'header-search', type: 'text', id: 'hsiSearch', 'data-type': 'search', placeholder: 'Search past papers, e-books'})
 	);
 	$('.header-search').textinput().enhanceWithin().textinput('refresh');
@@ -23,61 +11,119 @@ $(document).ready(() => {
 	.addClass('tooltipped tooltipped-s border p-2 mb-2 mr-2 float-left')
 	.attr('aria-label', 'Start typing to view Suggestions.')
 	.attr('tabindex', 1); 
+},
+initializePopups = () => {
+	_l('initializing popups');
+	$('[data-role="popup"]').popup().enhanceWithin();
+},
+windowHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0),
+swHeight = windowHeight - 88, /* 56 + 32 (padding ) */
+/* let w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0); */
+isPanelOpen = false,
+isSearching = false,
+isTyping = false,
+currentCW = "pp-cw",
+/* Hide Android Searchbar on Scrolldown, show on Scrollup */
+lastScrollTop = 0,
+delta = 5,
+hasScrolled = () => {
+	let st = $(this).scrollTop();
+	if(Math.abs(lastScrollTop - st) <= delta) { 
+		return;
+	} 
+	/* Scrollup*/
+	if (st < lastScrollTop) {
+		if(st < 5 && $('.home-search-wrapper').hasClass('hs-wrapper-up')) {
+			$('.home-search-wrapper').removeClass('hs-wrapper-up');
+			$('.ui-content').removeClass('ui-content-up');
+			$('.panel-ctrl-wrapper').removeClass('pcw-up');
+		} else if(st < 46 && $('.home-search-wrapper').hasClass('static-hdr-up')) {
+			$('.home-search-wrapper').removeClass('static-hdr-up');
+		} else if (st > 46 && !$('.home-search-wrapper').hasClass('hs-wrapper-up')){
+			$('.home-search-wrapper').removeClass('static-hdr-up');
+			$('.home-search-wrapper').addClass('hs-wrapper-up');
+		$('.panel-ctrl-wrapper').addClass('pcw-up');
+			$('.ui-content').addClass('ui-content-up');
+		}
+	}
+	/* Scrolldown 
+		Ref: Sticky header, w3schools.
+	*/
+	if(st > lastScrollTop) {
+		if(window.pageYOffset > Math.ceil($('.static-hdr').offset().top)) {
+			$('.home-search-wrapper').addClass('static-hdr-up');
+		}	
+	}
+	lastScrollTop = st;
+}, 
+responsiveUIHandler = () => {
+	if($('.side-panel-wrapper').css('display') == 'none') {
+		/* "Switch to Desktop Mode" */
+		desktopMode = true;
 
-	responsiveUIHandler();
+		$('.content-wrapper').attr('style', 'padding-bottom: 0 !important;');
+		setTimeout(function() {
+			$('.content-wrapper').attr('style', 'padding-bottom: 0 !important;');
+		},5000);
 
-	/* Hide Android Searchbar on Scrolldown, show on Scrollup*/
-	/* let didScroll; */
-	let lastScrollTop = 0;
-	let delta = 5;
-	/* let navbarHeight = 88 */ /* 91 */ /*46 without static header *//* ; */
-	$(window).scroll(function(){
+		if(isSearching) {
+			isSearching = false;
+			$('.home-search').closest('div').removeClass('noshadow');
+			$('.home-search-wrapper').removeClass('hs-wrapper-search-mode');
+			$('.home-search-wrapper').attr('style', 'height: auto !important;');
+			$('.ui-content').removeClass('ui-content-search-mode');
+			$('.panel-ctrl-wrapper').removeClass('pc-wrapper-search-mode');
+			$('.home-search').removeClass('hs-search-mode');
+			$('.search-ctrl').hide();
+			$('.search-window').hide();
+			$('body').removeClass("no-scroll");
+			$('.static-hdr').show();
+		}
+		if(isPanelOpen) {
+			$('.side-panel-wrapper').animate({
+				left: '-100%'
+			});
+			isPanelOpen = false;
+			$('body').removeClass("no-scroll");
+		}
+	}  else {
+		/* "Switch back to Android Mode" */
+		desktopMode = false;
+		if($('.panel-ctrl').css('display') == 'none' && !isSearching) {
+			$(".panel-ctrl").show();
+		}
+		currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.static-hdr').show() : $('.static-hdr').hide();
+		currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.home-search-wrapper').show() : $('.home-search-wrapper').hide();
+	}
+
+	/* Track eBooks uploads metadata input mode */
+	if($('.metadata-wrapper').css('display') == 'none') {
+		aMetadataInput = false;
+	} else {
+		aMetadataInput = true;
+	}
+	updateMetadataGuide();
+},
+resetActiveLinks = () => {
+	$('.content-wrapper-ctrl').removeClass('active-cw-ctrl');
+	$('.sub-nav div a').removeClass('active-sn-ctrl');
+},
+tmp = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum. Pellentesque cursus mauris purus, auctor commodo mi ullamcorper nec. Donec semper mattis eros, nec condimentum ante sollicitudin quis. Etiam orci sem, porttitor ut tellus nec, blandit posuere urna. Proin a arcu non lacus pretium faucibus. Aliquam sed est porttitor, ullamcorper urna nec, vehicula lorem. Cras porttitor est lorem, non venenatis diam convallis congue.',
+bindEvents = () => {
+	$(window).scroll(() => {
 		if(currentCW == "eb-cw" || currentCW == "pp-cw") {
 			hasScrolled(); 
 		}
-		//didScroll = true;
 	});
-	/* setInterval(function() {if (didScroll && !isSearching) {hasScrolled();didScroll = false;}}, 250); */
-	function hasScrolled() {
-		let st = $(this).scrollTop();
-		if(Math.abs(lastScrollTop - st) <= delta) { 
-			return;
-		} 
-		/* Scrollup*/
-		if (st < lastScrollTop) {
-			if(st < 5 && $('.home-search-wrapper').hasClass('hs-wrapper-up')) {
-				$('.home-search-wrapper').removeClass('hs-wrapper-up');
-				$('.ui-content').removeClass('ui-content-up');
-        		$('.panel-ctrl-wrapper').removeClass('pcw-up');
-			} else if(st < 46 && $('.home-search-wrapper').hasClass('static-hdr-up')) {
-				$('.home-search-wrapper').removeClass('static-hdr-up');
-			} else if (st > 46 && !$('.home-search-wrapper').hasClass('hs-wrapper-up')){
-				$('.home-search-wrapper').removeClass('static-hdr-up');
-				$('.home-search-wrapper').addClass('hs-wrapper-up');
-            $('.panel-ctrl-wrapper').addClass('pcw-up');
-				$('.ui-content').addClass('ui-content-up');
-			}
-		}
-		/* Scrolldown 
-			Ref: Sticky header, w3schools.
-		*/
-		if(st > lastScrollTop) {
-			if(window.pageYOffset > Math.ceil($('.static-hdr').offset().top)) {
-				$('.home-search-wrapper').addClass('static-hdr-up');
-			}	
-		}
-   		lastScrollTop = st;
-	} 
-
 	/*Sidepanel controllers*/
-	 $(document).on('swiperight', function() {
-			if(!isPanelOpen && !isSearching) {
-				$('.side-panel-wrapper').animate({
-					left: '0'
-				});
-				$('body').addClass("no-scroll");
-				isPanelOpen = true;
-			}
+	$(document).on('swiperight', function() {
+		if(!isPanelOpen && !isSearching) {
+			$('.side-panel-wrapper').animate({
+				left: '0'
+			});
+			$('body').addClass("no-scroll");
+			isPanelOpen = true;
+		}
     }).on('swipeleft',function(){
 		if(isPanelOpen) {
 			$('.side-panel-wrapper').animate({
@@ -111,7 +157,6 @@ $(document).ready(() => {
 			}
 		}		
 	});
-	$('.home-search').closest('div').addClass('nomargin noshadow');
 	/*Activate search mode*/
 	$(document).on('focus', '.home-search', function () {
 		isSearching = true;
@@ -144,7 +189,6 @@ $(document).ready(() => {
 			}
 		}
 	});
-	
 	/*Deactivate search mode*/
 	$('.search-ctrl').click(function() {
 		isSearching = false;
@@ -165,96 +209,16 @@ $(document).ready(() => {
 			$('.panel-ctrl').show();
 		}
 	});
-
 	/* Detect resize and apply appropriate responsive styles */
 	$(window).resize(function() {
 		responsiveUIHandler();
 	});
-	function responsiveUIHandler() {
-		if($('.side-panel-wrapper').css('display') == 'none') {
-			/* "Switch to Desktop Mode" */
-			desktopMode = true;
-
-			$('.content-wrapper').attr('style', 'padding-bottom: 0 !important;');
-			setTimeout(function() {
-				$('.content-wrapper').attr('style', 'padding-bottom: 0 !important;');
-			},5000);
-
-			if(isSearching) {
-				isSearching = false;
-				$('.home-search').closest('div').removeClass('noshadow');
-				$('.home-search-wrapper').removeClass('hs-wrapper-search-mode');
-				$('.home-search-wrapper').attr('style', 'height: auto !important;');
-				$('.ui-content').removeClass('ui-content-search-mode');
-				$('.panel-ctrl-wrapper').removeClass('pc-wrapper-search-mode');
-				$('.home-search').removeClass('hs-search-mode');
-				$('.search-ctrl').hide();
-				$('.search-window').hide();
-				$('body').removeClass("no-scroll");
-				$('.static-hdr').show();
-			}
-			if(isPanelOpen) {
-				$('.side-panel-wrapper').animate({
-					left: '-100%'
-				});
-				isPanelOpen = false;
-				$('body').removeClass("no-scroll");
-			}
-		}  else {
-			/* "Switch back to Android Mode" */
-			desktopMode = false;
-			if($('.panel-ctrl').css('display') == 'none' && !isSearching) {
-				$(".panel-ctrl").show();
-			}
-			currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.static-hdr').show() : $('.static-hdr').hide();
-			currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.home-search-wrapper').show() : $('.home-search-wrapper').hide();
-		}
-
-		/* Track eBooks uploads metadata input mode */
-		if($('.metadata-wrapper').css('display') == 'none') {
-			aMetadataInput = false;
-		} else {
-			aMetadataInput = true;
-		}
-		updateMetadataGuide();
-	}
-
-	/* Disable focus styling and remove margin around search input fields*/
-	$("input").closest('div').addClass('noshadowI');
-	$('textarea').addClass('noshadowI');
-	$(".header-search").closest('div').addClass('nomargin hsw-custom');
-	$('.home-search').closest('div').find('span.ui-icon-search').remove();
-	/* closest usage? */
-	$('.pc-metadata-wrapper').removeClass('noshadowI');
-	/*remove blue outline on clicking jqm ui-input-clear button??*/
-  
-	/* 
-		Display pp-cw/eb-cw static header accordingly 
-		Display search option accordingly
-		Reset _GLOBAL VAR_ currentCW to "pp-cw" and delete the following when deploying.
-	*/
-	/* manual switch */
-	if(!desktopMode) {
-		currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.static-hdr').show() : $('.static-hdr').hide();
-		currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.home-search-wrapper').show() : $('.home-search-wrapper').hide();	
-	}
-	
-	$('.content').removeClass('active-content-wrapper').hide();
-	$('.'+currentCW).addClass('active-content-wrapper').show();
-	/* end; manual switch */
-
-	function resetActiveLinks() {
-		$('.content-wrapper-ctrl').removeClass('active-cw-ctrl');
-		$('.sub-nav div a').removeClass('active-sn-ctrl');
-	}
-
 	$('.content-wrapper-ctrl').click(function(e) {
 		/*Only target Desktop content-wrapper-controllers*/
 		if($(this).prop("nodeName")=="DIV") {
 			resetActiveLinks();
 			$(this).addClass("active-cw-ctrl");
 		}
-
 		if($(this).attr('id') == 'sr-cw') {
 			$('.header-search').closest('div').focus();
 			setTimeout(() => {
@@ -276,7 +240,6 @@ $(document).ready(() => {
 			//display search option accordingly
 			target == 'pp-cw' || target == 'eb-cw' ? $('.home-search-wrapper').show() : $('.home-search-wrapper').hide();
 		}
-
 		if($(this).hasClass('ua-dpl-ctrl')){
 			resetActiveLinks();
 			$('.cw-ctrls-wrapper #'+$(this).attr('id')).addClass('active-cw-ctrl');
@@ -294,43 +257,83 @@ $(document).ready(() => {
 		resetActiveLinks();
 		$(this).addClass('active-sn-ctrl');
 	});
-	for(let i=0; i<3; i+=2) {
-        /* add unique id to side panel sub-nav login controls */
-       $($('.sub-nav div').children()[i]).attr('id','sn-ctrl-'+i);
-    }
 	/* link ua UI popup ctrls to sidepanel navigation */
 	$(document).on('click','.popup-dpl-ctrl',function(){
 		let _c = $(this).attr('class').split(' ');
 		resetActiveLinks();
 		$('.sub-nav div #'+_c[_c.length-1]).addClass('active-sn-ctrl');
 	 });
-
 	$('#modrLogin, #contributorLogin').submit(function(){
 		return false;
-	});
-	
-	let tmp = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse accumsan blandit fermentum. Pellentesque cursus mauris purus, auctor commodo mi ullamcorper nec. Donec semper mattis eros, nec condimentum ante sollicitudin quis. Etiam orci sem, porttitor ut tellus nec, blandit posuere urna. Proin a arcu non lacus pretium faucibus. Aliquam sed est porttitor, ullamcorper urna nec, vehicula lorem. Cras porttitor est lorem, non venenatis diam convallis congue.';
+	});	
+},
+resetElements = () => {
+	_l('resetting n-listview');
+	$('.n-listview').html('');
+};
+uiUpdates = () => {
+	renderHSW();
+	initializePopups();
+	$('.home-search').closest('div').addClass('nomargin noshadow');
+	/* Disable :focus styling, remove margin around search input fields*/
+	$("input").closest('div').addClass('noshadow');
+	$('textarea').addClass('noshadow');
+	$(".header-search").closest('div').addClass('nomargin hsw-custom');
+	$('.home-search').closest('div').find('span.ui-icon-search').remove();
+	$('.pc-metadata-wrapper').removeClass('noshadow');
+	/* manual switch */
+	if(!desktopMode) {
+		currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.static-hdr').show() : $('.static-hdr').hide();
+		currentCW == 'pp-cw' || currentCW == 'eb-cw' ? $('.home-search-wrapper').show() : $('.home-search-wrapper').hide();	
+	}	
+	$('.content').removeClass('active-content-wrapper').hide();
+	$('.'+currentCW).addClass('active-content-wrapper').show();
+	/* end; manual switch */
+	/* add unique id to side panel sub-nav login controls */
+	for(let i=0; i<3; i+=2) {
+       $($('.sub-nav div').children()[i]).attr('id','sn-ctrl-'+i);
+	}
+	/* Temp. placeholder text for android sidebar */
 	for (let i = 0; i < 5; i++) {
 		$('.side-panel p').append(tmp + '<br>');	
 	};
+},
+TS1 = () => {
+	window.history.pushState( { foo: "bar" }, "Title", "?cw=pp-cw" );
+	window.history.pushState( { foo: "bar" }, "Title", "?cw=ua-cw" );
+	window.history.pushState( { foo: "bar" }, "Title", "?cw=n-cw" );
+};
 
-	(function(window, undefined){
-		let State = History.getState();
-		History.log('initial:', State.data, State.title, State.url);
-		console.log('initial:', State.data, State.title, State.url);
+$(document).ready(() => {
+	/* Function calls */
+	responsiveUIHandler();
+	/* Events */
+	bindEvents();
+	/* Direct UI Updates */
+	uiUpdates();	
+});
 
-		History.Adapter.bind(window,'statechange',function(){ // Note: We are using statechange instead of popstate
-			// Log the State
-			let State = History.getState(); // Note: We are using History.getState() instead of event.state
-			History.log('statechange:', State.data, State.title, State.url);
-			console.log('statechange:', State.data, State.title, State.url);
-		});
-
-		//History.pushState({state:2,rand:Math.random()}, "State 2", "?state=2");
-
-		$('#pp-cw').click(() => {
-			History.pushState({state:2,rand:Math.random()}, "State 2", "?state=2"); // logs {state:2,rand:"some random value"}, "State 2", "?state=2"',
-		});
-	})(window);
-	
+// 'onpopstate' optimization.
+$( window ).on( "navigate", ( event, data ) => {
+	$(document).on("pagecreate", "div[data-role=page]", (e) => {
+		if(window.location.search.length) {
+			let timestamp = new Date().toDateString();
+			// navigation
+			/* Function calls */
+			responsiveUIHandler();
+			/* Events */
+			bindEvents();
+			/* Direct UI Updates */
+			resetElements();
+			uiUpdates();
+			initializePDFViewer();
+			renderNotifications(timestamp, notifications);
+			// explorer
+			renderECL1(fsIndex);
+			bindExplorerEvents();
+			// search
+			directUIUpdates();
+			bindEvents();
+		}		
+	});
 });
