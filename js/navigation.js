@@ -1,8 +1,9 @@
 let desktopMode = false,
+onNavHSID = null,
 aMetadataInput = true, 
 _l = console.log, 
 _o = (e) => { return JSON.stringify(e); },
-renderHSW = () => {
+renderHSW = (id) => {
 	$('.header-search-wrapper').html('').append(
 		$('<input>', {class: 'header-search', type: 'text', id: 'hsiSearch', 'data-type': 'search', placeholder: 'Search past papers, e-books'})
 	);
@@ -11,6 +12,11 @@ renderHSW = () => {
 	.addClass('tooltipped tooltipped-s border p-2 mb-2 mr-2 float-left')
 	.attr('aria-label', 'Start typing to view Suggestions.')
 	.attr('tabindex', 1); 
+
+	if(id) {
+		onNavHSID = 'hsiSearch-' + id;
+		$($('.header-search')[$('.header-search').length - 1]).attr('id', onNavHSID);
+	};
 },
 initializePopups = () => {
 	_l('initializing popups');
@@ -266,13 +272,13 @@ bindEvents = () => {
 	$('#modrLogin, #contributorLogin').submit(function(){
 		return false;
 	});	
+
 },
 resetElements = () => {
 	_l('resetting n-listview');
 	$('.n-listview').html('');
 };
 uiUpdates = () => {
-	renderHSW();
 	initializePopups();
 	$('.home-search').closest('div').addClass('nomargin noshadow');
 	/* Disable :focus styling, remove margin around search input fields*/
@@ -309,7 +315,8 @@ $(document).ready(() => {
 	responsiveUIHandler();
 	/* Events */
 	bindEvents();
-	/* Direct UI Updates */
+	/* Direct UI Updates */	
+	renderHSW();
 	uiUpdates();	
 });
 
@@ -325,6 +332,7 @@ $( window ).on( "navigate", ( event, data ) => {
 			bindEvents();
 			/* Direct UI Updates */
 			resetElements();
+	        renderHSW(Math.random() * 1000);
 			uiUpdates();
 			initializePDFViewer();
 			renderNotifications(timestamp, notifications);
@@ -333,7 +341,8 @@ $( window ).on( "navigate", ( event, data ) => {
 			bindExplorerEvents();
 			// search
 			directUIUpdates();
-			bindEvents();
+			bindSearchEvents();
+			loadLastSR(onNavHSID);
 		}		
 	});
 });
