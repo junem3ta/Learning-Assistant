@@ -3,20 +3,22 @@ onNavHSID = null,
 aMetadataInput = true, 
 _l = console.log, 
 _o = (e) => { return JSON.stringify(e); },
-renderHSW = (id) => {
-	$('.header-search-wrapper').html('').append(
+updateHS = (id) => {
+	/* $('.header-search-wrapper').html('').append(
 		$('<input>', {class: 'header-search', type: 'text', id: 'hsiSearch', 'data-type': 'search', placeholder: 'Search past papers, e-books'})
-	);
+	); 
 	$('.header-search').textinput().enhanceWithin().textinput('refresh');
-	$('.header-search').closest('div')
-	.addClass('tooltipped tooltipped-s border p-2 mb-2 mr-2 float-left')
-	.attr('aria-label', 'Start typing to view Suggestions.')
-	.attr('tabindex', 1); 
-
-	if(id) {
+	*/
+	$(document).on("pagecreate", "div[data-role=page]", () => {
+		_l($('.header-search').closest('div'));
+		$('.header-search').closest('div').addClass('tooltipped tooltipped-s border p-2 mb-2 mr-2 float-left')
+			.attr('aria-label', 'Start typing to view Suggestions.')
+			.attr('tabindex', 1); 
+	});	
+	/* if(id) {
 		onNavHSID = 'hsiSearch-' + id;
 		$($('.header-search')[$('.header-search').length - 1]).attr('id', onNavHSID);
-	};
+	}; */
 },
 initializePopups = () => {
 	_l('initializing popups');
@@ -310,19 +312,20 @@ TS1 = () => {
 	window.history.pushState( { foo: "bar" }, "Title", "?cw=n-cw" );
 };
 
+updateHS();
+
 $(document).ready(() => {
 	/* Function calls */
 	responsiveUIHandler();
 	/* Events */
 	bindEvents();
 	/* Direct UI Updates */	
-	renderHSW();
 	uiUpdates();	
 });
 
 // 'onpopstate' optimization.
 $( window ).on( "navigate", ( event, data ) => {
-	$(document).on("pagecreate", "div[data-role=page]", (e) => {
+	$(document).on("pagecreate", "div[data-role=page]", () => {
 		if(window.location.search.length) {
 			let timestamp = new Date().toDateString();
 			// navigation
@@ -332,7 +335,7 @@ $( window ).on( "navigate", ( event, data ) => {
 			bindEvents();
 			/* Direct UI Updates */
 			resetElements();
-	        renderHSW(Math.random() * 1000);
+	        updateHS(Math.random() * 1000);
 			uiUpdates();
 			initializePDFViewer();
 			renderNotifications(timestamp, notifications);
@@ -342,7 +345,7 @@ $( window ).on( "navigate", ( event, data ) => {
 			// search
 			directUIUpdates();
 			bindSearchEvents();
-			loadLastSR(onNavHSID);
+			loadSI();
 		}		
 	});
 });

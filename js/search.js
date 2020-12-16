@@ -4,35 +4,7 @@ let directUIUpdates = () => {
 	$('.header-search').closest('div').addClass('ui-state-disabled');
 	$('.loader')[0].click();
 },
-loadLastSR = (id) => {
-	_l('Loading last SR');
-	$($('.sr-dt')[$('.sr-dt').length - 1]).load('ext/index/fsindex.html #index', () => {
-		_l('done');
-		$.mobile.loading( "hide" );
-		$('.header-search').closest('div').removeClass('ui-state-disabled');
-		$('.header-search').attr('placeholder', 'Search past papers, e-books');
-		if(id) {
-			$($('.sr-dt')[$('.sr-dt').length - 1]).find('.sr-wrapper').attr('data-input', id);
-		}
-		$($('.sr-dt')[$('.sr-dt').length - 1]).find('.sr-wrapper').attr('id', '');
-		$($('.sr-dt')[$('.sr-dt').length - 1]).find('.sr-wrapper').filterable().filterable('refresh');
-	});
-},
-bindSearchEvents = () => {
-	$('.header-search')./* keypress */click(() =>  {
-		if(!$('.sr-cw').hasClass('active-content-wrapper')) {
-			resetActiveLinks();
-			$('#sr-cw').addClass("active-cw-ctrl");
-			$('.content').removeClass('active-content-wrapper').hide();
-			$('.sr-cw').addClass('active-content-wrapper').fadeIn();
-			currentCW = 'sr-cw';
-		}
-	});
-};
-
-$(document).ready(() => {
-	directUIUpdates();
-	/* Generate search index */
+loadSI = () => {
 	$('.sr-dt').load('ext/index/fsindex.html #index', () => {
 		_l('DT, Done!');
 		$('.sr').load('ext/index/fsindex.html #index', () => {
@@ -67,5 +39,36 @@ $(document).ready(() => {
 			}
 		});
 	});	
+},
+loadLastSR = (id) => {
+	_l('Loading last SR');
+	$($('.sr-dt')[$('.sr-dt').length - 1]).load('ext/index/fsindex.html #index', () => {
+		_l('done');
+		$.mobile.loading( "hide" );
+		$('.header-search').closest('div').removeClass('ui-state-disabled');
+		$('.header-search').attr('placeholder', 'Search past papers, e-books');
+		/* if(id) {
+			$($('.sr-dt')[$('.sr-dt').length - 1]).find('.sr-wrapper').attr('data-input', id);
+		} */
+		$($('.sr-dt')[$('.sr-dt').length - 1]).find('.sr-wrapper').attr('id', '');
+		$($('.sr-dt')[$('.sr-dt').length - 1]).find('.sr-wrapper').filterable().filterable('refresh');
+	});
+},
+bindSearchEvents = () => {
+	$('.header-search')./* keypress */click(() =>  {
+		if(!$('.sr-cw').hasClass('active-content-wrapper')) {
+			resetActiveLinks();
+			$('#sr-cw').addClass("active-cw-ctrl");
+			$('.content').removeClass('active-content-wrapper').hide();
+			$('.sr-cw').addClass('active-content-wrapper').fadeIn();
+			currentCW = 'sr-cw';
+		}
+	});
+};
+
+$(document).ready(() => {
+	directUIUpdates();
+	/* Generate search index */
+	loadSI();
 	bindSearchEvents();
 });
