@@ -1,14 +1,10 @@
-let resetActiveLinks = () => {
-	$('.content-wrapper-ctrl').removeClass('active-cw-ctrl');
-	$('.sub-nav div a').removeClass('active-sn-ctrl');
-},
 directUIUpdates = () => {
 	_l('Loading File-Server Search Index');
 	$('.header-search').attr('placeholder', 'Loading FsIndex...');
 	$('.header-search').closest('div').addClass('ui-state-disabled');
 	$('.loader')[0].click();
 },
-bindEvents = () => {
+bindSearchEvents = () => {
 	$('.sr-dt').load('ext/index/fsindex.html #index', () => {
 		_l('DT, Done!');
 		$('.sr').load('ext/index/fsindex.html #index', () => {
@@ -38,7 +34,6 @@ bindEvents = () => {
 					_l('404');
 				}
 			} else {
-				//window.history.replaceState({}, null, '/index.html');
 				_l('L.E', null);
 			}
 		});
@@ -57,5 +52,5 @@ bindEvents = () => {
 $(document).ready(() => {
 	/* Generate search index */
 	directUIUpdates();
-	bindEvents();
+	bindSearchEvents();
 });

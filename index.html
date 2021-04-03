@@ -24,8 +24,8 @@
 		<script type="text/javascript" src="js/pdfviewer.js"></script>
 		<script type="text/javascript" src="js/notifications.js"></script>
 		<script type="text/javascript" src="js/uploads.js"></script>
-		<script type="text/javascript" src="js/LE.js"></script>
 		<script type="text/javascript" src="js/navigation.js"></script>
+		<script type="text/javascript" src="js/LE.js"></script>
 	</head>
 	<body>
 		<!-- External Popups -->
@@ -41,7 +41,8 @@
 						<i class="fas fa-spinner fa-spin"></i>
 						<span class='p-h'></span>
 					</p>
-					<button type="submit" class="v-u ui-button ui-corner-all ui-shadow ui-button-b">
+					<button type="submit" 
+						class="v-u ui-button ui-corner-all ui-shadow ui-button-b tooltipped tooltipped-se border p-2 mb-2 mr-2 float-left" aria-label="!AppService">
 						Sign in <span class="ui-icon ui-icon-check"></span>
 					</button>
 				</div>
@@ -271,14 +272,14 @@
 				<!-- Desktop searchbar -->
 				<div class="header">
 					<div class="app-title">
-						<p class="app-ver tooltipped tooltipped-s border p-2 mb-2 mr-2 float-left" aria-label="e-ReadCU ⟶  V1.0.0">BETA</p>
+						<p class="app-ver tooltipped tooltipped-se border p-2 mb-2 mr-2 float-left" aria-label="e-ReadCU ⟶  V1.0.0">BETA</p>
 						<p class="title">eREAD</p>
 						<p class="sub-title"> Chuka University</p>
 					</div>
 					<div class="header-search-wrapper">
 					</div>
 					<div class="hdr-ctrls-wrapper">
-						<div id="ua-cw" class="ua-ctrl content-wrapper-ctrl ua-dpl-ctrl">
+						<div id="ua-cw" hash="Account" class="ua-ctrl content-wrapper-ctrl ua-dpl-ctrl">
 							<p class="ua-ctrl-hdr">
 								<span class="tooltipped tooltipped-sw border p-2 mb-2 mr-2 float-left"
 									aria-label="eRead Account">
@@ -286,7 +287,7 @@
 								</span>
 							</p>
 						</div>
-						<div id="n-cw" class="n-ui-ctrl content-wrapper-ctrl">
+						<div id="n-cw" hash="Notifications" class="n-ui-ctrl content-wrapper-ctrl">
 							<p class="ncw-ctrl-hdr">
 								<!-- Notification UI Ctrl -->
 								<span class="n"></span>
@@ -296,7 +297,7 @@
 								</span>
 							</p>
 						</div>
-						<div id="sc-cw" class="sc-ctrl content-wrapper-ctrl">
+						<div id="sc-cw" hash="Support-Center" class="sc-ctrl content-wrapper-ctrl">
 							<p class="sc-ctrl-hdr">
 								<span class="tooltipped tooltipped-s border p-2 mb-2 mr-2 float-left"
 									aria-label="eRead Support">
@@ -309,38 +310,38 @@
 				<!-- Desktop Sidepanel -->
 				<div class='pc-side-panel-wrapper'>
 					<div class="cw-ctrls-wrapper">
-						<div id="pp-cw" class="content-wrapper-ctrl active-cw-ctrl">
+						<div id="pp-cw" hash="Pastpapers" class="content-wrapper-ctrl active-cw-ctrl">
 							<p>Pastpapers</p>
 						</div>
-						<div id="eb-cw" class="content-wrapper-ctrl">
+						<div id="eb-cw" hash="eBooks" class="content-wrapper-ctrl">
 							<p>eBooks</p>
 						</div>
-						<div id="uploads-cw" class="content-wrapper-ctrl">
+						<div id="uploads-cw" hash="Uploads" class="content-wrapper-ctrl">
 							<p>Share eBook(s)</p>
 						</div>
 						<!--  active-cw-ctrl -->
-						<div id="ua-cw" class="content-wrapper-ctrl">
+						<div id="ua-cw" hash="Account" class="content-wrapper-ctrl">
 							<p>eRead Account</p>
 						</div>
 						<div class="sub-nav">
 							<p class="sub-nav-hdr"><i class="fas fa-user-plus"></i> ADD </p>
 							<div class="contributors-aux-lc">
-								<a href="#loginPopup" data-rel="popup" data-position-to="window"
+								<a href="#loginPopup" hash="Signin" data-rel="popup" data-position-to="window"
 									class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a" id="sn-ctrl-0" data-transition="pop">
 									Login
 								</a>
 							</div>
 							<div class="moderators-aux-lc">
-								<a href="#registerPopup" data-rel="popup" data-position-to="window"
+								<a href="#registerPopup" hash="Signup" data-rel="popup" data-position-to="window"
 									class="ui-button ui-corner-all ui-shadow ui-button-inline ui-button-a" id="sn-ctrl-2" data-transition="pop">
 									Register
 								</a>
 							</div>
 						</div>
-						<div id="contributors-cw" class="content-wrapper-ctrl">
+						<div id="contributors-cw" hash="Hall-of-Fame" class="content-wrapper-ctrl">
 							<p>Contributors</p>
 						</div>
-						<div id="sr-cw" class="content-wrapper-ctrl">
+						<div id="sr-cw" hash="Search" class="content-wrapper-ctrl">
 							<p>Search</p>
 						</div>
 					</div>
