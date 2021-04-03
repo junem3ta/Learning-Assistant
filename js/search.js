@@ -1,10 +1,18 @@
+<<<<<<< HEAD
 let directUIUpdates = () => {
+=======
+directUIUpdates = () => {
+>>>>>>> tmp
 	_l('Loading File-Server Search Index');
 	$('.header-search').attr('placeholder', 'Loading FsIndex...');
 	$('.header-search').closest('div').addClass('ui-state-disabled');
 	$('.loader')[0].click();
 },
+<<<<<<< HEAD
 loadSI = () => {
+=======
+bindSearchEvents = () => {
+>>>>>>> tmp
 	$('.sr-dt').load('ext/index/fsindex.html #index', () => {
 		_l('DT, Done!');
 		$('.sr').load('ext/index/fsindex.html #index', () => {
@@ -34,7 +42,6 @@ loadSI = () => {
 					_l('404');
 				}
 			} else {
-				//window.history.replaceState({}, null, '/index.html');
 				_l('L.E', null);
 			}
 		});
@@ -68,7 +75,10 @@ bindSearchEvents = () => {
 
 $(document).ready(() => {
 	directUIUpdates();
+<<<<<<< HEAD
 	/* Generate search index */
 	loadSI();
+=======
+>>>>>>> tmp
 	bindSearchEvents();
 });
